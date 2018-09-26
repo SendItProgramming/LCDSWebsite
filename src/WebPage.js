@@ -5,7 +5,7 @@ import Footer from "./webpage-components/Footer";
 import CustomBottom from "./webpage-components/CustomBottom";
 import './WebPage.css';
 
-class WebPage extends Component {
+export default class WebPage extends Component {
   render() {
     return (
       <div className="WebPage">
@@ -17,5 +17,3 @@ class WebPage extends Component {
     );
   }
 }
-
-export default WebPage;
