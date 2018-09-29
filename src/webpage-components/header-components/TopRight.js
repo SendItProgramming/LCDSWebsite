@@ -5,7 +5,16 @@ export default class TopRight extends Component {
     render() {
         return (
             <div name="topRight">
-				<Nav bsStyle="pills" onSelect={this.handleSelect}>
+				<NavBar />
+            </div>
+        )
+    }
+}
+
+class NavBar extends Component {
+	render() {
+		return (
+		<Nav bsStyle="pills" onSelect={this.handleSelect}>
 					<NavItem eventKey="Home">Home</NavItem>
 					<NavDropdown eventKey="About Us" title="About Us" id="nav-dropdown">
 						<MenuItem eventKey="Our Staff">Our Staff</MenuItem>
@@ -34,11 +43,12 @@ export default class TopRight extends Component {
 					<NavItem eventKey="News">News</NavItem>
 					<NavItem eventKey="Contact">Contact</NavItem>
 				</Nav>
-            </div>
-        )
-    }
+	
+		)
+	}
 	
 	handleSelect(selectedKey) {
 		console.log(`selected ${selectedKey}`);
 	}
+	
 }
