@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import {Nav, NavItem, NavDropdown, MenuItem, FormControl, FormGroup, InputGroup, Button} from "react-bootstrap"
+import {Nav, NavItem, NavDropdown, MenuItem, FormControl, FormGroup, InputGroup, Button, Image} from "react-bootstrap"
 
 export default class TopRight extends Component {	
     render() {
@@ -7,7 +7,20 @@ export default class TopRight extends Component {
             <div name="topRight">
 				<SearchBar />
 				<NavBar />
+				<SocialButtons />
             </div>
+        )
+    }
+}
+
+class SocialButtons extends Component {
+	render() {
+        return (
+			<div>
+				<Image src="http://placekitten.com/50/50" alt="Home Page" rounded />
+				&nbsp;
+				<Image src="http://placekitten.com/50/50" alt="Home Page" rounded />
+			</div>
         )
     }
 }
