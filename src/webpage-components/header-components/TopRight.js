@@ -1,14 +1,58 @@
 import React, { Component } from "react"
-import {Nav, NavItem, NavDropdown, MenuItem} from "react-bootstrap"
+import {Nav, NavItem, NavDropdown, MenuItem, FormControl, FormGroup, InputGroup, Button} from "react-bootstrap"
 
 export default class TopRight extends Component {	
     render() {
         return (
             <div name="topRight">
+				<SearchBar />
 				<NavBar />
             </div>
         )
     }
+}
+
+class SearchBar extends Component {
+	
+	constructor(props, context) {
+		super(props, context);
+
+		this.handleChange = this.handleChange.bind(this);
+	
+		this.state = {value: ''};
+    }
+
+	
+	render() {
+		return (
+			<div>
+				<form>
+					<FormGroup>
+						<InputGroup>
+							<FormControl
+								type="text"
+								value={this.state.value}
+								placeholder="Search..."
+								onChange={this.handleChange}								
+							/>
+							<FormControl.Feedback />
+							<Button onClick={this.handleClick.bind(this)}>9</Button>
+					
+						</InputGroup>
+					</FormGroup>
+				</form>
+			</div>
+		)
+	}
+	
+	handleClick() {
+		console.log(this.state.value);
+	}
+	
+	handleChange(e) {
+		this.setState({ value: e.target.value });
+	}
+	
 }
 
 class NavBar extends Component {
