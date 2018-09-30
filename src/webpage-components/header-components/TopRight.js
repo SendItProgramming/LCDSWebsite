@@ -68,8 +68,7 @@ class SearchBar extends Component {
 	
 }
 
-class NavBar extends Component {
-	
+class NavBar extends Component {	
 	render() {
 		return (
 		<Nav bsStyle="pills" onSelect={this.handleSelect}>
@@ -97,6 +96,7 @@ class NavBar extends Component {
 					<HoverToggleNavDropdown eventKey="Events" title="Events" id="nav-dropdown">
 						<MenuItem eventKey="Job Opportunities">Job Opportunities</MenuItem>
 						<MenuItem eventKey="Fundraising">Fundraising</MenuItem>
+						<MenuItem eventKey="Calendar">Calendar</MenuItem>
 					</HoverToggleNavDropdown>
 					<NavItem eventKey="News">News</NavItem>
 					<NavItem eventKey="Contact">Contact</NavItem>
