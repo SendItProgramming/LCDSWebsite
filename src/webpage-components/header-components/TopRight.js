@@ -69,34 +69,35 @@ class SearchBar extends Component {
 }
 
 class NavBar extends Component {
+	
 	render() {
 		return (
 		<Nav bsStyle="pills" onSelect={this.handleSelect}>
 					<NavItem eventKey="Home">Home</NavItem>
-					<NavDropdown eventKey="About Us" title="About Us" id="nav-dropdown">
+					<HoverToggleNavDropdown eventKey="About Us" title="About Us" id="nav-dropdown">
 						<MenuItem eventKey="Our Staff">Our Staff</MenuItem>
 						<MenuItem eventKey="Our Board">Our Board</MenuItem>
 						<MenuItem eventKey="Sammy Squirrel">Sammy Squirrel</MenuItem>
 						<MenuItem eventKey="Testimonials">Testimonials</MenuItem>
 						<MenuItem eventKey="Our History">Our History</MenuItem>
-					</NavDropdown>
-					<NavDropdown eventKey="Programs" title="Programs" id="nav-dropdown">
+					</HoverToggleNavDropdown>
+					<HoverToggleNavDropdown eventKey="Programs" title="Programs" id="nav-dropdown">
 						<MenuItem eventKey="Kindergarten">Kindergarten</MenuItem>
 						<MenuItem eventKey="Junior Kindergarten (4-5)">Junior Kindergarten (4-5)</MenuItem>
 						<MenuItem eventKey="Pre-school (3-4)">Pre-school (3-4)</MenuItem>
 						<MenuItem eventKey="Learning Support">Learning Support</MenuItem>
 						<MenuItem eventKey="Field Trips">Field Trips</MenuItem>
 						<MenuItem eventKey="Daily Snacks">Daily Snacks</MenuItem>
-					</NavDropdown>
-					<NavDropdown eventKey="Registration" title="Registration" id="nav-dropdown">
+					</HoverToggleNavDropdown>
+					<HoverToggleNavDropdown eventKey="Registration" title="Registration" id="nav-dropdown">
 						<MenuItem eventKey="Program Fees">Program Fees</MenuItem>
 						<MenuItem eventKey="Parent Involvement">Parent Involvement</MenuItem>
-					</NavDropdown>
+					</HoverToggleNavDropdown>
 					<NavItem eventKey="Resources">Resources</NavItem>
-					<NavDropdown eventKey="Events" title="Events" id="nav-dropdown">
+					<HoverToggleNavDropdown eventKey="Events" title="Events" id="nav-dropdown">
 						<MenuItem eventKey="Job Opportunities">Job Opportunities</MenuItem>
 						<MenuItem eventKey="Fundraising">Fundraising</MenuItem>
-					</NavDropdown>
+					</HoverToggleNavDropdown>
 					<NavItem eventKey="News">News</NavItem>
 					<NavItem eventKey="Contact">Contact</NavItem>
 				</Nav>
@@ -108,4 +109,40 @@ class NavBar extends Component {
 		console.log(`selected ${selectedKey}`);
 	}
 	
+}
+
+class HoverToggleNavDropdown extends Component {
+	
+	constructor(props) {
+		super(props)
+		this.state = { isOpen: false }
+	}
+	
+	openDropdown() {
+		this.setState({isOpen: true})
+	}
+	
+	closeDropdown() {
+		this.setState({isOpen: false})
+	}
+	
+	onToggle(){
+		
+	}
+	
+	render() {
+		return (
+			<NavDropdown 
+				onMouseEnter = { this.openDropdown.bind(this) } 
+				onMouseLeave = { this.closeDropdown.bind(this) } 
+				onToggle = { this.onToggle.bind(this) }
+				open={ this.state.isOpen } 
+				noCaret 
+				eventKey={this.props.eventKey} 
+				title={this.props.title} 
+				id={this.props.id}>
+				{this.props.children}
+			</NavDropdown>
+		)
+	}
 }
