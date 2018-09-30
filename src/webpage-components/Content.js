@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import SideBar from "./content-components/SideBar";
 import MainRight from "./content-components/MainRight";
-import {Panel, ListGroup, ListGroupItem, FormGroup, ControlLabel, FormControl, Checkbox, Button, Image} from "react-bootstrap";
+import {Panel, ListGroup, ListGroupItem, FormGroup, ControlLabel, FormControl, Checkbox, Button, Image, Carousel} from "react-bootstrap";
 
 
 export default class Content extends Component {
@@ -15,10 +15,37 @@ export default class Content extends Component {
 					<KidsCornerPanel />
 					<SquirrelPanel />
 				</SideBar>
-                <MainRight/>
+                <MainRight>
+					<ContentCarousel />
+				</MainRight>
             </div>
         )
     }
+}
+
+function ContentCarousel(props){
+	return (
+		<Carousel>
+			<Carousel.Item>
+				<Image alt="Kitten" src="http://placekitten.com/600/286" />
+			</Carousel.Item>
+			<Carousel.Item>
+				<Image alt="Bear" src="http://placebear.com/600/286" />
+			</Carousel.Item>
+			<Carousel.Item>
+				<Image alt="Bacon" src="http://baconmockup.com/600/286" />
+			</Carousel.Item>
+			<Carousel.Item>
+				<Image alt="unsplash" src="http://unsplash.it/600/286" />
+			</Carousel.Item>
+			<Carousel.Item>
+				<Image alt="Bill" src="http://fillmurray.com/600/286" />
+			</Carousel.Item>
+			<Carousel.Item>
+				<Image alt="phold" src="http://p-hold.com/600/286" />
+			</Carousel.Item>
+		</Carousel>
+	);
 }
 
 function ButtonsPanel(props){
