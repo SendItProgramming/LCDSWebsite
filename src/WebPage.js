@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter } from "react-router-dom";
 import Header from "./webpage-components/Header";
 import Content from "./webpage-components/Content";
 import Footer from "./webpage-components/Footer";
@@ -15,12 +16,14 @@ export default class WebPage extends Component {
 
   render() {
     return (
-      <div className="WebPage">
-        <Header site_urls={this.state.site_urls}/>
-        <Content/>
-        <Footer/>
-        <CustomBottom/>
-      </div>
+      <BrowserRouter>
+        <div className="WebPage">
+          <Header site_urls={this.state.site_urls}/>
+          <Content/>
+          <Footer/>
+          <CustomBottom/>
+        </div>
+      </BrowserRouter>
     );
   }
 }
