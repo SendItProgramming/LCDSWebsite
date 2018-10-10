@@ -6,6 +6,13 @@ import CustomBottom from "./webpage-components/CustomBottom";
 import './WebPage.css';
 
 export default class WebPage extends Component {
+  constructor() {
+    super();
+    this.state = {
+      site_urls: routes()
+    }
+  }
+
   render() {
     return (
       <div className="WebPage">
@@ -16,4 +23,29 @@ export default class WebPage extends Component {
       </div>
     );
   }
+}
+
+
+function routes() {
+  return {
+    Home: "/",
+    OurStaff: "our-staff",
+    OurBoard: "our-board",
+    Squirrel: "sammy-squirrel",
+    Testimonials: "testimonials",
+    History: "our-history",
+    Founder: "founder",
+    Kindergarden: "kindergarden",
+    JrKindergarden: "jr-kindergarden",
+    PreSchool: "preschool",
+    LearningSupport: "learning-support",
+    FieldTrips: "field-trips",
+    DailySnacks: "daily-snacks",
+    ProgramFee: "program-fee",
+    ParentInvolvement: "parent-involvement",
+    Resources: "resources",
+    JobOpportunities: "job-opportunities",
+    Fundraising: "fundraising",
+    Calendar: "calendar"
+  };
 }
