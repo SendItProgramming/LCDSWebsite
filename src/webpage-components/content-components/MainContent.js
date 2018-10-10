@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-export default class MainRight extends Component {
+export default class MainContent extends Component {
     render() {
         return (
             <div id="content">

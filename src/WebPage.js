@@ -18,9 +18,9 @@ export default class WebPage extends Component {
     return (
       <BrowserRouter>
         <div className="WebPage">
-          <Header site_urls={this.state.site_urls}/>
-          <Content/>
-          <Footer/>
+          <Header  site_urls={this.state.site_urls}/>
+          <Content site_urls={this.state.site_urls}/>
+          <Footer  site_urls={this.state.site_urls}/>
           <CustomBottom/>
         </div>
       </BrowserRouter>

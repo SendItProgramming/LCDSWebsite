@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import SideBar from "./content-components/SideBar";
-import MainRight from "./content-components/MainRight";
+import MainContent from "./content-components/MainContent";
 import {Panel, ListGroup, ListGroupItem, FormGroup, ControlLabel, FormControl, Checkbox, Button, Image, Carousel} from "react-bootstrap";
 
 
@@ -15,9 +15,9 @@ export default class Content extends Component {
 					<KidsCornerPanel />
 					<SquirrelPanel />
 				</SideBar>
-                <MainRight>
+                <MainContent>
 					<ContentCarousel />
-				</MainRight>
+				</MainContent>
             </div>
         )
     }
