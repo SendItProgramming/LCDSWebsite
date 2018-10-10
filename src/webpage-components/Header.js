@@ -44,32 +44,33 @@ export default class Header extends Component {
             <Nav bsStyle="pills" onSelect={this.handleSelect}>
                 <NavItem href={this.props.site_urls["Home"]}>Home</NavItem>
                 <HoverToggleNavDropdown href={this.props.site_urls[""]} title="About Us" id="nav-dropdown">
-                    <MenuItem href={this.props.site_urls[""]}>Our Staff</MenuItem>
-                    <MenuItem href={this.props.site_urls[""]}>Our Board</MenuItem>
-                    <MenuItem href={this.props.site_urls[""]}>Sammy Squirrel</MenuItem>
-                    <MenuItem href={this.props.site_urls[""]}>Testimonials</MenuItem>
-                    <MenuItem href={this.props.site_urls[""]}>Our History</MenuItem>
+                    <MenuItem href={this.props.site_urls["OurStaff"]}>Our Staff</MenuItem>
+                    <MenuItem href={this.props.site_urls["OurBoard"]}>Our Board</MenuItem>
+                    <MenuItem href={this.props.site_urls["Squirrel"]}>Sammy Squirrel</MenuItem>
+                    <MenuItem href={this.props.site_urls["Testimonials"]}>Testimonials</MenuItem>
+                    <MenuItem href={this.props.site_urls["History"]}>Our History</MenuItem>
+                    <MenuItem href={this.props.site_urls["Founder"]}>Our Founder</MenuItem>
                 </HoverToggleNavDropdown>
-                <HoverToggleNavDropdown href="Programs" title="Programs" id="nav-dropdown">
-                    <MenuItem href={this.props.site_urls[""]}>Kindergarten</MenuItem>
-                    <MenuItem href={this.props.site_urls[""]}>Junior Kindergarten (4-5)</MenuItem>
-                    <MenuItem href={this.props.site_urls[""]}>Pre-school (3-4)</MenuItem>
-                    <MenuItem href={this.props.site_urls[""]}>Learning Support</MenuItem>
-                    <MenuItem href={this.props.site_urls[""]}>Field Trips</MenuItem>
-                    <MenuItem href={this.props.site_urls[""]}>Daily Snacks</MenuItem>
+                <HoverToggleNavDropdown title="Programs" id="nav-dropdown">
+                    <MenuItem href={this.props.site_urls["Kindergarden"]}>Kindergarten</MenuItem>
+                    <MenuItem href={this.props.site_urls["JrKindergarden"]}>Junior Kindergarten (4-5)</MenuItem>
+                    <MenuItem href={this.props.site_urls["PreSchool"]}>Pre-school (3-4)</MenuItem>
+                    <MenuItem href={this.props.site_urls["LearningSupport"]}>Learning Support</MenuItem>
+                    <MenuItem href={this.props.site_urls["FieldTrips"]}>Field Trips</MenuItem>
+                    <MenuItem href={this.props.site_urls["DailySnacks"]}>Daily Snacks</MenuItem>
                 </HoverToggleNavDropdown>
                 <HoverToggleNavDropdown title="Registration" id="nav-dropdown">
-                    <MenuItem href={this.props.site_urls[""]}>Program Fees</MenuItem>
-                    <MenuItem href={this.props.site_urls[""]}>Parent Involvement</MenuItem>
+                    <MenuItem href={this.props.site_urls["ProgramFees"]}>Program Fees</MenuItem>
+                    <MenuItem href={this.props.site_urls["ParentInvolvement"]}>Parent Involvement</MenuItem>
                 </HoverToggleNavDropdown>
-                <NavItem href={this.props.site_urls[""]}>Resources</NavItem>
+                <NavItem href={this.props.site_urls["Resources"]}>Resources</NavItem>
                 <HoverToggleNavDropdown title="Events" id="nav-dropdown">
-                    <MenuItem href={this.props.site_urls[""]}>Job Opportunities</MenuItem>
-                    <MenuItem href={this.props.site_urls[""]}>Fundraising</MenuItem>
-                    <MenuItem href={this.props.site_urls[""]}>Calendar</MenuItem>
+                    <MenuItem href={this.props.site_urls["JobOpportunities"]}>Job Opportunities</MenuItem>
+                    <MenuItem href={this.props.site_urls["Fundraising"]}>Fundraising</MenuItem>
+                    <MenuItem href={this.props.site_urls["Calendar"]}>Calendar</MenuItem>
                 </HoverToggleNavDropdown>
-                <NavItem href={this.props.site_urls[""]}>News</NavItem>
-                <NavItem href={this.props.site_urls[""]}>Contact</NavItem>
+                <NavItem href={this.props.site_urls["News"]}>News</NavItem>
+                <NavItem href={this.props.site_urls["Contact"]}>Contact</NavItem>
             </Nav>
         )
     }
