@@ -16,7 +16,7 @@ export default class WebPage extends Component {
   render() {
     return (
       <div className="WebPage">
-        <Header/>
+        <Header site_urls={this.state.site_urls}/>
         <Content/>
         <Footer/>
         <CustomBottom/>

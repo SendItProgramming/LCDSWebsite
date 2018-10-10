@@ -6,7 +6,7 @@ export default class TopRight extends Component {
         return (
             <div name="topRight">
 				<SearchBar />
-				<NavBar />
+				<NavBar site_urls={this.props.site_urls}/>
 				<SocialButtons />
             </div>
         )
@@ -72,7 +72,7 @@ class NavBar extends Component {
 	render() {
 		return (
 		<Nav bsStyle="pills" onSelect={this.handleSelect}>
-					<NavItem eventKey="Home">Home</NavItem>
+					<NavItem eventKey="Home" href={this.props.site_urls["Home"]}>Home</NavItem>
 					<HoverToggleNavDropdown eventKey="About Us" title="About Us" id="nav-dropdown">
 						<MenuItem eventKey="Our Staff">Our Staff</MenuItem>
 						<MenuItem eventKey="Our Board">Our Board</MenuItem>

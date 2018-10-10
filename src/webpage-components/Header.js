@@ -8,7 +8,7 @@ export default class Header extends Component {
         return (
             <div id="header">
                 <HeaderLogo/>
-                <TopRight/>
+                <TopRight site_urls={this.props.site_urls}/>
             </div>
         )
     }
