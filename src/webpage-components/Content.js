@@ -1,26 +1,64 @@
 import React, { Component } from "react"
+import { Route, Redirect, Switch } from "react-router-dom";
+import {
+	Panel, 
+	ListGroup, 
+	ListGroupItem, 
+	FormGroup, 
+	ControlLabel, 
+	FormControl, 
+	Checkbox, 
+	Button, 
+	Image, 
+	Carousel
+} from "react-bootstrap";
 import SideBar from "./content-components/SideBar";
 import MainContent from "./content-components/MainContent";
-import {Panel, ListGroup, ListGroupItem, FormGroup, ControlLabel, FormControl, Checkbox, Button, Image, Carousel} from "react-bootstrap";
 
 
 export default class Content extends Component {
     render() {
         return (
-            <div>
-                <SideBar>
-					<QuotePanel quote="Childhood is a Journey, not a Race" author="unknown"/>
+			<Switch>
+				
+					<Route path={this.props.site_urls["Home"]} exact>
+						{this.HomeRender()}
+					</Route>
+					<Route path={this.props.site_urls["OurStaff"]} exact>
+						{this.StaffRender()}
+					</Route>
+					<Redirect to={this.props.site_urls["Home"]}/>
+				
+			</Switch>
+        )
+	}
+	
+	HomeRender() {
+		return (
+			<div>
+				<SideBar>
+					<QuotePanel 
+						quote="Childhood is a Journey, not a Race" 
+						author="unknown"
+					/>
 					<ButtonsPanel />
 					<LoginPanel />
 					<KidsCornerPanel />
 					<SquirrelPanel />
 				</SideBar>
-                <MainContent>
+				<MainContent>
 					<ContentCarousel />
 				</MainContent>
-            </div>
-        )
-    }
+			</div>
+		)
+	}
+
+	StaffRender() {
+		console.log("Staff Render");
+		return (
+			<p> Staff</p>
+		)
+	}
 }
 
 function ContentCarousel(props){
@@ -158,7 +196,7 @@ function AboutUsPanel(){
 
 function SidebarPanel(props){
 	return (
-		<Panel class="sidebar-panel">
+		<Panel className="sidebar-panel">
 			{props.children}
 		</Panel>
 	);
@@ -166,11 +204,11 @@ function SidebarPanel(props){
 
 function TitledSidebarPanel(props){
 	return (
-		<Panel class="sidebar-panel">
-			<Panel class="sidebar-panel-title">
+		<Panel className="sidebar-panel">
+			<Panel className="sidebar-panel-title">
 				{props.title}
 			</Panel>
-			{props.children}
+				{props.children}
 		</Panel>
 	);
 }
