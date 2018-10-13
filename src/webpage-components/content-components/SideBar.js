@@ -18,6 +18,14 @@ export default class SideBar extends Component {
                         {this.RenderPrograms()}
                     </Route>
 
+                    <Route path={this.props.site_urls["Registration"]}>
+                        {this.RenderRegistration()}
+                    </Route>
+
+                    <Route path={this.props.site_urls["Resources"]}>
+                        {this.RenderResources()}
+                    </Route>
+
                     <Route path={this.props.site_urls["Events"]}>
                         {this.RenderEvents()}
                     </Route>
@@ -173,10 +181,61 @@ export default class SideBar extends Component {
         );
     }
 
+    RenderRegistration() {
+        return(
+            <div>
+                <Switch>
+                    <Route path={this.props.site_urls["Registration"]} exact>
+                        <div>
+                            {this.props.quote}
+                            {this.props.about_us}
+                            {this.props.programs}
+                            {this.props.registration}
+                        </div>
+                    </Route>
+
+                    <Route path={this.props.site_urls["ProgramFees"]} exact>
+                        <div>
+                            {this.props.quote}
+                            {this.props.about_us}
+                            {this.props.programs}
+                            {this.props.registration}
+                        </div>
+                    </Route>
+                    
+                    <Route path={this.props.site_urls["ParentInvolvement"]} exact>
+                        <div>
+                            {this.props.quote}
+                            {this.props.about_us}
+                        </div>
+                    </Route>
+                </Switch>
+            </div>
+        );
+    }
+
+    RenderResources() {
+        return(
+            <div>
+                {this.props.about_us}
+                {this.props.pic}
+                {this.props.member_login}
+            </div>
+        );
+    } 
+
     RenderEvents() {
         return(
             <div>
                 <Switch>
+                <Route path={this.props.site_urls["Events"]} exact>
+                        <div>
+                            {this.props.quote}
+                            {this.props.about_us}
+                            {this.props.pic}
+                        </div>
+                    </Route>
+
                     <Route path={this.props.site_urls["JobOpportunities"]} exact>
                         <div>
                             {this.props.quote}
