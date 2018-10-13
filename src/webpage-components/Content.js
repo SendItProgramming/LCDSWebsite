@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { Route, Redirect, Switch } from "react-router-dom";
 import {
 	Panel, 
 	ListGroup, 
@@ -30,7 +29,7 @@ export default class Content extends Component {
 					registration={<Registration/>}
 					programs={<Programs/>}
 					pic={<PictureFrame/>}
-					upcoming_evetns={<UpcomingEvents/>}
+					upcoming_events={<UpcomingEvents/>}
 				/>
 				<MainContent>
 					<ContentCarousel />

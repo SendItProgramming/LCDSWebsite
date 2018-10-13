@@ -32,6 +32,7 @@ export default class WebPage extends Component {
 function routes() {
   return {
     Home:               "/",
+
     AboutUs:            "/about-us/",
     OurStaff:           "/about-us/our-staff",
     OurBoard:           "/about-us/our-board",
@@ -39,18 +40,26 @@ function routes() {
     Testimonials:       "/about-us/testimonials",
     History:            "/about-us/our-history",
     Founder:            "/about-us/founder",
-    Kindergarden:       "/kindergarden",
-    JrKindergarden:     "/jr-kindergarden",
-    PreSchool:          "/preschool",
-    LearningSupport:    "/learning-support",
-    FieldTrips:         "/field-trips",
-    DailySnacks:        "/daily-snacks",
-    ProgramFees:        "/program-fees",
-    ParentInvolvement:  "/parent-involvement",
+
+    Programs:           "/programs/",
+    Kindergarden:       "/programs/kindergarden",
+    JrKindergarden:     "/programs/jr-kindergarden",
+    PreSchool:          "/programs/preschool",
+    LearningSupport:    "/programs/learning-support",
+    FieldTrips:         "/programs/field-trips",
+    DailySnacks:        "/programs/daily-snacks",
+
+    Registration:       "/registration/",
+    ProgramFees:        "/registration/program-fees",
+    ParentInvolvement:  "/registration/parent-involvement",
+
     Resources:          "/resources",
-    JobOpportunities:   "/job-opportunities",
-    Fundraising:        "/fundraising",
-    Calendar:           "/calendar",
+
+    Events:             "/events/",
+    JobOpportunities:   "/events/job-opportunities",
+    Fundraising:        "/events/fundraising",
+    Calendar:           "/events/calendar",
+
     News:               "/news",
     Contact:            "/contact"
   };
