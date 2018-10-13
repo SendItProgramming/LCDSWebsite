@@ -71,7 +71,11 @@ export default class Header extends Component {
 
     AboutUs() {
         return (
-            <HoverToggleNavDropdown title="About Us" id="nav-dropdown" href={this.props.site_urls["AboutUs"]}>
+            <HoverToggleNavDropdown 
+                title="About Us" 
+                id="nav-dropdown" 
+                href={this.props.site_urls["AboutUs"]}
+            >
                 <MenuItem href={this.props.site_urls["OurStaff"]}>
                     Our Staff
                 </MenuItem>
@@ -101,7 +105,11 @@ export default class Header extends Component {
 
     Programs() {
         return (
-            <HoverToggleNavDropdown title="Programs" id="nav-dropdown">
+            <HoverToggleNavDropdown 
+                title="Programs" 
+                id="nav-dropdown" 
+                href={this.props.site_urls["Programs"]}
+            >
                 <MenuItem href={this.props.site_urls["Kindergarden"]}>
                     Kindergarten
                 </MenuItem>
@@ -131,7 +139,11 @@ export default class Header extends Component {
 
     Registration() {
         return (
-            <HoverToggleNavDropdown title="Registration" id="nav-dropdown">
+            <HoverToggleNavDropdown 
+                title="Registration" 
+                id="nav-dropdown"
+                href={this.props.site_urls["Registration"]}
+            >
                 <MenuItem href={this.props.site_urls["ProgramFees"]}>
                     Program Fees
                 </MenuItem>
@@ -145,7 +157,11 @@ export default class Header extends Component {
 
     Events() {
         return(
-            <HoverToggleNavDropdown title="Events" id="nav-dropdown">
+            <HoverToggleNavDropdown 
+                title="Events" 
+                id="nav-dropdown"
+                href={this.props.site_urls["Events"]}
+            >
                 <MenuItem href={this.props.site_urls["JobOpportunities"]}>
                     Job Opportunities
                 </MenuItem>

@@ -14,6 +14,10 @@ export default class SideBar extends Component {
                         {this.RenderAboutUs()}
                     </Route>
 
+                    <Route path={this.props.site_urls["Programs"]}>
+                        {this.RenderPrograms()}
+                    </Route>
+
                     <Route path={this.props.site_urls["Events"]}>
                         {this.RenderEvents()}
                     </Route>
@@ -96,6 +100,72 @@ export default class SideBar extends Component {
                         <div>
                             {this.props.quote}
                             {this.props.about_us}
+                        </div>
+                    </Route>
+                </Switch>
+            </div>
+        );
+    }
+
+    RenderPrograms() {
+        return(
+            <div>
+                <Switch>
+                    <Route path={this.props.site_urls["Programs"]} exact>
+                        <div>
+                            {this.props.about_us}
+                            {this.props.programs}
+                            {this.props.registration}
+                        </div>
+                    </Route>
+
+                    <Route path={this.props.site_urls["Kindergarden"]} exact>
+                        <div>
+                            {this.props.quote}
+                            {this.props.about_us}
+                            {this.props.programs}
+                            {this.props.registration}
+                        </div>
+                    </Route>
+
+                    <Route path={this.props.site_urls["JrKindergarden"]} exact>
+                        <div>
+                            {this.props.quote}
+                            {this.props.about_us}
+                            {this.props.programs}
+                            {this.props.registration}
+                        </div>
+                    </Route>
+
+                    <Route path={this.props.site_urls["PreSchool"]} exact>
+                        <div>
+                            {this.props.about_us}
+                            {this.props.programs}
+                            {this.props.registration}
+                        </div>
+                    </Route>
+
+                    <Route path={this.props.site_urls["LearningSupport"]} exact>
+                        <div>
+                            {this.props.quote}
+                            {this.props.about_us}
+                            {this.props.programs}
+                            {this.props.registration}
+                        </div>
+                    </Route>
+
+                    <Route path={this.props.site_urls["FieldTrips"]} exact>
+                        <div>
+                            {this.props.about_us}
+                            {this.props.registration}
+                        </div>
+                    </Route>
+
+                    <Route path={this.props.site_urls["DailySnacks"]} exact>
+                        <div>
+                            {this.props.quote}
+                            {this.props.about_us}
+                            {this.props.registration}
                         </div>
                     </Route>
                 </Switch>
