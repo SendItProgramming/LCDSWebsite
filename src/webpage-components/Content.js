@@ -20,15 +20,13 @@ export default class Content extends Component {
     render() {
         return (
 			<Switch>
-				
-					<Route path={this.props.site_urls["Home"]} exact>
-						{this.HomeRender()}
-					</Route>
-					<Route path={this.props.site_urls["OurStaff"]} exact>
-						{this.StaffRender()}
-					</Route>
-					<Redirect to={this.props.site_urls["Home"]}/>
-				
+				<Route path={this.props.site_urls["Home"]} exact>
+					{this.HomeRender()}
+				</Route>
+				<Route path={this.props.site_urls["OurStaff"]} exact>
+					{this.StaffRender()}
+				</Route>
+				<Redirect to={this.props.site_urls["Home"]}/>
 			</Switch>
         )
 	}
@@ -54,7 +52,6 @@ export default class Content extends Component {
 	}
 
 	StaffRender() {
-		console.log("Staff Render");
 		return (
 			<p> Staff</p>
 		)
