@@ -4,7 +4,11 @@ export default class SideBar extends Component {
     render() {
         return (
             <div id="sidebar">
-				{this.props.children}
+                {this.props.quote}
+                {this.props.custom_buttons}
+                {this.props.member_login}
+                {this.props.kids_corner}
+                {this.props.squirrel}
             </div>
         )
     }

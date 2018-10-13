@@ -34,21 +34,27 @@ export default class Content extends Component {
 	HomeRender() {
 		return (
 			<div>
-				<SideBar>
-					<QuotePanel 
-						quote="Childhood is a Journey, not a Race" 
-						author="unknown"
-					/>
-					<ButtonsPanel />
-					<LoginPanel />
-					<KidsCornerPanel />
-					<SquirrelPanel />
-				</SideBar>
+				<SideBar site_urls={this.props.site_urls}
+					quote={this.GetQuote()}
+					custom_buttons={<ButtonsPanel/>}
+					member_login={<LoginPanel/>}
+					kids_corner={<KidsCornerPanel/>}
+					squirrel={<SquirrelPanel/>}
+				/>
 				<MainContent>
 					<ContentCarousel />
 				</MainContent>
 			</div>
 		)
+	}
+
+	GetQuote() {
+		return(
+			<QuotePanel 
+				quote="Childhood is a Journey, not a Race" 
+				author="unknown"
+			/>
+		);
 	}
 
 	StaffRender() {
