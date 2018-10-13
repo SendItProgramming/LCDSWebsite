@@ -71,7 +71,7 @@ export default class Header extends Component {
 
     AboutUs() {
         return (
-            <HoverToggleNavDropdown title="About Us" id="nav-dropdown">
+            <HoverToggleNavDropdown title="About Us" id="nav-dropdown" href={this.props.site_urls["AboutUs"]}>
                 <MenuItem href={this.props.site_urls["OurStaff"]}>
                     Our Staff
                 </MenuItem>
@@ -242,7 +242,8 @@ class HoverToggleNavDropdown extends Component {
 				noCaret 
 				eventKey={this.props.eventKey} 
 				title={this.props.title} 
-				id={this.props.id}>
+				id={this.props.id}
+                href={this.props.href}>
 				{this.props.children}
 			</NavDropdown>
 		)

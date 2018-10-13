@@ -30,6 +30,7 @@ export default class Content extends Component {
 					programs={<Programs/>}
 					pic={<PictureFrame/>}
 					upcoming_events={<UpcomingEvents/>}
+					co_sponsors={<CoSponsors/>}
 				/>
 				<MainContent>
 					<ContentCarousel />
@@ -223,6 +224,14 @@ function UpcomingEvents() {
 	return (
 		<div>
 			<p>UpcomingEvents</p>
+		</div>
+	);
+}
+
+function CoSponsors() {
+	return (
+		<div>
+			<p>CoSponsors</p>
 		</div>
 	);
 }
