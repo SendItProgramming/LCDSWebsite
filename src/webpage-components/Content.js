@@ -19,20 +19,6 @@ import MainContent from "./content-components/MainContent";
 export default class Content extends Component {
     render() {
         return (
-			<Switch>
-				<Route path={this.props.site_urls["Home"]} exact>
-					{this.HomeRender()}
-				</Route>
-				<Route path={this.props.site_urls["OurStaff"]} exact>
-					{this.StaffRender()}
-				</Route>
-				<Redirect to={this.props.site_urls["Home"]}/>
-			</Switch>
-        )
-	}
-	
-	HomeRender() {
-		return (
 			<div>
 				<SideBar site_urls={this.props.site_urls}
 					quote={this.GetQuote()}
@@ -40,12 +26,17 @@ export default class Content extends Component {
 					member_login={<LoginPanel/>}
 					kids_corner={<KidsCornerPanel/>}
 					squirrel={<SquirrelPanel/>}
+					about_us={<AboutUsPanel/>}
+					registration={<Registration/>}
+					programs={<Programs/>}
+					pic={<PictureFrame/>}
+					upcoming_evetns={<UpcomingEvents/>}
 				/>
 				<MainContent>
 					<ContentCarousel />
 				</MainContent>
 			</div>
-		)
+        )
 	}
 
 	GetQuote() {
@@ -57,11 +48,6 @@ export default class Content extends Component {
 		);
 	}
 
-	StaffRender() {
-		return (
-			<p> Staff</p>
-		)
-	}
 }
 
 function ContentCarousel(props){
@@ -181,21 +167,15 @@ function SquirrelPanel(props){
 	);
 }
 
-/*
+
 function AboutUsPanel(){
 	return (
-		<TitledSidebarPanel title="About Us">
-			<ListGroup>
-				<ListGroupItem href="#">Our Staff</ListGroupItem>
-				<ListGroupItem href="#">Our Board and Committee Members</ListGroupItem>
-				<ListGroupItem href="#">Sammy Squirrel</ListGroupItem>
-				<ListGroupItem href="#">Testimonials</ListGroupItem>
-				<ListGroupItem href="#">Our History</ListGroupItem>
-			</ListGroup>
-		</TitledSidebarPanel>	
+		<div>
+			<p>About Us</p>
+		</div>
 	);
 }
-*/
+
 
 function SidebarPanel(props){
 	return (
@@ -213,5 +193,37 @@ function TitledSidebarPanel(props){
 			</Panel>
 				{props.children}
 		</Panel>
+	);
+}
+
+function Registration() {
+	return (
+		<div>
+			<p>Registration</p>
+		</div>
+	);
+}
+
+function Programs() {
+	return (
+		<div>
+			<p>Programs</p>
+		</div>
+	);
+}
+
+function PictureFrame() {
+	return (
+		<div>
+			<p>PictureFrame</p>
+		</div>
+	);
+}
+
+function UpcomingEvents() {
+	return (
+		<div>
+			<p>UpcomingEvents</p>
+		</div>
 	);
 }
