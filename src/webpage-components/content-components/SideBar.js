@@ -228,7 +228,7 @@ export default class SideBar extends Component {
         return(
             <div>
                 <Switch>
-                <Route path={this.props.site_urls["Events"]} exact>
+                    <Route path={this.props.site_urls["Events"]} exact>
                         <div>
                             {this.props.quote}
                             {this.props.about_us}
@@ -273,6 +273,3 @@ export default class SideBar extends Component {
         );
     }
 }
-
-
-
