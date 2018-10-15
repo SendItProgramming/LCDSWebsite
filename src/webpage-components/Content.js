@@ -32,9 +32,7 @@ export default class Content extends Component {
 					upcoming_events={<UpcomingEvents/>}
 					co_sponsors={<CoSponsors/>}
 				/>
-				<MainContent>
-					<ContentCarousel />
-				</MainContent>
+				<MainContent pictures={<ContentCarousel/>}/>
 			</div>
         )
 	}

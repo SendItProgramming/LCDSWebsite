@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 
+
+/*
+    Redundant collections of method calls to be replaced in the
+    future. Need to see how many dummy components are absorbed into
+    one component.
+*/
 export default class SideBar extends Component {
     render() {
         return (
