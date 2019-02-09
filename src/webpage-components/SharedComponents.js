@@ -15,10 +15,12 @@ import eventButton from './../images/events.png'
 import programsButton from './../images/programs.png'
 import registerButton from './../images/register.png'
 import resourcesButton from './../images/resources.png'
-
+import sammy1 from './../images/Sammy1.jpg'
+import sammy3 from './../images/Sammy-Resources-3.jpg'
+import aisca from './../images/aisca_wave_logo.jpg'
+import epa from './../images/EPA_Logo.png'
 export function ButtonsPanel(props){
 	return (
-		<SidebarPanel>
 			<ListGroup>
 				<ListGroupItem href="#">
 					<Image src={eventButton} alt="" rounded />
@@ -33,7 +35,6 @@ export function ButtonsPanel(props){
 					<Image src={resourcesButton} alt="" rounded />
 				</ListGroupItem>
 			</ListGroup>
-		</SidebarPanel>	
 	);
 	
 	
@@ -102,21 +103,25 @@ export function SquirrelPanel(props){
 	return (
 		<SidebarPanel>
 			<div id="logo">
-				<Image src="http://placekitten.com/217/123" alt="" thumbnail />
+				<Image src={sammy1} alt="" thumbnail />
             </div>
 		</SidebarPanel>
 	);
 }
 
-
 export function AboutUsPanel(){
 	return (
+		<SidebarPanel>
 		<div>
 			<p>About Us</p>
+			<p><a href="#/about-us/our-staff">Our Staff</a></p>
+			<p><a href="#/about-us/our-board">Our Board and Committee Members</a></p>
+			<p><a href="#/about-us/Testimonials">Testimonials</a></p>
+			<p><a href="#/about-us/History">History</a></p>
 		</div>
+		</SidebarPanel>
 	);
 }
-
 
 export function SidebarPanel(props){
 	return (
@@ -139,40 +144,63 @@ export function TitledSidebarPanel(props){
 
 export function Registration() {
 	return (
-		<div>
-			<p>Registration</p>
-		</div>
+		<SidebarPanel>
+			<div>
+				<p>Registration</p>
+				<p><a href="#/register/parent-involvement">Parent Involvement</a></p>
+				<p><a href="#/register/registration-requirements">Registration Requirements</a></p>
+				<p><a href="#/register/program-fees">Program Fees</a></p>
+			</div>
+		</SidebarPanel>
 	);
 }
 
 export function Programs() {
 	return (
-		<div>
-			<p>Programs</p>
-		</div>
+		<SidebarPanel>
+			<div>
+				<p>Programs</p>
+				<p><a href= "#/programs"></a></p>
+				<p><a href= "#/programs/kindergarten">Kindergarten</a></p>
+				<p><a href= "#/programs/junior-kindergarten">Junior Kindergarten</a></p>
+				<p><a href= "#/programs/preschool">Preschool</a></p>
+				<p><a href= "#/programs/learning-supports">Learning Supports</a></p>
+				<p><a href= "#/programs/field-trips">Field Trips</a></p>
+				<p><a href= "#/programs/daily-snack">Daily Snack</a></p>
+			</div>
+		</SidebarPanel>
 	);
 }
 
 export function PictureFrame() {
 	return (
-		<div>
-			<p>PictureFrame</p>
-		</div>
+		<SidebarPanel>
+			<div>
+				<Image src= {sammy3} alt = "" rounded/>
+			</div>
+		</SidebarPanel>
 	);
 }
 
 export function UpcomingEvents() {
 	return (
-		<div>
-			<p>UpcomingEvents</p>
-		</div>
+		<SidebarPanel>
+			<div>
+				<p>UpcomingEvents</p>
+			</div>
+		</SidebarPanel>
 	);
 }
 
 export function CoSponsors() {
 	return (
-		<div>
-			<p>CoSponsors</p>
-		</div>
+		<SidebarPanel>
+			<div>
+				<p>Member of:</p>
+				<Image src={epa} alt="" rounded width="225" height="110"/>
+				<p></p>
+				<Image src={aisca} alt="" rounded width="225" height="110"/>
+			</div>
+		</SidebarPanel>
 	);
 }
