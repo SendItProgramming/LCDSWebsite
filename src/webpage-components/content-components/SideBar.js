@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
-
-
+import "./../../index-src/css/sidebar.css"
 /*
     Redundant collections of method calls to be replaced in the
     future. Need to see how many dummy components are absorbed into
@@ -55,7 +54,7 @@ export default class SideBar extends Component {
             <div>
                 {this.props.quote}
                 {this.props.custom_buttons}
-                {this.props.member_login}
+                <div>{this.props.member_login}</div>
                 {this.props.kids_corner}
                 {this.props.squirrel}
             </div>

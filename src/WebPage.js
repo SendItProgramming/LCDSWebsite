@@ -5,7 +5,7 @@ import Content from "./webpage-components/Content";
 import Footer from "./webpage-components/Footer";
 import CustomBottom from "./webpage-components/CustomBottom";
 import { routes } from "./database-connection/Dummy";
-import './WebPage.css';
+import "./index-src/css/WebPage.css"
 
 export default class WebPage extends Component {
   constructor() {
@@ -18,12 +18,14 @@ export default class WebPage extends Component {
   render() {
     return (
       <BrowserRouter>
+      <div id="wrapper" class="container">
         <div className="WebPage">
           <Header  site_urls={this.state.site_urls}/>
           <Content site_urls={this.state.site_urls}/>
           <Footer  site_urls={this.state.site_urls}/>
           <CustomBottom/>
         </div>
+      </div>
       </BrowserRouter>
     );
   }

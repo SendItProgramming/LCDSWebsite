@@ -13,14 +13,13 @@ import {
 	UpcomingEvents,
 	CoSponsors,
 	ButtonsPanel,
-	ContentCarousel
 } from "./SharedComponents";
-
+import "./../index-src/css/Content.css"
 
 export default class Content extends Component {
     render() {
         return (
-			<div>
+			<div class="col-sm col-lg col-xs-05">
 				<SideBar site_urls={this.props.site_urls}
 					quote={this.GetQuote()}
 					custom_buttons={<ButtonsPanel/>}
@@ -34,17 +33,19 @@ export default class Content extends Component {
 					upcoming_events={<UpcomingEvents/>}
 					co_sponsors={<CoSponsors/>}
 				/>
-				<MainContent pictures={<ContentCarousel/>}/>
+				
 			</div>
         )
 	}
 
 	GetQuote() {
 		return(
+
 			<QuotePanel 
 				quote="Childhood is a Journey, not a Race" 
 				author="unknown"
 			/>
+		
 		);
 	}
 

@@ -9,51 +9,28 @@ import {
 	Checkbox, 
 	Button, 
 	Image, 
-	Carousel
+	
 } from "react-bootstrap";
-
-
-
-export function ContentCarousel(props){
-	return (
-		<Carousel>
-			<Carousel.Item>
-				<Image alt="Kitten" src="http://placekitten.com/600/286" />
-			</Carousel.Item>
-			<Carousel.Item>
-				<Image alt="Bear" src="http://placebear.com/600/286" />
-			</Carousel.Item>
-			<Carousel.Item>
-				<Image alt="Bacon" src="http://baconmockup.com/600/286" />
-			</Carousel.Item>
-			<Carousel.Item>
-				<Image alt="unsplash" src="http://unsplash.it/600/286" />
-			</Carousel.Item>
-			<Carousel.Item>
-				<Image alt="Bill" src="http://fillmurray.com/600/286" />
-			</Carousel.Item>
-			<Carousel.Item>
-				<Image alt="phold" src="http://p-hold.com/600/286" />
-			</Carousel.Item>
-		</Carousel>
-	);
-}
+import eventButton from './../images/events.png'
+import programsButton from './../images/programs.png'
+import registerButton from './../images/register.png'
+import resourcesButton from './../images/resources.png'
 
 export function ButtonsPanel(props){
 	return (
 		<SidebarPanel>
 			<ListGroup>
 				<ListGroupItem href="#">
-					<Image src="http://placekitten.com/277/100" alt="" rounded />
+					<Image src={eventButton} alt="" rounded />
 				</ListGroupItem>
 				<ListGroupItem href="#">
-					<Image src="http://placekitten.com/277/100" alt="" rounded />
+					<Image src={programsButton} alt="" rounded />
 				</ListGroupItem>
 				<ListGroupItem href="#">
-					<Image src="http://placekitten.com/277/100" alt="" rounded />
+					<Image src={registerButton} alt="" rounded />
 				</ListGroupItem>
 				<ListGroupItem href="#">
-					<Image src="http://placekitten.com/277/100" alt="" rounded />
+					<Image src={resourcesButton} alt="" rounded />
 				</ListGroupItem>
 			</ListGroup>
 		</SidebarPanel>	
