@@ -1,9 +1,13 @@
 package main
 
 import (
+	"database/sql"
 	"encoding/json"
+	"fmt"
 	"net/http"
+	"time"
 
+	_ "github.com/lib/pq"
 	"lcdskids.ca/LCDSWebsite/back-end/lib/posts"
 )
 
@@ -13,14 +17,15 @@ func main() {
 
 func server() {
 	//Muxer will be the router, we may switch to a gorilla muxer eventually depending on need
+	configFromEnv()
 	db, err := openDB()
+	fmt.Println(db)
 	if err != nil {
 		panic(err)
 	}
 	muxer := http.NewServeMux()
 	muxer.Handle("/", http.HandlerFunc(basicHandler))
 	muxer.Handle("/api", http.HandlerFunc(samplePostAPI))
-	muxer.Handle("/auth", http.Handler)
 	http.ListenAndServe(":8888", muxer)
 }
 

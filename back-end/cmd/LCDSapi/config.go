@@ -13,9 +13,9 @@ var config struct {
 }
 
 func configFromEnv() {
-	config.db.user = readEnvOrDefault("POSTGRES_USER", "admin")
+	config.db.user = readEnvOrDefault("POSTGRES_USER", "postgres")
 	config.db.name = readEnvOrDefault("POSTGRES_DB", "lcds")
-	config.db.host = readEnvOrDefault("POSTGRES_HOST", "postgres")
+	config.db.host = readEnvOrDefault("POSTGRES_HOST", "localhost")
 	config.db.pass = readEnvOrDefault("POSTGRES_PASSWORD", "admin")
 	config.db.port = readEnvOrDefault("POSTGRES_PORT", "5432")
 }

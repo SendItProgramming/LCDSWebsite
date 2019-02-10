@@ -3,11 +3,14 @@ package auth
 import (
 	"database/sql"
 	"errors"
+	"fmt"
 	"net/http"
 )
 
 var NotFound = errors.New("User not found in DB")
+
 const cookie = "lcdsAuthentication"
+
 type Authenticator struct {
 	db  *sql.DB
 	mux *http.ServeMux
@@ -41,26 +44,24 @@ func (a Authenticator) CheckUser(u User) (bool, error) {
 	return true, nil
 }
 
-
 //Do this after finishing the other stuff
-func (a Authenticator) CheckCookie() http.Handler {
-	return func(w http.ResponseWriter, r *http.Request){
-		cookie, err := r.Cookie(cookie)
+func (a Authenticator) CheckCookie() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		userCookie, err := r.Cookie(cookie)
 		if err == http.ErrNoCookie {
 			//This will route the person to log in eventually
 			return
 		}
+		fmt.Println(userCookie)
 		return
 	}
 }
 
-func CreateAuth(db *sql.DB) (Authenticator) {
+func CreateAuth(db *sql.DB) Authenticator {
 	mux := http.NewServeMux()
 	a := Authenticator{
 		db,
-		mux
+		mux,
 	}
 	return a
 }
-
-
