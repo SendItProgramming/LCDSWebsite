@@ -13,9 +13,14 @@ func main() {
 
 func server() {
 	//Muxer will be the router, we may switch to a gorilla muxer eventually depending on need
+	db, err := openDB()
+	if err != nil {
+		panic(err)
+	}
 	muxer := http.NewServeMux()
 	muxer.Handle("/", http.HandlerFunc(basicHandler))
 	muxer.Handle("/api", http.HandlerFunc(samplePostAPI))
+	muxer.Handle("/auth", http.Handler)
 	http.ListenAndServe(":8888", muxer)
 }
 
@@ -29,4 +34,27 @@ func samplePostAPI(w http.ResponseWriter, r *http.Request) {
 		1, "Here is the content of the post",
 	}
 	json.NewEncoder(w).Encode(p)
+}
+
+func openDB() (*sql.DB, error) {
+	args := fmt.Sprintf("user=%s password=%s dbname=%s host=%s port=%s sslmode=disable", config.db.user, config.db.pass, config.db.name, config.db.host, config.db.port)
+	db, err := sql.Open("postgres", args)
+	if err != nil {
+		return nil, err
+	}
+
+	const pingRetries = 5
+	for trials := 0; trials < pingRetries; trials++ {
+		err = db.Ping()
+		if err == nil {
+			break
+		}
+		time.Sleep(time.Second)
+	}
+
+	if err != nil {
+		return nil, err
+	}
+
+	return db, nil
 }
