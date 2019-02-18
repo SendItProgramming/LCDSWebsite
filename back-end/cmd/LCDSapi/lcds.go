@@ -8,6 +8,7 @@ import (
 	"time"
 
 	_ "github.com/lib/pq"
+	"lcdskids.ca/LCDSWebsite/back-end/lib/auth"
 	"lcdskids.ca/LCDSWebsite/back-end/lib/posts"
 )
 
@@ -19,13 +20,14 @@ func server() {
 	//Muxer will be the router, we may switch to a gorilla muxer eventually depending on need
 	configFromEnv()
 	db, err := openDB()
-	fmt.Println(db)
 	if err != nil {
 		panic(err)
 	}
+	authApi := auth.NewAPI(db)
 	muxer := http.NewServeMux()
-	muxer.Handle("/", http.HandlerFunc(basicHandler))
+	muxer.Handle("/auth/", http.StripPrefix("/auth", authApi))
 	muxer.Handle("/api", http.HandlerFunc(samplePostAPI))
+	muxer.Handle("/", http.HandlerFunc(basicHandler))
 	http.ListenAndServe(":8888", muxer)
 }
 
