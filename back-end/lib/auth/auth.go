@@ -23,24 +23,21 @@ type User struct {
 }
 
 func (a Authenticator) CheckPassword(w http.ResponseWriter, r *http.Request) {
-	dec := json.NewDecoder(r.Body)
-	defer r.Body.Close()
-	u := User{}
-	if err := dec.Decode(&u); err != nil {
-		fmt.Println("Problems in decoding the user object: ", err)
-		return
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	u := User{
+		Email:    r.FormValue("email"),
+		Password: r.FormValue("password"),
 	}
-	fmt.Println(u)
 	check, err := a.CheckUser(u)
 	if err != nil {
 		fmt.Println("Problems in getting the user: ", err)
 		return
 	}
 	if !check {
-		fmt.Println("Password does not match")
+		json.NewEncoder(w).Encode(false)
 		return
 	}
-	fmt.Println("Password matches")
+	json.NewEncoder(w).Encode(true)
 }
 
 func (a Authenticator) CheckUser(u User) (bool, error) {

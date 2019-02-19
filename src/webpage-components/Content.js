@@ -18,6 +18,27 @@ import {
 
 
 export default class Content extends Component {
+
+	componentDidMount(){
+		function myFunction() {
+ 		 	const url = "http://localhost:8888/auth/check";
+			fetch(url, {
+    		method : "POST",
+    		body: new FormData(document.getElementById("inputform")),
+    		// -- or --
+    		// body : JSON.stringify({
+        	// user : document.getElementById('user').value,
+        	// ...
+    		// })
+			}).then(
+    			response => response.text() // .json(), etc.
+    			// same as function(response) {return response.text();}
+			).then(
+   		 	html => console.log(html)
+			);
+		}
+		document.getElementById("loginButton").addEventListener("click", myFunction);
+	}
     render() {
         return (
 			<div>
