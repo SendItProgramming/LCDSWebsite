@@ -1,16 +1,25 @@
 #sidebar {
   float: left;
   overflow: visible;
+  max-width: 277px;
 }
 
 .sidebar-panel.panel.panel-default {
   width: auto;
   background: transparent;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+  border: 0px;
+  padding: 10px;
+}
+
+#list-group {
+  box-shadow: 0 0px 0px;
 }
 
 .list-group-item {
   background: transparent;
+  padding: 0px;
+  border: 0px;
 }
 
 /*# sourceMappingURL=sidebar.css.map */

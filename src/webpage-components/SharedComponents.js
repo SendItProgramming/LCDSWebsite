@@ -1,16 +1,17 @@
 import React from "react"
 import {
-	Panel, 
-	ListGroup, 
-	ListGroupItem, 
-	FormGroup, 
-	ControlLabel, 
-	FormControl, 
-	Checkbox, 
-	Button, 
-	Image, 
-	
+	Panel,
+	ListGroup,
+	ListGroupItem,
+	FormGroup,
+	ControlLabel,
+	FormControl,
+	Checkbox,
+	Button,
+	Image,
+
 } from "react-bootstrap";
+import "./../index-src/css/SharedComponents.css"
 import eventButton from './../images/events.png'
 import programsButton from './../images/programs.png'
 import registerButton from './../images/register.png'
@@ -19,6 +20,7 @@ import sammy1 from './../images/Sammy1.jpg'
 import sammy3 from './../images/Sammy-Resources-3.jpg'
 import aisca from './../images/aisca_wave_logo.jpg'
 import epa from './../images/EPA_Logo.png'
+
 export function ButtonsPanel(props){
 	return (
 			<ListGroup>
@@ -36,8 +38,7 @@ export function ButtonsPanel(props){
 				</ListGroupItem>
 			</ListGroup>
 	);
-	
-	
+
 }
 
 export function QuotePanel(props){
@@ -70,7 +71,7 @@ export function LoginPanel(props){
 				<a href="#">Forgot your password?</a><br />
 				<a href="#">Forgot your username?</a><br />
 			</form>
-		</TitledSidebarPanel>	
+		</TitledSidebarPanel>
 	);
 }
 
@@ -81,13 +82,13 @@ export function KidsCornerPanel(props){
 				Kool-Aid Play Dough<br /><br />
 
 				Ingredients:<br /><br />
-				
+
 				4-5 cups flour<br />
 				4 pkgs Kool-Aid (not grape or lemonade)<br />
 				1 cup salt<br />
 				6 Tbsp. oil<br />
 				4 cups boiling water<br /><br />
- 
+
 				Directions:<br /><br />
 
 				Whisk together dry ingredients.<br />
@@ -95,7 +96,7 @@ export function KidsCornerPanel(props){
 				Knead completely until cool.<br />
 				Store in a sealed container or Ziploc bag in the fridge.<br />
 			</p>
-		</TitledSidebarPanel>	
+		</TitledSidebarPanel>
 	);
 }
 

@@ -207,7 +207,7 @@ export default class SideBar extends Component {
                             {this.props.registration}
                         </div>
                     </Route>
-                    
+
                     <Route path={this.props.site_urls["ParentInvolvement"]} exact>
                         <div>
                             {this.props.quote}
@@ -227,7 +227,7 @@ export default class SideBar extends Component {
                 {this.props.member_login}
             </div>
         );
-    } 
+    }
 
     RenderEvents() {
         return(
@@ -247,7 +247,7 @@ export default class SideBar extends Component {
                             {this.props.about_us}
                         </div>
                     </Route>
-                    
+
                     <Route path={this.props.site_urls["Fundraising"]} exact>
                         <div>
                             {this.props.quote}

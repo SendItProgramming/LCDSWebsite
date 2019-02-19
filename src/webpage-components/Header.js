@@ -1,15 +1,18 @@
 import React, { Component } from "react"
-import { 
-    Nav, 
-    NavItem, 
-    NavDropdown, 
-    MenuItem, 
-    FormControl, 
-    FormGroup, 
-    InputGroup, 
-    Button, 
+import {
+    Nav,
+    NavItem,
+    NavDropdown,
+    MenuItem,
+    FormControl,
+    FormGroup,
+    InputGroup,
+    Button,
     Image
 } from "react-bootstrap"
+
+import logo from "./../images/header-logo.png"
+import fb from "./../images/facebook.png"
 
 export default class Header extends Component {
     render() {
@@ -24,7 +27,7 @@ export default class Header extends Component {
     HeaderLogo() {
         return (
             <div id="logo">
-				<Image src="http://placekitten.com/200/200" alt="Home Page" thumbnail />
+				<Image src={logo} alt="Home Page" thumbnail />
             </div>
         )
     }
@@ -47,7 +50,7 @@ export default class Header extends Component {
                 </NavItem>
 
                 {this.AboutUs()}
-                
+
                 {this.Programs()}
 
                 {this.Registration()}
@@ -71,9 +74,9 @@ export default class Header extends Component {
 
     AboutUs() {
         return (
-            <HoverToggleNavDropdown 
-                title="About Us" 
-                id="nav-dropdown" 
+            <HoverToggleNavDropdown
+                title="About Us"
+                id="nav-dropdown"
                 href={this.props.site_urls["AboutUs"]}
             >
                 <MenuItem href={this.props.site_urls["OurStaff"]}>
@@ -105,9 +108,9 @@ export default class Header extends Component {
 
     Programs() {
         return (
-            <HoverToggleNavDropdown 
-                title="Programs" 
-                id="nav-dropdown" 
+            <HoverToggleNavDropdown
+                title="Programs"
+                id="nav-dropdown"
                 href={this.props.site_urls["Programs"]}
             >
                 <MenuItem href={this.props.site_urls["Kindergarden"]}>
@@ -139,8 +142,8 @@ export default class Header extends Component {
 
     Registration() {
         return (
-            <HoverToggleNavDropdown 
-                title="Registration" 
+            <HoverToggleNavDropdown
+                title="Registration"
                 id="nav-dropdown"
                 href={this.props.site_urls["Registration"]}
             >
@@ -157,8 +160,8 @@ export default class Header extends Component {
 
     Events() {
         return(
-            <HoverToggleNavDropdown 
-                title="Events" 
+            <HoverToggleNavDropdown
+                title="Events"
                 id="nav-dropdown"
                 href={this.props.site_urls["Events"]}
             >
@@ -176,25 +179,37 @@ export default class Header extends Component {
             </HoverToggleNavDropdown>
         )
     }
+    Resources() {
+        return (
+            <HoverToggleNavDropdown
+                title="Resources"
+                id="nav-dropdown"
+                href={this.props.site_urls["Resources"]}
+            >
+            </HoverToggleNavDropdown>
+
+
+        )
+
+
+
+    }
 
     SocialButtons() {
         return (
 			<div>
-				<Image src="http://placekitten.com/50/50" alt="Home Page" rounded />
-				&nbsp;
-				<Image src="http://placekitten.com/50/50" alt="Home Page" rounded />
+				<a href= "https://www.facebook.com/lcdskids/"> <Image src={fb} alt="Home Page" rounded /></a>
 			</div>
         )
     }
 }
 
 class SearchBar extends Component {
-	
+
 	constructor(props, context) {
 		super(props, context);
 
 		this.handleChange = this.handleChange.bind(this);
-	
 		this.state = {value: ''};
     }
 
@@ -208,56 +223,56 @@ class SearchBar extends Component {
 								type="text"
 								value={this.state.value}
 								placeholder="Search..."
-								onChange={this.handleChange}								
+								onChange={this.handleChange}
 							/>
 							<FormControl.Feedback />
 							<Button onClick={this.handleClick.bind(this)}>9</Button>
-					
+
 						</InputGroup>
 					</FormGroup>
 				</form>
 			</div>
 		)
 	}
-	
+
 	handleClick() {
 		console.log(this.state.value);
 	}
-	
+
 	handleChange(e) {
 		this.setState({ value: e.target.value });
 	}
 }
 
 class HoverToggleNavDropdown extends Component {
-	
+
 	constructor(props) {
 		super(props)
 		this.state = { isOpen: false }
 	}
-	
+
 	openDropdown() {
 		this.setState({isOpen: true})
 	}
-	
+
 	closeDropdown() {
 		this.setState({isOpen: false})
 	}
-	
+
 	onToggle(){
-		
+
 	}
-	
+
 	render() {
 		return (
-			<NavDropdown 
-				onMouseEnter = { this.openDropdown.bind(this) } 
-				onMouseLeave = { this.closeDropdown.bind(this) } 
+			<NavDropdown
+				onMouseEnter = { this.openDropdown.bind(this) }
+				onMouseLeave = { this.closeDropdown.bind(this) }
 				onToggle = { this.onToggle.bind(this) }
-				open={ this.state.isOpen } 
-				noCaret 
-				eventKey={this.props.eventKey} 
-				title={this.props.title} 
+				open={ this.state.isOpen }
+				noCaret
+				eventKey={this.props.eventKey}
+				title={this.props.title}
 				id={this.props.id}
                 href={this.props.href}>
 				{this.props.children}
