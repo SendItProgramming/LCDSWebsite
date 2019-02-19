@@ -34,7 +34,9 @@ export function routes() {
     Calendar:           "/events/calendar",
 
     News:               "/news",
-    Contact:            "/contact"
+    Contact:            "/contact",
+
+    NotFound:           "/*/"
   };
 }
 

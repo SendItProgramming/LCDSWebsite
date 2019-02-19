@@ -1,6 +1,5 @@
 .content{
     width: 78%;
-    margin-left: 2%;
     position: relative;
     float:right;
 }
@@ -9,7 +8,6 @@
     float:inherit;
     border-radius: 10px;
     border-color: black;
-    margin-left: 10%;
     margin-right: 10%;
     text-align: left;
 }
@@ -25,4 +23,13 @@
     margin:10%;
     border-style: inset;
     border-color: black;
+}
+
+.Title{
+    font-size:20pt;
+    font-weight:bold;
+}
+.subTitle{
+    font-size: 16pt;
+    font-weight: bold;
 }
