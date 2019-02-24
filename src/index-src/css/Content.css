@@ -1,0 +1,40 @@
+.content {
+  width: 78%;
+  position: relative;
+  float: right;
+}
+
+.Table {
+  float: inherit;
+  border-radius: 10px;
+  border-color: black;
+  margin-right: 10%;
+  text-align: left;
+}
+
+.sidebar {
+  width: 20%;
+}
+
+.body {
+  display: inline-block;
+  width: 100%;
+}
+
+.cell {
+  margin: 10%;
+  border-style: inset;
+  border-color: black;
+}
+
+.Title {
+  font-size: 20pt;
+  font-weight: bold;
+}
+
+.subTitle {
+  font-size: 16pt;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=Content.css.map */

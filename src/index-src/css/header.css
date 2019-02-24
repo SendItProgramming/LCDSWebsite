@@ -1,0 +1,43 @@
+.dropdown-menu {
+  background-color: #0c739d;
+}
+
+li:hover {
+  background-color: red;
+}
+
+#NavBarAndButtons {
+  height: auto;
+  display: inline-block;
+}
+
+#logo {
+  display: inline-block;
+}
+
+#SocialButtons {
+  display: inline-block;
+}
+
+.Bar {
+  float: left;
+}
+
+.SocialMedia {
+  float: right;
+}
+
+.dropdown {
+  background-color: #0c739d;
+}
+
+a {
+  color: #ffffff;
+  background-color: #0c739d;
+}
+
+.header {
+  overflow: hidden;
+}
+
+/*# sourceMappingURL=header.css.map */

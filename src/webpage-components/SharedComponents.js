@@ -1,65 +1,44 @@
 import React from "react"
 import {
-	Panel, 
-	ListGroup, 
-	ListGroupItem, 
-	FormGroup, 
-	ControlLabel, 
-	FormControl, 
-	Checkbox, 
-	Button, 
-	Image, 
-	Carousel
+	Panel,
+	ListGroup,
+	ListGroupItem,
+	FormGroup,
+	ControlLabel,
+	FormControl,
+	Checkbox,
+	Button,
+	Image,
+
 } from "react-bootstrap";
-
-
-
-export function ContentCarousel(props){
-	return (
-		<Carousel>
-			<Carousel.Item>
-				<Image alt="Kitten" src="http://placekitten.com/600/286" />
-			</Carousel.Item>
-			<Carousel.Item>
-				<Image alt="Bear" src="http://placebear.com/600/286" />
-			</Carousel.Item>
-			<Carousel.Item>
-				<Image alt="Bacon" src="http://baconmockup.com/600/286" />
-			</Carousel.Item>
-			<Carousel.Item>
-				<Image alt="unsplash" src="http://unsplash.it/600/286" />
-			</Carousel.Item>
-			<Carousel.Item>
-				<Image alt="Bill" src="http://fillmurray.com/600/286" />
-			</Carousel.Item>
-			<Carousel.Item>
-				<Image alt="phold" src="http://p-hold.com/600/286" />
-			</Carousel.Item>
-		</Carousel>
-	);
-}
+import "./../index-src/css/SharedComponents.css"
+import eventButton from './../images/events.png'
+import programsButton from './../images/programs.png'
+import registerButton from './../images/register.png'
+import resourcesButton from './../images/resources.png'
+import sammy1 from './../images/Sammy1.jpg'
+import sammy3 from './../images/Sammy-Resources-3.jpg'
+import aisca from './../images/aisca_wave_logo.jpg'
+import epa from './../images/EPA_Logo.png'
 
 export function ButtonsPanel(props){
 	return (
-		<SidebarPanel>
 			<ListGroup>
 				<ListGroupItem href="#">
-					<Image src="http://placekitten.com/277/100" alt="" rounded />
+					<Image src={eventButton} alt="" rounded />
 				</ListGroupItem>
 				<ListGroupItem href="#">
-					<Image src="http://placekitten.com/277/100" alt="" rounded />
+					<Image src={programsButton} alt="" rounded />
 				</ListGroupItem>
 				<ListGroupItem href="#">
-					<Image src="http://placekitten.com/277/100" alt="" rounded />
+					<Image src={registerButton} alt="" rounded />
 				</ListGroupItem>
 				<ListGroupItem href="#">
-					<Image src="http://placekitten.com/277/100" alt="" rounded />
+					<Image src={resourcesButton} alt="" rounded />
 				</ListGroupItem>
 			</ListGroup>
-		</SidebarPanel>	
 	);
-	
-	
+
 }
 
 export function QuotePanel(props){
@@ -92,7 +71,7 @@ export function LoginPanel(props){
 				<a href="#">Forgot your password?</a><br />
 				<a href="#">Forgot your username?</a><br />
 			</form>
-		</TitledSidebarPanel>	
+		</TitledSidebarPanel>
 	);
 }
 
@@ -103,13 +82,13 @@ export function KidsCornerPanel(props){
 				Kool-Aid Play Dough<br /><br />
 
 				Ingredients:<br /><br />
-				
+
 				4-5 cups flour<br />
 				4 pkgs Kool-Aid (not grape or lemonade)<br />
 				1 cup salt<br />
 				6 Tbsp. oil<br />
 				4 cups boiling water<br /><br />
- 
+
 				Directions:<br /><br />
 
 				Whisk together dry ingredients.<br />
@@ -117,7 +96,7 @@ export function KidsCornerPanel(props){
 				Knead completely until cool.<br />
 				Store in a sealed container or Ziploc bag in the fridge.<br />
 			</p>
-		</TitledSidebarPanel>	
+		</TitledSidebarPanel>
 	);
 }
 
@@ -125,21 +104,25 @@ export function SquirrelPanel(props){
 	return (
 		<SidebarPanel>
 			<div id="logo">
-				<Image src="http://placekitten.com/217/123" alt="" thumbnail />
+				<Image src={sammy1} alt="" thumbnail />
             </div>
 		</SidebarPanel>
 	);
 }
 
-
 export function AboutUsPanel(){
 	return (
+		<SidebarPanel>
 		<div>
 			<p>About Us</p>
+			<p><a href="#/about-us/our-staff">Our Staff</a></p>
+			<p><a href="#/about-us/our-board">Our Board and Committee Members</a></p>
+			<p><a href="#/about-us/Testimonials">Testimonials</a></p>
+			<p><a href="#/about-us/History">History</a></p>
 		</div>
+		</SidebarPanel>
 	);
 }
-
 
 export function SidebarPanel(props){
 	return (
@@ -162,40 +145,63 @@ export function TitledSidebarPanel(props){
 
 export function Registration() {
 	return (
-		<div>
-			<p>Registration</p>
-		</div>
+		<SidebarPanel>
+			<div>
+				<p>Registration</p>
+				<p><a href="#/register/parent-involvement">Parent Involvement</a></p>
+				<p><a href="#/register/registration-requirements">Registration Requirements</a></p>
+				<p><a href="#/register/program-fees">Program Fees</a></p>
+			</div>
+		</SidebarPanel>
 	);
 }
 
 export function Programs() {
 	return (
-		<div>
-			<p>Programs</p>
-		</div>
+		<SidebarPanel>
+			<div>
+				<p>Programs</p>
+				<p><a href= "#/programs"></a></p>
+				<p><a href= "#/programs/kindergarten">Kindergarten</a></p>
+				<p><a href= "#/programs/junior-kindergarten">Junior Kindergarten</a></p>
+				<p><a href= "#/programs/preschool">Preschool</a></p>
+				<p><a href= "#/programs/learning-supports">Learning Supports</a></p>
+				<p><a href= "#/programs/field-trips">Field Trips</a></p>
+				<p><a href= "#/programs/daily-snack">Daily Snack</a></p>
+			</div>
+		</SidebarPanel>
 	);
 }
 
 export function PictureFrame() {
 	return (
-		<div>
-			<p>PictureFrame</p>
-		</div>
+		<SidebarPanel>
+			<div>
+				<Image src= {sammy3} alt = "" rounded/>
+			</div>
+		</SidebarPanel>
 	);
 }
 
 export function UpcomingEvents() {
 	return (
-		<div>
-			<p>UpcomingEvents</p>
-		</div>
+		<SidebarPanel>
+			<div>
+				<p>UpcomingEvents</p>
+			</div>
+		</SidebarPanel>
 	);
 }
 
 export function CoSponsors() {
 	return (
-		<div>
-			<p>CoSponsors</p>
-		</div>
+		<SidebarPanel>
+			<div>
+				<p>Member of:</p>
+				<Image src={epa} alt="" rounded width="225" height="110"/>
+				<p></p>
+				<Image src={aisca} alt="" rounded width="225" height="110"/>
+			</div>
+		</SidebarPanel>
 	);
 }
