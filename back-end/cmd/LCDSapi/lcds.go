@@ -24,10 +24,13 @@ func server() {
 		panic(err)
 	}
 	authApi := auth.NewAPI(db)
+	postApi := posts.NewAPI()
 	muxer := http.NewServeMux()
 	muxer.Handle("/auth/", http.StripPrefix("/auth", authApi))
+	muxer.Handle("/posts/", http.StripPrefix("/posts", postApi))
 	muxer.Handle("/api", http.HandlerFunc(samplePostAPI))
 	muxer.Handle("/", http.HandlerFunc(basicHandler))
+	fmt.Println("Serving at port 8888")
 	http.ListenAndServe(":8888", muxer)
 }
 
