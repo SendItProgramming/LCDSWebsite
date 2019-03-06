@@ -63,11 +63,13 @@ export default class Content extends Component {
 			</div>
 		);
 	}
+
 	About(){
 		return (
 			<p>ABOOT</p>
 		);
 	}
+
 	Resources(){
 		return(
 		<div class ="content">
@@ -190,6 +192,7 @@ export default class Content extends Component {
 		</div>
 		);
 	}
+
 	GetQuote() {
 		return(
 
