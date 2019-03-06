@@ -28,10 +28,11 @@ func server() {
 	muxer := http.NewServeMux()
 	muxer.Handle("/auth/", http.StripPrefix("/auth", authApi))
 	muxer.Handle("/posts/", http.StripPrefix("/posts", postApi))
+	muxer.Handle("/protected", authApi.Middleware(http.HandlerFunc(basicHandler)))
 	muxer.Handle("/api", http.HandlerFunc(samplePostAPI))
 	muxer.Handle("/", http.HandlerFunc(basicHandler))
 	fmt.Println("Serving at port 8888")
-	http.ListenAndServe(":8888", muxer)
+	http.ListenAndServe(":8887", muxer)
 }
 
 //Handlers take a response writer and a request, this is then passed to the muxer with a route
