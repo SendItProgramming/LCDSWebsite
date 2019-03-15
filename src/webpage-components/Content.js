@@ -19,7 +19,14 @@ import {
 import "./../index-src/css/Content.css"
 
 export default class Content extends Component {
-
+    constructor(props) {
+		super(props);
+		this.state = {
+		  error: null,
+		  isLoaded: false,
+		  items: []
+		};
+	  }
 	componentDidMount(){
 		function myFunction() {
  		 	const url = "http://localhost:8888/auth/check";
@@ -214,30 +221,57 @@ export default class Content extends Component {
 		);
 	}
 
-
 	GetQuote() {
-		fetch("localhost:8888/quotes")
+
+		fetch("http://localhost:8888/quotes/")
 		.then(res => res.json())
 		.then(
 		  (result) => {
-			console.log(result.items)
+			console.log("Set state")
+			console.log(result.Author)
+			console.log(result.Text)
+			this.setState({
+				isLoaded: true,
+				items: result.items
+			});
 		  },
-		  // Note: it's important to handle errors here
-		  // instead of a catch() block so that we don't swallow
-		  // exceptions from actual bugs in components.
+
 		  (error) => {
 			console.log("ERROR!!!!!!")
+            this.setState({
+				isLoaded: true,
+				error
+			});
 		  }
 		)
+		//this.RenderQuote()
+	}
 
+	RenderQuote() {
+		const {error, isLoaded, quote }  = this.state;
+		if (error) {
+			console.log("ERROR loading backup")
+			return (
+
+				<QuotePanel
+					quote  = "Life is a journey, dig it"
+					author = "Joe Dirt"
+				/>
+			);
+		}
+		else if (!isLoaded){
+			console.log("FUCK")
+		}
+		else {
 		return(
-
+			
 			<QuotePanel
-				quote="WHY"
-				author="unknown"
+				quote  = {quote.Text}
+				author = {quote.Author}
 			/>
 
 		);
+		}
 	}
 
 }
