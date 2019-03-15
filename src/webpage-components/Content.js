@@ -216,16 +216,19 @@ export default class Content extends Component {
 
 
 	GetQuote() {
-		fetch("localhost:8888/quotes")
+		fetch("http://localhost:8888/quotes/", {
+			mode: "cors",
+		})
 		.then(res => res.json())
 		.then(
 		  (result) => {
-			console.log(result.items)
+			console.log(result)
 		  },
 		  // Note: it's important to handle errors here
 		  // instead of a catch() block so that we don't swallow
 		  // exceptions from actual bugs in components.
 		  (error) => {
+		  	console.log(error)
 			console.log("ERROR!!!!!!")
 		  }
 		)

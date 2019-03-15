@@ -19,14 +19,14 @@ type Quote struct {
 	Author string
 }
 
-func (q QuoteDB) GetQuote() Quote {
+func (q QuoteDB) GetQuote() (Quote, error) {
 	//var quote Quote
 	/*query := `SELECT * from quotes limit 1`
 	err := q.db.QueryRow(query).Scan(&quote.Id, &quote.Text, &quote.Author)
 	if err != nil {
 		return Quote{}, err
 	}*/
-	return Quote{1, "This is a quote", "Jordan"}
+	return Quote{1, "This is a quote", "Jordan"}, nil
 	//return quote, nil
 }
 
