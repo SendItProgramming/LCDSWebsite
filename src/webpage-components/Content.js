@@ -20,7 +20,18 @@ import "./../index-src/css/Content.css"
 
 export default class Content extends Component {
 
+	constructor(props){
+		super(props)
+		this.state = {quote:{
+			Author: "Loading...",
+			Text: "Loading..."
+		}}
+		this.GetQuote = this.GetQuote.bind(this)
+	}
+
 	componentDidMount(){
+		this.GetQuote()
+
 		function myFunction() {
  		 	const url = "http://localhost:8888/auth/check";
 			fetch(url, {
@@ -45,7 +56,7 @@ export default class Content extends Component {
 			<div class="body">
 				<div class="sidebar">
 					<SideBar site_urls={this.props.site_urls}
-						quote={this.GetQuote()}
+						quote={this.state.quote.Text}
 						custom_buttons={<ButtonsPanel/>}
 						member_login={<LoginPanel/>}
 						kids_corner={<KidsCornerPanel/>}
@@ -216,13 +227,13 @@ export default class Content extends Component {
 
 
 	GetQuote() {
-		fetch("http://localhost:8888/quotes/", {
-			mode: "cors",
-		})
+		fetch("http://localhost:8888/quotes/")
 		.then(res => res.json())
 		.then(
 		  (result) => {
-			console.log(result)
+			this.setState({
+				quote: result
+			})
 		  },
 		  // Note: it's important to handle errors here
 		  // instead of a catch() block so that we don't swallow
