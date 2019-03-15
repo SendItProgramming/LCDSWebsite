@@ -44,11 +44,10 @@ export function ButtonsPanel(props){
 export function QuotePanel(props){
 	return (
 		<SidebarPanel>
-			<blockquote>
-				"{props.quote}"
-				<br />
-				-{props.author}
-			</blockquote>
+			<QuotePanel
+				quote  = {props.quote}
+				author = {props.author}
+			/>
 		</SidebarPanel>
 	);
 }

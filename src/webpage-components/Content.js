@@ -19,15 +19,19 @@ import {
 import "./../index-src/css/Content.css"
 
 export default class Content extends Component {
-    constructor(props) {
-		super(props);
-		this.state = {
-		  error: null,
-		  isLoaded: false,
-		  items: []
-		};
-	  }
+
+	constructor(props){
+		super(props)
+		this.state = {quote:{
+			Author: "Loading...",
+			Text: "Loading..."
+		}}
+		this.GetQuote = this.GetQuote.bind(this)
+	}
+
 	componentDidMount(){
+		this.GetQuote()
+
 		function myFunction() {
  		 	const url = "http://localhost:8888/auth/check";
 			fetch(url, {
@@ -52,7 +56,7 @@ export default class Content extends Component {
 			<div class="body">
 				<div class="sidebar">
 					<SideBar site_urls={this.props.site_urls}
-						quote={this.GetQuote()}
+						quote={this.state.quote}
 						custom_buttons={<ButtonsPanel/>}
 						member_login={<LoginPanel/>}
 						kids_corner={<KidsCornerPanel/>}
@@ -73,6 +77,9 @@ export default class Content extends Component {
                     </Route>
 					<Route path={this.props.site_urls["AboutUs"]} exact>
 						{this.About()}
+                    </Route>
+					<Route path={this.props.site_urls["News"]} exact>
+						{this.News()}
                     </Route>
 					<Route path={this.props.site_urls["NotFound"]} exact>
 						{this.Error()}
@@ -97,7 +104,11 @@ export default class Content extends Component {
 			<p>ABOOT</p>
 		);
 	}
-
+	News(){
+		return (
+			<p>NEWS</p>
+		)
+	}
 	Resources(){
 		return(
 		<div class ="content">
@@ -222,21 +233,17 @@ export default class Content extends Component {
 	}
 
 	GetQuote() {
-
 		fetch("http://localhost:8888/quotes/")
 		.then(res => res.json())
 		.then(
 		  (result) => {
-			console.log("Set state")
-			console.log(result.Author)
-			console.log(result.Text)
 			this.setState({
-				isLoaded: true,
-				items: result.items
-			});
+				quote: result
+			})
 		  },
 
 		  (error) => {
+		  	console.log(error)
 			console.log("ERROR!!!!!!")
             this.setState({
 				isLoaded: true,
@@ -260,7 +267,7 @@ export default class Content extends Component {
 			);
 		}
 		else if (!isLoaded){
-			console.log("FUCK")
+			console.log("Not Loaded... Waiting...")
 		}
 		else {
 		return(

@@ -7,6 +7,12 @@ import "./../../index-src/css/sidebar.css"
     one component.
 */
 export default class SideBar extends Component {
+
+    constructor(props) {
+        super(props)
+        console.log(props)
+    }
+
     render() {
         return (
             <div id="sidebar">
@@ -50,9 +56,14 @@ export default class SideBar extends Component {
     }
 
     RenderHome() {
+        console.log(this.props)
         return(
             <div>
-                {this.props.quote}
+                <blockquote>
+				    "{this.props.quote.Text}"
+				<br />
+				    -{this.props.quote.Author}
+                </blockquote>
                 {this.props.custom_buttons}
                 <div>{this.props.member_login}</div>
                 {this.props.kids_corner}
