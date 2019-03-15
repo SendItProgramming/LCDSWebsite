@@ -12,7 +12,7 @@ export default class SideBar extends Component {
         super(props)
         console.log(props)
     }
-    
+
     render() {
         return (
             <div id="sidebar">
@@ -56,9 +56,12 @@ export default class SideBar extends Component {
     }
 
     RenderHome() {
+        console.log(this.props)
         return(
             <div>
-                {this.props.quote}
+
+                <p> {this.props.quote.Text} </p>
+                <p> Author : {this.props.quote.Author} </p>
                 {this.props.custom_buttons}
                 <div>{this.props.member_login}</div>
                 {this.props.kids_corner}

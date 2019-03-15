@@ -56,7 +56,7 @@ export default class Content extends Component {
 			<div class="body">
 				<div class="sidebar">
 					<SideBar site_urls={this.props.site_urls}
-						quote={this.state.quote.Text}
+						quote={this.state.quote}
 						custom_buttons={<ButtonsPanel/>}
 						member_login={<LoginPanel/>}
 						kids_corner={<KidsCornerPanel/>}
