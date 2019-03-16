@@ -10,7 +10,6 @@ export default class SideBar extends Component {
 
     constructor(props) {
         super(props)
-        console.log(props)
     }
     componentDidMount(){
         function login() {
@@ -69,14 +68,9 @@ export default class SideBar extends Component {
     }
 
     RenderHome() {
-        console.log(this.props)
         return(
             <div>
-                <blockquote>
-				    "{this.props.quote.Text}"
-				<br />
-				    -{this.props.quote.Author}
-                </blockquote>
+                {this.props.quote}
                 {this.props.custom_buttons}
                 <div>{this.props.member_login}</div>
                 {this.props.kids_corner}

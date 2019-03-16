@@ -34,11 +34,12 @@ export default class Content extends Component {
 	}
 
     render() {
+        console.log(this.state.quote)
         return (
 			<div class="body">
 				<div class="sidebar">
 					<SideBar site_urls={this.props.site_urls}
-						quote={this.state.quote}
+						quote={<QuotePanel quote={this.state.quote}/>}
 						custom_buttons={<ButtonsPanel/>}
 						member_login={<LoginPanel/>}
 						kids_corner={<KidsCornerPanel/>}
