@@ -9,54 +9,27 @@ import (
 	"github.com/gorilla/mux"
 )
 
-type NewsDB struct {
-	db *sql.DB
-}
-
-type News struct {
-	Id         int
-	Text       string
-	Date       string
-	Importance int
-}
-
-func (q NewsDB) GetNews() (News, error) {
-
-	var news News
-	query := `SELECT * FROM news ORDER BY date `
-	err := q.db.QueryRow(query).Scan(&news.Id, &news.Text, &news.Date, &news.Importance)
-	if err != nil {
-		return News{}, err
-	}
-	return news, nil
-
-}
-
 type API struct {
-	muxer *mux.Router
-	q     NewsDB
-}
-
-func (q NewsDB) ServeNews(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	news, err := q.GetNews()
-	if err != nil {
-		fmt.Println("We errored grabbing news: ", err)
-		return
-	}
-	json.NewEncoder(w).Encode(news)
+	nd  NewsDB
+	mux *mux.Router
 }
 
 func (a API) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	a.muxer.ServeHTTP(w, r)
+	a.mux.ServeHTTP(w, r)
 }
 
 func NewAPI(db *sql.DB) API {
 	m := mux.NewRouter()
-	q := NewsDB{db}
-	m.Handle("/", http.HandlerFunc(q.ServeNews))
-	return API{
-		m,
-		q,
+	n := NewsDB{db}
+	m.HandleFunc("/", n.GetNews)
+	return API{n, m}
+}
+
+func (nd NewsDB) GetNews(w http.ResponseWriter, r *http.Request) {
+	n, err := nd.GetAllNews()
+	if err != nil {
+		fmt.Println("Problem in grabbing the news: ", err)
+		return
 	}
+	json.NewEncoder(w).Encode(n)
 }
