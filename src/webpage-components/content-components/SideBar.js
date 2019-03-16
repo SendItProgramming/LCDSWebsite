@@ -72,9 +72,11 @@ export default class SideBar extends Component {
         console.log(this.props)
         return(
             <div>
-
-                <p> {this.props.quote.Text} </p>
-                <p> Author : {this.props.quote.Author} </p>
+                <blockquote>
+				    "{this.props.quote.Text}"
+				<br />
+				    -{this.props.quote.Author}
+                </blockquote>
                 {this.props.custom_buttons}
                 <div>{this.props.member_login}</div>
                 {this.props.kids_corner}

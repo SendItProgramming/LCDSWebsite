@@ -60,6 +60,9 @@ export default class Content extends Component {
 					<Route path={this.props.site_urls["AboutUs"]} exact>
 						{this.About()}
                     </Route>
+					<Route path={this.props.site_urls["News"]} exact>
+						{this.News()}
+                    </Route>
 					<Route path={this.props.site_urls["NotFound"]} exact>
 						{this.Error()}
                     </Route>
@@ -83,7 +86,11 @@ export default class Content extends Component {
 			<p>ABOOT</p>
 		);
 	}
-
+	News(){
+		return (
+			<p>NEWS</p>
+		)
+	}
 	Resources(){
 		return(
 		<div class ="content">
@@ -207,7 +214,6 @@ export default class Content extends Component {
 		);
 	}
 
-
 	GetQuote() {
 		fetch("http://localhost:8888/quotes/")
 		.then(res => res.json())
@@ -217,23 +223,44 @@ export default class Content extends Component {
 				quote: result
 			})
 		  },
-		  // Note: it's important to handle errors here
-		  // instead of a catch() block so that we don't swallow
-		  // exceptions from actual bugs in components.
+
 		  (error) => {
 		  	console.log(error)
 			console.log("ERROR!!!!!!")
+            this.setState({
+				isLoaded: true,
+				error
+			});
 		  }
 		)
+		//this.RenderQuote()
+	}
 
+	RenderQuote() {
+		const {error, isLoaded, quote }  = this.state;
+		if (error) {
+			console.log("ERROR loading backup")
+			return (
+
+				<QuotePanel
+					quote  = "Life is a journey, dig it"
+					author = "Joe Dirt"
+				/>
+			);
+		}
+		else if (!isLoaded){
+			console.log("Not Loaded... Waiting...")
+		}
+		else {
 		return(
-
+			
 			<QuotePanel
-				quote="WHY"
-				author="unknown"
+				quote  = {quote.Text}
+				author = {quote.Author}
 			/>
 
 		);
+		}
 	}
 
 }

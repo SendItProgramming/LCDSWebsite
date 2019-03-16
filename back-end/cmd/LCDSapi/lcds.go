@@ -51,6 +51,7 @@ func samplePostAPI(w http.ResponseWriter, r *http.Request) {
 
 func openDB() (*sql.DB, error) {
 	args := fmt.Sprintf("user=%s password=%s dbname=%s host=%s port=%s sslmode=disable", config.db.user, config.db.pass, config.db.name, config.db.host, config.db.port)
+	fmt.Println(config.db.user)
 	db, err := sql.Open("postgres", args)
 	if err != nil {
 		return nil, err
