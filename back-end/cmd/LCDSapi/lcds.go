@@ -9,6 +9,7 @@ import (
 
 	_ "github.com/lib/pq"
 	"lcdskids.ca/LCDSWebsite/back-end/lib/auth"
+	"lcdskids.ca/LCDSWebsite/back-end/lib/news"
 	"lcdskids.ca/LCDSWebsite/back-end/lib/posts"
 	"lcdskids.ca/LCDSWebsite/back-end/lib/quotes"
 )
@@ -27,10 +28,12 @@ func server() {
 	authApi := auth.NewAPI(db)
 	postApi := posts.NewAPI()
 	quoteApi := quotes.NewAPI(db)
+	newsApi := news.NewAPI(db)
 	muxer := http.NewServeMux()
 	muxer.Handle("/auth/", http.StripPrefix("/auth", authApi))
 	muxer.Handle("/posts/", http.StripPrefix("/posts", postApi))
 	muxer.Handle("/quotes/", http.StripPrefix("/quotes", quoteApi))
+	muxer.Handle("/news/", http.StripPrefix("/news", newsApi))
 	muxer.Handle("/api", http.HandlerFunc(samplePostAPI))
 	muxer.Handle("/", http.HandlerFunc(basicHandler))
 	fmt.Println("Serving at port 8888")
