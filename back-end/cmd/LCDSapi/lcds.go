@@ -9,6 +9,7 @@ import (
 
 	_ "github.com/lib/pq"
 	"lcdskids.ca/LCDSWebsite/back-end/lib/auth"
+	"lcdskids.ca/LCDSWebsite/back-end/lib/news"
 	"lcdskids.ca/LCDSWebsite/back-end/lib/posts"
 )
 
@@ -25,14 +26,16 @@ func server() {
 	}
 	authApi := auth.NewAPI(db)
 	postApi := posts.NewAPI()
+	newsApi := news.NewAPI(db)
 	muxer := http.NewServeMux()
 	muxer.Handle("/auth/", http.StripPrefix("/auth", authApi))
 	muxer.Handle("/posts/", http.StripPrefix("/posts", postApi))
+	muxer.Handle("/news/", http.StripPrefix("/news", newsApi))
 	muxer.Handle("/protected", authApi.Middleware(http.HandlerFunc(basicHandler)))
 	muxer.Handle("/api", http.HandlerFunc(samplePostAPI))
 	muxer.Handle("/", http.HandlerFunc(basicHandler))
 	fmt.Println("Serving at port 8888")
-	http.ListenAndServe(":8887", muxer)
+	http.ListenAndServe(":8888", muxer)
 }
 
 //Handlers take a response writer and a request, this is then passed to the muxer with a route
