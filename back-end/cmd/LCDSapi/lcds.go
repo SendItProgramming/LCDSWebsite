@@ -10,6 +10,7 @@ import (
 	_ "github.com/lib/pq"
 	"lcdskids.ca/LCDSWebsite/back-end/lib/auth"
 	"lcdskids.ca/LCDSWebsite/back-end/lib/posts"
+	"lcdskids.ca/LCDSWebsite/back-end/lib/quotes"
 )
 
 func main() {
@@ -25,9 +26,11 @@ func server() {
 	}
 	authApi := auth.NewAPI(db)
 	postApi := posts.NewAPI()
+	quoteApi := quotes.NewAPI(db)
 	muxer := http.NewServeMux()
 	muxer.Handle("/auth/", http.StripPrefix("/auth", authApi))
 	muxer.Handle("/posts/", http.StripPrefix("/posts", postApi))
+	muxer.Handle("/quotes/", http.StripPrefix("/quotes", quoteApi))
 	muxer.Handle("/api", http.HandlerFunc(samplePostAPI))
 	muxer.Handle("/", http.HandlerFunc(basicHandler))
 	fmt.Println("Serving at port 8888")
@@ -48,6 +51,7 @@ func samplePostAPI(w http.ResponseWriter, r *http.Request) {
 
 func openDB() (*sql.DB, error) {
 	args := fmt.Sprintf("user=%s password=%s dbname=%s host=%s port=%s sslmode=disable", config.db.user, config.db.pass, config.db.name, config.db.host, config.db.port)
+	fmt.Println(config.db.user)
 	db, err := sql.Open("postgres", args)
 	if err != nil {
 		return nil, err

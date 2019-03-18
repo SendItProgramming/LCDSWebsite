@@ -1,0 +1,16 @@
+.contact {
+  font-style: bold;
+}
+
+.footer {
+  display: flex;
+  text-align: center;
+  margin: auto;
+}
+
+.relatedInfo {
+  display: flex;
+  padding-left: 2%;
+}
+
+/*# sourceMappingURL=footer.css.map */

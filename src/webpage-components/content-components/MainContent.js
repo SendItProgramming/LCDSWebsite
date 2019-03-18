@@ -5,7 +5,6 @@ export default class MainContent extends Component {
         return (
             <div id="content">
                 {this.props.pictures}
-                <p>HTHTHT</p>
             </div>
         )
     }

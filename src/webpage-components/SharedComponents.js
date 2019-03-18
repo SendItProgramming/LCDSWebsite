@@ -45,10 +45,10 @@ export function QuotePanel(props){
 	return (
 		<SidebarPanel>
 			<blockquote>
-				"{props.quote}"
+				    "{props.quote.Text}"
 				<br />
-				-{props.author}
-			</blockquote>
+				    -{props.quote.Author}
+                </blockquote>
 		</SidebarPanel>
 	);
 }
