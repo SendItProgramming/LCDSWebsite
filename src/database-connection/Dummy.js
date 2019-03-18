@@ -36,7 +36,8 @@ export function routes() {
     News:               "/news",
     Contact:            "/contact",
 
-    NotFound:           "/*/"
+    NotFound:           "/*/",
+    Admin:              "Admin"
   };
 }
 
@@ -75,6 +76,7 @@ export function titles() {
     Calendar:           "Calendar",
 
     News:               "News",
-    Contact:            "Contact"
+    Contact:            "Contact",
+    Admin:              "Admin"
   };
 }

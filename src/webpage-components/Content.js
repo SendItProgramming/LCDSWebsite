@@ -3,6 +3,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import SideBar from "./content-components/SideBar";
 import MainContent from "./content-components/MainContent";
 import ReactTable from "react-table";
+import TextEditor from "./HTMLEditor.js";
 import {
 	QuotePanel,
 	LoginPanel,
@@ -70,6 +71,9 @@ export default class Content extends Component {
 					<Route path={this.props.site_urls["NotFound"]} exact>
 						{this.Error()}
                     </Route>
+					<Route path={this.props.site_urls["Admin"]} exact>
+						<TextEditor/>
+					</Route>
 				</Switch>
 
 
