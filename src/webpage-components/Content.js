@@ -22,16 +22,20 @@ export default class Content extends Component {
 
 	constructor(props){
 		super(props)
-		this.state = {quote:{
+		this.state = {
+			quote:{
 			Author: "Loading...",
 			Text: "Loading..."
-		}}
+			},
+			news:[]
+		}
 		this.GetQuote = this.GetQuote.bind(this)
+		this.news = this.GetNews.bind(this)
 	}
 
 	componentDidMount(){
 		this.GetQuote()
-
+		this.GetNews()
 		function myFunction() {
  		 	const url = "http://localhost:8888/auth/check";
 			fetch(url, {
@@ -105,9 +109,27 @@ export default class Content extends Component {
 		);
 	}
 	News(){
-		return (
-			<p>NEWS</p>
+		const items = this.state.news
+		console.log(items)
+		return(
+			<div class = "content">
+			<p class="Title">News:</p>
+			<table class = "Table">
+			<tbody>
+				{items.map(item => (
+
+						<tr class = "cell">
+						<td>
+							<p>{item.Text}</p>
+						</td>
+						</tr>
+
+				))}
+		</tbody>
+		</table>
+		</div>
 		)
+
 	}
 	Resources(){
 		return(
@@ -244,7 +266,7 @@ export default class Content extends Component {
 
 		  (error) => {
 		  	console.log(error)
-			console.log("ERROR!!!!!!")
+			console.log("ERROR!")
             this.setState({
 				isLoaded: true,
 				error
@@ -252,6 +274,27 @@ export default class Content extends Component {
 		  }
 		)
 		//this.RenderQuote()
+	}
+	GetNews() {
+		console.log("We here")
+		fetch("http://localhost:8888/news/")
+		.then(res => res.json())
+		.then(
+		  (result) => {
+				console.log("WERK")
+			this.setState({
+				news: result
+			})
+		  },
+
+		  (error) => {
+		  	console.log("Err: " + error)
+            this.setState({
+				isLoaded: true,
+				error
+			});
+		  }
+		)
 	}
 
 	RenderQuote() {
@@ -261,7 +304,7 @@ export default class Content extends Component {
 			return (
 
 				<QuotePanel
-					quote  = "Life is a journey, dig it"
+					quote  = "Life is a garden, dig it"
 					author = "Joe Dirt"
 				/>
 			);
@@ -271,7 +314,7 @@ export default class Content extends Component {
 		}
 		else {
 		return(
-			
+
 			<QuotePanel
 				quote  = {quote.Text}
 				author = {quote.Author}

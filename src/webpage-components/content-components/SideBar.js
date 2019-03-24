@@ -276,6 +276,7 @@ export default class SideBar extends Component {
             <div>
                 {this.props.upcoming_events}
                 {this.props.pic}
+                <div>{this.props.member_login}</div>
             </div>
         );
     }
