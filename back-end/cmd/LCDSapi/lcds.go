@@ -9,6 +9,7 @@ import (
 
 	_ "github.com/lib/pq"
 	"lcdskids.ca/LCDSWebsite/back-end/lib/auth"
+	"lcdskids.ca/LCDSWebsite/back-end/lib/events"
 	"lcdskids.ca/LCDSWebsite/back-end/lib/posts"
 )
 
@@ -24,9 +25,12 @@ func server() {
 		panic(err)
 	}
 	authApi := auth.NewAPI(db)
+	eventsApi := events.NewAPI(db)
 	postApi := posts.NewAPI()
 	muxer := http.NewServeMux()
+	muxer.Handle("/events/")
 	muxer.Handle("/auth/", http.StripPrefix("/auth", authApi))
+	muxer.Handle("/events/", http.StripPrefix("/events", authApi))
 	muxer.Handle("/posts/", http.StripPrefix("/posts", postApi))
 	muxer.Handle("/api", http.HandlerFunc(samplePostAPI))
 	muxer.Handle("/", http.HandlerFunc(basicHandler))
