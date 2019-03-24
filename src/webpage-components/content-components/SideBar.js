@@ -322,7 +322,7 @@ export default class SideBar extends Component {
 
     RenderAdmin() {
         return(
-            <div>
+            <div class="a">
 				{this.props.member_login}
             </div>
         );

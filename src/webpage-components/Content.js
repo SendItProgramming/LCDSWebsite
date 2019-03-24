@@ -38,25 +38,12 @@ export default class Content extends Component {
         console.log(this.state.quote)
         return (
 			<div class="body">
-				<div class="sidebar">
-					<SideBar site_urls={this.props.site_urls}
-						quote={<QuotePanel quote={this.state.quote}/>}
-						custom_buttons={<ButtonsPanel/>}
-						member_login={<LoginPanel/>}
-						kids_corner={<KidsCornerPanel/>}
-						squirrel={<SquirrelPanel/>}
-						about_us={<AboutUsPanel/>}
-						registration={<Registration/>}
-						programs={<Programs/>}
-						pic={<PictureFrame/>}
-						upcoming_events={<UpcomingEvents/>}
-						co_sponsors={<CoSponsors/>}
-					/>
-				</div>
+				{this.SideBar()}
 
 
 				<Switch>
                     <Route path={this.props.site_urls["Resources"]} exact>
+						
 						{this.Resources()}
                     </Route>
 					<Route path={this.props.site_urls["AboutUs"]} exact>
@@ -78,6 +65,28 @@ export default class Content extends Component {
 			</div>
         )
 	}
+
+	SideBar() {
+		return(
+
+			<div class="sidebar">
+					<SideBar site_urls={this.props.site_urls}
+						quote={<QuotePanel quote={this.state.quote}/>}
+						custom_buttons={<ButtonsPanel/>}
+						member_login={<LoginPanel/>}
+						kids_corner={<KidsCornerPanel/>}
+						squirrel={<SquirrelPanel/>}
+						about_us={<AboutUsPanel/>}
+						registration={<Registration/>}
+						programs={<Programs/>}
+						pic={<PictureFrame/>}
+						upcoming_events={<UpcomingEvents/>}
+						co_sponsors={<CoSponsors/>}
+					/>
+				</div>
+		);
+	}
+
 	Error(){
 		return(
 			<div>

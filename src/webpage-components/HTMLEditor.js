@@ -37,6 +37,12 @@ export default class TextEditor extends Component {
         };
         this.onChange = (editorState) => this.setState({editorState});
         this.SaveToDB = this.SubmitContent.bind(this);
+        this.newLinkage = this.AddLink.bind(this);
+    }
+
+    AddLink(event) {
+        event.preventDefault();
+
     }
 
     SubmitContent(event) {
@@ -81,28 +87,34 @@ export default class TextEditor extends Component {
 
     render() {
         const {editorState} = this.state;
-        let className = 'RichEditor-editor';
+        let className = 'TextEditor-editor';
         let currentContent = editorState.getCurrentContent();
         if(!currentContent.hasText()) {
             let styletype = currentContent.getBlockMap().first().getType();
             if(styletype !== 'unstyled') {
-                className +=' RichEditor-hidePlaceholder';
+                className +=' TextEditor-hidePlaceholder';
             }
         }
-        //console.log(JSON.stringify(convertToRaw(currentContent)));
+
         this.state.content.text = JSON.stringify(convertToRaw(currentContent));
         return(
-            <div className="RichEditor-root">
+            <div className="TextEditor-root">
                 {this.getBlockStyleControls(editorState)}
                 {this.getInlineStyleControls(editorState)}
                 <div className={className} onClick={
                     () => this.refs.editor.focus()
                 }>
                 {this.getEditor(editorState)}
-                <Button onMouseDown={this.SaveToDB}>
-                    Save
-                </Button>
                 </div>
+                <div>
+                    <Button onMouseDown={this.SaveToDB}>
+                        Save
+                    </Button>
+                    <Button onClick={this.newLinkage}>
+                        New link
+                    </Button>
+                </div>
+
             </div>
         )
     }
@@ -184,9 +196,9 @@ function getStyles() {
             {label: 'H5', style: 'header-five'},
             {label: 'H6', style: 'header-six'},
             {label: 'Blockquote', style: 'blockquote'},
-            {label: 'UL', style: 'unordered-list-item'},
-            {label: 'OL', style: 'ordered-list-item'},
-            {label: 'Code Block', style: 'code-block'},
+            {label: 'Bullet Points', style: 'unordered-list-item'},
+            {label: 'Numbered List', style: 'ordered-list-item'},
+            {label: 'Text Block', style: 'code-block'},
         ],
         colors: [
             {label: 'Red', style: 'red', color: 'rgba(255, 0, 0, 1.0)'},
@@ -210,7 +222,7 @@ function getStyles() {
 
 function customblock(contentblock) {
     if(contentblock.getType() === 'blockquote') {
-        return 'RichEditor-blockquote';
+        return 'TextEditor-blockquote';
     } else {
         return null;
     }
@@ -227,9 +239,9 @@ class StyleButton extends React.Component {
     }
 
     render() {
-      let className = 'RichEditor-styleButton';
+      let className = 'TextEditor-styleButton';
       if (this.props.active) {
-        className += ' RichEditor-activeButton';
+        className += ' TextEditor-activeButton';
       }
 
       return (
@@ -261,7 +273,7 @@ function InlineStyle(props) {
         );
     }
     return(
-        <div className="RichEditor-controls">
+        <div className="TextEditor-controls">
             {styleButtons}
         </div>
     );
@@ -290,7 +302,7 @@ function BlockStyle(props) {
         );
     }
     return(
-        <div className="RichEditor-controls">
+        <div className="TextEditor-controls">
             {blockButtons}
         </div>
     );
