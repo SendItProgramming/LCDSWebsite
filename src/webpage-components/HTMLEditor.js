@@ -14,8 +14,9 @@ import {
 	FormControl,
 	Checkbox,
 	Button,
-	Image,
-
+    Image,
+    Dropdown,
+    DropdownButton
 } from "react-bootstrap";
 import "../index-src/css/HTMLEditor.css";
 
@@ -24,9 +25,11 @@ export default class HTMLEdit extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            target:"blank",
-            last_updated: "now",
-            content: { items: ""},
+            content: { 
+                items: "",
+                target:"blank",
+                last_updated: "now",
+            },
             inc: 1
         };
         this.SaveToDB = this.SubmitContent.bind(this);
@@ -39,6 +42,7 @@ export default class HTMLEdit extends Component {
                 <Button onMouseDown={this.SaveToDB}>
                     Save
                 </Button>
+                {this.target()}
             </div>
         );
     }
@@ -48,15 +52,46 @@ export default class HTMLEdit extends Component {
         const url = "http://localhost:8888/textediting/save";
         fetch(url, {
             method: "POST",
-            body: this.state.content.items
+            body: this.state.content
         }).then(response => response.text()).then(html => console.log(html));
 
-        console.log(this.state.content.items, this.state.inc++);
+        console.log(this.state.content, this.state.inc++);
+    }
+
+    target() {
+        let list = Object.keys(this.props.titles);
+        let menuitems = [];
+        for(var i = 0; i < list.length; i++) {
+            menuitems.push(
+                <Dropdown.Item as="button">
+                    {this.props.titles[list[i]]}}
+                </Dropdown.Item>
+            );
+        }
+
+        
+        return(
+            <div>
+                <DropdownButton id="dropdown-item-button" title="target">
+                    {menuitems}
+                </DropdownButton>
+            </div>
+        );
     }
 
 }
 
+/*
+            <Dropdown>
+                <Dropdown.Toggle variant="success" id="target-dropdown">
+                    Dropdown Button
+                </Dropdown.Toggle>
 
+                <Dropdown.Menu>
+                    {menuitems}
+                </Dropdown.Menu>
+            </Dropdown>
+*/
 
 class TextEditor extends Component {
     constructor() {

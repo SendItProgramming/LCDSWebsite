@@ -66,7 +66,7 @@ export default class Content extends Component {
 						{this.News()}
                     </Route>
 					<Route path={this.props.site_urls["Admin"]} exact>
-						<HTMLEdit/>
+						<HTMLEdit path={this.props.site_urls} titles={this.props.titles}/>
 					</Route>
 					<Route path={this.props.site_urls["NotFound"]} exact>
 						{this.Error()}
