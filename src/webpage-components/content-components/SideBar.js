@@ -7,6 +7,32 @@ import "./../../index-src/css/sidebar.css"
     one component.
 */
 export default class SideBar extends Component {
+
+    componentDidMount(){
+        function myFunction() {
+            const url = "http://localhost:8888/auth/check";
+            fetch(url, {
+            method : "POST",
+            body: new FormData(document.getElementById("inputform")),
+            // -- or --
+            // body : JSON.stringify({
+            // user : document.getElementById('user').value,
+            // ...
+            // })
+            }).then(
+                response => response.text() // .json(), etc.
+                // same as function(response) {return response.text();}
+            ).then(
+                html => console.log(html)
+            );
+        }
+        <Switch>
+            <Route path={this.props.site_urls["Home"]} exact>
+                document.getElementById("loginButton").addEventListener("click", myFunction);
+            </Route>
+        </Switch>
+    }
+
     render() {
         return (
             <div id="sidebar">

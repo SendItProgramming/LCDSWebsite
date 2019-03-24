@@ -6,6 +6,8 @@ export function routes() {
   return {
     Home:               "/",
 
+    Admin:              "/admin",
+
     AboutUs:            "/about-us/",
     OurStaff:           "/about-us/our-staff",
     OurBoard:           "/about-us/our-board",
@@ -73,6 +75,8 @@ export function titles() {
     JobOpportunities:   "Job Opportunities",
     Fundraising:        "Fundraising",
     Calendar:           "Calendar",
+
+    Admin:              "Admin",
 
     News:               "News",
     Contact:            "Contact"

@@ -148,6 +148,7 @@ export function AboutUsPanel(){
 }
 
 export function SidebarPanel(props){
+
 	return (
 		<Panel className="sidebar-panel">
 			{props.children}

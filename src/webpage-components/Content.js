@@ -20,27 +20,10 @@ import "./../index-src/css/Content.css"
 
 export default class Content extends Component {
 
-	componentDidMount(){
-		function myFunction() {
- 		 	const url = "http://localhost:8888/auth/check";
-			fetch(url, {
-    		method : "POST",
-    		body: new FormData(document.getElementById("inputform")),
-    		// -- or --
-    		// body : JSON.stringify({
-        	// user : document.getElementById('user').value,
-        	// ...
-    		// })
-			}).then(
-    			response => response.text() // .json(), etc.
-    			// same as function(response) {return response.text();}
-			).then(
-   		 	html => console.log(html)
-			);
-		}
-		document.getElementById("loginButton").addEventListener("click", myFunction);
-	}
     render() {
+    	console.log(this.props.site_urls["Admin"])
+    	console.log(this.props.site_urls["Resources"])
+    	console.log(this.Admin())
         return (
 			<div class="body">
 				<div class="sidebar">
@@ -63,6 +46,9 @@ export default class Content extends Component {
 				<Switch>
                     <Route path={this.props.site_urls["Resources"]} exact>
 						{this.Resources()}
+                    </Route>
+                    <Route path={this.props.site_urls["Admin"]} exact>
+                    	{this.Admin()}
                     </Route>
 					<Route path={this.props.site_urls["AboutUs"]} exact>
 						{this.About()}
@@ -88,6 +74,11 @@ export default class Content extends Component {
 		return (
 			<p>ABOOT</p>
 		);
+	}
+	Admin(){
+		return (
+			<h2> Test </h2>
+			);
 	}
 	Resources(){
 		return(
