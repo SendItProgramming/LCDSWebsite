@@ -25,10 +25,9 @@ func NewEventDB(db *sql.DB) EventDB {
 
 func (eDB EventDB) GetEvents(startDate, endDate time.Time) ([]Event, error) {
 	var e []Event
-	q := `SELECT event_id, title, start_date, end_date, url, location, description
+	q := `SELECT event_id, title, start_date, end_date, url, event_location, description
 			FROM events
-			where start_date >= $1 and end_date <= $2`
-
+			where start_date >= $1 AND end_date <= $2`
 	rows, err := eDB.db.Query(q, startDate, endDate)
 	if err != nil {
 		return e, err
@@ -36,9 +35,16 @@ func (eDB EventDB) GetEvents(startDate, endDate time.Time) ([]Event, error) {
 	defer rows.Close()
 	for rows.Next() {
 		var singleEvent Event
-		err := rows.Scan(&singleEvent.EventID, &singleEvent.Title, &singleEvent.StartDate, &singleEvent.EndDate, &singleEvent.URL, &singleEvent.Location, &singleEvent.Description)
+		var nullUrl, nullLocation sql.NullString
+		err := rows.Scan(&singleEvent.EventID, &singleEvent.Title, &singleEvent.StartDate, &singleEvent.EndDate, &nullUrl, &nullLocation, &singleEvent.Description)
 		if err != nil {
 			return e, err
+		}
+		if nullUrl.Valid {
+			singleEvent.URL = nullUrl.String
+		}
+		if nullLocation.Valid {
+			singleEvent.Location = nullLocation.String
 		}
 		e = append(e, singleEvent)
 	}

@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
+	"net/http"
 	"time"
 
 	"github.com/gorilla/mux"
@@ -14,7 +15,7 @@ type API struct {
 	mux *mux.Router
 }
 
-func (a API) ServeHTTP(w http.ResonseWriter, r *http.Request) {
+func (a API) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	a.mux.ServeHTTP(w, r)
 }
 
@@ -22,7 +23,11 @@ func NewAPI(db *sql.DB) API {
 	m := mux.NewRouter()
 	e := NewEventDB(db)
 
-	m.HandleFunc("/", e.ServeEvents(w, r))
+	m.Handle("/", http.HandlerFunc(e.ServeEvents))
+	return API{
+		e,
+		m,
+	}
 }
 
 func (ed EventDB) ServeEvents(w http.ResponseWriter, r *http.Request) {
