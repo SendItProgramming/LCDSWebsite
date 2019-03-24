@@ -82,18 +82,6 @@ export default class HTMLEdit extends Component {
 
 }
 
-/*
-            <Dropdown>
-                <Dropdown.Toggle variant="success" id="target-dropdown">
-                    Dropdown Button
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                    {menuitems}
-                </Dropdown.Menu>
-            </Dropdown>
-*/
-
 class TextEditor extends Component {
     constructor() {
         super();
