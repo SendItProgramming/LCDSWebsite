@@ -16,7 +16,8 @@ import {
 	Button,
     Image,
     Dropdown,
-    DropdownButton
+    DropdownButton,
+    MenuItem
 } from "react-bootstrap";
 import "../index-src/css/HTMLEditor.css";
 
@@ -63,9 +64,9 @@ export default class HTMLEdit extends Component {
         let menuitems = [];
         for(var i = 0; i < list.length; i++) {
             menuitems.push(
-                <Dropdown.Item as="button">
-                    {this.props.titles[list[i]]}}
-                </Dropdown.Item>
+                <MenuItem href="button">
+                    {this.props.titles[list[i]]}
+                </MenuItem>
             );
         }
 
