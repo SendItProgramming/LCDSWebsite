@@ -37,7 +37,7 @@ export function routes() {
     Contact:            "/contact",
 
     NotFound:           "/*/",
-    Admin:              "Admin"
+    Admin:              "/Admin"
   };
 }
 

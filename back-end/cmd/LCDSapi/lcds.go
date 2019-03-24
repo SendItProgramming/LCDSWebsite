@@ -8,9 +8,9 @@ import (
 	"time"
 
 	_ "github.com/lib/pq"
-	"lcdskids.ca/LCDSWebsite/back-end/lib/auth"
-	"lcdskids.ca/LCDSWebsite/back-end/lib/posts"
-	"lcdskids.ca/LCDSWebsite/back-end/lib/quotes"
+	"../../lib/auth"
+	"../../lib/posts"
+	"../../lib/quotes"
 )
 
 func main() {

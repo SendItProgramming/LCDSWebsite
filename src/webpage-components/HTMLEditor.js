@@ -5,9 +5,60 @@ import {
     RichUtils, 
     convertToRaw
 } from 'draft-js';
+import {
+	Panel,
+	ListGroup,
+	ListGroupItem,
+	FormGroup,
+	ControlLabel,
+	FormControl,
+	Checkbox,
+	Button,
+	Image,
+
+} from "react-bootstrap";
+import "../index-src/css/HTMLEditor.css";
 
 
-export default class TextEditor extends Component {
+export default class HTMLEdit extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            target:"blank",
+            last_updated: "now",
+            content: { items: ""},
+            inc: 1
+        };
+        this.SaveToDB = this.SubmitContent.bind(this);
+    }
+// Add post name or some kind of ID to edit previously posted items.
+    render() {
+        return(
+			<div>
+                <TextEditor content={this.state.content}/>
+                <Button onMouseDown={this.SaveToDB}>
+                    Save
+                </Button>
+            </div>
+        );
+    }
+
+    SubmitContent(event) {
+        event.preventDefault();
+        const url = "http://localhost:8888/textediting/save";
+        fetch(url, {
+            method: "POST",
+            body: this.state.content.items
+        }).then(response => response.text()).then(html => console.log(html));
+
+        console.log(this.state.content.items, this.state.inc++);
+    }
+
+}
+
+
+
+class TextEditor extends Component {
     constructor() {
         super();
         this.state = {
@@ -53,7 +104,8 @@ export default class TextEditor extends Component {
                 className +=' RichEditor-hidePlaceholder';
             }
         }
-        console.log(JSON.stringify(convertToRaw(currentContent)));
+        //console.log(JSON.stringify(convertToRaw(currentContent)));
+        this.props.content.items = JSON.stringify(convertToRaw(currentContent));
         return(
             <div className="RichEditor-root">
                 {this.getBlockStyleControls(editorState)}
