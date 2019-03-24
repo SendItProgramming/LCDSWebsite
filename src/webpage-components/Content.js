@@ -17,6 +17,7 @@ import {
 	ButtonsPanel,
 } from "./SharedComponents";
 import "./../index-src/css/Content.css"
+import FullCalendar from "./content-components/FullCalendar";
 
 export default class Content extends Component {
 
@@ -38,7 +39,7 @@ export default class Content extends Component {
    		 	html => console.log(html)
 			);
 		}
-		document.getElementById("loginButton").addEventListener("click", myFunction);
+		//document.getElementById("loginButton").addEventListener("click", myFunction);
 	}
     render() {
         return (
@@ -59,7 +60,6 @@ export default class Content extends Component {
 					/>
 				</div>
 
-
 				<Switch>
                     <Route path={this.props.site_urls["Resources"]} exact>
 						{this.Resources()}
@@ -70,8 +70,10 @@ export default class Content extends Component {
 					<Route path={this.props.site_urls["NotFound"]} exact>
 						{this.Error()}
                     </Route>
+					<Route path={this.props.site_urls["Calendar"]} exact>
+                        {this.Calendar()}
+                    </Route>
 				</Switch>
-
 
 			</div>
         )
@@ -87,6 +89,11 @@ export default class Content extends Component {
 	About(){
 		return (
 			<p>ABOOT</p>
+		);
+	}
+	Calendar(){
+		return (
+			<FullCalendar />
 		);
 	}
 	Resources(){
