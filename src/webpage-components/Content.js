@@ -3,7 +3,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import SideBar from "./content-components/SideBar";
 import MainContent from "./content-components/MainContent";
 import ReactTable from "react-table";
-import HTMLEdit from "./HTMLEditor.js";
+import TextEditor from "./HTMLEditor.js";
 import {
 	QuotePanel,
 	LoginPanel,
@@ -66,11 +66,12 @@ export default class Content extends Component {
 						{this.News()}
                     </Route>
 					<Route path={this.props.site_urls["Admin"]} exact>
-						<HTMLEdit path={this.props.site_urls} titles={this.props.titles}/>
+						<TextEditor path={this.props.site_urls} titles={this.props.titles}/>
 					</Route>
 					<Route path={this.props.site_urls["NotFound"]} exact>
 						{this.Error()}
                     </Route>
+
 				</Switch>
 
 

@@ -22,74 +22,35 @@ import {
 import "../index-src/css/HTMLEditor.css";
 
 
-export default class HTMLEdit extends Component {
-    constructor(props) {
-        super(props);
+export default class TextEditor extends Component {
+    constructor() {
+        super();
         this.state = {
+            editorState: EditorState.createEmpty(),
+            styles: getStyles(),
             content: { 
-                items: "",
+                text: "",
                 target:"blank",
                 last_updated: "now",
             },
-            inc: 1
+            inc: 0
         };
+        this.onChange = (editorState) => this.setState({editorState});
         this.SaveToDB = this.SubmitContent.bind(this);
-    }
-// Add post name or some kind of ID to edit previously posted items.
-    render() {
-        return(
-			<div>
-                <TextEditor content={this.state.content}/>
-                <Button onMouseDown={this.SaveToDB}>
-                    Save
-                </Button>
-                {this.target()}
-            </div>
-        );
     }
 
     SubmitContent(event) {
         event.preventDefault();
+/*
         const url = "http://localhost:8888/textediting/save";
         fetch(url, {
             method: "POST",
             body: this.state.content
         }).then(response => response.text()).then(html => console.log(html));
-
+*/
         console.log(this.state.content, this.state.inc++);
-    }
-
-    target() {
-        let list = Object.keys(this.props.titles);
-        let menuitems = [];
-        for(var i = 0; i < list.length; i++) {
-            menuitems.push(
-                <MenuItem href="button">
-                    {this.props.titles[list[i]]}
-                </MenuItem>
-            );
-        }
-
-        
-        return(
-            <div>
-                <DropdownButton id="dropdown-item-button" title="target">
-                    {menuitems}
-                </DropdownButton>
-            </div>
-        );
-    }
-
-}
-
-class TextEditor extends Component {
-    constructor() {
-        super();
-        this.state = {
-            editorState: EditorState.createEmpty(),
-            styles: getStyles()
-        };
-        this.onChange = (editorState) => this.setState({editorState});
+        alert("Content Saved");
+        this.onChange(EditorState.createEmpty());
     }
 
     ChangeHandler(newState) {
@@ -129,7 +90,7 @@ class TextEditor extends Component {
             }
         }
         //console.log(JSON.stringify(convertToRaw(currentContent)));
-        this.props.content.items = JSON.stringify(convertToRaw(currentContent));
+        this.state.content.text = JSON.stringify(convertToRaw(currentContent));
         return(
             <div className="RichEditor-root">
                 {this.getBlockStyleControls(editorState)}
@@ -137,7 +98,10 @@ class TextEditor extends Component {
                 <div className={className} onClick={
                     () => this.refs.editor.focus()
                 }>
-                    {this.getEditor(editorState)}
+                {this.getEditor(editorState)}
+                <Button onMouseDown={this.SaveToDB}>
+                    Save
+                </Button>
                 </div>
             </div>
         )
