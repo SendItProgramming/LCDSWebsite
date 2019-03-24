@@ -21,6 +21,7 @@ import "./../index-src/css/Content.css"
 
 export default class Content extends Component {
 
+
 	constructor(props){
 		super(props)
 		this.state = {quote:{
@@ -35,7 +36,9 @@ export default class Content extends Component {
 	}
 
     render() {
-        console.log(this.state.quote)
+    	console.log(this.props.site_urls["Admin"])
+    	console.log(this.props.site_urls["Resources"])
+    	console.log(this.Admin())
         return (
 			<div class="body">
 				<div class="sidebar">
@@ -58,6 +61,9 @@ export default class Content extends Component {
 				<Switch>
                     <Route path={this.props.site_urls["Resources"]} exact>
 						{this.Resources()}
+                    </Route>
+                    <Route path={this.props.site_urls["Admin"]} exact>
+                    	{this.Admin()}
                     </Route>
 					<Route path={this.props.site_urls["AboutUs"]} exact>
 						{this.About()}
@@ -95,6 +101,12 @@ export default class Content extends Component {
 		return (
 			<p>NEWS</p>
 		)
+	}
+
+	Admin(){
+		return (
+			<h2> Test </h2>
+			);
 	}
 
 	Resources(){

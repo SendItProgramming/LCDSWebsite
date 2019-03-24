@@ -66,6 +66,10 @@ export default class Header extends Component {
                     News
                 </NavItem>
 
+                <NavItem href={ this.props.site_urls["Admin"] }>
+                    Admin
+                </NavItem>
+
                 <NavItem href={ this.props.site_urls["Contact"] }>
                     Contact
                 </NavItem>
