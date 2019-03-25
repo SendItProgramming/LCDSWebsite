@@ -1,29 +1,115 @@
-import React, { Component } from "react"
-import calendar from 'fullcalendar';
+import React, { Component } from "react";
+import { Modal, FormGroup, ControlLabel, FormControl, Button } from "react-bootstrap";
+import * as FullCalendar from 'fullcalendar';
 import $ from 'jquery';
 import 'fullcalendar/dist/fullcalendar.css'
 
-export default class FullCalendar extends Component {
+export default class FullCalendarWrapper extends Component {
 	
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {
+			show: false,
+			eventTitle: ""
+			};
+		
+		this.calendar = new FullCalendar.Calendar();
+		
+		this.handleOpen = this.handleOpen.bind(this);
+		this.handleClose = this.handleClose.bind(this);
+		
+		this.addEvent = this.addEvent.bind(this);
 	}
 	
 	render() {
-			return <div id="calendar"></div>;
+			return (
+				<div>
+					<div id="calendar"></div>
+					<Modal show={this.state.show} onHide={this.handleClose}>
+						<Modal.Header>
+							<Modal.Title>
+								Event Information
+							</Modal.Title>
+						</Modal.Header>
+						<Modal.Body>
+							<form>
+								<FormGroup controlId='title'>
+									<ControlLabel> Title: </ControlLabel>
+									<FormControl type='text' />	
+								</FormGroup>
+								<FormGroup controlId='start'>
+									<ControlLabel> Start Date: </ControlLabel>
+									<FormControl type='date' />	
+								</FormGroup>
+								<FormGroup controlId='end'>
+									<ControlLabel> End Date: </ControlLabel>
+									<FormControl type='date' />	
+								</FormGroup>
+								<FormGroup controlId='pdf'>
+									<ControlLabel> Upload PDF: </ControlLabel>
+									<FormControl type='file' />	
+								</FormGroup>
+								<FormGroup controlId='location'>
+									<ControlLabel> Location: </ControlLabel>
+									<FormControl type='text' />	
+								</FormGroup>
+								<FormGroup controlId='description'>
+									<ControlLabel> Description: </ControlLabel>
+									<textarea class="form-control rounded-0" rows='3' />	
+								</FormGroup>
+								
+								<Button onClick= {() =>
+									this.addEvent(
+										$('#title').val(),
+										$('#start').val(),
+										$('#end').val(),
+										$('#pdf').val(),
+										$('#location').val(),
+										$('#description').val(),
+									)
+								
+								}>Submit</Button>
+							</form>
+							
+						</Modal.Body>
+					</Modal>
+				</div>
+			);
+	}
+
+	handleOpen() {
+		console.log("Opening modal");
+		this.setState({
+			show: true,
+			eventTitle: ""
+			});
+	}
+	
+	handleClose() {
+		console.log("Closing modal");
+		this.setState({show: false});
+	}
+	
+	addEvent(event_title, startDate, endDate, event_url, event_location, event_description) {
+		console.log($('#calendar'));
+		var calendar_event = {title: event_title, 
+			start: startDate, 
+			end: endDate, 
+			url: event_url, 
+			eventLocation: event_location, 
+			eventDescription: event_description};
+		console.log("adding this event to calendar");
+		console.log(calendar_event);
+		this.calendar.renderEvent(calendar_event);
 	}
 	
 	componentDidMount() {
-		 $('#calendar').fullCalendar({
+		this.calendar = new FullCalendar.Calendar($('#calendar'),{
 			 events: '8888/events',
 			 customButtons: {
 				addEventButton: {
 					text: 'Add Event',
-					click: function () {
-						alert('You have clicked the add event button!');
-					}
-					
+					click: () => {this.handleOpen()}
 				}
 			 },
 			 header: {
@@ -32,5 +118,10 @@ export default class FullCalendar extends Component {
 				 right: 'addEventButton'
 			 }
 		});
+		
+		this.calendar.render();
 	}
 }
+
+
+
