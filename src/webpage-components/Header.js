@@ -11,7 +11,7 @@ import {
     Image
 } from "react-bootstrap"
 
-
+import "../index-src/css/Header.css"
 import logo from "./../images/header-logo.png"
 import fb from "./../images/facebook.png"
 
@@ -35,10 +35,10 @@ export default class Header extends Component {
 
     TopRight() {
         return (
-            <div name="topRight">
-                <SearchBar />
-                {this.NavBar()}
-                {this.SocialButtons()}
+            <div id="navBar">
+                <div id="searchBar"><SearchBar /></div>
+                <div id="menuBar">{this.NavBar()}</div>
+                <div id="socialButtons">{this.SocialButtons()}</div>
             </div>
         )
     }

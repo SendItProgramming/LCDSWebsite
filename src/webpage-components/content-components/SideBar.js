@@ -80,6 +80,7 @@ export default class SideBar extends Component {
                         <div>
                             {this.props.programs}
                             {this.props.co_sponsors}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
@@ -145,7 +146,7 @@ export default class SideBar extends Component {
 
                     <Route path={this.props.site_urls["Kindergarden"]} exact>
                         <div>
-                            {this.props.quote}
+                            
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
@@ -154,7 +155,7 @@ export default class SideBar extends Component {
 
                     <Route path={this.props.site_urls["JrKindergarden"]} exact>
                         <div>
-                            {this.props.quote}
+                            
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
@@ -203,13 +204,18 @@ export default class SideBar extends Component {
                 <Switch>
                     <Route path={this.props.site_urls["Registration"]} exact>
                         <div>
-                            {this.props.quote}
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
                         </div>
                     </Route>
-
+                    <Route path={this.props.site_urls["OpenHouse"]} exact>
+                        <div>
+                            {this.props.about_us}
+                            {this.props.programs}
+                            {this.props.registration}
+                        </div>
+                    </Route>
                     <Route path={this.props.site_urls["ProgramFees"]} exact>
                         <div>
                             {this.props.quote}

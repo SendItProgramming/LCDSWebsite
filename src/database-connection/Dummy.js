@@ -6,25 +6,26 @@ export function routes() {
   return {
     Home:               "/",
 
-    AboutUs:            "/about-us/",
-    OurStaff:           "/about-us/our-staff",
+    AboutUs:            "/about-us/",           //Done
+    OurStaff:           "/about-us/our-staff",  //Created, not done
     OurBoard:           "/about-us/our-board",
-    Squirrel:           "/about-us/sammy-squirrel",
+    Squirrel:           "/about-us/sammy-squirrel",  //Done
     Testimonials:       "/about-us/testimonials",
     History:            "/about-us/our-history",
     Founder:            "/about-us/founder",
 
-    Programs:           "/programs/",
-    Kindergarden:       "/programs/kindergarden",
-    JrKindergarden:     "/programs/jr-kindergarden",
-    PreSchool:          "/programs/preschool",
+    Programs:           "/programs/",                     //
+    Kindergarden:       "/programs/kindergarden",         //
+    JrKindergarden:     "/programs/jr-kindergarden",      //
+    PreSchool:          "/programs/preschool",            //
     LearningSupport:    "/programs/learning-support",
     FieldTrips:         "/programs/field-trips",
     DailySnacks:        "/programs/daily-snacks",
-
+    PreschoolDevSkills: "/programs/kindergarten/preschool-development-skills",
+    IsMyChildReady:     "/programs/is-my-child-ready-for-preschool-or-kindergarden",
     Registration:       "/registration/",
     ProgramFees:        "/registration/program-fees",
-    ParentInvolvement:  "/registration/parent-involvement",
+    ParentInvolvement:  "/registration/parent-involvement", //
 
     Resources:          "/resources",
 
@@ -32,9 +33,13 @@ export function routes() {
     JobOpportunities:   "/events/job-opportunities",
     Fundraising:        "/events/fundraising",
     Calendar:           "/events/calendar",
+    OpenHouse:          "/events/open-house-registration",
+    TrialClasses:       "/events/trial-classes",    //Done
 
     News:               "/news",
+    Facebook:           "/news/lcds-on-facebook",   //done
     Contact:            "/contact",
+
 
     NotFound:           "/*/"
   };
