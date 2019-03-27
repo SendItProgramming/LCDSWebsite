@@ -22,10 +22,10 @@ type FeesDB struct {
 // 	var fees []FeesPost
 
 // }
-func (f FeesDB) GetAllFees([]FeesPost, error) {
+func (f FeesDB) GetAllFees() ([]Fees, error) {
 	q := `Select ID, FeesClass, FeesCost, FeesPeriod FROM fees`
 
-	var fees []FeesPost
+	var fees []Fees
 
 	rows, err := f.db.Query(q)
 	if err == sql.ErrNoRows {
@@ -33,7 +33,7 @@ func (f FeesDB) GetAllFees([]FeesPost, error) {
 	}
 	defer rows.Close()
 	for rows.Next() {
-		var fp FeesPost
+		var fp Fees
 		err = rows.Scan(&fp.ID, &fp.FeesClass, &fp.FeesCost, &fp.FeesPeriod)
 		if err != nil {
 			return fees, err
