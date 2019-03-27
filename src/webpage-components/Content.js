@@ -29,6 +29,8 @@ import SammyEating from "./../images/Sammy_Daily_Snack_Image.jpg"
 import SammyRegistration from "./../images/Sammy_Registration_Fees.jpg"
 import SammyParentInvolvement from "./../images/Sammy-ParentInvolvement.jpg"
 import SammyBoardRoom from "./../images/Sammy_Our_Board_Image.jpg"
+import SammyOurProgram from "./../images/Sammy_Our_Program_Image.jpg"
+import SammyMiscImages from "./../images/Sammy_Misc_Positions_Image.jpg"
 
 export default class Content extends Component {
 
@@ -171,6 +173,9 @@ export default class Content extends Component {
 						<Route path={this.props.site_urls["MiscPositions"]} exact>
 							{this.MiscPositions()}
 						</Route>
+						<Route path={this.props.site_urls["Contact"]} exact>
+							{this.Contact()}
+						</Route>
 						<Route path={this.props.site_urls["NotFound"]} exact>
 							{this.Error()}
 						</Route>
@@ -264,8 +269,8 @@ export default class Content extends Component {
 
 	Resources(){
 		return(
-		<div class ="content">
-			<p class ="Title">Resources</p>
+		<div class ="info">
+			<p class ="fun">Resources</p>
 			<p class="subTitle">The following are helpful websites for parents</p>
 			<table class = "Table">
 				<tbody>
@@ -1004,44 +1009,86 @@ export default class Content extends Component {
 				<b>**Committees are not required to attend monthly Board Meetings</b>
 				<ul>
 					<li>
-					<p class="subTitle">Bingo Coordinator</p>
+					<p><b class="subTitle">Bingo Coordinator</b><br />
 
-					Communicates with the Executive Director to ensure each Bingo date has the adequate number of volunteers scheduled and submits a list of workers for the current newsletter each month.  Communicates with the scheduled bingo workers 1 week prior to the scheduled bingo date to remind them of their commitment.  Attends the first part of each Bingo, takes attendance, assigns positions and ensures everyone knows what they are doing.
+					Communicates with the Executive Director to ensure each Bingo date has the adequate number of volunteers scheduled and submits a list of workers for the current newsletter each month.  Communicates with the scheduled bingo workers 1 week prior to the scheduled bingo date to remind them of their commitment.  Attends the first part of each Bingo, takes attendance, assigns positions and ensures everyone knows what they are doing.</p>
 					</li>
 					<li>
-					<p class="subTitle">Casino Coordinator</p>
+					<p><b class="subTitle">Casino Coordinator</b> <br />
 
-					Coordinates the casino volunteers for volunteer shifts. Consults with the Executive Director, Business Manager and the President throughout the assignment process. Ensures all positions are filled and all volunteer background check forms are submitted. Casinos are held every 2 years.
+					Coordinates the casino volunteers for volunteer shifts. Consults with the Executive Director, Business Manager and the President throughout the assignment process. Ensures all positions are filled and all volunteer background check forms are submitted. Casinos are held every 2 years.</p>
 					</li>
 					<li>
-					<p class="subTitle">Silent Auction Committee</p>
+					<p><b class="subTitle">Silent Auction Committee</b> <br />
 
-					Coordinators are needed for various activities, such as Donation Receiver, Door Ticket sales and tracking, and assistance with other items related to the silent auction to be determined by the Fundraising Director.
+					Coordinators are needed for various activities, such as Donation Receiver, Door Ticket sales and tracking, and assistance with other items related to the silent auction to be determined by the Fundraising Director.</p>
 					</li>
 					<li>
-					<p class="subTitle">Newsletter Coordinator</p>
+					<p><b class="subTitle">Newsletter Coordinator</b><br />
 
-					Responsible for collecting reports from Board and Committee Members. Compiles the monthly newsletter. Coordinates production of the monthly newsletter with the assistance of the Executive Director.
+					Responsible for collecting reports from Board and Committee Members. Compiles the monthly newsletter. Coordinates production of the monthly newsletter with the assistance of the Executive Director.</p>
 					</li>
 					<li>
-					<p class="subTitle">Cleaning Coordinator </p>
+					<p><b class="subTitle">Cleaning Coordinator </b>
 
-					Organizes and coordinates the monthly cleanings with the assistance of the Executive Director. Responsible for reminding members of their cleaning commitment.  Arranges to attend the first part of the cleaning to take attendance, and inform the members of the jobs which are required to be completed from the cleaning binder.  You may then leave and return to lockup after everyone is finished.
+					Organizes and coordinates the monthly cleanings with the assistance of the Executive Director. Responsible for reminding members of their cleaning commitment.  Arranges to attend the first part of the cleaning to take attendance, and inform the members of the jobs which are required to be completed from the cleaning binder.  You may then leave and return to lockup after everyone is finished.</p>
 
 					</li>
 					<li>
-					<p class="subTitle">Social Committee</p>
+					<p><b class="subTitle">Social Committee</b> <br />
 
-					Plans the seasonal classroom and membership parties in collaboration with the teacher or members of the Board. Coordinates with the Social Committee members and delegates responsibilities needed to prepare for the parties. Members from the AM and PM classes are needed to assist in preparations for the class parties and membership parties.
+					Plans the seasonal classroom and membership parties in collaboration with the teacher or members of the Board. Coordinates with the Social Committee members and delegates responsibilities needed to prepare for the parties. Members from the AM and PM classes are needed to assist in preparations for the class parties and membership parties.</p>
 					</li>
 				</ul>
+				<img src={SammyOurProgram} />
 			</div>
 		);
 	}
 	MiscPositions(){
 		return(
+			<div class ="info">
 			<p class ="fun"> Miscellanenous Positions</p>
+			<ul>
+				<li>
+					<p> <b class="subTitle">Gym Equipment Transportation Committee</b> <br />
+					About 4-5 volunteers are needed from each class to assist in transporting gym equipment to and from the location for Gym Day field trips.  AM will pick up the equipment from the school and take to the Hall.  PM will take the equipment back to the school.  All Gym Committee members will assist with cleaning the equipment before the first scheduled gym day.</p>
+				</li>
+				<li>
+					<p><b class="subTitle">Maintenance Committee</b> <br />
+					Volunteer will need to assist with minor repairs and enhancements in the classroom not requiring specialized equipment or training.  May coordinate extra volunteers if needed for a particular job.  Example: Fixing cabinet door handles, minor painting, checks the fluid levels on the dishwasher, maintains locks on the shed, etc.  May also be involved in coordinating activities with contracted trades or professionals. Will look after occasional requests by school staff members to assist with retrieving or putting heavy or large items from/on upper shelving in the storage room or shed.  This position will also retrieve and set up seasonal items for the classroom, such as the Christmas tree or mailbox. May be required to coordinate volunteers to assist with moving furniture for party set ups.</p>
+				</li>
+				<li>
+					<p> <b class="subTitle">AM Scheduling</b> <br/>
+					Plans and publishes monthly Parent Helper roster.  Submits a copy to the Executive Director and the newsletter.</p>
+				</li>
+				<li>
+					<p><b class="subTitle">PM Scheduling  </b> <br/>
+					Plans and publishes monthly Parent Helper roster. Submits a copy to the Executive Director and the newsletter.</p>
+				</li>
+				<li>
+					<p><b class="subTitle">Librarian </b><br/>
+					Circulates information from the Scholastic Book Club, collects and sends in orders and distributes books. Assists with filing books in the school library and cataloging books.</p>
+				</li>
+				<li>
+					<p><b class="subTitle">AM Yearbook Committee</b> <br />
+					Coordinates with the Executive Director, compiles, and creates a yearly scrapbook for the AM class. </p>
+				</li>
+				<li>
+					<p><b class="subTitle">PM Yearbook Committee </b> <br />
+					Coordinates with the Executive Director, compiles, and creates a yearly scrapbook for the PM class.</p>
+				</li>
+				<li>
+					<p><b> class="subTitle">Laundry</b><br />
+					Collects the dirty laundry on Friday, washes, dries and folds. Returns the clean folded laundry to the classroom on Monday morning and distributes it to the proper locations. </p>
+				</li>
+			</ul>
+			<img src={SammyMiscImages} />
+			</div>
 		);
 	}
-
+	Contact(){
+		return(
+			<p class="fun">Contact information</p>
+		);
+	}
 }
