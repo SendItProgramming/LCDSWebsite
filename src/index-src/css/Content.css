@@ -45,7 +45,7 @@
 
 .fun {
   font-family: "Londrina Sketch";
-  font-size: 26pt;
+  font-size: 34pt;
   font-style: italic;
   text-align: center;
 }
@@ -71,7 +71,36 @@
 #image {
   float: center;
 }
+
 .mainBody {
-  width:600px;
+  width: 600px;
 }
+
+.greenLink {
+  color: green;
+  font-size: 14pt;
+}
+
+.redLink {
+  color: red;
+  font-size: 14pt;
+}
+
+.blueLink {
+  color: blue;
+  font-size: 14pt;
+}
+
+blockquote {
+  background: none;
+  border-left: 10px solid #0C739D;
+  line-height: 1.3em;
+}
+
+blockquote::before {
+  color: #0C739D;
+  content: open-quote;
+  font-size: 4em;
+}
+
 /*# sourceMappingURL=Content.css.map */

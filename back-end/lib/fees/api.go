@@ -21,6 +21,9 @@ func (a API) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 func (fd FeesDB) GetFees(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	n, err := fd.GetAllFees()
+	fmt.Println("ERR:")
+	fmt.Println(n)
+	fmt.Println(err)
 	if err != nil {
 		fmt.Println("Problem in grabbing the Fees: ", err)
 		return

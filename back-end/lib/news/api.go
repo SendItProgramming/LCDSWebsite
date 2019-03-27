@@ -32,6 +32,5 @@ func NewAPI(db *sql.DB) API {
 	m := mux.NewRouter()
 	n := NewsDB{db}
 	m.Handle("/", http.HandlerFunc(n.GetNews))
-
 	return API{n, m}
 }

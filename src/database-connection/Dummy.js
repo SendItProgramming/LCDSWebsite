@@ -14,18 +14,24 @@ export function routes() {
     History:            "/about-us/our-history",
     Founder:            "/about-us/founder",
 
-    Programs:           "/programs/",                     //
-    Kindergarden:       "/programs/kindergarden",         //
-    JrKindergarden:     "/programs/jr-kindergarden",      //
-    PreSchool:          "/programs/preschool",            //
-    LearningSupport:    "/programs/learning-support",
-    FieldTrips:         "/programs/field-trips",
-    DailySnacks:        "/programs/daily-snacks",
-    PreschoolDevSkills: "/programs/kindergarten/preschool-development-skills",
+    Programs:           "/programs/",                     //Done
+    Kindergarden:       "/programs/kindergarden",         //Done
+    JrKindergarden:     "/programs/jr-kindergarden",      //Done
+    PreSchool:          "/programs/preschool",            //Done
+    LearningSupport:    "/programs/learning-support",     //Done
+    FieldTrips:         "/programs/field-trips",          //Done
+    DailySnacks:        "/programs/daily-snacks",         //Done
+    FoodRestrictions:   "/programs/daily-snacks/food-restictions",
+    PreschoolDevSkills: "/programs/kindergarten/preschool-development-skills", //Done
     IsMyChildReady:     "/programs/is-my-child-ready-for-preschool-or-kindergarden",
+    Requirements:       "/programs/registration-requirements-for-learning-support",
+
     Registration:       "/registration/",
     ProgramFees:        "/registration/program-fees",
     ParentInvolvement:  "/registration/parent-involvement", //
+    Committee:          "/registration/parent-involvement/committee",
+    BoardDirectors:     "/registration/parent-involvement/board-of-directors",
+    MiscPositions:      "/registration/parent-involvement/miscellaneous-poisitions",
 
     Resources:          "/resources",
 
@@ -39,8 +45,7 @@ export function routes() {
     News:               "/news",
     Facebook:           "/news/lcds-on-facebook",   //done
     Contact:            "/contact",
-
-
+  
     NotFound:           "/*/"
   };
 }

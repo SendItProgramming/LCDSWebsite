@@ -30,8 +30,7 @@ func server() {
 	postApi := posts.NewAPI()
 	newsApi := news.NewAPI(db)
 	quotesApi := quotes.NewAPI(db)
-	feesApi := fees.NewApi(db)
-
+	feesApi := fees.NewAPI(db)
 	muxer := http.NewServeMux()
 	muxer.Handle("/auth/", http.StripPrefix("/auth", authApi))
 	muxer.Handle("/posts/", http.StripPrefix("/posts", postApi))

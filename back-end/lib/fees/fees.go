@@ -8,7 +8,7 @@ import (
 var FeesNotFoundError = errors.New("Could not find the Fees")
 
 type Fees struct {
-	ID         int
+	Fee_ID     int
 	FeesClass  string
 	FeesCost   string
 	FeesPeriod string
@@ -17,29 +17,58 @@ type FeesDB struct {
 	db *sql.DB
 }
 
-// func (f FeesDb) GetFeesByYear(SchoolYear string) ([]FeesPost, error){
-// 	q := "SELECT fee_id, feesClass, feesCost, feesPeriod FROM fees WHERE feesClass= $1"
-// 	var fees []FeesPost
-
-// }
-func (f FeesDB) GetAllFees() ([]FeesPost, error) {
-	q := `Select ID, FeesClass, FeesCost, FeesPeriod FROM fees`
-
-	var fees []FeesPost
-
-	rows, err := f.db.Query(q)
-	if err == sql.ErrNoRows {
-		return fees, err
-	}
+func (f FeesDB) GetFeesByYear(SchoolYear string) ([]Fees, error) {
+	q := "SELECT fee_id, feesClass, feesCost, feesPeriod FROM fees WHERE feesClass= $1"
+	var fees []Fees
+	rows, err := f.db.Query(q, SchoolYear)
 	defer rows.Close()
+
 	for rows.Next() {
-		var fp FeesPost
-		err = rows.Scan(&fp.ID, &fp.FeesClass, &fp.FeesCost, &fp.FeesPeriod)
+		var fp Fees
+		err = rows.Scan(&fp.Fee_ID, &fp.FeesClass, &fp.FeesCost, &fp.FeesPeriod)
+
 		if err != nil {
+			println("ERR SCANN")
 			return fees, err
 		}
+		println("FINNA APP")
 		fees = append(fees, fp)
+		println("HERE BE FEES")
+		println(fees)
 	}
+	println("Created")
+	err = rows.Err()
+	if err != nil {
+		return fees, err
+	}
+	return fees, nil
+}
+
+func (f FeesDB) GetAllFees() ([]Fees, error) {
+	q := `Select * FROM fees`
+
+	var fees []Fees
+	rows, err := f.db.Query(q)
+	if err != nil {
+		return fees, err
+	}
+
+	defer rows.Close()
+
+	for rows.Next() {
+		var fp Fees
+		err = rows.Scan(&fp.Fee_ID, &fp.FeesClass, &fp.FeesCost, &fp.FeesPeriod)
+
+		if err != nil {
+			println("ERR SCANN")
+			return fees, err
+		}
+		println("FINNA APP")
+		fees = append(fees, fp)
+		println("HERE BE FEES")
+		println(fees)
+	}
+	println("Created")
 	err = rows.Err()
 	if err != nil {
 		return fees, err

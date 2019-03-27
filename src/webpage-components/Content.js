@@ -23,6 +23,12 @@ import "./../index-src/css/Content.css"
 import WebFont from 'webfontloader';
 import Sammy from "./../images/SammyPage.jpg"
 import SammySchool from "./../images/Sammy_School_Image.jpg"
+import SammyReading from "./../images/Sammy_Reading_Image.jpg"
+import Muttart from "./../images/Muttart_Conservatory_Image.jpg"
+import SammyEating from "./../images/Sammy_Daily_Snack_Image.jpg"
+import SammyRegistration from "./../images/Sammy_Registration_Fees.jpg"
+import SammyParentInvolvement from "./../images/Sammy-ParentInvolvement.jpg"
+import SammyBoardRoom from "./../images/Sammy_Our_Board_Image.jpg"
 
 export default class Content extends Component {
 
@@ -143,6 +149,27 @@ export default class Content extends Component {
 						</Route>
 						<Route path={this.props.site_urls["IsMyChildReady"]} exact>
 							{this.IsMyChildReady()}
+						</Route>
+						<Route path={this.props.site_urls["Requirements"]} exact>
+							{this.RequirementsForLearningSupport()}
+						</Route>
+						<Route path={this.props.site_urls["FoodRestrictions"]} exact>
+							{this.FoodRestrictions()}
+						</Route>
+						<Route path={this.props.site_urls["ProgramFees"]} exact>
+							{this.ProgramFees()}
+						</Route>
+						<Route path={this.props.site_urls["ParentInvolvement"]} exact>
+							{this.ParentInvolvement()}
+						</Route>
+						<Route path={this.props.site_urls["BoardDirectors"]} exact>
+							{this.BoardDirectors()}
+						</Route>
+						<Route path={this.props.site_urls["Committee"]} exact>
+							{this.Committee()}
+						</Route>
+						<Route path={this.props.site_urls["MiscPositions"]} exact>
+							{this.MiscPositions()}
 						</Route>
 						<Route path={this.props.site_urls["NotFound"]} exact>
 							{this.Error()}
@@ -626,17 +653,83 @@ export default class Content extends Component {
 	}
 	LearningSupport(){
 		return(
-			<p>Here be LearningSupport</p>
+			<div class="info">
+				<p class="fun">Learning Support</p>
+				<p><b>Learning support</b> such as <b>Mild/Moderate Speech & Language Support for children age 3 1/2 on.</b></p>
+				<p><b>Sept 1 or PUF funding for children 3 and older (Which includes access to specialists in Speech Language Pathology, Occupational Therapy, Physical Therapy and other services as needed)</b> may be available to registered LCDS students who qualify for funding through Alberta Education.</p>
+
+				<p><b>The LCDS program is not a designated Special Education ECS Program</b> and is only able to offer learning support where the LCDS program has sufficient resources available to support the needs of the prospective student.</p>
+
+				<p><b>LCDS is <u>limited</u> in the number of registration spots available to receive Learning Support.
+					2 PUF spots are reserved </b>each year for children <b>who require assistance with Speech and Language Development.
+					One spot</b> is held in the <b>AM class</b> and <b>one spot</b> is held in the <b>PM class</b>.</p>
+
+				<a href={this.props.site_urls["Requirements"]} class = "green">Registration Requirements For Learning Support</a>
+
+				<p><b>If your child is not enrolled at LCDS, and you have concerns with your child’s speech</b>, you may contact the <b>Alberta Health Services Preschool Speech and Language Intake</b> line at 780-408-8793.
+					Those children attending <b>Kindergarten</b> who are not enrolled at LCDS may contact their child’s school Speech-Language Pathologist or Principal to arrange an assessment.</p>
+
+				<p><b>Try the websites below for additional general information on communication development in children.</b></p>
+
+				<ul>
+					<li><a href="http://www.albertahealthservices.ca/">www.albertahealthservices.ca</a></li>
+					<li><a href="http://www.parentlinkalberta.ca/">www.parentlinkalberta.ca</a></li>
+					<li><a href="http://www.acslpa.ca/">www.acslpa.ca</a></li>
+					<li><a href="http://www.caslpa.ca/">www.caslpa.ca</a></li>
+					<li><a href="http://www.hanen.org/">www.hanen.org</a></li>
+				</ul>
+				<img src={SammyReading}/>
+			</div>
 		);
 	}
 	FieldTrips(){
 		return(
-			<p>Here be Field Trip</p>
+			<div class="info">
+				<p class ="fun">Field Trips</p>
+				<p><b>Field trips are scheduled regularly to enhance the curriculum being taught in the classroom.</b></p>
+
+				<p><u><b>All registered students</b></u> are welcome to attend a scheduled field trip, <b>even if it is scheduled on a day they do not attend class.</b>
+				<b><u>Parent volunteers</u></b> are needed and are welcome to attend the scheduled field trips.</p>
+
+				<p>**Due to insurance and licensing purposes LCDS can only take registered LCDS students on the field trips.  We ask that parents find alternate child care for siblings if they are planning to volunteer for a field trip with their registered child. </p>
+
+				<p><b>Field trip costs are <u>included</u> in the monthly material fees.</b></p>
+
+
+
+				<p class="subTitle">Examples of previous year’s field trips:</p>
+				<p>Prairie Gardens, John Janzen Nature Center, The Royal Alberta Museum, Muttart Conservatory, Kiwanis Safety City, Telus World of Science, The Clay Guys, Puppet Tree House, Bus Safety, Rutherford House and WEM Undersea Caverns (Subject to change from year to year).</p>
+				<img src={Muttart}/>
+			</div>
 		);
 	}
 	DailySnacks(){
 		return(
-			<p>Here be Snacks</p>
+			<div class="info">
+			<p class="fun">Daily Snack</p>
+			<p><b>As part of the Child Care Licencing Act, a Daily Snack is to be provided to the students every day. The scheduled Parent Helper is responsible for providing the scheduled Healthy Snack and Beverage (ie. Fruit & Crackers, Veggies & Crackers, Sandwiches, Cheese & Crackers and Parents Choice Day) for 17 children. </b></p>
+
+			<p>LCDS chooses to serve the daily snack in a group setting.</p>
+
+			<p class="subTitle">Serving snack in a group setting:</p>
+			<ul>
+				<li><b>Ensures all</b> of the children have the <b>same choice of snack</b> on a daily basis.</li>
+				<li><b>Allows</b> the children to <b>experience new foods</b> they may not try at home and parents or staff members are able to monitor children’s allergies or food reactions on any given day.</li>
+				<li>Eliminates students arriving at school with too much food, food which does not adhere to the allergy restrictions, comparison and competition among peers and between parents to have “The Best Snack”.</li>
+			</ul>
+			<p class="subTitle">Snack shall have one serving each from 2 or more basic food groups consistent with Canada’s Food Guide.</p>
+			<ul>
+				<li>For Example – Monday may be Fruit and Cracker day, the parent might bring fruit such as strawberries and oranges with cinnamon pita chips, the beverage might be white or chocolate milk. Tuesday may be cheese and cracker day, the parent might bring cheddar or marble cheese and Ritz crackers, the beverage might be apple juice.  "Healthy Water" is always offered as an alternate choice to whatever the beverage might be.</li>
+			</ul>
+
+			<p><b>Each month the snack schedule will rotate to the next day of the week</b> to ensure each family gets a chance to bring something different for snack; for example, Mondays in February might be Cheese & Crackers, the next month Cheese & Crackers will be rotated to Tuesdays.</p>
+
+			<a class="green" href={this.props.site_urls["FoodRestrictions"]}>Allergies, Personal and Religious Food Restrictions</a>
+
+			<img src = {SammyEating}/>
+
+			</div>
+
 		);
 	}
 	PreschoolDevSkills(){
@@ -735,7 +828,219 @@ export default class Content extends Component {
 				</ul>
 				<p>If you are still not sure about your child attending preschool, make some time to visit the school with your child and speak with the Teacher or the Director to discuss your concerns.</p>
 			</div>
-			
+
+		);
+	}
+	RequirementsForLearningSupport(){
+		return(
+			<div class="info">
+				<p class="fun">Registration Requirements For Learning Support</p>
+				<p><b>New registrations should inquire whether there will be openings for the upcoming school year before submitting their application for registration.</b>
+					You will need to fill out <u><b>all</b></u> of the information on the registration form and submit any assessments or documents which will support the application to Alberta Education for funding support.</p>
+
+				<p><b>All applications will be reviewed by the LCDS Board and Learning Team, in order to determine whether or not the LCDS program will have sufficient resources available to support the needs of the prospective student.
+				LCDS policy will apply in the decision making process.</b>
+				An LCDS representative will notify all applicants as to the status of their application.</p>
+
+
+				<p><b><i>*Please note - sufficient resources may include but are not limited to available funding, qualified and available staffing, facility requirements, program limitations, student numbers, student body make-up,etc.  All areas are considered in regards to the needs of each prospective student.</i></b></p>
+				<ul>
+					<li>Due to the high number of inquiries for Learning Support, <b>all reviewed applications will be subject to random draw; there are no guarantees for placement.</b></li>
+					<li>Choice of attendance days may be limited to the availability at the time of registration and the availability of support staff and specialists on certain days.</li>
+				</ul>
+
+				<p><b>If you have any further questions about Learning Support at LCDS, please email  <a href = "lcds@telus.net">lcds@telus.net</a> or contact us during office hours.</b></p>
+				<img src= {SammyReading}/>
+			</div>
+		);
+	}
+
+	FoodRestrictions(){
+		return(
+			<div class = "info">
+			<p class="fun">Allergies, Personal, & Religious Food Restrictions</p>
+			<ul>
+				<li><b>LCDS is required by Alberta Government licensing to ensure all children with food allergies, which can place them at serious health risk, are kept safe to the best of our abilities, while attending our program.</b></li>
+				<li><b>LCDS strives to be a NUT-FREE classroom</b>, this <b>includes products</b> which are labelled with the phrase <b>“may contain nuts”</b>.  A list of approved snacks, brands and nut free bakeries are listed in the LCDS Parent Handbook.</li>
+				<li><b>LCDS and the Board of Executives, respect the personal choices, ethnic and religious backgrounds of its members.  As a result, food preparation procedures may include steps to prevent cross contamination of snacks which contain specific ingredients.  This may change from year to year depending on student needs.</b></li>
+				<li>Examples of specific ingredients which may require additional food preparation steps may include eggs, dairy products, pork or beef.  If you have a question about the requirements for the preparation of food while on parent helper duty, please ask the staff before purchasing, bringing and preparing the snack.</li>
+			</ul>
+			<img src={SammyEating}/>
+			</div>
+		);
+	}
+
+	ProgramFees(){
+		return(
+			<div class="info">
+				<p class="fun">Program Fees</p>
+				<p><i><b>LCDS is a not-for-profit, parent cooperative preschool and independent kindergarten program.</b>
+				We  pay rent for our classroom and office space to Gateway Alliance Church.
+				As we are an independent program, we have fixed operational costs in which we rely upon parent involvement and participation in the program to assist in keeping these costs attainable.
+				Parents provide the necessary support for the success of our quality education program.  Without the support of our members through working bingo, casino, classroom cleaning and other volunteer commitments, the society would not be able to support many of the opportunities provided to the children and their families.</i></p>
+				<p class="subTitle">The fees below apply to the 2019 - 2020 school year.</p>
+
+				<p><a href="" class="redLink">Preschool Fees</a></p>
+				<p><a href="" class="blueLink">Junior Kindergarten Fees</a></p>
+				<p><a href="" class="redLink">Kindergarten Fees</a></p>
+				<p><a href="" class="blueLink">Registration Commitments</a></p>
+				<p><a href="" class="greenLink">Alberta Parent Stay-At-Home Subsidy Program</a></p>
+
+				<blockquote>
+					"We just wanted to say thank you so much for everything this year!! R. has come so far and we are so proud and thankful for all you have done for R. and our family. The things he has learned are incredible but mostly the tools and feedback you have provided to us will go a long way. The attention and care that all of you have shown towards R. throughout this year is amazing and surpassed every expectation we had for R's first school experience. Please pass on our thank you to all of the staff members and have a great summer!!"
+				</blockquote>
+				<p><b>-Melanie G. Edmonton</b></p>
+				<img src={SammyRegistration}/>
+			</div>
+		);
+	}
+
+	ParentInvolvement(){
+
+		return(
+			<div class="info">
+				<p class="fun">Parent Involvement</p>
+				<p class="subTitle">HOW ARE FAMILIES INVOLVED AT LCDS?</p>
+
+				<p>We know community, parents and family play an essential role in childhood development. And we know parents love watching their children learn, grow and have fun- almost as much as kids love showing their parents their new skills.
+				As a <b>parent run co-operative</b>, LCDS parents and families are a big part of the kids’ success. Parents and guardians have the opportunity to be hands-on in their little one’s first education experience, supporting their learning, experiencing their excitement on a field trip, and watching them make friends with their peers. 
+				We know parent support also helps to show children that the adults in their life are interested in what they are doing and that helping others is important. Plus, we can elevate the quality of education while keeping costs low because of additional help from volunteers. The kids win in a big way, thanks to you! </p>
+
+				<p class="subTitle">WHAT ARE THE ANNUAL REQUIREMENTS?</p>
+
+				<p>We are parents too and we know life can get busy. No problem! LCDS has many ways to help our families, from opting out of fundraising with a cash donation, swapping helper days, or hiring Bingo workers at low cost, we want to help you, so we can all help the kids. </p>
+
+				<p class="subtitle">Here is a snapshot of the annual requirements.</p>
+
+
+				<ul>
+					<li><b>FUNDRAISING –</b><br />
+					The LCDS board of Directors understands our members are busy and have replaced mandatory fundraising with a one time Family Fundraising fee per school year as opposed to running numerous fundraising events each year.  The Board of Directors will calculate the yearly fundraising fee each year depending on enrollment.  Members may still choose to fund-raise.
+					</li>
+
+					<li>
+						<b>PARENT HELPER –</b><br />
+						Many parents love this most about their LCDS experience. Each child gets to have their adult come to approximately one class per month to help as needed and bring the snack. Many volunteers are also recruited for each field trip, and our list of helpers tends to fill up fast!
+					</li>
+
+					<li>
+						<b>CLASSROOM CLEANING –</b><br />
+						Volunteering one adult for approximately two hours on a scheduled Monday evening, once through the school year helps us keep the classroom clean and safe for our kids. Recruit any adult in your life willing to roll up their sleeves! Classroom Cleanings are scheduled every second month on the first Monday evening of the month.
+					</li>
+
+					<li>
+						<b>BINGOS AND CASINOS –</b><br />
+						An easy way to raise much needed funds, all we do is provide volunteers. All you do is show up, get training, and have fun. No experience required! Each family needs to complete two bingo shifts and one casino (in a casino year). Bingos are scheduled for Saturday and Sunday afternoons. The number of Bingo events will be determined by the number of families enrolled in the program.
+					</li>
+				</ul>
+				<p>Click Here for <a href="" class="greenLink">Registration Commitments</a></p>
+
+				<p class="fun">WHO RUNS LCDS?</p>
+				<p>Who runs LCDS? Well, you do!  Parents are automatically members of the society when you register, and those who volunteer for the Board of Directors or sign-up for a committee position influence the experience for their kids. While we leave the structured education to the experts, volunteers provide important input into school policies, funding, social functions, and more. Please consider getting involved – you and your kids will love it.</p>
+
+
+				<p class ="subTitle">BOARD OF DIRECTORS</p>
+				<p>Meeting once per month, the Board is the legal authority for the Society and everything done by LCDS is done in the Board’s name. While considerable authority is appropriately delegated to the Executive Director, Business Manager and Teaching Staff, the source of that authority remains with the Board. This group of parents determines direction for changes in policy, fees, fundraising requirements, and social activities. If you want to make a big impact, consider volunteering for one of the six positions, or feel free to bring your suggestions to any board member or at the board meetings. Great to add to your personal resume.</p>
+
+				<p class = "subTitle">COMMITTEE POSITIONS</p>
+				<p>If the board isn’t the right fit, consider volunteering for one or more committee positions. Assisting with everything from classroom parties to yearbooks to laundry and bottle collection, the volunteers on the committees are essential to giving our kids the fantastic experience they are hoping for. Volunteering is easy and many families enjoy the small little extra they get to do for the kids. </p>
+
+				<p class="subTitle">ALL FAMILIES</p>
+				<p>Every family that has a child enrolled in LCDS is automatically a member of our exclusive non-profit society. This gives you voting rights for the operation of the program. Families are asked to please send a representative to each of the three required Annual General Meetings which take place in September, January and May. These meetings are your chance to be heard, be informed, and meet fellow parents.</p>
+
+				<p>The following positions are important to the operations of LCDS.  Without volunteers for these positions, LCDS may be forced to offer reduced activities and events for the program.Elections are held at the Annual General Meeting, the Second Tuesday in May.</p>
+				<p>Please consider volunteering for any of the positions below.  Please indicate on your registration form the positions you might be interested in assisting with.</p>
+
+				<p><a href={this.props.site_urls["BoardDirectors"]} class="green">Board of Directors Positions</a></p>
+				<p><a href={this.props.site_urls["Committee"]} class="green">Committee Positions</a></p>
+				<p><a href={this.props.site_urls["MiscPositions"]} class ="green">Miscellaneous Positions</a></p>
+
+				<img src={SammyParentInvolvement}/>
+			</div>
+
+		);
+	}
+
+	BoardDirectors(){
+		return(
+			<div class="info">
+			<p class ="fun"> Board of Directors Positions</p>
+			<p><b>* All Board members attend the 3 General Meetings and all Monthly Board Meetings.</b></p>
+			<ul>
+				<li>
+				<b class="subTitle">President</b><br />
+
+				The President shall call and preside over all Emergency, General and Board meetings.  They must provide active and dynamic leadership, initiate policy, and keep him/her self fully informed of the operations of the LCDS Assists the Executive Director and Business Manager, staff members, other Board Members and Committee members as needed. Is a Signing officer.
+				</li>
+				<li>
+				<b class="subTitle">Vice-President</b> <br />
+				Assists the Executive Director with the registration of children in the LCDS program. Advertises for open house/registration events and answers all queries about registration from mid June until mid August. Assists the President, Staff members, other Board members and Committee members as needed.  Is a Signing officer.
+				</li>
+				<li>
+				<b class="subTitle">Treasurer</b> <br />
+				Assists the Business Manager when needed for filing financial and educational documents.  Assists Fundraising Chair with deposits when needed from events such as the Silent Auction, Garage Sale and Walk-a-thon. Assists other Board members, Staff members and other committee members as needed. Is a signing officer.
+				</li>
+				<li>
+					<b class="subTitle">Secretary</b> <br />
+				Records minutes of all meetings, distributes minutes to all board members, members and staff members. Completes any general correspondence with membership and other organizations when needed, maintains attendance record for General Meetings.  Assists the Executive Director, other Board members, staff members and other Committee members as needed.
+				</li>
+				<li><b class="subTitle">Fundraising Director</b> <br />
+				Initiates and organizes all funding activities and coordinates with the silent auction committee members.  Organizes volunteers when needed for fundraising events.  Provides tax receipts when needed for donations to the society. Prepares deposits from fundraising events.  Assists other Board members, Staff members and other committee members when needed.
+
+				</li>
+				<li><b class="subTitle">Liaison</b> <br />
+				Coordinates the Board Newsletter Report each month. Books venues for special events.  Assists the Executive Director and Business Manager, other Board members, Staff members and other Committee members as needed Prepares special event and program feedback surveys for the membership.
+				</li>
+			</ul>
+			<img src={SammyBoardRoom}/>
+			</div>
+		);
+	}
+
+	Committee(){
+		return(
+			<div class="info">
+				<p class ="fun"> Committe Member Positions</p>
+				<b>**Committees are not required to attend monthly Board Meetings</b>
+				<ul>
+					<li>
+					<p class="subTitle">Bingo Coordinator</p>
+
+					Communicates with the Executive Director to ensure each Bingo date has the adequate number of volunteers scheduled and submits a list of workers for the current newsletter each month.  Communicates with the scheduled bingo workers 1 week prior to the scheduled bingo date to remind them of their commitment.  Attends the first part of each Bingo, takes attendance, assigns positions and ensures everyone knows what they are doing.
+					</li>
+					<li>
+					<p class="subTitle">Casino Coordinator</p>
+
+					Coordinates the casino volunteers for volunteer shifts. Consults with the Executive Director, Business Manager and the President throughout the assignment process. Ensures all positions are filled and all volunteer background check forms are submitted. Casinos are held every 2 years.
+					</li>
+					<li>
+					<p class="subTitle">Silent Auction Committee</p>
+
+					Coordinators are needed for various activities, such as Donation Receiver, Door Ticket sales and tracking, and assistance with other items related to the silent auction to be determined by the Fundraising Director.
+					</li>
+					<li>
+					<p class="subTitle">Newsletter Coordinator</p>
+
+					Responsible for collecting reports from Board and Committee Members. Compiles the monthly newsletter. Coordinates production of the monthly newsletter with the assistance of the Executive Director.
+					</li>
+					<li>
+					<p class="subTitle">Cleaning Coordinator </p>
+
+					Organizes and coordinates the monthly cleanings with the assistance of the Executive Director. Responsible for reminding members of their cleaning commitment.  Arranges to attend the first part of the cleaning to take attendance, and inform the members of the jobs which are required to be completed from the cleaning binder.  You may then leave and return to lockup after everyone is finished.
+
+					</li>
+					<li>
+					<p class="subTitle">Social Committee</p>
+
+					Plans the seasonal classroom and membership parties in collaboration with the teacher or members of the Board. Coordinates with the Social Committee members and delegates responsibilities needed to prepare for the parties. Members from the AM and PM classes are needed to assist in preparations for the class parties and membership parties.
+					</li>
+				</ul>
+			</div>
+		);
+	}
+	MiscPositions(){
+		return(
+			<p class ="fun"> Miscellanenous Positions</p>
 		);
 	}
 
