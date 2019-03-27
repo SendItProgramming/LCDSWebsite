@@ -22,7 +22,7 @@ type FeesDB struct {
 // 	var fees []FeesPost
 
 // }
-func (f FeesDB) GetAllFees([]FeesPost, error) {
+func (f FeesDB) GetAllFees() ([]FeesPost, error) {
 	q := `Select ID, FeesClass, FeesCost, FeesPeriod FROM fees`
 
 	var fees []FeesPost
