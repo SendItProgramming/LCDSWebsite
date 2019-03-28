@@ -13,7 +13,7 @@ CREATE TABLE quotes(
 
 CREATE TABLE EditorEntries(
     entry_id SERIAL PRIMARY KEY,
-    content         varchar,
+    content         json not null,
     last_modified   datetime,
     target_page     varchar
 );

@@ -9,18 +9,19 @@ import (
 
 type API struct {
 	muxer *mux.Router
+	el    EditorLink
 }
 
 func NewAPI(db *sql.DB) API {
 	muxer := mux.NewRouter()
 	EditLink := EditorLink{db}
-	muxer.handle("save", http.HandlerFunc(EditLink.PostToDB))
+	muxer.Handle("/save", http.HandlerFunc(EditLink.PostToDB))
 	return API{
 		muxer,
 		EditLink,
 	}
 }
 
-func (api API) ServeHTTP(writer http.ResponseWrite, requestor *http.Request) {
+func (api API) ServeHTTP(writer http.ResponseWriter, requestor *http.Request) {
 	api.muxer.ServeHTTP(writer, requestor)
 }

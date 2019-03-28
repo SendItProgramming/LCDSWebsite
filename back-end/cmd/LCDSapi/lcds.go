@@ -11,6 +11,7 @@ import (
 	"../../lib/auth"
 	"../../lib/posts"
 	"../../lib/quotes"
+	"lcdskids.ca/LCDSWebsite/back-end/lib/textediting"
 )
 
 func main() {
@@ -26,11 +27,13 @@ func server() {
 	}
 	authApi := auth.NewAPI(db)
 	postApi := posts.NewAPI()
+	editApi := textediting.NewAPI(db)
 	quoteApi := quotes.NewAPI(db)
 	muxer := http.NewServeMux()
 	muxer.Handle("/auth/", http.StripPrefix("/auth", authApi))
 	muxer.Handle("/posts/", http.StripPrefix("/posts", postApi))
 	muxer.Handle("/quotes/", http.StripPrefix("/quotes", quoteApi))
+	muxer.Handle("/editor/", http.StripPrefix("/editor", editApi))
 	muxer.Handle("/api", http.HandlerFunc(samplePostAPI))
 	muxer.Handle("/", http.HandlerFunc(basicHandler))
 	fmt.Println("Serving at port 8888")

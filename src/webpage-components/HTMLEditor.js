@@ -30,8 +30,9 @@ export default class TextEditor extends Component {
             editorState: EditorState.createEmpty(createCompositeDecorator()),
             styles: getStyles(),
             content: {
+                text: "",
                 target:"blank",
-                last_updated: "now",
+                last_updated: Date.now(),
             },
             inputVisible: false,
             urlString: "",
@@ -132,24 +133,27 @@ export default class TextEditor extends Component {
 
     SubmitContent(event) {
         event.preventDefault();
-/*
-        const url = "http://localhost:8888/textediting/save";
-        fetch(url, {
-            method: "POST",
-            body: this.state.content
-        }).then(response => response.text()).then(html => console.log(html));
-*/
+        const url = "http://localhost:8888/editor/save";
         const data = this.state.editorState.getCurrentContent();
+
         if(!data.hasText()) {
             alert("Nothing to submit.");
             return;
         }
         this.setState({content: {
                 text: data,
-                last_updated: "now"
+                last_updated: Date.now()
             }
         });
+
         console.log(this.state.content, this.state.inc++);
+        fetch(url, {
+            method: "POST",
+            body: this.state.content
+        }).then(response => response.text()).then( () => { this.PostSave() });
+    }
+
+    PostSave() {
         alert("Content Saved");
         this.onChange(EditorState.createEmpty(createCompositeDecorator()));
     }
