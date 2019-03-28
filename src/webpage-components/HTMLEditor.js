@@ -3,7 +3,8 @@ import {
     Editor, 
     EditorState, 
     RichUtils, 
-    convertToRaw
+    convertToRaw,
+    CompositeDecorator
 } from 'draft-js';
 import {
 	Panel,
@@ -26,23 +27,107 @@ export default class TextEditor extends Component {
     constructor() {
         super();
         this.state = {
-            editorState: EditorState.createEmpty(),
+            editorState: EditorState.createEmpty(createCompositeDecorator()),
             styles: getStyles(),
-            content: { 
-                text: "",
+            content: {
                 target:"blank",
                 last_updated: "now",
             },
+            inputVisible: false,
+            urlString: "",
             inc: 0
         };
         this.onChange = (editorState) => this.setState({editorState});
         this.SaveToDB = this.SubmitContent.bind(this);
-        this.newLinkage = this.AddLink.bind(this);
+        this.newLinkage = this.GrabSelectedForLink.bind(this);
+        this.changeUrl = (event) => this.setState({urlString: event.target.value});
+        this.removeLink = (event) => this.UnsetLink(event);
     }
 
-    AddLink(event) {
+    GrabSelectedForLink(event) {
+        let link = "";
         event.preventDefault();
+        const {editorState} = this.state;
+        const selected_text = editorState.getSelection();
+        if(selected_text.isCollapsed()) {
+            // selection is just the carat, 
+            // nothing is highlighted.
+            return;
+        }
+        const text_contents = editorState.getCurrentContent();
+        const selected_textKey = selected_text.getStartKey();
+        const charOffsetFromBlockStart = selected_text.getStartOffset();
+        const text_block = text_contents.getBlockForKey(selected_textKey);
+        const selected_text_entityinfo = text_block.getEntityAt(charOffsetFromBlockStart);
 
+        if(selected_text_entityinfo) {
+            const href = text_contents.getEntity(selected_text_entityinfo);
+            link = href.getData().url;
+        }
+
+        this.setState({
+            inputVisible: true,
+            urlString: link
+        });
+
+    }
+
+    SetLink(event) {
+        event.preventDefault();
+        const {editorState} = this.state;
+        const {urlString} = this.state;
+        const text_content = editorState.getCurrentContent();
+        const link_content = text_content.createEntity(
+            'LINK',
+            'MUTABLE',
+            {url: urlString}
+        );
+        const contentKey = link_content.getLastCreatedEntityKey();
+        const newEditorState = EditorState.set(editorState, 
+            {
+                currentContent: link_content
+            }
+        );
+        this.setState({
+            editorState: RichUtils.toggleLink(
+                newEditorState,
+                newEditorState.getSelection(),
+                contentKey
+            ),
+            inputVisible: false,
+            urlString: ""
+        });
+    }
+
+    UnsetLink(event) {
+        event.preventDefault();
+        const {editorState} = this.state;
+        const text_block = editorState.getSelection();
+        if(! text_block.isCollapsed()) {
+            this.setState({
+                editorState: RichUtils.toggleLink(editorState, text_block, null),
+            });
+        }
+        console.log("now here");
+    }
+
+    linkInput() {
+        let inputBox;
+        if(!this.state.inputVisible) {
+            return inputBox;
+        }
+        return(
+            <div>
+                <input
+                    onChange={this.changeUrl}
+                    ref="url"
+                    value={this.state.urlString}
+                />
+                <Button onClick={(event) => this.SetLink(event)}>
+                    Set Link
+                </Button>
+            </div>
+        );
     }
 
     SubmitContent(event) {
@@ -54,9 +139,19 @@ export default class TextEditor extends Component {
             body: this.state.content
         }).then(response => response.text()).then(html => console.log(html));
 */
+        const data = this.state.editorState.getCurrentContent();
+        if(!data.hasText()) {
+            alert("Nothing to submit.");
+            return;
+        }
+        this.setState({content: {
+                text: data,
+                last_updated: "now"
+            }
+        });
         console.log(this.state.content, this.state.inc++);
         alert("Content Saved");
-        this.onChange(EditorState.createEmpty());
+        this.onChange(EditorState.createEmpty(createCompositeDecorator()));
     }
 
     ChangeHandler(newState) {
@@ -108,13 +203,16 @@ export default class TextEditor extends Component {
                 </div>
                 <div>
                     <Button onMouseDown={this.SaveToDB}>
-                        Save
+                        Save Text
                     </Button>
                     <Button onClick={this.newLinkage}>
                         New link
                     </Button>
+                    {this.linkInput()}
+                    <Button onMouseDown={this.removeLink}>
+                        Remove link
+                    </Button>
                 </div>
-
             </div>
         )
     }
@@ -306,4 +404,37 @@ function BlockStyle(props) {
             {blockButtons}
         </div>
     );
+}
+
+function findLink(text_block, callback, text_state) {
+    text_block.findEntityRanges(
+        (content) => {
+            const key = content.getEntity();
+            return(
+                key !== null && text_state.getEntity(key).getType() === "LINK"
+            );
+        }, callback
+    );
+}
+
+function createCompositeDecorator() {
+    const anchor = (props) => {
+            const {url} = props.contentState.getEntity(props.entityKey).getData();
+            return(
+                <a href={url} style={
+                    {
+                        color: 'rgba(0, 0, 255, 1.0)',
+                        textDecoration: 'underline'
+                    }
+                }>
+                    {props.children}
+                </a>
+            );
+        }
+
+    // uses strategy pattern, currently only one strategy
+    return new CompositeDecorator([
+        {strategy: findLink,
+        component: anchor}
+    ])
 }
