@@ -6,20 +6,7 @@ import {
     convertToRaw,
     CompositeDecorator
 } from 'draft-js';
-import {
-	Panel,
-	ListGroup,
-	ListGroupItem,
-	FormGroup,
-	ControlLabel,
-	FormControl,
-	Checkbox,
-	Button,
-    Image,
-    Dropdown,
-    DropdownButton,
-    MenuItem
-} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "../index-src/css/HTMLEditor.css";
 
 
@@ -146,7 +133,7 @@ export default class TextEditor extends Component {
             }
         });
 
-        console.log(this.state.content, this.state.inc++);
+        console.log(this.state.content);
         fetch(url, {
             method: "POST",
             body: this.state.content
@@ -195,7 +182,7 @@ export default class TextEditor extends Component {
             }
         }
 
-        this.state.content.text = JSON.stringify(convertToRaw(currentContent));
+        //this.state.content.text = JSON.stringify(convertToRaw(currentContent));
         return(
             <div className="TextEditor-root">
                 {this.getBlockStyleControls(editorState)}
