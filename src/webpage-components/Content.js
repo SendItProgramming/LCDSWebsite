@@ -94,7 +94,7 @@ export default class Content extends Component {
     			response => response.text() // .json(), etc.
     			// same as function(response) {return response.text();}
 			).then(
-   		 	html => console.log(html)
+   		 		jwt => sessionStorage.setItem('Auth', jwt)
 			);
 		}
 		//document.getElementById("loginButton").addEventListener("click", myFunction);
