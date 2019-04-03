@@ -10,12 +10,22 @@ export default class FullCalendarWrapper extends Component {
 		super(props);
 		this.state = {
 			show: false,
-			eventTitle: ""
-			};
+			eventTitle: "",
+			calendarEvent: {
+				title: "", 
+				start: "", 
+				end: "", 
+				event_url: "", 
+				eventLocation: "", 
+				eventDescription: ""
+			},
+			modalMode: 'add'
+		};
 		
 		this.calendar = new FullCalendar.Calendar();
 		
 		this.handleOpen = this.handleOpen.bind(this);
+		this.handleEdit = this.handleEdit.bind(this);
 		this.handleClose = this.handleClose.bind(this);
 		
 		this.addEvent = this.addEvent.bind(this);
@@ -35,23 +45,40 @@ export default class FullCalendarWrapper extends Component {
 							<form>
 								<FormGroup controlId='title'>
 									<ControlLabel> Title: </ControlLabel>
-									<FormControl type='text' />	
+									<FormControl 
+									type='text'
+									defaultValue={this.state.calendarEvent.title}
+									/>	
 								</FormGroup>
 								<FormGroup controlId='start'>
 									<ControlLabel> Start Date: </ControlLabel>
-									<FormControl type='date' />	
+									<FormControl 
+										type='date'
+										defaultValue={(this.state.calendarEvent.start != null)?
+										this.state.calendarEvent.start.Date.getDate() : new Date().toISOString()}
+									/>	
 								</FormGroup>
 								<FormGroup controlId='end'>
 									<ControlLabel> End Date: </ControlLabel>
-									<FormControl type='date' />	
+									<FormControl 
+										type='date'
+										defaultValue={(this.state.calendarEvent.end != null)?
+										this.state.calendarEvent.end.Date.getDate() : new Date().toISOString()}
+									/>	
 								</FormGroup>
 								<FormGroup controlId='pdf'>
 									<ControlLabel> Upload PDF: </ControlLabel>
-									<FormControl type='file' />	
+									<FormControl 
+										type='file'
+										
+									/>	
 								</FormGroup>
 								<FormGroup controlId='location'>
 									<ControlLabel> Location: </ControlLabel>
-									<FormControl type='text' />	
+									<FormControl 
+									type='text'
+										
+									/>	
 								</FormGroup>
 								<FormGroup controlId='description'>
 									<ControlLabel> Description: </ControlLabel>
@@ -66,9 +93,11 @@ export default class FullCalendarWrapper extends Component {
 										$('#pdf').val(),
 										$('#location').val(),
 										$('#description').val(),
-									)
-								
-								}>Submit</Button>
+										
+										this.setState({
+											show: false
+										})
+									)}>Submit</Button>
 							</form>
 							
 						</Modal.Body>
@@ -76,13 +105,26 @@ export default class FullCalendarWrapper extends Component {
 				</div>
 			);
 	}
+	
+	handleEdit(calEvent) {
+		console.log("Opening modal to edit an event");
+		console.log(calEvent.start);
+		console.log(calEvent.end);
+		this.setState({
+			show: true,
+			eventTitle: "",
+			calendarEvent: calEvent
+		});
+	}
 
 	handleOpen() {
 		console.log("Opening modal");
+		console.log(this.state);
 		this.setState({
 			show: true,
-			eventTitle: ""
-			});
+			eventTitle: "",
+			calendarEvent: ""
+		});
 	}
 	
 	handleClose() {
@@ -95,9 +137,9 @@ export default class FullCalendarWrapper extends Component {
 		var calendar_event = {title: event_title, 
 			start: startDate, 
 			end: endDate, 
-			url: event_url, 
+			event_url: event_url, 
 			eventLocation: event_location, 
-			eventDescription: event_description};
+			eventDescription: event_description}
 		console.log("adding this event to calendar");
 		console.log(calendar_event);
 		this.calendar.renderEvent(calendar_event);
@@ -105,18 +147,20 @@ export default class FullCalendarWrapper extends Component {
 	
 	componentDidMount() {
 		this.calendar = new FullCalendar.Calendar($('#calendar'),{
-			 events: '8888/events',
-			 customButtons: {
+			events: '8888/events',
+			eventClick: (calEvent) => {this.handleEdit(calEvent);},
+			customButtons: {
 				addEventButton: {
-					text: 'Add Event',
-					click: () => {this.handleOpen()}
+				text: 'Add Event',
+				click: () => {this.handleOpen()}
 				}
-			 },
-			 header: {
-				 left: 'prev,next',
-				 center: 'title',
-				 right: 'addEventButton'
-			 }
+			},
+			header: {
+				left: 'prev,next',
+				center: 'title',
+				right: 'addEventButton'
+			}
+			
 		});
 		
 		this.calendar.render();
