@@ -10,3 +10,10 @@ CREATE TABLE quotes(
     quote varchar,
     author varchar
 );
+
+CREATE TABLE EditorEntries(
+    entry_id SERIAL PRIMARY KEY,
+    content         json not null,
+    last_modified   datetime,
+    target_page     varchar
+);
