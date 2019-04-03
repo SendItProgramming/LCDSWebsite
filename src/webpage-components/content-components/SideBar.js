@@ -10,9 +10,21 @@ export default class SideBar extends Component {
 
     constructor(props) {
         super(props)
-        console.log(props)
     }
-
+    componentDidMount(){
+        function login() {
+            const url = "http://localhost:8888/auth/check";
+            fetch(url, {
+            method : "POST",
+            body: new FormData(document.getElementById("inputform")),
+            }).then(
+                response => response.text()
+            ).then(
+                    html => console.log(html)
+            );
+        }
+        document.getElementById("loginButton").addEventListener("click", login);
+    }
     render() {
         return (
             <div id="sidebar">
@@ -56,14 +68,9 @@ export default class SideBar extends Component {
     }
 
     RenderHome() {
-        console.log(this.props)
         return(
             <div>
-                <blockquote>
-				    "{this.props.quote.Text}"
-				<br />
-				    -{this.props.quote.Author}
-                </blockquote>
+                {this.props.quote}
                 {this.props.custom_buttons}
                 <div>{this.props.member_login}</div>
                 {this.props.kids_corner}
@@ -80,6 +87,7 @@ export default class SideBar extends Component {
                         <div>
                             {this.props.programs}
                             {this.props.co_sponsors}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
@@ -88,6 +96,7 @@ export default class SideBar extends Component {
                             {this.props.about_us}
                             {this.props.upcoming_events}
                             {this.props.kids_corner}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
@@ -102,6 +111,7 @@ export default class SideBar extends Component {
                     <Route path={this.props.site_urls["Squirrel"]} exact>
                         <div>
                             {this.props.kids_corner}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
@@ -110,6 +120,7 @@ export default class SideBar extends Component {
                             {this.props.quote}
                             {this.props.about_us}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
@@ -117,6 +128,7 @@ export default class SideBar extends Component {
                         <div>
                             {this.props.quote}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
@@ -124,6 +136,7 @@ export default class SideBar extends Component {
                         <div>
                             {this.props.quote}
                             {this.props.about_us}
+                            {this.props.member_login}
                         </div>
                     </Route>
                 </Switch>
@@ -140,6 +153,7 @@ export default class SideBar extends Component {
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
@@ -149,6 +163,7 @@ export default class SideBar extends Component {
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
@@ -158,6 +173,7 @@ export default class SideBar extends Component {
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
@@ -166,6 +182,7 @@ export default class SideBar extends Component {
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
@@ -175,6 +192,7 @@ export default class SideBar extends Component {
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
@@ -182,6 +200,7 @@ export default class SideBar extends Component {
                         <div>
                             {this.props.about_us}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
@@ -190,6 +209,7 @@ export default class SideBar extends Component {
                             {this.props.quote}
                             {this.props.about_us}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
                 </Switch>
@@ -207,6 +227,7 @@ export default class SideBar extends Component {
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
@@ -216,6 +237,7 @@ export default class SideBar extends Component {
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
@@ -223,6 +245,7 @@ export default class SideBar extends Component {
                         <div>
                             {this.props.quote}
                             {this.props.about_us}
+                            {this.props.member_login}
                         </div>
                     </Route>
                 </Switch>
@@ -249,6 +272,7 @@ export default class SideBar extends Component {
                             {this.props.quote}
                             {this.props.about_us}
                             {this.props.pic}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
@@ -256,6 +280,7 @@ export default class SideBar extends Component {
                         <div>
                             {this.props.quote}
                             {this.props.about_us}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
@@ -264,6 +289,7 @@ export default class SideBar extends Component {
                             {this.props.quote}
                             {this.props.about_us}
                             {this.props.pic}
+                            {this.props.member_login}
                         </div>
                     </Route>
                 </Switch>
@@ -276,7 +302,7 @@ export default class SideBar extends Component {
             <div>
                 {this.props.upcoming_events}
                 {this.props.pic}
-                <div>{this.props.member_login}</div>
+                {this.props.member_login}
             </div>
         );
     }

@@ -53,14 +53,17 @@ export default class Content extends Component {
    		 	html => console.log(html)
 			);
 		}
-		document.getElementById("loginButton").addEventListener("click", myFunction);
+		//document.getElementById("loginButton").addEventListener("click", myFunction);
+
 	}
+
     render() {
+        console.log(this.state.quote)
         return (
 			<div class="body">
 				<div class="sidebar">
 					<SideBar site_urls={this.props.site_urls}
-						quote={this.state.quote}
+						quote={<QuotePanel quote={this.state.quote}/>}
 						custom_buttons={<ButtonsPanel/>}
 						member_login={<LoginPanel/>}
 						kids_corner={<KidsCornerPanel/>}
