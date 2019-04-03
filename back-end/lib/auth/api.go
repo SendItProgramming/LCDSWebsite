@@ -16,12 +16,9 @@ func NewAPI(db *sql.DB) API {
 	m := mux.NewRouter()
 	a := Authenticator{db}
 	m.Handle("/check", http.HandlerFunc(a.CheckPassword))
-	ath := Authenticator{
-		db,
-	}
 	return API{
 		m,
-		ath,
+		a,
 	}
 }
 

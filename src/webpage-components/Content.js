@@ -20,32 +20,26 @@ import "./../index-src/css/Content.css"
 
 export default class Content extends Component {
 
-	componentDidMount(){
-		function myFunction() {
- 		 	const url = "http://localhost:8888/auth/check";
-			fetch(url, {
-    		method : "POST",
-    		body: new FormData(document.getElementById("inputform")),
-    		// -- or --
-    		// body : JSON.stringify({
-        	// user : document.getElementById('user').value,
-        	// ...
-    		// })
-			}).then(
-    			response => response.text() // .json(), etc.
-    			// same as function(response) {return response.text();}
-			).then(
-   		 	html => console.log(html)
-			);
-		}
-		document.getElementById("loginButton").addEventListener("click", myFunction);
+	constructor(props){
+		super(props)
+		this.state = {quote:{
+			Author: "Loading...",
+			Text: "Loading..."
+		}}
+		this.GetQuote = this.GetQuote.bind(this)
 	}
+
+	componentDidMount(){
+		this.GetQuote()
+	}
+
     render() {
+        console.log(this.state.quote)
         return (
 			<div class="body">
 				<div class="sidebar">
 					<SideBar site_urls={this.props.site_urls}
-						quote={this.GetQuote()}
+						quote={<QuotePanel quote={this.state.quote}/>}
 						custom_buttons={<ButtonsPanel/>}
 						member_login={<LoginPanel/>}
 						kids_corner={<KidsCornerPanel/>}
@@ -67,6 +61,9 @@ export default class Content extends Component {
 					<Route path={this.props.site_urls["AboutUs"]} exact>
 						{this.About()}
                     </Route>
+					<Route path={this.props.site_urls["News"]} exact>
+						{this.News()}
+                    </Route>
 					<Route path={this.props.site_urls["NotFound"]} exact>
 						{this.Error()}
                     </Route>
@@ -84,10 +81,16 @@ export default class Content extends Component {
 			</div>
 		);
 	}
+
 	About(){
 		return (
 			<p>ABOOT</p>
 		);
+	}
+	News(){
+		return (
+			<p>NEWS</p>
+		)
 	}
 	Resources(){
 		return(
@@ -211,15 +214,54 @@ export default class Content extends Component {
 		</div>
 		);
 	}
-	GetQuote() {
-		return(
 
+	GetQuote() {
+		fetch("http://localhost:8888/quotes/")
+		.then(res => res.json())
+		.then(
+		  (result) => {
+			this.setState({
+				quote: result
+			})
+		  },
+
+		  (error) => {
+		  	console.log(error)
+			console.log("ERROR!!!!!!")
+            this.setState({
+				isLoaded: true,
+				error
+			});
+		  }
+		)
+		//this.RenderQuote()
+	}
+
+	RenderQuote() {
+		const {error, isLoaded, quote }  = this.state;
+		if (error) {
+			console.log("ERROR loading backup")
+			return (
+
+				<QuotePanel
+					quote  = "Life is a journey, dig it"
+					author = "Joe Dirt"
+				/>
+			);
+		}
+		else if (!isLoaded){
+			console.log("Not Loaded... Waiting...")
+		}
+		else {
+		return(
+			
 			<QuotePanel
-				quote="Childhood is a Journey, not a Race"
-				author="unknown"
+				quote  = {quote.Text}
+				author = {quote.Author}
 			/>
 
 		);
+		}
 	}
 
 }

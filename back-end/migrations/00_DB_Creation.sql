@@ -5,6 +5,8 @@ CREATE TABLE users(
     CONSTRAINT email_verification CHECK (email ~* '@')
 );
 INSERT INTO users(email, password) VALUES ('admin@gmail.com', 'password');
-##Drop
-
-DROP TABLE users;
+CREATE TABLE quotes(
+	quote_id SERIAL PRIMARY KEY,
+    quote varchar,
+    author varchar
+);
