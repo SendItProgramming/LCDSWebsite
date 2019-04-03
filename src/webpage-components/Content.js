@@ -3,6 +3,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import SideBar from "./content-components/SideBar";
 import MainContent from "./content-components/MainContent";
 import ReactTable from "react-table";
+import TextEditor from "./HTMLEditor.js";
 import {
 	QuotePanel,
 	LoginPanel,
@@ -61,7 +62,38 @@ export default class Content extends Component {
         console.log(this.state.quote)
         return (
 			<div class="body">
-				<div class="sidebar">
+				{this.SideBar()}
+
+
+				<Switch>
+                    <Route path={this.props.site_urls["Resources"]} exact>
+						
+						{this.Resources()}
+                    </Route>
+					<Route path={this.props.site_urls["AboutUs"]} exact>
+						{this.About()}
+                    </Route>
+					<Route path={this.props.site_urls["News"]} exact>
+						{this.News()}
+                    </Route>
+					<Route path={this.props.site_urls["Admin"]} exact>
+						<TextEditor path={this.props.site_urls} titles={this.props.titles}/>
+					</Route>
+					<Route path={this.props.site_urls["NotFound"]} exact>
+						{this.Error()}
+                    </Route>
+
+				</Switch>
+
+
+			</div>
+        )
+	}
+
+	SideBar() {
+		return(
+
+			<div class="sidebar">
 					<SideBar site_urls={this.props.site_urls}
 						quote={<QuotePanel quote={this.state.quote}/>}
 						custom_buttons={<ButtonsPanel/>}
@@ -76,27 +108,9 @@ export default class Content extends Component {
 						co_sponsors={<CoSponsors/>}
 					/>
 				</div>
-
-
-				<Switch>
-                    <Route path={this.props.site_urls["Resources"]} exact>
-						{this.Resources()}
-                    </Route>
-					<Route path={this.props.site_urls["AboutUs"]} exact>
-						{this.About()}
-                    </Route>
-					<Route path={this.props.site_urls["News"]} exact>
-						{this.News()}
-                    </Route>
-					<Route path={this.props.site_urls["NotFound"]} exact>
-						{this.Error()}
-                    </Route>
-				</Switch>
-
-
-			</div>
-        )
+		);
 	}
+
 	Error(){
 		return(
 			<div>
@@ -134,6 +148,7 @@ export default class Content extends Component {
 		)
 
 	}
+
 	Resources(){
 		return(
 		<div class ="content">

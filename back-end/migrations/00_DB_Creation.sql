@@ -20,3 +20,10 @@ CREATE TABLE news(
 );
 
 insert into news(info, importance) VALUES ('FAKE NEWS', 10)
+
+CREATE TABLE EditorEntries(
+    entry_id SERIAL PRIMARY KEY,
+    content         json not null,
+    last_modified   datetime,
+    target_page     varchar
+);

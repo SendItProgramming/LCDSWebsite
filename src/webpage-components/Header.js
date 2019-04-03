@@ -69,6 +69,10 @@ export default class Header extends Component {
                 <NavItem href={ this.props.site_urls["Contact"] }>
                     Contact
                 </NavItem>
+
+                <NavItem href={ this.props.site_urls["Admin"] }>
+                    Admin
+                </NavItem>
             </Nav>
         )
     }
@@ -194,6 +198,17 @@ export default class Header extends Component {
 
 
 
+    }
+
+    Admin() {
+        return(
+            <HoverToggleNavDropdown
+                title="Admin"
+                id="nav-dropdown"
+                href={this.props.site_urls["Admin"]}
+            >
+            </HoverToggleNavDropdown>
+        )
     }
 
     SocialButtons() {

@@ -61,6 +61,10 @@ export default class SideBar extends Component {
                         {this.RenderContact()}
                     </Route>
 
+					<Route path={this.props.site_urls["Admin"]}>
+                        {this.RenderAdmin()}
+					</Route>
+
                     <Redirect to={this.props.site_urls["Home"]}/>
                 </Switch>
             </div>
@@ -312,6 +316,14 @@ export default class SideBar extends Component {
             <div>
                 {this.props.pic}
                 {this.props.member_login}
+            </div>
+        );
+    }
+
+    RenderAdmin() {
+        return(
+            <div class="a">
+				{this.props.member_login}
             </div>
         );
     }
