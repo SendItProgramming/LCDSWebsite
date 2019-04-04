@@ -31,7 +31,9 @@ func NewAPI(db *sql.DB) API {
 }
 
 func (ed EventDB) ServeEvents(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	if r.Method == "GET" {
+		fmt.Println("Do you see me jack?")
 		startDate := time.Now().AddDate(0, -6, 0)
 		endDate := time.Now().AddDate(0, 6, 0)
 		e, err := ed.GetEvents(startDate, endDate)
@@ -42,7 +44,6 @@ func (ed EventDB) ServeEvents(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(e)
 	}
 	if r.Method == "POST" {
-		w.Header().Set("Access-Control-Allow-Origin", "*")
 		dec := json.NewDecoder(r.Body)
 		defer r.Body.Close()
 		var e Event
