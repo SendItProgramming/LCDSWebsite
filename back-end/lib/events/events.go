@@ -53,3 +53,13 @@ func (eDB EventDB) GetEvents(startDate, endDate time.Time) ([]Event, error) {
 	}
 	return e, nil
 }
+
+func (eDB EventDB) SubmitEvent(e Event) error {
+	q := `INSERT INTO events(title, start_date, end_date, url, event_location, description)
+			VALUES ($1, $2, $3, $4, $5, $6)`
+	_, err := eDB.db.Query(q, e.Title, e.StartDate, e.EndDate, e.URL, e.Location, e.Description)
+	if err != nil {
+		return err
+	}
+	return nil
+}
