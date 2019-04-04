@@ -31,6 +31,10 @@ import SammyParentInvolvement from "./../images/Sammy-ParentInvolvement.jpg"
 import SammyBoardRoom from "./../images/Sammy_Our_Board_Image.jpg"
 import SammyOurProgram from "./../images/Sammy_Our_Program_Image.jpg"
 import SammyMiscImages from "./../images/Sammy_Misc_Positions_Image.jpg"
+import SammyHistory from "./../images/Sammy_Our_History_Image.jpg"
+import SammyBoard from "./../images/Sammy_Our_Board.jpg"
+import SammyJune from "./../images/Sammy_June_Henry.jpg"
+import SammyTestimonials from "./../images/Sammy_Testimonials_Image.jpg"
 
 export default class Content extends Component {
 
@@ -41,7 +45,8 @@ export default class Content extends Component {
 			Author: "Loading...",
 			Text: "Loading..."
 			},
-			news:[]
+			news:[],
+			board:[]
 		}
 		//this.GetQuote = this.GetQuote.bind(this)
 		this.news = this.GetNews.bind(this)
@@ -55,6 +60,7 @@ export default class Content extends Component {
 	componentDidMount(){
 		this.GetQuote()
 		this.GetNews()
+		this.Getboard()
 		function myFunction() {
  		 	const url = "http://localhost:8888/auth/check";
 			fetch(url, {
@@ -96,7 +102,7 @@ export default class Content extends Component {
 				<div class="mainBody">
 					<Switch>
 						<Route path={this.props.site_urls["Home"]} exact>
-							{this.About()}
+							{this.Home()}
 						</Route>
 						<Route path={this.props.site_urls["Resources"]} exact>
 							{this.Resources()}
@@ -176,6 +182,24 @@ export default class Content extends Component {
 						<Route path={this.props.site_urls["Contact"]} exact>
 							{this.Contact()}
 						</Route>
+						<Route path={this.props.site_urls["Events"]} exact>
+							{this.Events()}
+						</Route>
+						<Route path={this.props.site_urls["History"]} exact>
+							{this.OurHistory()}
+						</Route>
+						<Route path={this.props.site_urls["Founder"]} exact>
+							{this.OurFounder()}
+						</Route>
+						<Route path={this.props.site_urls["OurBoard"]} exact>
+							{this.OurBoard()}
+						</Route>
+						<Route path={this.props.site_urls["Testimonials"]} exact>
+							{this.Testimonials()}
+						</Route>
+						<Route path={this.props.site_urls["JuneHenry"]} exact>
+							{this.JuneHenry()}
+						</Route>
 						<Route path={this.props.site_urls["NotFound"]} exact>
 							{this.Error()}
 						</Route>
@@ -231,7 +255,7 @@ export default class Content extends Component {
 	Error(){
 		return(
 			<div>
-				<p class="Title">WHOOPS YOU'VE MADE A MISTAKE</p>
+				<p class="fun">WHOOPS YOU'VE MADE A MISTAKE</p>
 				<p class="subTitle">If you're here, you made a mistake, go back</p>
 			</div>
 		);
@@ -239,7 +263,19 @@ export default class Content extends Component {
 
 	About(){
 		return (
-			this.AboutInfo()
+			<div class="info">
+			{this.AboutInfo()}
+			<br />
+			<br />
+			<p class="fun">Our Beliefs</p>
+			<p>Today, LCDS Preschool and Kindergarten still operates with the same values and beliefs established by the founding members of the Society.  Parents have the unique opportunity to be actively involved in their children's education through daily classroom activities, operational committees and management of the school in coordination with the program's teaching staff, Executive Director and Business Manager.</p>
+
+			<p>LCDS Preschool and Kindergarten distinguishes itself from other Edmonton preschools in that the program offers a Kindergarten program and the program is led by a Teacher with a Bachelor Degree in Elementary Education and Psychology along with qualified Educational Assistants.</p>
+
+			<p>LCDS is a distinctive early learning program in that we offer both preschool and kindergarten in a combined classroom setting.  We follow a 'Learning through play" philosophy, in a language rich and fun environment.  Under the guidance of our teachers, children aged 3, 4 and 5 attend together in the same classroom where they are introduced to a daily structured routine, balanced with learning and play.  The program focuses on age appropriate development of the child's language, vocabulary, social, emotional, physical and intellectual growth and development.  The teacher introduces the children to daily kindergarten curriculum concepts and focuses on Kindergarten readiness for all children.  Children develop a strong foundation for future educational success.</p>
+
+			<p>A love of learning is encouraged in every child through structured activities, free play, daily projects, monthly themes and circle time. Special events such as seasonal parties, family events, field trips and in-class presentations are also included to enhance the learning process. Parent involvement plays a key role in the success of the program.</p>
+			</div>
 		);
 	}
 
@@ -248,7 +284,7 @@ export default class Content extends Component {
 		console.log(items)
 		return(
 			<div class = "content">
-			<p class="Title">News:</p>
+			<p class="fun">News:</p>
 			<table class = "Table">
 			<tbody>
 				{items.map(item => (
@@ -485,12 +521,11 @@ export default class Content extends Component {
 	}
 
 	GetNews() {
-		console.log("We here")
 		fetch("http://localhost:8888/news/")
 		.then(res => res.json())
 		.then(
 		  (result) => {
-				console.log("WERK")
+				console.log("info grabbed")
 			this.setState({
 				news: result
 			})
@@ -555,7 +590,7 @@ export default class Content extends Component {
 		);
 	}
 
-	About(){
+	Home(){
 		return(
 			<div>
 		{this.AboutInfo()}
@@ -687,6 +722,7 @@ export default class Content extends Component {
 			</div>
 		);
 	}
+
 	FieldTrips(){
 		return(
 			<div class="info">
@@ -708,6 +744,7 @@ export default class Content extends Component {
 			</div>
 		);
 	}
+
 	DailySnacks(){
 		return(
 			<div class="info">
@@ -737,6 +774,7 @@ export default class Content extends Component {
 
 		);
 	}
+
 	PreschoolDevSkills(){
 		return(
 			<div class="info">
@@ -808,6 +846,7 @@ export default class Content extends Component {
 			</div>
 		);
 	}
+
 	IsMyChildReady(){
 		return(
 			<div class="info">
@@ -836,6 +875,7 @@ export default class Content extends Component {
 
 		);
 	}
+
 	RequirementsForLearningSupport(){
 		return(
 			<div class="info">
@@ -1086,9 +1126,203 @@ export default class Content extends Component {
 			</div>
 		);
 	}
+
+	Events() {
+		return(
+			<div class="info">
+				<p class="fun">Open House & Register for 2019/2020</p>
+				<p class="green">Is Your Child 3, 4 or 5 Years Old? Are They Ready to Start School?
+					Register Your Child Today!</p>
+					<p><b>LCDS Preschool & Kindergarten has an awesome program for your child.
+					We offer Kindergarten, Jr. Kindergarten and Preschool for children 3 to 5 years old.</b></p>
+
+					<p><b>We are now accepting new Registrations for Kindergarten, Jr. Kindergarten and Preschool for September 2019.  The AM Class is tentatively full at this time but you are welcome to put your name on our wait list; we still have lots of room in the PM Class.</b></p>
+
+					<p><b>Registration Forms are available from our school office.</b></p>
+
+					<p><b>To be eligible for Kindergarten for the 2019 - 2020 school year, your child must be 5 years old before March 1st 2020.</b></p>
+
+
+					<p>**The entry age for Kindergarten will be changing for the 2020-2021 school year.
+					To be eligible for Kindergarten for September 2020, your child must turn 5 before December 31st, 2020.</p>
+
+					<p><b>Trial Classes are also available call the office to book an appointment.</b></p>
+
+					<p>Please speak with our office if you have any questions.</p>
+					{this.TrialClasses()}
+			</div>
+		);
+	}
+
 	Contact(){
 		return(
-			<p class="fun">Contact information</p>
+			<div class="info">
+				<p class="fun">LCDS Preschool and Kindergarden Contact information</p>
+				General Office: 13931-140 Street, Edmonton, Ab T6V1J7
+
+			</div>
+		);
+	}
+
+	OurHistory(){
+		return(
+			<div class="info">
+				<p class="fun">Our History</p>
+				<p>LCDS Preschool and Kindergarten is a licensed, independent, non-profit, cooperative Preschool and Kindergarten program.
+
+					The Londonderry Child Development Society was established in 1972, by a group of parents looking for educational alternatives for their preschool aged children in the Londonderry Community. 
+
+					The program began as a small class operating out of ME Lazerte Composite High School.  With the growth of the High School and the Society, relocation was inevitable. In 2004, the Society moved to the Greisbach area, which was also developing and soon had to relocate once more.
+
+					The Society is now sharing space with Gateway Alliance Church, and is pleased to be able to offer the surrounding community a well-defined, quality, early childhood education program; with an interactive, dynamic and fun learning environment involving family and community.</p>
+
+				<a href={this.props.site_urls["Founder"]} class="green">Our Founder</a>
+				<br />
+				<br />
+				<img src={SammyHistory}/>
+
+			</div>
+		);
+	}
+
+	OurFounder(){
+		return(
+			<div class="info">
+				<p class="fun">Our Founder</p>
+			</div>
+		);
+	}
+
+	Getboard(){
+		fetch("http://localhost:8888/board/")
+		.then(res => res.json())
+		.then(
+		  (result) => {
+				console.log("info grabbed")
+			this.setState({
+				board: result
+			})
+		  },
+
+		  (error) => {
+		  	console.log("Err: " + error)
+            this.setState({
+				isLoaded: true,
+				error
+			});
+		  }
+		)
+
+	}
+
+
+	OurBoard() {
+
+		const items = this.state.board
+
+		items.forEach(function(element) {
+			console.log(element.MemberFirstName + " " + element.MemberPosition)
+
+		});
+		return(
+			<div class="info">
+				<p class="fun">Our Board Members</p>
+					<img src={SammyBoard} />
+					<br/>
+					<table class = "Table">
+					<tbody>
+					<tr>
+						<th>Position</th>
+						<th class="right">Member</th>
+					</tr>
+						{items.map(item => (
+									<tr>
+										<td><b>{item.MemberPosition}</b></td>
+										<td class="right">		{item.MemberFirstName}</td>
+									</tr>
+						))}
+				</tbody>
+				</table>
+			</div>
+		);
+
+	}
+
+	OurFounder(){
+		return(
+			<div class="info">
+				<p class="fun">Our Founder</p>
+				<p>It was with sorrow and regret that LCDS members heard of the passing of its founder, June Henry, in late January 1978.  This wonderfully courageous person had fought a long and brave battle against cancer.</p>
+
+				<p>Any attempt to record the achievements of June Henry in her short lifetime is a difficult task.  Difficult in that she accomplished so much more than most of us can hope to ever achieve or aspire towards.  She was a remarkable person in so many ways.</p>
+
+				<p>More than anything else, I have wanted to capture the true spirit and energy and drive that was June’s being.  I really believe that this can only be done by recording her own written autobiography prepared for the Edmonton Public School Board in 1973, which her husband, Mike, has so very kindly loaned to me.</p>
+
+				<p>When reading her life’s resume it is necessary to keep in mind that June was basically a very shy person who quietly agonized over public speaking yet who never shirked the leadership role which she so ably filled all her life.  Those of us who were privileged to know her and to work with her are left with a sense of loss, for she gave us direction, she provided us with good common sense and she inspired us to strive for better things in education for our children. </p>
+
+				<p>To the very end of her life she cared greatly about the success and future of the Londonderry Child Development Society.</p>
+
+				<p>Read her resume and capture the essence of her spirit.  I’m sure its reading makes us all a little humbler.</p>
+
+				<a class="green" href={this.props.site_urls["JuneHenry"]}>June Henry</a>
+				<img src={SammyJune}/>
+			</div>
+		);
+	}
+
+	JuneHenry(){
+		return(
+			<div class = "info">
+				<p class="fun">June Henry</p>
+				<p class="subTitle">Born July 7th, 1942  (Deceased January 1978, age 36)</p>
+				<p>From the age of eleven I attended Cleethorpes Grammar School for girls, where, at sixteen I obtained my General Certificate of Education, (ordinary level) in English Language, English Literature, Mathematics, German, French, History, Geography, Art and Latin. </p>
+
+				<p>I specialized for two years in English Literature, German and French and obtained my G.C.E. (advanced level) in French and German.  I also obtained a distinction in Scholarship German, and on the basis of these results was awarded a State Scholarship to University.  I remained in school in order to take the entrance examinations for Oxford, and was granted a place there for 1961.</p>
+
+				<p>I left school in December 1960 and taught for 4 months in my old junior school (7-11 year olds).  I taught children to use the library, taught girls’ games, and acted as a substitute teacher where needed.
+				In April 1961, I took up a scholarship awarded by my county to study at Mains University, Germany.  I spent 5 months there, studying, travelling and working.</p>
+
+				<p>In the fall of 1961, I entered Oxford, where I studied German and French for the first two trimesters and took the Preliminary Exams.  After this I spent the following two and one third years of the 1.A. course studying German only and graduated with a second class Honors degree in June 1964.</p>
+
+				<p>I was married in August 1964 and obtained a position as an English teacher at Tynemouth Grammar School.  For the first term, I was substituting for the regular English teacher who was in hospital.  The second term I was taken on as a permanent staff member to teach English and Social Studies (History).  I left at the end of the second term as I was expecting my first child shortly.</p>
+
+				<p>After my child was born, I taught two full days a week, teaching English and Latin in another Grammar School (Whitbey Bay).  In 1966, I spent one term as a remedial reading teacher in an Infants School in Newcastle-upon-Tyne.  During this period I also substituted for teachers who were absent.  I stopped teaching (reluctantly) because of babysitting problems.</p>
+
+				<p>In 1967, my husband and I moved to Saskatchewan, Canada, where he taught in a village and I occasionally substituted.  We moved to Edmonton in 1969.</p>
+
+				<p>In 1970, I became involved in a local community school project in my area, out of which grew a pre-school program within M.E. Lazerte Composite High School, the Londonderry Child Development Centre.  I have been President of the community group which runs this centre, for two years now. </p>
+
+				<p>I wrote a book, “The Sunclimbers”, based on my experiences and the experiences of others who had started similar projects.  This was published this year by the Edmonton Social Planning Council.  I am a member of the Alberta Association for Young Children, and of the Edmonton Social Planning Council. I have completed the courses in Education Psychology, Education Foundation and Education Administration on a part-time basis at the University of Alberta.  I have three children aged 8, 4 ½ and 2 ½ years old.</p>
+
+			</div>
+		);
+	}
+	Testimonials(){
+		return(
+			<div class="info">
+				<p class="fun">Parent Testimonials</p>
+					<blockquote>
+					"I have had two daughters go through the LCDS Preschool and Kindergarten program and I would not hesitate to recommend this program to any family. The teachers are patient & kind. Those may seem like simple qualities, but to a child they are priceless. The children are encouraged to try new experiences, to be creative & to experiment. Their certificated Teacher Ms. Michell, brings her early education passion and experience to the classroom. The children benefit from her musical talents and her thoughtful program planning and each child gets the attention and support that truly helps them grow. This program is like no other and the experience of being a part of this amazing parent co-operative community is remarkable"
+					</blockquote>
+					<p class = "left"><b>-Patrizia C. -Edmonton</b></p>
+
+				<blockquote>
+				"When we registered our first child with LCDS in 1994, we were impressed by the teacher who was so friendly and in control of the classroom environment.  There were fun activities set out for the children to play with, students were engaged in what they were learning and parents were always welcome to volunteer in the classroom and be a part of the program.  The classroom routine was well structured and allowed my child to feel safe and comfortable while having fun.  We returned with our second child in 1999, the program had a new teacher and we enjoyed the new ideas and style she brought to the program.  Our third child began in 2003 and as we had been with the program for so long, I took an active role on the LCDS Board of Directors.  I continued to volunteer for LCDS long after my children left the preschool and eventually accepted a position with the program.  LCDS continues to provide the same quality program it has since our first child began in 1994 and continues to change and adapt with the needs of it's students and members in order to provide a superior early childhood program." 
+				</blockquote>
+				<p class = "left"><b>-Shannon M. -Edmonton</b></p>
+
+				<blockquote>
+					"We just wanted to say thank you so much for everything this year!! R. has come so far and we are so proud and thankful for all you have done for R. and our family. The things he has learned are incredible but mostly the tools and feedback you have provided to us will go a long way. The attention and care that all of you have shown towards R. throughout this year is amazing and surpassed every expectation we had for R's first school experience. Please pass on our thank you to all of the staff members and have a great summer!!" 
+				</blockquote>
+				<p class = "left"><b>-Melanie G. -Edmonton</b></p>
+
+				<blockquote>
+					"We really want to thank everyone for their role in assisting and supporting K's growth. We know everyone is instrumental to his success, and that it would not be possible without a team. Although we often identify areas for further growth, we also know he would not have been as successful as he has already without each and everyone of you."
+				</blockquote>
+				<p class = "left"><b>-Andrea O. -Edmonton</b></p>
+
+				<img src={SammyTestimonials} />
+			</div>
 		);
 	}
 }

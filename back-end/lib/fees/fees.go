@@ -28,12 +28,12 @@ func (f FeesDB) GetFeesByYear(SchoolYear string) ([]Fees, error) {
 		err = rows.Scan(&fp.Fee_ID, &fp.FeesClass, &fp.FeesCost, &fp.FeesPeriod)
 
 		if err != nil {
-			println("ERR SCANN")
+
 			return fees, err
 		}
-		println("FINNA APP")
+
 		fees = append(fees, fp)
-		println("HERE BE FEES")
+
 		println(fees)
 	}
 	println("Created")

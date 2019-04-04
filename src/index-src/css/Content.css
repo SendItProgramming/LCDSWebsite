@@ -10,6 +10,7 @@
   border-color: black;
   margin-right: 10%;
   text-align: left;
+  width: 100%;
 }
 
 .sidebar {
@@ -102,5 +103,12 @@ blockquote::before {
   content: open-quote;
   font-size: 4em;
 }
+.left{
+  font-style: bold;
+  text-align: left;
+}
 
+.right {
+  text-align: right;
+}
 /*# sourceMappingURL=Content.css.map */
