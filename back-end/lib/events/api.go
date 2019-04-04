@@ -23,7 +23,7 @@ func NewAPI(db *sql.DB) API {
 	m := mux.NewRouter()
 	e := NewEventDB(db)
 
-	m.Handle("/", http.HandlerFunc(e.ServeEvents))
+	m.Handle("/calendar", http.HandlerFunc(e.ServeEvents))
 	return API{
 		e,
 		m,
