@@ -111,4 +111,12 @@ blockquote::before {
 .right {
   text-align: right;
 }
+.carousel-control.left, .carousel-control.right {
+  background-image:none !important;
+  filter:none !important;
+}
+
+.footer{
+  padding:10px;
+}
 /*# sourceMappingURL=Content.css.map */

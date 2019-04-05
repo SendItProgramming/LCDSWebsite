@@ -3,6 +3,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import SideBar from "./content-components/SideBar";
 import MainContent from "./content-components/MainContent";
 import ReactTable from "react-table";
+
 import {
 	QuotePanel,
 	LoginPanel,
@@ -17,10 +18,13 @@ import {
 	ButtonsPanel,
 } from "./SharedComponents";
 import {
-	Image
+	Image,
+	Carousel
 }from "react-bootstrap"
 import "./../index-src/css/Content.css"
+
 import WebFont from 'webfontloader';
+
 import Sammy from "./../images/SammyPage.jpg"
 import SammySchool from "./../images/Sammy_School_Image.jpg"
 import SammyReading from "./../images/Sammy_Reading_Image.jpg"
@@ -35,6 +39,15 @@ import SammyHistory from "./../images/Sammy_Our_History_Image.jpg"
 import SammyBoard from "./../images/Sammy_Our_Board.jpg"
 import SammyJune from "./../images/Sammy_June_Henry.jpg"
 import SammyTestimonials from "./../images/Sammy_Testimonials_Image.jpg"
+import Slide1 from "./../images/Slide/slide1.png"
+import Slide2 from "./../images/Slide/slide2.png"
+import Slide3 from "./../images/Slide/slide3.png"
+import Slide4 from "./../images/Slide/slide4.png"
+import Slide5 from "./../images/Slide/slide5.png"
+import Slide6 from "./../images/Slide/slide6.png"
+import Slide7 from "./../images/Slide/slide7.png"
+import Slide8 from "./../images/Slide/slide8.png"
+import Slide9 from "./../images/Slide/slide9.png"
 
 export default class Content extends Component {
 
@@ -46,10 +59,13 @@ export default class Content extends Component {
 			Text: "Loading..."
 			},
 			news:[],
-			board:[]
+			board:[],
+			yr: ""
+
 		}
 		//this.GetQuote = this.GetQuote.bind(this)
 		this.news = this.GetNews.bind(this)
+		
 		WebFont.load({
 			google: {
 				families: ['Londrina Sketch']
@@ -61,6 +77,8 @@ export default class Content extends Component {
 		this.GetQuote()
 		this.GetNews()
 		this.Getboard()
+		this.state.yr = this.GetYr()
+
 		function myFunction() {
  		 	const url = "http://localhost:8888/auth/check";
 			fetch(url, {
@@ -200,6 +218,24 @@ export default class Content extends Component {
 						<Route path={this.props.site_urls["JuneHenry"]} exact>
 							{this.JuneHenry()}
 						</Route>
+						<Route path={this.props.site_urls["Fundraising"]} exact>
+							{this.Fundraising()}
+						</Route>
+						<Route path={this.props.site_urls["RegCommit"]} exact>
+							{this.RegistrationCommitments()}
+						</Route>
+						<Route path={this.props.site_urls["PreschoolFees"]} exact>
+							{this.PreSchoolFees()}
+						</Route>
+						<Route path={this.props.site_urls["JrKindergardenFees"]} exact>
+							{this.JuniorKindergardenFees()}
+						</Route>
+						<Route path={this.props.site_urls["KindergardenFees"]} exact>
+							{this.KindergardenFees()}
+						</Route>
+						<Route path={this.props.site_urls["PaymentOptions"]} exact>
+							{this.PaymentOptions()}
+						</Route>
 						<Route path={this.props.site_urls["NotFound"]} exact>
 							{this.Error()}
 						</Route>
@@ -281,11 +317,11 @@ export default class Content extends Component {
 
 	News(){
 		const items = this.state.news
-		console.log(items)
+		
 		return(
 			<div class = "content">
 			<p class="fun">News:</p>
-			<table class = "Table">
+			<table class = "Table" border = "0">
 			<tbody>
 				{items.map(item => (
 
@@ -457,18 +493,18 @@ export default class Content extends Component {
 		return(
 		<div class="info">
 
-		<p class="fun"><a class="funLink" href={this.props.site_urls["OpenHouse"]}>Open House & Registration for 2019/2020</a></p>
+		<p class="fun"><a class="funLink" href={this.props.site_urls["OpenHouse"]}>Open House & Registration for {this.state.yr}/{this.state.yr +1}</a></p>
 		<p class="green">Is Your Child 3, 4 or 5 Years Old? Are They Ready to Start School?</p>
 		<p>Register Your Child Today!</p>
 		<p><b>LCDS Preschool & Kindergarden has an awesome program for your child.
 					We offer Kindergarden, Jr. Kindergarden and Preschool for children 3 to 5 years old.
-					We are now accepting new Registrations for Kindergarden, Jr. Kindergarden and Preschool for September 2019.  The AM Class is tentatively full at this time but you are welcome to put your name on our wait list; we still have lots of room in the PM Class.</b></p>
+					We are now accepting new Registrations for Kindergarden, Jr. Kindergarden and Preschool for September {this.state.yr}.  The AM Class is tentatively full at this time but you are welcome to put your name on our wait list; we still have lots of room in the PM Class.</b></p>
 		<p><b>Registration Forms are available from our school office.</b></p>
 
-		<p>To be eligible for Kindergarden for the 2019 - 2020 school year, your child must be 5 years old before March 1st 2020.</p>
+		<p>To be eligible for Kindergarden for the {this.state.yr} - {this.state.yr +1} school year, your child must be 5 years old before March 1st {this.state.yr +1}.</p>
 
-		<p>**The entry age for Kindergarden will be changing for the 2020-2021 school year.
-			To be eligible for Kindergarden for September 2020, your child must turn 5 before December 31st, 2020.</p>
+		<p>**The entry age for Kindergarden will be changing for the {this.state.yr +1}-{this.state.yr +2} school year.
+			To be eligible for Kindergarden for September {this.state.yr +1}, your child must turn 5 before December 31st, {this.state.yr +1}.</p>
 		<p>Please speak with our office if you have any questions.</p>
 		</div>
 		)
@@ -593,11 +629,42 @@ export default class Content extends Component {
 	Home(){
 		return(
 			<div>
-		{this.AboutInfo()}
-		{this.Facebook()}
-		{this.OpenHouseInfo()}
-		{this.TrialClasses()}
-		{this.SubtituteTeachers()}
+				<div class="Carousel" ></div>
+				<Carousel interval='5000'>
+					<Carousel.Item>
+						<img src={Slide1} />
+					</Carousel.Item>
+					<Carousel.Item>
+						<img src={Slide2} />
+					</Carousel.Item>
+					<Carousel.Item>
+						<img src={Slide3} />
+					</Carousel.Item>
+					<Carousel.Item>
+						<img src={Slide4} />
+					</Carousel.Item>
+					<Carousel.Item>
+						<img src={Slide5} />
+					</Carousel.Item>
+					<Carousel.Item>
+						<img src={Slide6} />
+					</Carousel.Item>
+					<Carousel.Item>
+					<img src={Slide7} />
+					</Carousel.Item>
+					<Carousel.Item>
+						<img src={Slide8} />
+					</Carousel.Item>
+					<Carousel.Item>
+						<img src={Slide9} />
+					</Carousel.Item>
+				</Carousel>
+
+				{this.AboutInfo()}
+				{this.Facebook()}
+				{this.OpenHouseInfo()}
+				{this.TrialClasses()}
+				{this.SubtituteTeachers()}
 		</div>
 		);
 	}
@@ -618,8 +685,8 @@ export default class Content extends Component {
 				Students who qualify for Kindergarden attend 5 half days /week, unless an alternate path has been approved by the teacher and parents.</p>
 
 				<p><b>Please note:</b></p>
-				<p><b><i>Alberta Education will be changing the date for Kindergarden eligibility for the 2020 - 2021 school year.</i></b>
-				<b><i>Children will need to turn 5 before December 31st of 2020 in order to be eligible for Kindergarden.</i></b></p>
+				<p><b><i>Alberta Education will be changing the date for Kindergarden eligibility for the {this.state.yr +1} - {this.state.yr +2} school year.</i></b>
+				<b><i>Children will need to turn 5 before December 31st of {this.state.yr +1} in order to be eligible for Kindergarden.</i></b></p>
 
 				<p><b>If your child is eligible for enrolment in Kindergarden</b>, and you feel he/she is <b>not ready</b> to attend, please <b>contact the office</b> with your concerns; learning alternatives may be available.</p>
 				<p><b>Kindergarden</b> students <b>begin class 20 minutes earlier</b> than the preschool students to work on specific Kindergarden curriculum goals; more class time is provided for Kindergarden work throughout the half day schedule.</p>
@@ -653,8 +720,8 @@ export default class Content extends Component {
 			<p><b>Please see <a class = "green" href={this.props.site_urls["PreschoolDevSkills"]}>Preschool Development Skills</a> for more details on the goals and expectations for students.</b></p>
 
 			<p><b>Please note:
-			<i>Alberta Education will be changing the date for Kindergarden eligibility for the 2020 - 2021 school year.
-				Children will need to turn 5 before December 31st of 2020 in order to be eligible for Kindergarden.</i></b></p>
+			<i>Alberta Education will be changing the date for Kindergarden eligibility for the {this.state.yr +1} - {this.state.yr +2} school year.
+				Children will need to turn 5 before December 31st of {this.state.yr +1} in order to be eligible for Kindergarden.</i></b></p>
 
 			<p class = "green"><b>More information on curriculum and education guidelines can be found on the Alberta Education Website, <a href="https://www.learnalberta.ca/content/mychildslearning/gradeataglance/Kindergarden.pdf">Kindergarden Curriculum</a></b></p>
 
@@ -923,12 +990,12 @@ export default class Content extends Component {
 				We  pay rent for our classroom and office space to Gateway Alliance Church.
 				As we are an independent program, we have fixed operational costs in which we rely upon parent involvement and participation in the program to assist in keeping these costs attainable.
 				Parents provide the necessary support for the success of our quality education program.  Without the support of our members through working bingo, casino, classroom cleaning and other volunteer commitments, the society would not be able to support many of the opportunities provided to the children and their families.</i></p>
-				<p class="subTitle">The fees below apply to the 2019 - 2020 school year.</p>
+				<p class="subTitle">The fees below apply to the {this.state.yr} - {this.state.yr +1} school year.</p>
 
-				<p><a href="" class="redLink">Preschool Fees</a></p>
-				<p><a href="" class="blueLink">Junior Kindergarten Fees</a></p>
-				<p><a href="" class="redLink">Kindergarten Fees</a></p>
-				<p><a href="" class="blueLink">Registration Commitments</a></p>
+				<p><a href={this.props.site_urls["PreschoolFees"]}  class="redLink">Preschool Fees</a></p>
+				<p><a href={this.props.site_urls["JrKindergardenFees"]}  class="blueLink">Junior Kindergarten Fees</a></p>
+				<p><a href={this.props.site_urls["KindergardenFees"]}  class="redLink">Kindergarten Fees</a></p>
+				<p><a href={this.props.site_urls["RegCommit"]} class="blueLink">Registration Commitments</a></p>
 				<p><a href="" class="greenLink">Alberta Parent Stay-At-Home Subsidy Program</a></p>
 
 				<blockquote>
@@ -1130,21 +1197,21 @@ export default class Content extends Component {
 	Events() {
 		return(
 			<div class="info">
-				<p class="fun">Open House & Register for 2019/2020</p>
+				<p class="fun">Open House & Register for {this.state.yr}/{this.state.yr +1}</p>
 				<p class="green">Is Your Child 3, 4 or 5 Years Old? Are They Ready to Start School?
 					Register Your Child Today!</p>
 					<p><b>LCDS Preschool & Kindergarten has an awesome program for your child.
 					We offer Kindergarten, Jr. Kindergarten and Preschool for children 3 to 5 years old.</b></p>
 
-					<p><b>We are now accepting new Registrations for Kindergarten, Jr. Kindergarten and Preschool for September 2019.  The AM Class is tentatively full at this time but you are welcome to put your name on our wait list; we still have lots of room in the PM Class.</b></p>
+					<p><b>We are now accepting new Registrations for Kindergarten, Jr. Kindergarten and Preschool for September {this.state.yr}.  The AM Class is tentatively full at this time but you are welcome to put your name on our wait list; we still have lots of room in the PM Class.</b></p>
 
 					<p><b>Registration Forms are available from our school office.</b></p>
 
-					<p><b>To be eligible for Kindergarten for the 2019 - 2020 school year, your child must be 5 years old before March 1st 2020.</b></p>
+					<p><b>To be eligible for Kindergarten for the {this.state.yr} - {this.state.yr +1} school year, your child must be 5 years old before March 1st {this.state.yr +1}.</b></p>
 
 
-					<p>**The entry age for Kindergarten will be changing for the 2020-2021 school year.
-					To be eligible for Kindergarten for September 2020, your child must turn 5 before December 31st, 2020.</p>
+					<p>**The entry age for Kindergarten will be changing for the {this.state.yr +1}-{this.state.yr +2} school year.
+					To be eligible for Kindergarten for September {this.state.yr +1}, your child must turn 5 before December 31st, {this.state.yr +1}.</p>
 
 					<p><b>Trial Classes are also available call the office to book an appointment.</b></p>
 
@@ -1220,10 +1287,6 @@ export default class Content extends Component {
 
 		const items = this.state.board
 
-		items.forEach(function(element) {
-			console.log(element.MemberFirstName + " " + element.MemberPosition)
-
-		});
 		return(
 			<div class="info">
 				<p class="fun">Our Board Members</p>
@@ -1238,7 +1301,7 @@ export default class Content extends Component {
 						{items.map(item => (
 									<tr>
 										<td><b>{item.MemberPosition}</b></td>
-										<td class="right">		{item.MemberFirstName}</td>
+										<td class="right">{item.MemberFirstName} {item.MemberLastInitial}</td>
 									</tr>
 						))}
 				</tbody>
@@ -1298,6 +1361,7 @@ export default class Content extends Component {
 		);
 	}
 	Testimonials(){
+
 		return(
 			<div class="info">
 				<p class="fun">Parent Testimonials</p>
@@ -1321,8 +1385,131 @@ export default class Content extends Component {
 				</blockquote>
 				<p class = "left"><b>-Andrea O. -Edmonton</b></p>
 
-				<img src={SammyTestimonials} />
+				<Image src={SammyTestimonials} />
 			</div>
 		);
+	}
+	RegistrationCommitments(){
+		return(
+			<div class="info">
+				<p class="fun">Registration Requirements</p>
+				<p class="subTitle">Upon registering with LCDS Preschool & Kindergarten, each registered family agrees to participate in the following commitments:</p>
+				<ul>
+				<li><b>1 Classroom Cleaning per registered child</b> (Dates are provided at registration for families to sign up)</li>
+				<li>
+				<b>2 Bingo Shifts per registered child</b> (the number of bingo shifts may change depending on enrollment numbers each year. Dates are provided at registration)
+				</li>
+				<li><b>1 Casino Shift per family</b> (Only on a casino year; there are a limited number of shifts available, those families who do not get a shift will be required to fulfill the commitment with an extra bingo shift)</li>
+				<li><b>Parent Helper Duty</b> - One representative from each family will be scheduled approximately once per month for a Parent Helper Day.  Families provide their availability to LCDS and will be scheduled on the calendar to the best of the schedulers abilities.  On the scheduled Parent Helper Day, the parent is responsible for bringing the scheduled Healthy snack and beverage for 17 children (ie. Fruit & Crackers, Veggies and Crackers, Muffins, Sandwiches, or Cheese & Crackers), some daily cleaning duties and assistance with project preparations.  It is also a special day for your child, they get to be the helping hand on that day and have some special leadership responsibilities.</li>
+				<li><b>Fundraising</b> - LCDS families have chosen to pay a one time family fundraising fee per year instead of running numerous fundraisers each year.  Each family will submit a $300.00 fee at the beginning of September and will receive a tax donation receipt for the amount of $300.00.  There are options to this fee, please see <a href={this.props.site_urls["Fundraising"]}>Fundraising</a> for more information.</li>
+				<li><b>Attend Society Meetings</b> - LCDS Preschool & Kindergarten is required by regulation to hold regular meetings to ensure members are informed of the current status of the society. 3 General Meetings are held each year (September, January and May). One member per family is asked to attend each scheduled meeting to stay informed.  This also ensures quorum is met if there is need for a membership vote and ensures society operations are being carried out accordingly.</li>
+				</ul>
+			</div>
+		);
+	}
+	Fundraising(){
+		return(
+		<div class="info">
+			<p class="fun">Fundraising</p>
+			<p><b>LCDS Preschool & Kindergarten members have chosen to pay a one-time family fundraising fee instead of raising funds through numerous fundraising events or campaigns.</b></p>
+			<p>The family fundraising fee will be calculated each year by the Board of Directors; depending on enrollment numbers the fee will adjust accordingly.</p>
+			<p>The fee for the {this.state.yr}-{this.state.yr + 1} school year will be $300.  Members will receive a Tax Donation receipt for the amount of $300 if full payment is received in September.</p>
+			<p class="subTitle">Options for the family fundraising fee:</p>
+			<ul>
+				<li>Families may pay the fee in a one time payment in September and will receive a tax donation receipt for the total amount in February.</li>
+				<li>Families may split the payment into 2 payments of $150 payable on September 1st and February 1st.  2 tax donation receipts will be issued for $150.00 each and will be applicable for the coordinating tax year.</li>
+				<li>Families may pay part of the family fundraising fee $150 on September 1st and participate in a few small fundraisers decided on by the Board of Directors each year to raise the other $150 of their fundraising commitment.  Families would receive a tax donation receipt for $150.</li>
+				<li>Families may also choose to raise all of their family fundraising fee through fundraising, members must let the Board of Directors know they will be choosing this option.</li>
+			</ul>
+			<p><i>**Families choosing to do fundraising instead of paying the family fundraising fee will be required to submit a deposit cheque in the amount of $150 or $300 depending on the option chosen.</i></p>
+
+			<p><i>**Fundraising events may include a walk-a-thon, spring flower orders, poinsettia orders, chocolate or specialty food (kolbasa, pizza kits, perogies, etc.) sales.</i></p>
+			<p><b>The money raised from the Family Fundraising Fee or fundraising events goes directly back to the classroom for field trips, family social events, class parties, new toys and materials, gym equipment or furnishings.<br/><br/>
+			Thank you for donating and for all of your hard work!!</b></p>
+
+		</div>
+		);
+	}
+	PreSchoolFees(){
+		return(
+		<div class ="info">
+			<p class="fun">Preschool fees</p>
+			{this.AdminFees()}
+			<p class="subTitle"> Preschool Fees:</p>
+
+			<p>Monthly fees are $150 for 2 days per week per month and $225 for 3 days per week per month. (Extra Days add $75/month/extra day added.)</p>
+
+			<p><a href={this.props.site_urls["PaymentOptions"]} class = "blueLink">Payment Options</a></p>
+			<p><a href={this.props.site_urls["RegCommit"]} class = "greenLink">Registration Commitments</a></p>
+			{this.RegistrationCommitmentDepositCheques()}
+			<img src={SammyRegistration} />
+		</div>);
+	}
+	JuniorKindergardenFees(){
+		return(
+			<div class ="info">
+				<p class="fun">Junior Kindergarden Fees</p>
+				{this.AdminFees()}
+
+				<p>Monthly fees are $300.00 for 4 days per week per month or $375.00 for 5 days per week per month.</p>
+
+				<p><a href={this.props.site_urls["PaymentOptions"]} class = "blueLink">Payment Options</a></p>
+				<p><a href={this.props.site_urls["RegCommit"]} class = "greenLink">Registration Commitments</a></p>
+				{this.RegistrationCommitmentDepositCheques()}
+				<img src={SammyRegistration} />
+			</div>
+		);
+	}
+	KindergardenFees(){
+		return(<div class ="info"><p class="fun">Kindergarden Fees</p>
+		{this.AdminFees()}
+			<p class="subTitle">Kindergarten Fee:</p>
+
+			<p>Kindergarten is funded by the Alberta Government. LCDS charges a one time, non-refundable materials fee of $300.00, submitted with your child's registration, to cover the cost of consumable materials used throughout the year such as, paper, glue, paint, crayons, markers, Kleenex, soap, photocopying, etc.  </p>
+			<p>Your child only needs to bring a pair of indoor shoes and a backpack on their first day of school.</p>
+			{this.RegistrationCommitmentDepositCheques()}
+			<img src={SammyRegistration} />
+		</div>);
+	}
+	PaymentOptions(){
+		return(
+			<div class = "info">
+			<p class ="fun">Payment Options</p>
+			<p class ="subTitle">You can pay your fees in the following formats:</p>
+			<ul>
+				<li>One cheque which covers the entire nine-month period dated September 1</li>
+				<li>Two post-dated cheques dated September 1 (covers - September, October, November, December and January) and February 1 (covers -  February, March, April, and May).</li>
+				<li>Nine post-dated cheques, one for each month, dated the first of each month</li>
+				<li>Cash is always accepted.</li>
+			</ul>
+			</div>
+		);
+	}
+	AdminFees(){
+		return(
+		<div class="info">
+		<p class="subTitle">Society Membership & Admin Fees</p>
+		<p>A <b><u>non-refundable</u> $75 Society Membership and Administration fee </b> is charged when you submit your child’s registration (The membership fee is <b>PER FAMILY</b> if you are registering more than one child). This cheque will be dated with the same date as the day your child’s registration is accepted.</p>
+		</div>);
+	}
+	RegistrationCommitmentDepositCheques(){
+		return(
+			<div class="info">
+				<p class="subTitle">Registration Commitment Deposit Cheques:</p>
+
+				<p><b>Each family will submit a deposit cheque with their child's registration form to ensure fulfillment of the following registration commitments: </b></p>
+				<ul>
+					<li>1 Bingo and Classroom Cleaning Deposit Cheque, PER CHILD, $250.00 each (undated) (Each family is required to work 2 Bingo shifts and 1 classroom cleaning night)</li>
+					<li>1 Casino Deposit Cheque, PER FAMILY, $200.00 (Only required on a Casino year)(undated)</li>
+					<li>LCDS families have chosen to submit a one-time family fundraising fee of $300.00 per school year instead of doing fundraisers.  This payment may be paid in 2 payment, $150.00 in September and $150.00 in January.  A Donation Tax receipt in the amount of $300.00 will be issued for this fee.   Please see Fundraising for more options. </li>
+				</ul>
+				<p>**Deposit cheques are not cashed unless the member fails to meet their scheduled commitments. </p>
+
+			</div>
+		);
+	}
+	GetYr(){
+		var newDate = new Date()
+		return newDate.getFullYear();
 	}
 }

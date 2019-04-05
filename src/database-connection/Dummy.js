@@ -6,13 +6,13 @@ export function routes() {
   return {
     Home:               "/",
 
-    AboutUs:            "/about-us/",           //Done
-    OurStaff:           "/about-us/our-staff",  //Created, not done
+    AboutUs:            "/about-us/",                //Done
+    OurStaff:           "/about-us/our-staff",       //Created, not done
     OurBoard:           "/about-us/our-board",       //Done
     Squirrel:           "/about-us/sammy-squirrel",  //Done
-    Testimonials:       "/about-us/testimonials",   
-    History:            "/about-us/our-history",    //DOne
-    Founder:            "/about-us/founder",        //Done
+    Testimonials:       "/about-us/testimonials",    //Done   
+    History:            "/about-us/our-history",     //DOne
+    Founder:            "/about-us/founder",         //Done
     JuneHenry:          "/about-us/june-henry",      //Done
 
     Programs:           "/programs/",                     //Done
@@ -33,7 +33,12 @@ export function routes() {
     Committee:          "/registration/parent-involvement/committee",                //Done
     BoardDirectors:     "/registration/parent-involvement/board-of-directors",       //Done
     MiscPositions:      "/registration/parent-involvement/miscellaneous-poisitions", //Done
+    PreschoolFees:      "/registration/program-fees/preschool-fees",
+    JrKindergardenFees: "/registration/program-fees/junior-kindergarden-fees",
+    KindergardenFees:   "/registration/program-fees/kindergarden-fees",
+    PaymentOptions:     "/registration/program-fees/payment-options",
 
+    RegCommit:          "/registration/program-fees/registration-commitments",
     Resources:          "/resources",                                                //Done
 
     Events:             "/events/",                                                  //Done
