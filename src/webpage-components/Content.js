@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { Route, Redirect, Switch } from "react-router-dom";
 import SideBar from "./content-components/SideBar";
 import MainContent from "./content-components/MainContent";
+import BlogReader from "./BlogReader.js"
 import ReactTable from "react-table";
 import TextEditor from "./HTMLEditor.js";
 import {
@@ -62,24 +63,29 @@ export default class Content extends Component {
         console.log(this.state.quote)
         return (
 			<div class="body">
-				{this.SideBar()}
-
 
 				<Switch>
                     <Route path={this.props.site_urls["Resources"]} exact>
-						
+                    	{this.SideBar()}
 						{this.Resources()}
                     </Route>
 					<Route path={this.props.site_urls["AboutUs"]} exact>
+					{this.SideBar()}
 						{this.About()}
                     </Route>
 					<Route path={this.props.site_urls["News"]} exact>
+					{this.SideBar()}
 						{this.News()}
                     </Route>
+                    <Route path={this.props.site_urls["Blogs"]} exact>
+						<BlogReader />
+                    </Route>
 					<Route path={this.props.site_urls["Admin"]} exact>
+					{this.SideBar()}
 						<TextEditor path={this.props.site_urls} titles={this.props.titles}/>
 					</Route>
 					<Route path={this.props.site_urls["NotFound"]} exact>
+					{this.SideBar()}
 						{this.Error()}
                     </Route>
 

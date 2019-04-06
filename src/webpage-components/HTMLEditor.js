@@ -7,9 +7,10 @@ import {
     CompositeDecorator
 } from 'draft-js';
 import { Button } from "react-bootstrap";
+import draftToHtml from 'draftjs-to-html';
 import "../index-src/css/HTMLEditor.css";
 
-
+let oldDate = {"blocks":[{"key":"2u8op","text":"This is a test","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}
 export default class TextEditor extends Component {
     constructor() {
         super();
@@ -122,7 +123,10 @@ export default class TextEditor extends Component {
         event.preventDefault();
         const url = "http://localhost:8888/editor/save";
         const data = this.state.editorState.getCurrentContent();
-
+        console.log((convertToRaw(data)))
+        const markup = draftToHtml(
+            convertToRaw(data))
+        console.log(markup)
         if(!data.hasText()) {
             alert("Nothing to submit.");
             return;
@@ -132,11 +136,14 @@ export default class TextEditor extends Component {
                 last_updated: Date.now()
             }
         });
-
-        console.log(this.state.content);
+        let postObj = {
+            Content: JSON.stringify(convertToRaw(data)),
+            LastUpdated: new Date(),
+            Target:""
+        }
         fetch(url, {
             method: "POST",
-            body: this.state.content
+            body: JSON.stringify(postObj)
         }).then(response => response.text()).then( () => { this.PostSave() });
     }
 
@@ -146,6 +153,7 @@ export default class TextEditor extends Component {
     }
 
     ChangeHandler(newState) {
+        console.log(newState)
         this.setState({editorState: newState})
     }
 
