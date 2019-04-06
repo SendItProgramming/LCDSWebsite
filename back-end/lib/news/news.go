@@ -45,7 +45,7 @@ func (n NewsDB) GetNewsByID(NewsID int) (NewsPost, error) {
 }
 
 func (n NewsDB) GetAllNews() ([]NewsPost, error) {
-	q := `SELECT news_id, news_text, show, date_added FROM news WHERE show = t ORDER BY date_added DESC`
+	q := "SELECT news_id, news_text, show, date_added FROM news WHERE show = 't' ORDER BY date_added DESC"
 	var news []NewsPost
 	rows, err := n.db.Query(q)
 	if err != nil {

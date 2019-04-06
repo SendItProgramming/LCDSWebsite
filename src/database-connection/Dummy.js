@@ -6,35 +6,51 @@ export function routes() {
   return {
     Home:               "/",
 
-    AboutUs:            "/about-us/",
-    OurStaff:           "/about-us/our-staff",
-    OurBoard:           "/about-us/our-board",
-    Squirrel:           "/about-us/sammy-squirrel",
-    Testimonials:       "/about-us/testimonials",
-    History:            "/about-us/our-history",
-    Founder:            "/about-us/founder",
+    AboutUs:            "/about-us/",                //Done
+    OurStaff:           "/about-us/our-staff",       //Created, not done
+    OurBoard:           "/about-us/our-board",       //Done
+    Squirrel:           "/about-us/sammy-squirrel",  //Done
+    Testimonials:       "/about-us/testimonials",    //Done   
+    History:            "/about-us/our-history",     //DOne
+    Founder:            "/about-us/founder",         //Done
+    JuneHenry:          "/about-us/june-henry",      //Done
 
-    Programs:           "/programs/",
-    Kindergarden:       "/programs/kindergarden",
-    JrKindergarden:     "/programs/jr-kindergarden",
-    PreSchool:          "/programs/preschool",
-    LearningSupport:    "/programs/learning-support",
-    FieldTrips:         "/programs/field-trips",
-    DailySnacks:        "/programs/daily-snacks",
+    Programs:           "/programs/",                     //Done
+    Kindergarden:       "/programs/kindergarden",         //Done
+    JrKindergarden:     "/programs/jr-kindergarden",      //Done
+    PreSchool:          "/programs/preschool",            //Done
+    LearningSupport:    "/programs/learning-support",     //Done
+    FieldTrips:         "/programs/field-trips",          //Done
+    DailySnacks:        "/programs/daily-snacks",         //Done
+    FoodRestrictions:   "/programs/daily-snacks/food-restictions",                   //Done
+    PreschoolDevSkills: "/programs/kindergarten/preschool-development-skills",       //Done
+    IsMyChildReady:     "/programs/is-my-child-ready-for-preschool-or-kindergarden", //done
+    Requirements:       "/programs/registration-requirements-for-learning-support",  //Done
 
-    Registration:       "/registration/",
-    ProgramFees:        "/registration/program-fees",
-    ParentInvolvement:  "/registration/parent-involvement",
+    Registration:       "/registration/",                                            //Dpme
+    ProgramFees:        "/registration/program-fees",                                //Done
+    ParentInvolvement:  "/registration/parent-involvement",                          //Done
+    Committee:          "/registration/parent-involvement/committee",                //Done
+    BoardDirectors:     "/registration/parent-involvement/board-of-directors",       //Done
+    MiscPositions:      "/registration/parent-involvement/miscellaneous-poisitions", //Done
+    PreschoolFees:      "/registration/program-fees/preschool-fees",
+    JrKindergardenFees: "/registration/program-fees/junior-kindergarden-fees",
+    KindergardenFees:   "/registration/program-fees/kindergarden-fees",
+    PaymentOptions:     "/registration/program-fees/payment-options",
 
-    Resources:          "/resources",
+    RegCommit:          "/registration/program-fees/registration-commitments",
+    Resources:          "/resources",                                                //Done
 
-    Events:             "/events/",
-    JobOpportunities:   "/events/job-opportunities",
+    Events:             "/events/",                                                  //Done
+    JobOpportunities:   "/events/job-opportunities",                                 //Done
     Fundraising:        "/events/fundraising",
     Calendar:           "/events/calendar",
+    OpenHouse:          "/events/open-house-registration",
+    TrialClasses:       "/events/trial-classes",    //Done
 
     News:               "/news",
-    Contact:            "/contact",
+    Facebook:           "/news/lcds-on-facebook",   //done
+    Contact:            "/contact",                                                 //Done
 
     NotFound:           "/*/",
     Admin:              "/Admin"

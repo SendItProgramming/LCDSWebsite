@@ -87,9 +87,9 @@ export default class SideBar extends Component {
         return(
             <div>
                 <Switch>
-                    <Route path={this.props.site_urls["AboutUs"]} exact>
+                    <Route path={this.props.site_urls["AboutUs"]} >
                         <div>
-                            {this.props.programs}
+                            {this.GetQuote()}
                             {this.props.co_sponsors}
                             {this.props.member_login}
                         </div>
@@ -106,7 +106,7 @@ export default class SideBar extends Component {
 
                     <Route path={this.props.site_urls["OurBoard"]} exact>
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
                             {this.props.member_login}
                         </div>
@@ -121,7 +121,7 @@ export default class SideBar extends Component {
 
                     <Route path={this.props.site_urls["Testimonials"]} exact>
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
                             {this.props.registration}
                             {this.props.member_login}
@@ -130,7 +130,7 @@ export default class SideBar extends Component {
 
                     <Route path={this.props.site_urls["History"]} exact>
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.registration}
                             {this.props.member_login}
                         </div>
@@ -138,7 +138,7 @@ export default class SideBar extends Component {
 
                     <Route path={this.props.site_urls["Founder"]} exact>
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
                             {this.props.member_login}
                         </div>
@@ -163,7 +163,7 @@ export default class SideBar extends Component {
 
                     <Route path={this.props.site_urls["Kindergarden"]} exact>
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
@@ -173,7 +173,7 @@ export default class SideBar extends Component {
 
                     <Route path={this.props.site_urls["JrKindergarden"]} exact>
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
@@ -192,7 +192,7 @@ export default class SideBar extends Component {
 
                     <Route path={this.props.site_urls["LearningSupport"]} exact>
                         <div>
-                            {this.props.quote}
+
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
@@ -210,7 +210,7 @@ export default class SideBar extends Component {
 
                     <Route path={this.props.site_urls["DailySnacks"]} exact>
                         <div>
-                            {this.props.quote}
+
                             {this.props.about_us}
                             {this.props.registration}
                             {this.props.member_login}
@@ -227,17 +227,22 @@ export default class SideBar extends Component {
                 <Switch>
                     <Route path={this.props.site_urls["Registration"]} exact>
                         <div>
-                            {this.props.quote}
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
                             {this.props.member_login}
                         </div>
                     </Route>
-
+                    <Route path={this.props.site_urls["OpenHouse"]} exact>
+                        <div>
+                            {this.props.about_us}
+                            {this.props.programs}
+                            {this.props.registration}
+                        </div>
+                    </Route>
                     <Route path={this.props.site_urls["ProgramFees"]} exact>
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
@@ -247,7 +252,7 @@ export default class SideBar extends Component {
 
                     <Route path={this.props.site_urls["ParentInvolvement"]} exact>
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
                             {this.props.member_login}
                         </div>
@@ -271,26 +276,26 @@ export default class SideBar extends Component {
         return(
             <div>
                 <Switch>
-                    <Route path={this.props.site_urls["Events"]} exact>
+                    <Route path={this.props.site_urls["Events"]} >
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
                             {this.props.pic}
                             {this.props.member_login}
                         </div>
                     </Route>
 
-                    <Route path={this.props.site_urls["JobOpportunities"]} exact>
+                    <Route path={this.props.site_urls["JobOpportunities"]} >
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
                             {this.props.member_login}
                         </div>
                     </Route>
 
-                    <Route path={this.props.site_urls["Fundraising"]} exact>
+                    <Route path={this.props.site_urls["Fundraising"]} >
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
                             {this.props.pic}
                             {this.props.member_login}
@@ -320,11 +325,22 @@ export default class SideBar extends Component {
         );
     }
 
+
     RenderAdmin() {
         return(
             <div class="a">
 				{this.props.member_login}
             </div>
+
+    GetQuote(){
+        return(
+            <blockquote>
+                "{this.props.quote.Text}"
+            <br />
+                -{this.props.quote.Author}
+            </blockquote>
+
         );
     }
 }
+

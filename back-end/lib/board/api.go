@@ -1,4 +1,4 @@
-package news
+package board
 
 import (
 	"database/sql"
@@ -10,7 +10,7 @@ import (
 )
 
 type API struct {
-	nd  NewsDB
+	bd  BoardDB
 	mux *mux.Router
 }
 
@@ -18,19 +18,21 @@ func (a API) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	a.mux.ServeHTTP(w, r)
 }
 
-func (nd NewsDB) GetNews(w http.ResponseWriter, r *http.Request) {
+func (bd BoardDB) GetBoardMembers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-	n, err := nd.GetAllNews()
+	b, err := bd.GetAllMembers()
+
 	if err != nil {
-		fmt.Println("Problem in grabbing the news: ", err)
+		fmt.Println("Problem in grabbing the Board Members: ", err)
 		return
 	}
-	json.NewEncoder(w).Encode(n)
+	json.NewEncoder(w).Encode(b)
 }
 
 func NewAPI(db *sql.DB) API {
 	m := mux.NewRouter()
-	n := NewsDB{db}
-	m.Handle("/", http.HandlerFunc(n.GetNews))
-	return API{n, m}
+	b := BoardDB{db}
+	m.Handle("/", http.HandlerFunc(b.GetBoardMembers))
+
+	return API{b, m}
 }
