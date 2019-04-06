@@ -45,6 +45,7 @@ func (a Authenticator) CheckPassword(w http.ResponseWriter, r *http.Request) {
 	}
 	t := time.Now().Add(1 * time.Hour)
 	returnedUser.Email = u.Email
+	returnedUser.Password = ""
 	b, err := json.Marshal(returnedUser)
 	if err != nil {
 		fmt.Println("Problems in marshalling the user: ", err)

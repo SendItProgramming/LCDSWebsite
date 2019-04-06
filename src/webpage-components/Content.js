@@ -59,6 +59,7 @@ export default class Content extends Component {
 			Author: "Loading...",
 			Text: "Loading..."
 			},
+			jwt: sessionStorage.getItem('Auth'),
 			news:[],
 			board:[],
 			yr: ""
@@ -66,6 +67,7 @@ export default class Content extends Component {
 		}
 		//this.GetQuote = this.GetQuote.bind(this)
 		this.news = this.GetNews.bind(this)
+		this.Logout = this.Logout.bind(this)
 		
 		WebFont.load({
 			google: {
@@ -79,27 +81,8 @@ export default class Content extends Component {
 		this.GetNews()
 		this.Getboard()
 		this.state.yr = this.GetYr()
-
-		function myFunction() {
- 		 	const url = "http://localhost:8888/auth/check";
-			fetch(url, {
-    		method : "POST",
-    		body: new FormData(document.getElementById("inputform")),
-    		// -- or --
-    		// body : JSON.stringify({
-        	// user : document.getElementById('user').value,
-        	// ...
-    		// })
-			}).then(
-    			response => response.text() // .json(), etc.
-    			// same as function(response) {return response.text();}
-			).then(
-   		 		jwt => sessionStorage.setItem('Auth', jwt)
-			);
-		}
-		//document.getElementById("loginButton").addEventListener("click", myFunction);
-
 	}
+
 
     render() {
         console.log(this.state.quote)
@@ -290,7 +273,7 @@ export default class Content extends Component {
 					<SideBar site_urls={this.props.site_urls}
 						quote={<QuotePanel quote={this.state.quote}/>}
 						custom_buttons={<ButtonsPanel/>}
-						member_login={<LoginPanel/>}
+						member_login={<LoginPanel jwt={this.state.jwt} logout={this.Logout}/>}
 						kids_corner={<KidsCornerPanel/>}
 						squirrel={<SquirrelPanel/>}
 						about_us={<AboutUsPanel/>}
@@ -1266,6 +1249,13 @@ export default class Content extends Component {
 
 			</div>
 		);
+	}
+	Logout(){
+		console.log("logout running")
+		this.setState({
+			jwt:null
+		})
+		sessionStorage.removeItem('Auth')
 	}
 
 	OurFounder(){

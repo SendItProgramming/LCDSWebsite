@@ -55,8 +55,6 @@ export function QuotePanel(props){
 
 export function LoginPanel(props){
 
-	let email = "";
-	let password = "";
 
 	function submit(){
 		const url = "http://localhost:8888/auth/check";
@@ -77,25 +75,40 @@ export function LoginPanel(props){
 	}
 
 
+	let data = props.jwt
+	console.log(props.logout)
+	if (data){
+		let base64Url = data.split('.')[1];
+        let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        let jwt = JSON.parse(window.atob(base64));
+        let userObj = JSON.parse(jwt.sub)
+		return (
+			<SidebarPanel>
+			<div>Hi There {userObj.Email}</div>
+			<Button type="button" onClick={props.logout}> Logout </Button>
+			</SidebarPanel>
+		)
+	} else {
 	return (
-		<TitledSidebarPanel title="Members Log In">
-			<p>*Only registered families of LCDS may create an account.</p>
-			<form id="inputform">
-				<FormGroup>
-					<ControlLabel>User Name</ControlLabel>
-					<FormControl id="user-form-control" type="text" name="email"/>
-				</FormGroup>
-				<FormGroup>
-					<ControlLabel>Password</ControlLabel>
-					<FormControl id="password-form-control" type="text" name="password"/>
-				</FormGroup>
-				<Checkbox>Remember Me</Checkbox>
-				<Button type="button" id="loginButton">Log In</Button><br />
-				<a href="#">Forgot your password?</a><br />
-				<a href="#">Forgot your username?</a><br />
-			</form>
-		</TitledSidebarPanel>
-	);
+			<TitledSidebarPanel title="Members Log In">
+				<p>*Only registered families of LCDS may create an account.</p>
+				<form id="inputform">
+					<FormGroup>
+						<ControlLabel>User Name</ControlLabel>
+						<FormControl id="user-form-control" type="text" name="email"/>
+					</FormGroup>
+					<FormGroup>
+						<ControlLabel>Password</ControlLabel>
+						<FormControl id="password-form-control" type="password" name="password"/>
+					</FormGroup>
+					<Checkbox>Remember Me</Checkbox>
+					<Button type="button" id="loginButton">Log In</Button><br />
+					<a href="#">Forgot your password?</a><br />
+					<a href="#">Forgot your username?</a><br />
+				</form>
+			</TitledSidebarPanel>
+		);
+	}
 }
 
 export function KidsCornerPanel(props){
