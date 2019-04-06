@@ -66,31 +66,49 @@ export function titles() {
     AboutUs:            "About Us",
     OurStaff:           "Our Staff",
     OurBoard:           "Our Board",
-    Squirrel:           "Sammy Squirrel",
+    Squirrel:           "Sammy The Squirrel",
     Testimonials:       "Testimonials",
     History:            "Our History",
     Founder:            "Our Founder",
+    JuneHenry:          "June Henry",
 
     Programs:           "Programs",
     Kindergarden:       "Kindergarden",
-    JrKindergarden:     "Jr Kindergarden (4-5)",
-    PreSchool:          "PreSchool (3-4)",
+    JrKindergarden:     "Junior Kindergarden",
+    PreSchool:          "Preschool",
     LearningSupport:    "Learning Support",
     FieldTrips:         "Field Trips",
-    DailySnacks:        "Daily Snack",
+    DailySnacks:        "Daily Snacks",
+    FoodRestrictions:   "Food Restrictions",
+    PreschoolDevSkills: "Preschool Developments SKills",
+    IsMyChildReady:     "Is My Child Ready?",
+    Requirements:       "Requirements For Learning Support",
 
     Registration:       "Registration",
-    ProgramFees:        "Program Fees",
-    ParentInvolvement:  "Parent Involvement",
+    ProgramFees:        "Progam Fees",
+    ParentInvolvement:  "Parent Involement",
+    Committee:          "Committee",
+    BoardDirectors:     "Board Of Directors",
+    MiscPositions:      "Miscellaneous Positions",
+    PreschoolFees:      "Preschool Fees",
+    JrKindergardenFees: "Junior Kindergarden Fees",
+    KindergardenFees:   "Kindergarden Fees",
+    PaymentOptions:     "Payment Options",
 
+    RegCommit:          "Registration Commitments",
     Resources:          "Resources",
 
     Events:             "Events",
     JobOpportunities:   "Job Opportunities",
     Fundraising:        "Fundraising",
     Calendar:           "Calendar",
+    OpenHouse:          "Open House Registration",
+    TrialClasses:       "Trial Classes",
 
-    News:               "News",
-    Contact:            "Contact"
+    News:               "/news",
+    Facebook:           "/news/lcds-on-facebook",   //done
+    Contact:            "/contact",                                                 //Done
+
+    NotFound:           "/*/"
   };
 }
