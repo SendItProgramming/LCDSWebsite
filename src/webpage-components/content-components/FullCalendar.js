@@ -10,10 +10,18 @@ export default class FullCalendarWrapper extends Component {
 		super(props);
 		this.state = {
 			show: false,
-			eventTitle: ""
-			};
+			eventTitle: "",
+			start: "", 
+			end: "", 
+			event_url: "", 
+			eventLocation: "", 
+			eventDescription: "",
+			eventID: "",
+			modalMode: 'add'
+		};
 		this.calendar = new FullCalendar.Calendar();
 		this.handleOpen = this.handleOpen.bind(this);
+		this.handleEdit = this.handleEdit.bind(this);
 		this.handleClose = this.handleClose.bind(this);
 		this.addEvent = this.addEvent.bind(this);
 		this.userObj = this.props.user
@@ -33,30 +41,53 @@ export default class FullCalendarWrapper extends Component {
 							<form>
 								<FormGroup controlId='title'>
 									<ControlLabel> Title: </ControlLabel>
-									<FormControl type='text' />	
+									<FormControl 
+									type='text'
+									defaultValue={this.state.eventTitle}
+									/>	
 								</FormGroup>
 								<FormGroup controlId='start'>
 									<ControlLabel> Start Date: </ControlLabel>
-									<FormControl type='date' />	
+									<FormControl 
+										type='date'
+										defaultValue={((this.state.start != "") && (this.state.start.Date != undefined))?
+										this.state.start.Date.getDate() : new Date().toISOString()}
+									/>	
 								</FormGroup>
 								<FormGroup controlId='end'>
 									<ControlLabel> End Date: </ControlLabel>
-									<FormControl type='date' />	
+									<FormControl 
+										type='date'
+										defaultValue={((this.state.end != "") && (this.state.start.Date != undefined))?
+										this.state.end.Date.getDate() : new Date().toISOString()}
+									/>	
 								</FormGroup>
 								<FormGroup controlId='pdf'>
 									<ControlLabel> Upload PDF: </ControlLabel>
-									<FormControl type='file' />	
+									<FormControl 
+										type='file'
+										
+									/>	
 								</FormGroup>
 								<FormGroup controlId='location'>
 									<ControlLabel> Location: </ControlLabel>
-									<FormControl type='text' />	
+									<FormControl 
+									type='text'
+									defaultValue={this.state.eventLocation}	
+									/>	
 								</FormGroup>
 								<FormGroup controlId='description'>
 									<ControlLabel> Description: </ControlLabel>
-									<textarea class="form-control rounded-0" rows='3' />	
+									<textarea class="form-control rounded-0" rows='3'
+									defaultValue={this.state.eventDescription}
+									/>	
+									
+								</FormGroup>
+								<FormGroup controlId='eventID'>
+									<FormControl type ='text' defaultValue={this.state.eventID} />
 								</FormGroup>
 								
-								<Button onClick= {() =>
+								<Button onClick={() => {
 									this.addEvent(
 										$('#title').val(),
 										$('#start').val(),
@@ -64,9 +95,12 @@ export default class FullCalendarWrapper extends Component {
 										$('#pdf').val(),
 										$('#location').val(),
 										$('#description').val(),
-									)
-								
-								}>Submit</Button>
+										$('#eventID').val())
+										
+									this.setState({
+										show: false
+									})
+								}}>Submit</Button>
 							</form>
 							
 						</Modal.Body>
@@ -74,13 +108,35 @@ export default class FullCalendarWrapper extends Component {
 				</div>
 			);
 	}
+	
+	handleEdit(calEvent) {
+		console.log("Opening modal to edit an event");
+		console.log(calEvent);
+		this.setState({
+			show: true,
+			eventTitle: calEvent.title, 
+			start: calEvent.start, 
+			end: calEvent.end, 
+			event_url: calEvent.url, 
+			eventLocation: calEvent.eventLocation, 
+			eventDescription: calEvent.eventDescription,
+			eventID: calEvent.eventID
+		});
+	}
 
 	handleOpen() {
 		console.log("Opening modal");
+		console.log(this.state);
 		this.setState({
 			show: true,
-			eventTitle: ""
-			});
+			eventTitle: "", 
+			start: "", 
+			end: "", 
+			event_url: "", 
+			eventLocation: "", 
+			eventDescription: "",
+			eventID: ""
+		});
 	}
 	
 	handleClose() {
@@ -88,33 +144,49 @@ export default class FullCalendarWrapper extends Component {
 		this.setState({show: false});
 	}
 	
-	addEvent(event_title, startDate, endDate, event_url, event_location, event_description) {
-		console.log($('#calendar'));
-		var calendar_event = {title: event_title, 
-			start: startDate, 
-			end: endDate, 
-			url: event_url, 
-			eventLocation: event_location, 
-			eventDescription: event_description};
+	addEvent(eventTitle, startDate, endDate, eventUrl, eventLocation, eventDescription, id) {
+		var calendar_event = {title: eventTitle, 
+			start: new Date(startDate), 
+			end: new Date(endDate), 
+			url: eventUrl, 
+			location: eventLocation, 
+			description: eventDescription}
+		$.post('http://localhost:8888/events/calendar', 
+		JSON.stringify(calendar_event));
 		this.calendar.renderEvent(calendar_event);
 	}
 
 	renderAdminCalendar(){
 		this.calendar = new FullCalendar.Calendar($('#calendar'),{
-			 events: '8888/events',
-			 customButtons: {
+			events: function(start, end, timezone, callback) {
+				$.ajax({
+					url: 'http://localhost:8888/events/calendar',
+					dataType: 'json',
+					success: function(doc) {
+						var events = [];
+						console.log(doc);
+						doc.event.forEach(function(obj) {
+							console.log(obj);
+							events.push(obj);
+						});
+						console.log(events);
+						callback(events);
+					}	
+				});	
+			},
+			customButtons: {
 				addEventButton: {
 					text: 'Add Event',
 					click: () => {this.handleOpen()}
 				}
-			 },
-			 header: {
-				 left: 'prev,next',
-				 center: 'title',
-				 right: 'addEventButton'
-			 }
+			},
+			header: {
+				left: 'prev,next',
+				center: 'title',
+				right: 'addEventButton'
+			},
+			eventClick: (event) => {this.handleEdit(event)}
 		});
-		
 		this.calendar.render();
 	}
 
@@ -164,6 +236,7 @@ export default class FullCalendarWrapper extends Component {
         }
 	}
 }
+
 
 
 
