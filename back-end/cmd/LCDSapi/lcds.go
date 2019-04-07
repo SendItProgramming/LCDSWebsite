@@ -9,6 +9,8 @@ import (
 
 	_ "github.com/lib/pq"
 	"lcdskids.ca/LCDSWebsite/back-end/lib/auth"
+	"lcdskids.ca/LCDSWebsite/back-end/lib/board"
+	"lcdskids.ca/LCDSWebsite/back-end/lib/fees"
 	"lcdskids.ca/LCDSWebsite/back-end/lib/news"
 	"lcdskids.ca/LCDSWebsite/back-end/lib/posts"
 	"lcdskids.ca/LCDSWebsite/back-end/lib/quotes"
@@ -31,6 +33,8 @@ func server() {
 	newsApi := news.NewAPI(db)
   editApi := textediting.NewAPI(db)
 	quotesApi := quotes.NewAPI(db)
+	feesApi := fees.NewAPI(db)
+	boardApi := board.NewAPI(db)
 	muxer := http.NewServeMux()
   
 	muxer.Handle("/auth/", http.StripPrefix("/auth", authApi))
@@ -38,6 +42,8 @@ func server() {
   muxer.Handle("/editor/", http.StripPrefix("/editor", editApi))
 	muxer.Handle("/news/", http.StripPrefix("/news", newsApi))
 	muxer.Handle("/quotes/", http.StripPrefix("/quotes", quotesApi))
+	muxer.Handle("/fees/", http.StripPrefix("/fees", feesApi))
+	muxer.Handle("/board/", http.StripPrefix("/board", boardApi))
 	muxer.Handle("/protected", authApi.Middleware(http.HandlerFunc(basicHandler)))
 	muxer.Handle("/api", http.HandlerFunc(samplePostAPI))
 	muxer.Handle("/", http.HandlerFunc(basicHandler))

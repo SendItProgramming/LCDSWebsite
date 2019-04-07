@@ -10,15 +10,18 @@
   border-color: black;
   margin-right: 10%;
   text-align: left;
+  width: 100%;
 }
 
 .sidebar {
-  width: 20%;
+  width: 290px;
+  padding-right: 5px;
+  overflow: auto;
 }
 
 .body {
-  display: inline-block;
-  width: 100%;
+  display: flex;
+  width: 80%;
 }
 
 .cell {
@@ -37,4 +40,83 @@
   font-weight: bold;
 }
 
+.info {
+  text-align: left;
+}
+
+.fun {
+  font-family: "Londrina Sketch";
+  font-size: 34pt;
+  font-style: italic;
+  text-align: center;
+}
+
+.green {
+  font-size: 18pt;
+  color: #00a844;
+}
+
+.funLink {
+  color: blue;
+}
+
+.funLink:visited {
+  color: blue;
+}
+
+.funLink:hover {
+  color: black;
+  text-decoration: none;
+}
+
+#image {
+  float: center;
+}
+
+.mainBody {
+  width: 600px;
+}
+
+.greenLink {
+  color: green;
+  font-size: 14pt;
+}
+
+.redLink {
+  color: red;
+  font-size: 14pt;
+}
+
+.blueLink {
+  color: blue;
+  font-size: 14pt;
+}
+
+blockquote {
+  background: none;
+  border-left: 10px solid #0C739D;
+  line-height: 1.3em;
+}
+
+blockquote::before {
+  color: #0C739D;
+  content: open-quote;
+  font-size: 4em;
+}
+.left{
+  font-style: bold;
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+.carousel-control.left, .carousel-control.right {
+  background-image:none !important;
+  filter:none !important;
+}
+
+.footer{
+  padding:10px;
+}
 /*# sourceMappingURL=Content.css.map */

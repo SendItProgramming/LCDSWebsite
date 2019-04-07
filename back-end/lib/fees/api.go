@@ -1,4 +1,4 @@
-package news
+package fees
 
 import (
 	"database/sql"
@@ -10,7 +10,7 @@ import (
 )
 
 type API struct {
-	nd  NewsDB
+	fd  FeesDB
 	mux *mux.Router
 }
 
@@ -18,11 +18,12 @@ func (a API) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	a.mux.ServeHTTP(w, r)
 }
 
-func (nd NewsDB) GetNews(w http.ResponseWriter, r *http.Request) {
+func (fd FeesDB) GetFees(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-	n, err := nd.GetAllNews()
+	n, err := fd.GetAllFees()
+
 	if err != nil {
-		fmt.Println("Problem in grabbing the news: ", err)
+		fmt.Println("Problem in grabbing the Fees: ", err)
 		return
 	}
 	json.NewEncoder(w).Encode(n)
@@ -30,7 +31,8 @@ func (nd NewsDB) GetNews(w http.ResponseWriter, r *http.Request) {
 
 func NewAPI(db *sql.DB) API {
 	m := mux.NewRouter()
-	n := NewsDB{db}
-	m.Handle("/", http.HandlerFunc(n.GetNews))
-	return API{n, m}
+	f := FeesDB{db}
+	m.Handle("/", http.HandlerFunc(f.GetFees))
+
+	return API{f, m}
 }
