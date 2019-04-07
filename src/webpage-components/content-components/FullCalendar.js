@@ -16,6 +16,7 @@ export default class FullCalendarWrapper extends Component {
 			event_url: "", 
 			eventLocation: "", 
 			eventDescription: "",
+			eventID: "",
 			modalMode: 'add'
 		};
 		
@@ -84,8 +85,11 @@ export default class FullCalendarWrapper extends Component {
 									/>	
 									
 								</FormGroup>
+								<FormGroup controlId='eventID'>
+									<FormControl type ='text' defaultValue={this.state.eventID} />
+								</FormGroup>
 								
-								<Button onClick= {() =>
+								<Button onClick={() => {
 									this.addEvent(
 										$('#title').val(),
 										$('#start').val(),
@@ -93,11 +97,12 @@ export default class FullCalendarWrapper extends Component {
 										$('#pdf').val(),
 										$('#location').val(),
 										$('#description').val(),
+										$('#eventID').val())
 										
-										this.setState({
-											show: false
-										})
-									)}>Submit</Button>
+									this.setState({
+										show: false
+									})
+								}}>Submit</Button>
 							</form>
 							
 						</Modal.Body>
@@ -116,7 +121,8 @@ export default class FullCalendarWrapper extends Component {
 			end: calEvent.end, 
 			event_url: calEvent.url, 
 			eventLocation: calEvent.eventLocation, 
-			eventDescription: calEvent.eventDescription
+			eventDescription: calEvent.eventDescription,
+			eventID: calEvent.eventID
 		});
 	}
 
@@ -130,7 +136,8 @@ export default class FullCalendarWrapper extends Component {
 			end: "", 
 			event_url: "", 
 			eventLocation: "", 
-			eventDescription: ""
+			eventDescription: "",
+			eventID: ""
 		});
 	}
 	
@@ -139,25 +146,21 @@ export default class FullCalendarWrapper extends Component {
 		this.setState({show: false});
 	}
 	
-	addEvent(eventTitle, startDate, endDate, eventUrl, eventLocation, eventDescription) {
+	addEvent(eventTitle, startDate, endDate, eventUrl, eventLocation, eventDescription, id) {
 		console.log($('#calendar'));
 		var calendar_event = {title: eventTitle, 
 			start: startDate, 
 			end: endDate, 
-			event_url: eventUrl, 
-			eventLocation: eventLocation, 
-			eventDescription: eventDescription}
-		$.post('http://localhost:8888/events/calendar', 
-			{
-				Title: eventTitle, 
-				StartDate: startDate,  
-				EndDate: endDate,
-				URL: eventUrl,
-				Location: eventLocation,
-				Description: eventDescription
-			});
-		console.log("adding this event to calendar");
+			url: eventUrl, 
+			location: eventLocation, 
+			description: eventDescription,
+			eventID: id}
+		console.log("Here is the event that is posting");
 		console.log(calendar_event);
+		$.post('http://localhost:8888/events/calendar', 
+		JSON.stringify(calendar_event));
+		console.log("adding this event to calendar");
+		console.log(JSON.stringify(calendar_event));
 		this.calendar.renderEvent(calendar_event);
 	}
 	
