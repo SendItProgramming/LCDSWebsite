@@ -12,6 +12,7 @@ type NewsPost struct {
 	ID        int
 	Text      string
 	DateAdded time.Time
+	Title     string
 	Show      bool
 }
 
@@ -45,7 +46,7 @@ func (n NewsDB) GetNewsByID(NewsID int) (NewsPost, error) {
 }
 
 func (n NewsDB) GetAllNews() ([]NewsPost, error) {
-	q := "SELECT news_id, news_text, show, date_added FROM news WHERE show = 't' ORDER BY date_added DESC"
+	q := "SELECT news_id, news_text, show, date_added,news_title FROM news WHERE show = 't' ORDER BY date_added DESC"
 	var news []NewsPost
 	rows, err := n.db.Query(q)
 	if err != nil {
@@ -54,7 +55,7 @@ func (n NewsDB) GetAllNews() ([]NewsPost, error) {
 	defer rows.Close()
 	for rows.Next() {
 		var np NewsPost
-		err = rows.Scan(&np.ID, &np.Text, &np.Show, &np.DateAdded)
+		err = rows.Scan(&np.ID, &np.Text, &np.Show, &np.DateAdded, &np.Title)
 		if err != nil {
 			return news, err
 		}

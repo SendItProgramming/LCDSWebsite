@@ -16,7 +16,6 @@
 .sidebar {
   width: 290px;
   padding-right: 5px;
-  overflow: auto;
 }
 
 .body {
@@ -39,18 +38,26 @@
   font-size: 16pt;
   font-weight: bold;
 }
-
+.nameTitle {
+  font-size: 14pt;
+  font-weight: bold;
+}
 .info {
   text-align: left;
 }
 
 .fun {
   font-family: "Londrina Sketch";
-  font-size: 34pt;
+  font-size: 28pt;
   font-style: italic;
   text-align: center;
 }
-
+.left-fun {
+  font-family: "Londrina Sketch";
+  font-size: 20pt;
+  font-style: italic;
+  text-align: left;
+}
 .green {
   font-size: 18pt;
   color: #00a844;
@@ -118,5 +125,8 @@ blockquote::before {
 
 .footer{
   padding:10px;
+}
+.table-image{
+  margin: 10px;
 }
 /*# sourceMappingURL=Content.css.map */

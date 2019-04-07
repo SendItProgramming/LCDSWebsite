@@ -2,6 +2,12 @@
   font-style: bold;
 }
 
+.little-fun {
+  font-family: "Londrina Sketch";
+  font-size: 20pt;
+  font-style: italic;
+}
+
 .footer {
   display: flex;
   text-align: center;

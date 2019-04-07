@@ -1,9 +1,8 @@
-package auth
+package textediting
 
 import (
 	"database/sql"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"net/http"
 	"time"
@@ -19,7 +18,7 @@ type EditorPost struct {
 	LastUpdated time.Time
 }
 
-func (link EditorLink) PostToDB(writer http.ResponseWriter, r *http.Request) {
+func (el EditorLink) PostToDB(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	dec := json.NewDecoder(r.Body)
 	defer r.Body.Close()

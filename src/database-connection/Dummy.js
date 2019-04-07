@@ -26,6 +26,7 @@ export function routes() {
     PreschoolDevSkills: "/programs/kindergarten/preschool-development-skills",       //Done
     IsMyChildReady:     "/programs/is-my-child-ready-for-preschool-or-kindergarden", //done
     Requirements:       "/programs/registration-requirements-for-learning-support",  //Done
+    GenGuide:           "/programs/registration/half-day-program-general-guidelines",
 
     Registration:       "/registration/",                                            //Dpme
     ProgramFees:        "/registration/program-fees",                                //Done
