@@ -4,6 +4,7 @@ import SideBar from "./content-components/SideBar";
 import MainContent from "./content-components/MainContent";
 import ReactTable from "react-table";
 import TextEditor from "./HTMLEditor.js";
+import { Helmet } from "react-helmet";
 
 import {
 	QuotePanel,
@@ -109,126 +110,330 @@ export default class Content extends Component {
 				<div class="mainBody">
 					<Switch>
 						<Route path={this.props.site_urls["Home"]} exact>
-							{this.Home()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["Home"]}</title>
+								</Helmet>
+								{this.Home()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["Resources"]} exact>
-							{this.Resources()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["Resources"]}</title>
+								</Helmet>
+								{this.Resources()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["AboutUs"]} exact>
-							{this.About()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["AboutUs"]}</title>
+								</Helmet>
+								{this.About()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["OurStaff"]} exact>
-							{this.OurStaff()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["OurStaff"]}</title>
+								</Helmet>
+								{this.OurStaff()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["Squirrel"]} exact>
-							{this.Sammy()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["Squirrel"]}</title>
+								</Helmet>
+								{this.Sammy()}
+							</div>
+						</Route>
+						<Route path={this.props.site_urls["Programs"]} exact>
+							<div>
+								<Helmet>
+									<title>{this.props.titles["Programs"]}</title>
+								</Helmet>
+								{this.Programs()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["News"]} exact>
-							{this.News()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["News"]}</title>
+								</Helmet>
+								{this.News()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["Facebook"]} exact>
 							{this.Facebook()}
 						</Route>
 						<Route path={this.props.site_urls["Registration"]} exact>
-							{this.Reg()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["Registration"]}</title>
+								</Helmet>
+								{this.Reg()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["OpenHouse"]} exact>
-							{this.OpenHouseInfo()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["OpenHouse"]}</title>
+								</Helmet>
+								{this.OpenHouseInfo()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["TrialClasses"]} exact>
-							{this.TrialClasses()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["TrialClasses"]}</title>
+								</Helmet>
+								{this.TrialClasses()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["Kindergarden"]} exact>
-							{this.Kindergarden()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["Kindergarden"]}</title>
+								</Helmet>
+								{this.Kindergarden()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["JrKindergarden"]} exact>
-							{this.JrKindergarden()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["JrKindergarden"]}</title>
+								</Helmet>
+								{this.JrKindergarden()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["PreSchool"]} exact>
-							{this.PreSchool()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["PreSchool"]}</title>
+								</Helmet>
+								{this.PreSchool()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["LearningSupport"]} exact>
-							{this.LearningSupport()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["LearningSupport"]}</title>
+								</Helmet>
+								{this.LearningSupport()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["FieldTrips"]} exact>
-							{this.FieldTrips()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["FieldTrips"]}</title>
+								</Helmet>
+								{this.FieldTrips()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["DailySnacks"]} exact>
-							{this.DailySnacks()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["DailySnacks"]}</title>
+								</Helmet>
+								{this.DailySnacks()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["JobOpportunities"]} exact>
-							{this.SubtituteTeachers()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["JobOpportunities"]}</title>
+								</Helmet>
+								{this.SubtituteTeachers()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["PreschoolDevSkills"]} exact>
-							{this.PreschoolDevSkills()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["PreschoolDevSkills"]}</title>
+								</Helmet>
+								{this.PreschoolDevSkills()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["IsMyChildReady"]} exact>
-							{this.IsMyChildReady()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["IsMyChildReady"]}</title>
+								</Helmet>
+								{this.IsMyChildReady()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["Requirements"]} exact>
-							{this.RequirementsForLearningSupport()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["Requirements"]}</title>
+								</Helmet>
+								{this.RequirementsForLearningSupport()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["FoodRestrictions"]} exact>
-							{this.FoodRestrictions()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["FoodRestrictions"]}</title>
+								</Helmet>
+								{this.FoodRestrictions()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["ProgramFees"]} exact>
-							{this.ProgramFees()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["ProgramFees"]}</title>
+								</Helmet>
+								{this.ProgramFees()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["ParentInvolvement"]} exact>
-							{this.ParentInvolvement()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["ParentInvolvement"]}</title>
+								</Helmet>
+								{this.ParentInvolvement()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["BoardDirectors"]} exact>
-							{this.BoardDirectors()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["BoardDirectors"]}</title>
+								</Helmet>
+								{this.BoardDirectors()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["Committee"]} exact>
-							{this.Committee()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["Commitee"]}</title>
+								</Helmet>
+								{this.Committee()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["MiscPositions"]} exact>
-							{this.MiscPositions()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["MiscPositions"]}</title>
+								</Helmet>
+								{this.MiscPositions()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["Contact"]} exact>
-							{this.Contact()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["Contact"]}</title>
+								</Helmet>
+								{this.Contact()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["Events"]} exact>
-							{this.Events()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["Events"]}</title>
+								</Helmet>
+								{this.Events()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["History"]} exact>
-							{this.OurHistory()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["History"]}</title>
+								</Helmet>
+								{this.OurHistory()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["Founder"]} exact>
-							{this.OurFounder()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["Founder"]}</title>
+								</Helmet>
+								{this.OurFounder()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["OurBoard"]} exact>
-							{this.OurBoard()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["OurBoard"]}</title>
+								</Helmet>
+								{this.OurBoard()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["Testimonials"]} exact>
-							{this.Testimonials()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["Testimonials"]}</title>
+								</Helmet>
+								{this.Testimonials()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["JuneHenry"]} exact>
-							{this.JuneHenry()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["JuneHenry"]}</title>
+								</Helmet>
+								{this.JuneHenry()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["Fundraising"]} exact>
-							{this.Fundraising()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["Fundraising"]}</title>
+								</Helmet>
+								{this.Fundraising()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["RegCommit"]} exact>
-							{this.RegistrationCommitments()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["RegCommit"]}</title>
+								</Helmet>
+								{this.RegistrationCommitments()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["PreschoolFees"]} exact>
-							{this.PreSchoolFees()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["PreschoolFees"]}</title>
+								</Helmet>
+								{this.PreSchoolFees()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["JrKindergardenFees"]} exact>
-							{this.JuniorKindergardenFees()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["JrKindergardenFees"]}</title>
+								</Helmet>
+								{this.JuniorKindergardenFees()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["KindergardenFees"]} exact>
-							{this.KindergardenFees()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["KindergardenFees"]}</title>
+								</Helmet>
+								{this.KindergardenFees()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["PaymentOptions"]} exact>
-							{this.PaymentOptions()}
+							<div>
+								<Helmet>
+									<title>{this.props.titles["PaymentOptions"]}</title>
+								</Helmet>
+								{this.PaymentOptions()}
+							</div>
 						</Route>
 						<Route path={this.props.site_urls["Admin"]} exact>
-							<TextEditor path={this.props.site_urls} titles={this.props.titles}/>
+							<div>
+								<Helmet>
+									<title>{this.props.titles["Admin"]}</title>
+								</Helmet>
+								<TextEditor path={this.props.site_urls} titles={this.props.titles}/>
+							</div>
 						</Route>
-						<Redirect to={this.props.site_urls["NotFound"]} />
+						<Redirect to={this.props.site_urls["NotFound"]}>
+						</Redirect>
 
 
 					</Switch>
@@ -237,6 +442,12 @@ export default class Content extends Component {
 
 			</div>
         )
+	}
+
+	Programs() {
+		return(
+			<p>HERPA DERP !!!</p>
+		);
 	}
 
 	Reg(){
