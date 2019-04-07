@@ -11,7 +11,7 @@ import {
     Image
 } from "react-bootstrap"
 
-import "../index-src/css/header.css"
+import "../index-src/css/Header.css"
 import logo from "./../images/header-logo.png"
 import fb from "./../images/facebook.png"
 
