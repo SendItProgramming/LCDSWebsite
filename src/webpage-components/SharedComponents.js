@@ -12,6 +12,8 @@ import {
 
 } from "react-bootstrap";
 import "./../index-src/css/SharedComponents.css"
+import MainContent from "./content-components/MainContent";
+
 import eventButton from './../images/events.png'
 import programsButton from './../images/programs.png'
 import registerButton from './../images/register.png'
@@ -78,7 +80,8 @@ export function LoginPanel(props){
 
 
 	return (
-		<TitledSidebarPanel title="Members Log In">
+		<TitledSidebarPanel>
+			<p class="small-fun">Members Log In</p>
 			<p>*Only registered families of LCDS may create an account.</p>
 			<form id="inputform">
 				<FormGroup>
@@ -137,7 +140,7 @@ export function AboutUsPanel(){
 	return (
 		<SidebarPanel>
 		<div>
-			<p>About Us</p>
+			<p class="small-fun">About Us</p>
 			<p><a href="#/about-us/our-staff">Our Staff</a></p>
 			<p><a href="#/about-us/our-board">Our Board and Committee Members</a></p>
 			<p><a href="#/about-us/Testimonials">Testimonials</a></p>
@@ -170,7 +173,7 @@ export function Registration() {
 	return (
 		<SidebarPanel>
 			<div>
-				<p>Registration</p>
+				<p class="small-fun">Registration</p>
 				<p><a href="#/register/parent-involvement">Parent Involvement</a></p>
 				<p><a href="#/register/registration-requirements">Registration Requirements</a></p>
 				<p><a href="#/register/program-fees">Program Fees</a></p>
@@ -183,7 +186,7 @@ export function Programs() {
 	return (
 		<SidebarPanel>
 			<div>
-				<p>Programs</p>
+				<p class="small-fun">Programs</p>
 				<p><a href= "#/programs"></a></p>
 				<p><a href= "#/programs/kindergarten">Kindergarten</a></p>
 				<p><a href= "#/programs/junior-kindergarten">Junior Kindergarten</a></p>
@@ -210,7 +213,10 @@ export function UpcomingEvents() {
 	return (
 		<SidebarPanel>
 			<div>
-				<p>UpcomingEvents</p>
+				<p class="small-fun">UpcomingEvents</p>
+				<a href="#/events/open-house-registration">Open House and Registration</a>
+				<br/>
+				<a href="#/events/trial-classes">Free Trial Class</a>
 			</div>
 		</SidebarPanel>
 	);

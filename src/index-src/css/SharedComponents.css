@@ -2,4 +2,12 @@
   font-size: 16px;
 }
 
+
+.small-fun {
+  font-family: "Londrina Sketch";
+  font-size: 20pt;
+  font-style: italic;
+  text-align: center;
+}
+
 /*# sourceMappingURL=SharedComponents.css.map */
