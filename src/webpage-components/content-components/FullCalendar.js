@@ -148,13 +148,13 @@ export default class FullCalendarWrapper extends Component {
 	
 	addEvent(eventTitle, startDate, endDate, eventUrl, eventLocation, eventDescription, id) {
 		console.log($('#calendar'));
+		console.log("this is the id",id)
 		var calendar_event = {title: eventTitle, 
-			start: startDate, 
-			end: endDate, 
+			start: new Date(startDate), 
+			end: new Date(endDate), 
 			url: eventUrl, 
 			location: eventLocation, 
-			description: eventDescription,
-			eventID: id}
+			description: eventDescription}
 		console.log("Here is the event that is posting");
 		console.log(calendar_event);
 		$.post('http://localhost:8888/events/calendar', 
