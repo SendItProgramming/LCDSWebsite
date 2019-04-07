@@ -8,9 +8,7 @@ import "./../../index-src/css/sidebar.css"
 */
 export default class SideBar extends Component {
 
-    constructor(props) {
-        super(props)
-    }
+
     componentDidMount(){
         function login() {
             const url = "http://localhost:8888/auth/check";
@@ -339,7 +337,7 @@ export default class SideBar extends Component {
     
     RenderAdmin() {
         return(
-            <div class="a">
+            <div className="a">
 				{this.props.member_login}
             </div>
         );

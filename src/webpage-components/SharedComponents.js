@@ -81,7 +81,7 @@ export function LoginPanel(props){
 
 	return (
 		<TitledSidebarPanel>
-			<p class="small-fun">Members Log In</p>
+			<p className="small-fun">Members Log In</p>
 			<p>*Only registered families of LCDS may create an account.</p>
 			<form id="inputform">
 				<FormGroup>
@@ -140,7 +140,7 @@ export function AboutUsPanel(){
 	return (
 		<SidebarPanel>
 		<div>
-			<p class="small-fun">About Us</p>
+			<p className="small-fun">About Us</p>
 			<p><a href="#/about-us/our-staff">Our Staff</a></p>
 			<p><a href="#/about-us/our-board">Our Board and Committee Members</a></p>
 			<p><a href="#/about-us/Testimonials">Testimonials</a></p>
@@ -173,7 +173,7 @@ export function Registration() {
 	return (
 		<SidebarPanel>
 			<div>
-				<p class="small-fun">Registration</p>
+				<p className="small-fun">Registration</p>
 				<p><a href="#/register/parent-involvement">Parent Involvement</a></p>
 				<p><a href="#/register/registration-requirements">Registration Requirements</a></p>
 				<p><a href="#/register/program-fees">Program Fees</a></p>
@@ -186,7 +186,7 @@ export function Programs() {
 	return (
 		<SidebarPanel>
 			<div>
-				<p class="small-fun">Programs</p>
+				<p className="small-fun">Programs</p>
 				<p><a href= "#/programs"></a></p>
 				<p><a href= "#/programs/kindergarten">Kindergarten</a></p>
 				<p><a href= "#/programs/junior-kindergarten">Junior Kindergarten</a></p>
@@ -213,7 +213,7 @@ export function UpcomingEvents() {
 	return (
 		<SidebarPanel>
 			<div>
-				<p class="small-fun">UpcomingEvents</p>
+				<p className="small-fun">UpcomingEvents</p>
 				<a href="#/events/open-house-registration">Open House and Registration</a>
 				<br/>
 				<a href="#/events/trial-classes">Free Trial Class</a>

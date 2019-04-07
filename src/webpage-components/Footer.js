@@ -6,7 +6,7 @@ import "./../index-src/css/footer.css"
 export default class Footer extends Component {
     render() {
         return (
-            <div class ="footer">
+            <div className="footer">
                 <AdminPublishedPics/>
                 <UserRelatedInfo/>
             </div>

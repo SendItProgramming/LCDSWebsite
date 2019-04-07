@@ -19,7 +19,7 @@ export default class WebPage extends Component {
   render() {
     return (
       <BrowserRouter>
-      <div id="wrapper" class="container">
+      <div id="wrapper" className="container">
         <div className="WebPage">
           <Header  site_urls={this.state.site_urls}/>
           <Content site_urls={this.state.site_urls} titles={this.state.titles}/>
