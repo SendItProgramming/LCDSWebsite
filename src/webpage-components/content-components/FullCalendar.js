@@ -16,6 +16,7 @@ export default class FullCalendarWrapper extends Component {
 		this.handleOpen = this.handleOpen.bind(this);
 		this.handleClose = this.handleClose.bind(this);
 		this.addEvent = this.addEvent.bind(this);
+		this.userObj = this.props.user
 	}
 	
 	render() {
@@ -95,8 +96,6 @@ export default class FullCalendarWrapper extends Component {
 			url: event_url, 
 			eventLocation: event_location, 
 			eventDescription: event_description};
-		console.log("adding this event to calendar");
-		console.log(calendar_event);
 		this.calendar.renderEvent(calendar_event);
 	}
 
@@ -131,11 +130,15 @@ export default class FullCalendarWrapper extends Component {
 		this.calendar.render();
 	}
 	checkAndDestroyCalendar(){
-		if (this.calendar){
+		if(this.userObj == null){
 			this.calendar.destroy()
+		} else if (this.userObj != this.props.user){
+			if (this.calendar){
+				this.calendar.destroy()
+			}
 		}
 	}
-	componentDidUpdate(){
+	/*componentDidUpdate(){
 		if (this.props.user){
             if(this.props.user.Role == "admin"){
             	this.checkAndDestroyCalendar()
@@ -148,7 +151,7 @@ export default class FullCalendarWrapper extends Component {
         	this.checkAndDestroyCalendar()
             this.renderReadOnlyCalendar()
         }
-	}
+	}*/
 	componentDidMount() {
 		if (this.props.user){
             if(this.props.user.Role == "admin"){
