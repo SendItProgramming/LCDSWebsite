@@ -167,24 +167,30 @@ export default class FullCalendarWrapper extends Component {
 				$.ajax({
 					url: 'http://localhost:8888/events/calendar',
 					dataType: 'json',
-					success(doc) {
-						console.log(doc);
+					success: function(doc) {
 						var events = [];
-						doc.forEach(function(element) {
-							events.push({
-								title: $(this).attr('Title'),
-								start: $(this).attr('StartDate')
-							});
-						})
+						console.log(doc);
+						doc.event.forEach(function(obj) {
+							console.log(obj);
+							events.push(obj);
+						});
 						console.log(events);
-					}
+						callback(events);
+					}	
 				});	
+			},
+			customButtons: {
+				addEventButton: {
+					text: 'Add Event',
+					click: () => {this.handleOpen()}
+				}
 			},
 			header: {
 				left: 'prev,next',
 				center: 'title',
 				right: 'addEventButton'
-			}
+			},
+			eventClick: (event) => {this.handleEdit(event)}
 		});
 		this.calendar.render();
 	}
