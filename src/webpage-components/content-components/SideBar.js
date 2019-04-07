@@ -325,6 +325,7 @@ export default class SideBar extends Component {
         );
     }
 
+
     GetQuote(){
         return(
             <blockquote>
@@ -332,8 +333,10 @@ export default class SideBar extends Component {
             <br />
                 -{this.props.quote.Author}
             </blockquote>
+
         );
     }
+    
     RenderAdmin() {
         return(
             <div class="a">

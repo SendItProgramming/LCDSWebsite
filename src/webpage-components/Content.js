@@ -4,6 +4,7 @@ import SideBar from "./content-components/SideBar";
 import MainContent from "./content-components/MainContent";
 import ReactTable from "react-table";
 import TextEditor from "./HTMLEditor.js";
+
 import {
 	QuotePanel,
 	LoginPanel,
@@ -102,6 +103,7 @@ export default class Content extends Component {
 			);
 		}
 		//document.getElementById("loginButton").addEventListener("click", myFunction);
+
 	}
 
     render() {
@@ -109,7 +111,6 @@ export default class Content extends Component {
         return (
 			<div class="body">
 				{this.SideBar()}
-
 				<div class="mainBody">
 					<Switch>
 						<Route path={this.props.site_urls["Home"]} exact>
@@ -239,8 +240,9 @@ export default class Content extends Component {
 							{this.Error()}
 						</Route>
 						<Route path={this.props.site_urls["Admin"]} exact>
-						<TextEditor path={this.props.site_urls} titles={this.props.titles}/>
-					</Route>
+							<TextEditor path={this.props.site_urls} titles={this.props.titles}/>
+						</Route>
+						<Redirect to={this.props.site_urls["NotFound"]} />
 					</Switch>
 				</div>
 
@@ -248,6 +250,7 @@ export default class Content extends Component {
 			</div>
         )
 	}
+
 	Reg(){
 		return(
 			<div class="info">
@@ -290,6 +293,7 @@ export default class Content extends Component {
 			</div>
 		);
 	}
+
 
 	SideBar() {
 		return(
