@@ -17,7 +17,8 @@ export default class FullCalendarWrapper extends Component {
 			eventLocation: "", 
 			eventDescription: "",
 			eventID: "",
-			modalMode: 'add'
+			calendarEvent: "",
+			modalMode: ""
 		};
 		
 		this.calendar = new FullCalendar.Calendar();
@@ -86,10 +87,16 @@ export default class FullCalendarWrapper extends Component {
 									
 								</FormGroup>
 								<FormGroup controlId='eventID'>
-									<FormControl type ='text' defaultValue={this.state.eventID} />
+									<FormControl 
+										type ='text' 
+										value={this.state.eventID}
+										style={{display:'none'}}
+										readOnly
+										/>
 								</FormGroup>
 								
-								<Button onClick={() => {
+								{(this.state.modalMode === "add") ?
+								(<Button onClick={() => {
 									this.addEvent(
 										$('#title').val(),
 										$('#start').val(),
@@ -102,7 +109,25 @@ export default class FullCalendarWrapper extends Component {
 									this.setState({
 										show: false
 									})
-								}}>Submit</Button>
+								}}>Submit</Button> )
+								:
+								(<Button onClick={() => {
+									this.updateEvent(
+										$('#title').val(),
+										$('#start').val(),
+										$('#end').val(),
+										$('#pdf').val(),
+										$('#location').val(),
+										$('#description').val(),
+										$('#eventID').val(),
+										)
+										
+									this.setState({
+										show: false
+									})
+								}}>Submit</Button> )
+								}
+								
 							</form>
 							
 						</Modal.Body>
@@ -122,7 +147,9 @@ export default class FullCalendarWrapper extends Component {
 			event_url: calEvent.url, 
 			eventLocation: calEvent.eventLocation, 
 			eventDescription: calEvent.eventDescription,
-			eventID: calEvent.eventID
+			eventID: calEvent.eventID,
+			calendarEvent: calEvent,
+			modalMode: "update"
 		});
 	}
 
@@ -137,7 +164,8 @@ export default class FullCalendarWrapper extends Component {
 			event_url: "", 
 			eventLocation: "", 
 			eventDescription: "",
-			eventID: ""
+			eventID: "",
+			modalMode: "add"
 		});
 	}
 	
@@ -162,6 +190,36 @@ export default class FullCalendarWrapper extends Component {
 		console.log("adding this event to calendar");
 		console.log(JSON.stringify(calendar_event));
 		this.calendar.renderEvent(calendar_event);
+	}
+	
+	updateEvent(eventTitle, startDate, endDate, eventUrl, eventLocation, eventDescription, id) {
+		console.log($('#calendar'));
+		console.log("this is the id",id)
+		var calendar_event = this.state.calendarEvent;
+		
+		calendar_event.title = eventTitle;
+		calendar_event.start = new Date(startDate);
+		calendar_event.end = new Date(endDate); 
+		calendar_event.url = eventUrl;
+		calendar_event.location = eventLocation;
+		calendar_event.description = eventDescription;
+		
+		var calEvent = {
+			title: eventTitle,
+			start: new Date(startDate),
+			end: new Date(endDate),
+			url: eventUrl,
+			location: eventLocation,
+			description: eventDescription
+		}
+			
+		console.log("Here is the event that is posting");
+		console.log(calEvent);
+		console.log(JSON.stringify(calEvent));
+		$.post('http://localhost:8888/events/calendar', JSON.stringify(calEvent));
+		console.log("updating this event in calendar");
+		
+		this.calendar.updateEvent(calendar_event);
 	}
 	
 	componentDidMount() {
