@@ -48,11 +48,16 @@
 
 .fun {
   font-family: "Londrina Sketch";
-  font-size: 34pt;
+  font-size: 28pt;
   font-style: italic;
   text-align: center;
 }
-
+.left-fun {
+  font-family: "Londrina Sketch";
+  font-size: 20pt;
+  font-style: italic;
+  text-align: left;
+}
 .green {
   font-size: 18pt;
   color: #00a844;

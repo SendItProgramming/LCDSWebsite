@@ -39,6 +39,7 @@ import SammyMiscImages from "./../images/Sammy_Misc_Positions_Image.jpg"
 import SammyHistory from "./../images/Sammy_Our_History_Image.jpg"
 import SammyBoard from "./../images/Sammy_Our_Board.jpg"
 import SammyJune from "./../images/Sammy_June_Henry.jpg"
+import LCDSMap from "./../images/LCDSmapSQ.jpg"
 import SammyTestimonials from "./../images/Sammy_Testimonials_Image.jpg"
 import Slide1 from "./../images/Slide/slide1.png"
 import Slide2 from "./../images/Slide/slide2.png"
@@ -54,6 +55,9 @@ import CarmenBriggs from "./../images/Staff/Carmen_Briggs.jpg"
 import CorinaMichetti from "./../images/Staff/Corina_Michetti.jpg"
 import SarahQuinton from "./../images/Staff/Sarah_Quinton.jpg"
 import ShannonMusic from "./../images/Staff/Shannon_Music.jpg"
+import { FaFax } from 'react-icons/fa';
+import { FaPhone } from 'react-icons/fa';
+
 
 
 export default class Content extends Component {
@@ -74,7 +78,9 @@ export default class Content extends Component {
 		this.news = this.GetNews.bind(this)
 		WebFont.load({
 			google: {
-				families: ['Londrina Sketch']
+				families: ['Londrina Sketch'],
+				//families: ['Waiting for the Sunrise'],
+				//families: ['Finger Paint'],
 			}
 		});
 	}
@@ -345,25 +351,28 @@ export default class Content extends Component {
 
 	News(){
 		const items = this.state.news
-		
+
 		return(
 			<div class = "content">
-			<p class="fun">News:</p>
-			<table class = "Table" border = "0">
-			<tbody>
-				{items.map(item => (
-
-						<tr class = "cell">
-						<td>
-							<p>{item.Text}</p>
-						</td>
+			<table class = "Table">
+					<tbody>
+						<tr>
+							<th></th>
 						</tr>
-
-				))}
-		</tbody>
-		</table>
-		</div>
-		)
+						{items.map(item => (
+							<tr>
+								<td >
+								<p class = "left-fun">
+								{item.Title}
+								</p>
+								<p class="left">{item.Text}</p>
+								</td>
+							</tr>
+						))}
+					</tbody>
+					</table>
+			</div>
+		);
 
 	}
 
@@ -374,113 +383,105 @@ export default class Content extends Component {
 			<p class="subTitle">The following are helpful websites for parents</p>
 			<table class = "Table">
 				<tbody>
-					<tr class ="cell">
+					<tr>
 						<td>
-							<p>Web Link <a href="https://www.learnalberta.ca/content/mychildslearning/gradeataglance/Kindergarden.pdf">
+							<p><a class ="greenLink" href="https://www.learnalberta.ca/content/mychildslearning/gradeataglance/Kindergarden.pdf">
 							Kindergarden Curriculum</a></p>
 							<p>Alberta Education - Kindergarden Curriculum Guide for Parents</p>
 						</td>
 					</tr>
-					<tr class ="cell">
+					<tr>
 						<td>
-							<p>Web Link <a href="https://www.alberta.ca/ministry-education.aspx">
+							<p><a class ="greenLink" href="https://www.alberta.ca/ministry-education.aspx">
 							Alberta Education</a></p>
 							<p>Alberta Education Website</p>
 						</td>
 					</tr>
-					<tr class ="cell">
+					<tr>
 						<td>
-							<p>Web Link <a href="http://www.humanservices.alberta.ca/financial-support/15104.html">
+							<p><a class ="greenLink" href="http://www.humanservices.alberta.ca/financial-support/15104.html">
 							Alberta Government Childcare Subsidy</a></p>
 							<p>Information about AB Government Childcare Subsidy</p>
 						</td>
 					</tr>
-					<tr class ="cell">
+					<tr>
 						<td>
-							<p>Web Link <a href="https://myhealth.alberta.ca/Pages/default.aspx">
+							<p><a class ="greenLink" href="https://myhealth.alberta.ca/Pages/default.aspx">
 							My Health Alberta</a></p>
 							<p>Health Information for Parents.  check to make sure your child's immunizations are up to date.</p>
 						</td>
 					</tr>
-					<tr class ="cell">
+					<tr>
 						<td>
-							<p>Web Link <a href="http://www.napta.ca/">
+							<p><a class ="greenLink" href="http://www.napta.ca/">
 							Northern Alberta Preschool Teacher's Association</a></p>
 							<p>Find a Preschool in your area.</p>
 						</td>
 					</tr>
 
-					<tr class = "cell">
+					<tr>
 						<td>
-						<p>Web Link <a href = "http://www.humanservices.alberta.ca/services-near-you/edmonton-and-area-child-and-family-services.html">
+						<p><a class ="greenLink" href = "http://www.humanservices.alberta.ca/services-near-you/edmonton-and-area-child-and-family-services.html">
 						Edmonton Region Child & Family Services</a></p>
 						<p>Edmonton Region Child & Family Services - Programs and Services</p>
 						</td>
 					</tr>
 
-					<tr class = "cell">
+					<tr>
 						<td>
-						<p>Web Link <a href="https://www.abcheadstart.org/">
+						<p><a class ="greenLink" href="https://www.abcheadstart.org/">
 							ABC Headstart</a></p>
 							<p>ABC Headstart Program - Preschool Programs and Learning Support for low income families and low income families having children with special learning needs.</p>
 						</td>
 					</tr>
 
-					<tr class = "cell">
+					<tr>
 						<td>
-							<p>Web Link <a href="">Eye See...Eye Learn Program</a></p>
+							<p><a class ="greenLink" href="">Eye See...Eye Learn Program</a></p>
 							<p>Eye See...Eye Learn Program - The Alberta Association of Optometrists
 							Free Eye Examination and Free Glasses for Kindergarden Students in Alberta</p>
 						</td>
 					</tr>
 
-					<tr class = "cell">
+					<tr>
 						<td>
-							<p>Web Link <a href="https://www.triplep-parenting.ca/alb-en/triple-p/">Triple P - Positive Parenting</a></p>
+							<p><a class ="greenLink" href="https://www.triplep-parenting.ca/alb-en/triple-p/">Triple P - Positive Parenting</a></p>
 							<p>Triple P - Positive Parenting Website</p>
 						</td>
 					</tr>
 
-					<tr class = "cell">
+					<tr>
 						<td>
-							<p>Web Link <a href="https://www.triplep-parenting.ca/alb-en/triple-p/">Triple P - Positive Parenting</a></p>
-							<p>Triple P - Positive Parenting Website</p>
-						</td>
-					</tr>
-
-
-					<tr class = "cell">
-						<td>
-						<p>Web Link <a href="http://www.earlychildhoodedm.ca/northcentral/">North Central Early Years Coalition</a></p>
+						<p><a class ="greenLink" href="http://www.earlychildhoodedm.ca/northcentral/">North Central Early Years Coalition</a></p>
 						<p>North Central Early Years Coalition Website. Parenting information and events.</p>
 						</td>
 					</tr>
 
-					<tr class = "cell">
+					<tr>
 						<td>
-						<p>Web Link <a href="https://www.edmonton.ca/attractions-events.aspx">City of Edmonton - Attractions and Events</a></p>
+						<p><a class ="greenLink" href="https://www.edmonton.ca/attractions-events.aspx">City of Edmonton - Attractions and Events</a></p>
 						<p>Check out what's happening in the City of Edmonton.</p>
 						</td>
 					</tr>
 
-					<tr class = "cell">
+					<tr>
 						<td>
-						<p>Web Link <a href="https://www.drugwatch.com/health/children/"> Drugwatch</a></p>
+						<p><a class ="greenLink" href="https://www.drugwatch.com/health/children/"> Drugwatch</a></p>
 						<p>Children's Health Guide: Newborn to Preteen</p>
 						</td>
 					</tr>
 
-					<tr class = "cell">
+					<tr>
 						<td>
-						<p>Web Link <a href= "https://www.caringforkids.cps.ca/">
+						<p><a class ="greenLink" href= "https://www.caringforkids.cps.ca/">
 						Canadian Pediatric Society</a></p>
 						<p>Information for parents from the Canadian Pediatric Society</p>
 						</td>
 					</tr>
 
-					<tr class = "cell">
+					<tr>
 						<td>
-						<p>Web Link <a href="https://edmonton.cmha.ca/">Edmonton Canadian Mental Health Association</a></p>
+						<p><a class ="greenLink" href="https://edmonton.cmha.ca/">Edmonton Canadian Mental Health Association</a></p>
 						<p>Call 211. Great resources for parenting help, newcomers to Edmonton, mental health support, where to go for help with basic needs, etc.</p>
 						</td>
 					</tr>
@@ -1335,9 +1336,27 @@ export default class Content extends Component {
 	Contact(){
 		return(
 			<div class="info">
-				<p class="fun">LCDS Preschool and Kindergarden Contact information</p>
-				General Office: 13931-140 Street, Edmonton, Ab T6V1J7
-
+				<p class="fun">LCDS Preschool and Kindergarden Contact Information</p>
+				<table class = "Table">
+				<tbody>
+					<tr>
+						<th></th>
+						<th class="right"></th>
+					</tr>
+					<tr>
+						<td>
+							<p class="left-fun">General Office:</p>
+							13931-140 Street<br />
+							Edmonton, Ab<br />
+							T6V 1J7<br />
+							<br />
+							<FaPhone /> (780) 473-7216<br />
+							<FaFax /> (780) 473-7021
+						</td>
+						<td class="right"><img src={LCDSMap}/></td>
+					</tr>
+				</tbody>
+				</table>
 			</div>
 		);
 	}
@@ -1363,13 +1382,6 @@ export default class Content extends Component {
 		);
 	}
 
-	OurFounder(){
-		return(
-			<div class="info">
-				<p class="fun">Our Founder</p>
-			</div>
-		);
-	}
 
 	Getboard(){
 		fetch("http://localhost:8888/board/")
@@ -1406,7 +1418,7 @@ export default class Content extends Component {
 				<table class = "Table">
 				<tbody>
 					<tr>
-						<th>Position</th>
+						<th>PosiBoution</th>
 						<th class="right">Member</th>
 					</tr>
 					{items.map(item => (

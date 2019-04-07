@@ -12,6 +12,8 @@ import {
 
 } from "react-bootstrap";
 import "./../index-src/css/SharedComponents.css"
+import MainContent from "./content-components/MainContent";
+
 import eventButton from './../images/events.png'
 import programsButton from './../images/programs.png'
 import registerButton from './../images/register.png'
@@ -212,6 +214,9 @@ export function UpcomingEvents() {
 		<SidebarPanel>
 			<div>
 				<p class="small-fun">UpcomingEvents</p>
+				<a href="#/events/open-house-registration">Open House and Registration</a>
+				<br/>
+				<a href="#/events/trial-classes">Free Trial Class</a>
 			</div>
 		</SidebarPanel>
 	);
