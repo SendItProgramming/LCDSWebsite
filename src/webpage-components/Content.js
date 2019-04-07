@@ -116,9 +116,9 @@ export default class Content extends Component {
     render() {
         console.log(this.state.quote)
         return (
-			<div class="body">
+			<div className="body">
 				{this.SideBar()}
-				<div class="mainBody">
+				<div className="mainBody">
 					<Switch>
 						<Route path={this.props.site_urls["Home"]} exact>
 							<div>
@@ -457,8 +457,8 @@ export default class Content extends Component {
 
 	Reg(){
 		return(
-			<div class="info">
-				<p class = "fun">Registration Requirements</p>
+			<div className ="info">
+				<p className = "fun">Registration Requirements</p>
 				<p><b>All children must be at least 3 years of age and fully toilet trained in order to register with LCDS.</b>
 				Fully toilet trained means your child <b>can recognize</b> when they have to go to the washroom and <b>are able to pull their clothes down and up</b>; they must <b>be able to wipe themselves</b> and flush the toilet.
 				They <b>must be fully functioning</b> in the bathroom stall.
@@ -466,7 +466,7 @@ export default class Content extends Component {
 				<br/>
 
 				<p><b>Sending a child to school in “Pull-Ups” is not accepted.</b></p>
-				<p class="subTitle">Registration Priority</p>
+				<p className="subTitle">Registration Priority</p>
 				<p>All families who have <b>previously</b> registered with <b>LCDS</b> have <b>first priority</b> for registration in the program and are <b>eligible to register in February</b> on the designated registration date for the following year.</p>
 				<br/>
 
@@ -489,11 +489,11 @@ export default class Content extends Component {
 				<p>A <b><u>complete</u></b> registration form, fees, all deposit cheques and any supporting documentation <b><u>must</u></b> be submitted to the registrar at the time of registration in order to be considered <b><u>registered</u></b> in the program.</p>
 				<br/>
 
-				<a href={this.props.site_urls["LearningSupport"]} class="green" >Registration Requirements For Learning Support</a>
+				<a href={this.props.site_urls["LearningSupport"]} className="green" >Registration Requirements For Learning Support</a>
 				<br/>
-				<a href={this.props.site_urls["RegCommit"]}  class="green">Registration Commitments</a>
+				<a href={this.props.site_urls["RegCommit"]}  className="green">Registration Commitments</a>
 				<br/>
-				<a href={this.props.site_urls["ParentInvolvement"]}class="green">Parent Involvement</a>
+				<a href={this.props.site_urls["ParentInvolvement"]}className="green">Parent Involvement</a>
 			</div>
 		);
 	}
@@ -502,7 +502,7 @@ export default class Content extends Component {
 	SideBar() {
 		return(
 
-			<div class="sidebar">
+			<div className="sidebar">
 					<SideBar site_urls={this.props.site_urls}
 						quote={<QuotePanel quote={this.state.quote}/>}
 						custom_buttons={<ButtonsPanel/>}
@@ -523,19 +523,19 @@ export default class Content extends Component {
 	Error(){
 		return(
 			<div>
-				<p class="fun">WHOOPS YOU'VE MADE A MISTAKE</p>
-				<p class="subTitle">If you're here, you made a mistake, go back</p>
+				<p className="fun">WHOOPS YOU'VE MADE A MISTAKE</p>
+				<p className="subTitle">If you're here, you made a mistake, go back</p>
 			</div>
 		);
 	}
 
 	About(){
 		return (
-			<div class="info">
+			<div className="info">
 			{this.AboutInfo()}
 			<br />
 			<br />
-			<p class="fun">Our Beliefs</p>
+			<p className="fun">Our Beliefs</p>
 			<p>Today, LCDS Preschool and Kindergarten still operates with the same values and beliefs established by the founding members of the Society.  Parents have the unique opportunity to be actively involved in their children's education through daily classroom activities, operational committees and management of the school in coordination with the program's teaching staff, Executive Director and Business Manager.</p>
 
 			<p>LCDS Preschool and Kindergarten distinguishes itself from other Edmonton preschools in that the program offers a Kindergarten program and the program is led by a Teacher with a Bachelor Degree in Elementary Education and Psychology along with qualified Educational Assistants.</p>
@@ -551,8 +551,8 @@ export default class Content extends Component {
 		const items = this.state.news
 
 		return(
-			<div class = "content">
-			<table class = "Table">
+			<div className = "content">
+			<table className = "Table">
 					<tbody>
 						<tr>
 							<th></th>
@@ -560,10 +560,10 @@ export default class Content extends Component {
 						{items.map(item => (
 							<tr>
 								<td >
-								<p class = "left-fun">
+								<p className = "left-fun">
 								{item.Title}
 								</p>
-								<p class="left">{item.Text}</p>
+								<p className="left">{item.Text}</p>
 								</td>
 							</tr>
 						))}
@@ -576,42 +576,42 @@ export default class Content extends Component {
 
 	Resources(){
 		return(
-		<div class ="info">
-			<p class ="fun">Resources</p>
-			<p class="subTitle">The following are helpful websites for parents</p>
-			<table class = "Table">
+		<div className ="info">
+			<p className ="fun">Resources</p>
+			<p className="subTitle">The following are helpful websites for parents</p>
+			<table className = "Table">
 				<tbody>
 					<tr>
 						<td>
-							<p><a class ="greenLink" href="https://www.learnalberta.ca/content/mychildslearning/gradeataglance/Kindergarden.pdf">
+							<p><a className ="greenLink" href="https://www.learnalberta.ca/content/mychildslearning/gradeataglance/Kindergarden.pdf">
 							Kindergarden Curriculum</a></p>
 							<p>Alberta Education - Kindergarden Curriculum Guide for Parents</p>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<p><a class ="greenLink" href="https://www.alberta.ca/ministry-education.aspx">
+							<p><a className ="greenLink" href="https://www.alberta.ca/ministry-education.aspx">
 							Alberta Education</a></p>
 							<p>Alberta Education Website</p>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<p><a class ="greenLink" href="http://www.humanservices.alberta.ca/financial-support/15104.html">
+							<p><a className ="greenLink" href="http://www.humanservices.alberta.ca/financial-support/15104.html">
 							Alberta Government Childcare Subsidy</a></p>
 							<p>Information about AB Government Childcare Subsidy</p>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<p><a class ="greenLink" href="https://myhealth.alberta.ca/Pages/default.aspx">
+							<p><a className ="greenLink" href="https://myhealth.alberta.ca/Pages/default.aspx">
 							My Health Alberta</a></p>
 							<p>Health Information for Parents.  check to make sure your child's immunizations are up to date.</p>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<p><a class ="greenLink" href="http://www.napta.ca/">
+							<p><a className ="greenLink" href="http://www.napta.ca/">
 							Northern Alberta Preschool Teacher's Association</a></p>
 							<p>Find a Preschool in your area.</p>
 						</td>
@@ -619,7 +619,7 @@ export default class Content extends Component {
 
 					<tr>
 						<td>
-						<p><a class ="greenLink" href = "http://www.humanservices.alberta.ca/services-near-you/edmonton-and-area-child-and-family-services.html">
+						<p><a className ="greenLink" href = "http://www.humanservices.alberta.ca/services-near-you/edmonton-and-area-child-and-family-services.html">
 						Edmonton Region Child & Family Services</a></p>
 						<p>Edmonton Region Child & Family Services - Programs and Services</p>
 						</td>
@@ -627,7 +627,7 @@ export default class Content extends Component {
 
 					<tr>
 						<td>
-						<p><a class ="greenLink" href="https://www.abcheadstart.org/">
+						<p><a className ="greenLink" href="https://www.abcheadstart.org/">
 							ABC Headstart</a></p>
 							<p>ABC Headstart Program - Preschool Programs and Learning Support for low income families and low income families having children with special learning needs.</p>
 						</td>
@@ -635,7 +635,7 @@ export default class Content extends Component {
 
 					<tr>
 						<td>
-							<p><a class ="greenLink" href="">Eye See...Eye Learn Program</a></p>
+							<p><a className ="greenLink" href="">Eye See...Eye Learn Program</a></p>
 							<p>Eye See...Eye Learn Program - The Alberta Association of Optometrists
 							Free Eye Examination and Free Glasses for Kindergarden Students in Alberta</p>
 						</td>
@@ -643,35 +643,35 @@ export default class Content extends Component {
 
 					<tr>
 						<td>
-							<p><a class ="greenLink" href="https://www.triplep-parenting.ca/alb-en/triple-p/">Triple P - Positive Parenting</a></p>
+							<p><a className ="greenLink" href="https://www.triplep-parenting.ca/alb-en/triple-p/">Triple P - Positive Parenting</a></p>
 							<p>Triple P - Positive Parenting Website</p>
 						</td>
 					</tr>
 
 					<tr>
 						<td>
-						<p><a class ="greenLink" href="http://www.earlychildhoodedm.ca/northcentral/">North Central Early Years Coalition</a></p>
+						<p><a className ="greenLink" href="http://www.earlychildhoodedm.ca/northcentral/">North Central Early Years Coalition</a></p>
 						<p>North Central Early Years Coalition Website. Parenting information and events.</p>
 						</td>
 					</tr>
 
 					<tr>
 						<td>
-						<p><a class ="greenLink" href="https://www.edmonton.ca/attractions-events.aspx">City of Edmonton - Attractions and Events</a></p>
+						<p><a className ="greenLink" href="https://www.edmonton.ca/attractions-events.aspx">City of Edmonton - Attractions and Events</a></p>
 						<p>Check out what's happening in the City of Edmonton.</p>
 						</td>
 					</tr>
 
 					<tr>
 						<td>
-						<p><a class ="greenLink" href="https://www.drugwatch.com/health/children/"> Drugwatch</a></p>
+						<p><a className ="greenLink" href="https://www.drugwatch.com/health/children/"> Drugwatch</a></p>
 						<p>Children's Health Guide: Newborn to Preteen</p>
 						</td>
 					</tr>
 
 					<tr>
 						<td>
-						<p><a class ="greenLink" href= "https://www.caringforkids.cps.ca/">
+						<p><a className ="greenLink" href= "https://www.caringforkids.cps.ca/">
 						Canadian Pediatric Society</a></p>
 						<p>Information for parents from the Canadian Pediatric Society</p>
 						</td>
@@ -679,7 +679,7 @@ export default class Content extends Component {
 
 					<tr>
 						<td>
-						<p><a class ="greenLink" href="https://edmonton.cmha.ca/">Edmonton Canadian Mental Health Association</a></p>
+						<p><a className ="greenLink" href="https://edmonton.cmha.ca/">Edmonton Canadian Mental Health Association</a></p>
 						<p>Call 211. Great resources for parenting help, newcomers to Edmonton, mental health support, where to go for help with basic needs, etc.</p>
 						</td>
 					</tr>
@@ -692,8 +692,8 @@ export default class Content extends Component {
 	AboutInfo(){
 
 		return(
-			<div class="info">
-				<p class="fun"><a class="funLink" href={ this.props.site_urls["AboutUs"] }>About us</a></p>
+			<div className="info">
+				<p className="fun"><a className="funLink" href={ this.props.site_urls["AboutUs"] }>About us</a></p>
 				<p><b>LCDS Preschool & Kindergarden (formerly Londonderry Child Development Society)</b> was established in North Edmonton in 1972 by a group of parents who wanted an early learning program in their community for their young children.  They wanted to be actively involved in their children's education and they believed that learning should be fun.</p>
 
 				<p>LCDS is a <a href={ this.props.site_urls["ParentInvolvement"] }>Parent Cooperative</a>, program and is a registered not-for-profit organization established under the Societies Act of Alberta.  We are licensed and registered with Alberta Child and Family Services, Alberta Education and the City of Edmonton.  We are proud to be members of the Association of Independent Schools & Colleges in Alberta and the Northern Alberta Preschool Teachers Association.</p>
@@ -705,8 +705,8 @@ export default class Content extends Component {
 
 	SubtituteTeachers(){
 		return(
-			<div class="info">
-				<p class="fun"><a class="funLink" href={this.props.site_urls["JobOpportunities"]}> Substitute teachers and Subtitute Educational Assistants</a></p>
+			<div className="info">
+				<p className="fun"><a className="funLink" href={this.props.site_urls["JobOpportunities"]}> Substitute teachers and Subtitute Educational Assistants</a></p>
 				<p><b>We have need for Substitute Teachers, and Substitute Educational Assistants throughout the school year</b>. If you are interested in having your name added to our Substitute Lists, please email your resume to our school office and we will contact you for an Interview.</p>
 				<p>Substitute Teachers should have a valid Teaching Certificate, permanent or temporary.</p>
 
@@ -718,10 +718,10 @@ export default class Content extends Component {
 
 	OpenHouseInfo(){
 		return(
-		<div class="info">
+		<div className="info">
 
-		<p class="fun"><a class="funLink" href={this.props.site_urls["OpenHouse"]}>Open House & Registration for {this.state.yr}/{this.state.yr +1}</a></p>
-		<p class="green">Is Your Child 3, 4 or 5 Years Old? Are They Ready to Start School?</p>
+		<p className="fun"><a className="funLink" href={this.props.site_urls["OpenHouse"]}>Open House & Registration for {this.state.yr}/{this.state.yr +1}</a></p>
+		<p className="green">Is Your Child 3, 4 or 5 Years Old? Are They Ready to Start School?</p>
 		<p>Register Your Child Today!</p>
 		<p><b>LCDS Preschool & Kindergarden has an awesome program for your child.
 					We offer Kindergarden, Jr. Kindergarden and Preschool for children 3 to 5 years old.
@@ -739,9 +739,9 @@ export default class Content extends Component {
 
 	TrialClasses(){
 		return(
-			<div class="info">
-				<p class="fun"><a class="funLink" href={this.props.site_urls["TrialClasses"]}>Free Trial Classes</a></p>
-				<p class="green">Not Sure If Your Child Is Ready For School Or If They Will Like It?</p>
+			<div className="info">
+				<p className="fun"><a className="funLink" href={this.props.site_urls["TrialClasses"]}>Free Trial Classes</a></p>
+				<p className="green">Not Sure If Your Child Is Ready For School Or If They Will Like It?</p>
 				<p><b>LCDS Preschool & Kindergarden offers free Trial classes for you and your child to experience preschool.</b></p>
 				<p><b>Trial Classes are by appointment, they may be arranged for a class any day of the week (subject to availability)</b>; only two spots are available per class each day. Bring your child to class for 9:15 am or 1:05 pm and participate in the classroom experience until 10:30 am or 2:35 pm.</p>
 				<p><b>Children must be at least 3 years old and fully toilet trained.</b></p>
@@ -753,9 +753,9 @@ export default class Content extends Component {
 	Facebook() {
 
 		return(
-		<div class="info">
-			<p class="fun"><a class="funLink" href={ this.props.site_urls["Facebook"] }>LCDS on Facebook</a></p>
-			<p><a class="green" href="https://www.facebook.com/lcdskids">LCDS Preschool & Kindergarden.</a></p>
+		<div className="info">
+			<p className="fun"><a className="funLink" href={ this.props.site_urls["Facebook"] }>LCDS on Facebook</a></p>
+			<p><a className="green" href="https://www.facebook.com/lcdskids">LCDS Preschool & Kindergarden.</a></p>
 			<p>See all of the fun activities, events and crafts the children have done this year!</p>
 		</div>
 		);
@@ -834,18 +834,18 @@ export default class Content extends Component {
 	OurStaff(){
 		return(
 			<div>
-			<p class="fun">Staff</p>
-			<table class = "Table">
+			<p className="fun">Staff</p>
+			<table className = "Table">
 			<tbody>
 			<tr>
 				<th></th>
 				<th></th>
 			</tr>
 			<tr>
-				<td><img class="table-image" src={MichellFung}/></td>
-				<td class="left">
-				<p class ="subTitle">Our Teacher</p>
-				<p class="nameTitle">Michell Fung</p>
+				<td><img className="table-image" src={MichellFung}/></td>
+				<td className="left">
+				<p className="subTitle">Our Teacher</p>
+				<p className="nameTitle">Michell Fung</p>
 				<p>I was born and raised here in Edmonton.
 				I grew up in the north side of Edmonton and now currently live on the south side with my husband Neil and my cat and dog. I have two degrees.
 				My first degree is in Psychology with a minor in Sociology. My second degree is in Elementary Education.
@@ -858,15 +858,15 @@ export default class Content extends Component {
 			</tr>
 			<tr>
 				<td></td>
-				<td class="left">
-				<p class ="subTitle">Our Educational Assistants:</p>
+				<td className="left">
+				<p className="subTitle">Our Educational Assistants:</p>
 
 				</td>
 			</tr>
 			<tr>
-				<td><img class="table-image" src={CorinaMichetti}/></td>
-				<td class="left">
-					<p class="nameTitle">Corina Michetti</p>
+				<td><img className="table-image" src={CorinaMichetti}/></td>
+				<td className="left">
+					<p className="nameTitle">Corina Michetti</p>
 
 					<p>Ms. Corina is a former parent of LCDS.
 						Her children have graduated from LCDS and are working their way through Elementary School.
@@ -876,9 +876,9 @@ export default class Content extends Component {
 				</td>
 			</tr>
 			<tr>
-				<td><img class="table-image" src={SarahQuinton}/></td>
-				<td class="left">
-					<p class="nameTitle">Sarah Quinton</p>
+				<td><img className="table-image" src={SarahQuinton}/></td>
+				<td className="left">
+					<p className="nameTitle">Sarah Quinton</p>
 
 					<p>
 						Ms. Sarah joined LCDS in the fall of 2017.
@@ -889,10 +889,10 @@ export default class Content extends Component {
 				</td>
 			</tr>
 			<tr>
-				<td><img class="table-image" src={ShannonMusic}/></td>
-				<td class="left">
-					<p class="subTitle">Our Executive Director</p>
-					<p class="nameTitle">Shannon Music</p>
+				<td><img className="table-image" src={ShannonMusic}/></td>
+				<td className="left">
+					<p className="subTitle">Our Executive Director</p>
+					<p className="nameTitle">Shannon Music</p>
 					<p>
 						Miss Shannon is the LCDS Executive Director.
 						Shannon is also a former LCDS parent and former Board Member.
@@ -902,10 +902,10 @@ export default class Content extends Component {
 				</td>
 			</tr>
 			<tr>
-				<td><img class="table-image" src={CarmenBriggs}/></td>
-				<td class="left">
-					<p class="subTitle">Our Business Manager</p>
-					<p class="nameTitle">Carmen Briggs</p>
+				<td><img className="table-image" src={CarmenBriggs}/></td>
+				<td className="left">
+					<p className="subTitle">Our Business Manager</p>
+					<p className="nameTitle">Carmen Briggs</p>
 					<p>
 						Miss Carmen is our Business Manager.
 						Carmen is also a former LCDS parent and former Board member.
@@ -922,8 +922,8 @@ export default class Content extends Component {
 
 	Sammy(){
 		return(
-			<div class="info">
-				<p class="fun">
+			<div className="info">
+				<p className="fun">
 					Sammy Squirrel
 				</p>
 				<p>Sammy is a very mischievous squirrel who lives in the classroom at LCDS.  Sammy loves to interact with the children every day when he isn't foraging for food or off on an exciting adventure. 
@@ -939,8 +939,8 @@ export default class Content extends Component {
 	Home(){
 		return(
 			<div>
-				<div class="Carousel" ></div>
-				<Carousel interval='5000'>
+				<div className="Carousel" ></div>
+				<Carousel interval={5000}>
 					<Carousel.Item>
 						<img src={Slide1} />
 					</Carousel.Item>
@@ -980,8 +980,8 @@ export default class Content extends Component {
 	}
 	Kindergarden(){
 		return(
-			<div class="info">
-				<p class = "fun">Kindergarden</p>
+			<div className="info">
+				<p className= "fun">Kindergarden</p>
 				<p><b>LCDS Preschool & Kindergarden</b> offers a small class setting for Kindergarden children with a maximum 1:7 teacher to child ratio.</p>
 				<p>A <b>maximum</b> of <b>7 Kindergarden students</b> are enrolled in each daily class; combined with the preschool students to a <b>maximum of 17 students/day/class</b>.</p>
 
@@ -989,7 +989,7 @@ export default class Content extends Component {
 				The Kindergarden curriculum overlaps the goals and guidelines laid out for the Preschool students; the expectation is the Kindergarden students have already had exposure to these goals or will have by the end of the school year.
 				Our goal for all children in our program is to be Kindergarden ready.</p>
 
-				<p><b>Please see <a class = "green" href={this.props.site_urls["Facebook"]}> Preschool Development Skills</a> for more details on the goals and expectations for students.</b></p>
+				<p><b>Please see <a className= "green" href={this.props.site_urls["Facebook"]}> Preschool Development Skills</a> for more details on the goals and expectations for students.</b></p>
 
 				<p><b>Children who turn 5 before March 1st in the upcoming school year (September - May)</b> are eligible to <b>attend Kindergarden in Alberta</b>.
 				Students who qualify for Kindergarden attend 5 half days /week, unless an alternate path has been approved by the teacher and parents.</p>
@@ -1002,7 +1002,7 @@ export default class Content extends Component {
 				<p><b>Kindergarden</b> students <b>begin class 20 minutes earlier</b> than the preschool students to work on specific Kindergarden curriculum goals; more class time is provided for Kindergarden work throughout the half day schedule.</p>
 				<p><b>The daily classroom routine is designed to follow the Kindergarden Curriculum Guidelines.</b></p>
 
-				<p class="green"><b>More information on curriculum and education guidelines can be found on the Alberta Education Website, <a href="https://www.learnalberta.ca/content/mychildslearning/gradeataglance/Kindergarden.pdf">Kindergarden Curriculum Guidelines</a></b></p>
+				<p className="green"><b>More information on curriculum and education guidelines can be found on the Alberta Education Website, <a href="https://www.learnalberta.ca/content/mychildslearning/gradeataglance/Kindergarden.pdf">Kindergarden Curriculum Guidelines</a></b></p>
 
 				<img src={SammySchool}/>
 
@@ -1011,8 +1011,8 @@ export default class Content extends Component {
 	}
 	JrKindergarden(){
 		return(
-			<div class="info">
-			<p class="fun">Junior Kindergarden</p>
+			<div className="info">
+			<p className="fun">Junior Kindergarden</p>
 			<p><b>LCDS Preschool & Kindergarden</b> offers a Junior Kindergarden program for those children who are academically ready to attend Kindergarden <b>but will not be old enough to attend Kindergarden in the coming school year due to their birth date occurring after the Alberta Education cut off date for entering Kindergarden by March 1st.</b></p>
 
 			<p>Children who are <b>4 years old and will turn 5 between March 1st and June 1st of the coming school year</b> are eligible to participate in the Junior Kindergarden program at LCDS.  Children enrolled in the Junior Kindergarden Program will attend 4 or 5 half days / week with the Kindergarden children. </p>
@@ -1027,13 +1027,13 @@ export default class Content extends Component {
 
 			<p><i>*If there is a demand for more Junior Kindergarden or Kindergarden spots, the maximum number of children may change without notice.</i></p>
 
-			<p><b>Please see <a class = "green" href={this.props.site_urls["PreschoolDevSkills"]}>Preschool Development Skills</a> for more details on the goals and expectations for students.</b></p>
+			<p><b>Please see <a className= "green" href={this.props.site_urls["PreschoolDevSkills"]}>Preschool Development Skills</a> for more details on the goals and expectations for students.</b></p>
 
 			<p><b>Please note:
 			<i>Alberta Education will be changing the date for Kindergarden eligibility for the {this.state.yr +1} - {this.state.yr +2} school year.
 				Children will need to turn 5 before December 31st of {this.state.yr +1} in order to be eligible for Kindergarden.</i></b></p>
 
-			<p class = "green"><b>More information on curriculum and education guidelines can be found on the Alberta Education Website, <a href="https://www.learnalberta.ca/content/mychildslearning/gradeataglance/Kindergarden.pdf">Kindergarden Curriculum</a></b></p>
+			<p className= "green"><b>More information on curriculum and education guidelines can be found on the Alberta Education Website, <a href="https://www.learnalberta.ca/content/mychildslearning/gradeataglance/Kindergarden.pdf">Kindergarden Curriculum</a></b></p>
 
 			<img src={SammySchool}/>
 			</div>
@@ -1041,8 +1041,8 @@ export default class Content extends Component {
 	}
 	PreSchool(){
 		return(
-			<div class="info">
-			<p class="fun">Preschool 3 & 4 Year Olds</p>
+			<div className="info">
+			<p className="fun">Preschool 3 & 4 Year Olds</p>
 			<p><b>LCDS offers a small class setting for Preschool aged children.</b></p>
 			<p>Preschool and Kindergarten students are combined in the classroom up to a <b>maximum of 17 students/day/class.</b></p>
 
@@ -1060,9 +1060,9 @@ export default class Content extends Component {
 			<p>*Parents who would like their child to attend extra days may submit their request with their child's registration; extra days are subject to availability, teacher and board approval.</p>
 
 
-			<a class="green" href={this.props.site_urls["IsMyChildReady"]}> Is My Child Ready to Begin Preschool or Kindergarten?</a>
+			<a className="green" href={this.props.site_urls["IsMyChildReady"]}> Is My Child Ready to Begin Preschool or Kindergarten?</a>
 
-			<a class="green" href={this.props.site_urls["PreschoolDevSkills"]}> Preschool Development Skills</a>
+			<a className="green" href={this.props.site_urls["PreschoolDevSkills"]}> Preschool Development Skills</a>
 
 			<img src={SammySchool}/>
 			</div>
@@ -1070,8 +1070,8 @@ export default class Content extends Component {
 	}
 	LearningSupport(){
 		return(
-			<div class="info">
-				<p class="fun">Learning Support</p>
+			<div className="info">
+				<p className="fun">Learning Support</p>
 				<p><b>Learning support</b> such as <b>Mild/Moderate Speech & Language Support for children age 3 1/2 on.</b></p>
 				<p><b>Sept 1 or PUF funding for children 3 and older (Which includes access to specialists in Speech Language Pathology, Occupational Therapy, Physical Therapy and other services as needed)</b> may be available to registered LCDS students who qualify for funding through Alberta Education.</p>
 
@@ -1081,7 +1081,7 @@ export default class Content extends Component {
 					2 PUF spots are reserved </b>each year for children <b>who require assistance with Speech and Language Development.
 					One spot</b> is held in the <b>AM class</b> and <b>one spot</b> is held in the <b>PM class</b>.</p>
 
-				<a href={this.props.site_urls["Requirements"]} class = "green">Registration Requirements For Learning Support</a>
+				<a href={this.props.site_urls["Requirements"]} className= "green">Registration Requirements For Learning Support</a>
 
 				<p><b>If your child is not enrolled at LCDS, and you have concerns with your child’s speech</b>, you may contact the <b>Alberta Health Services Preschool Speech and Language Intake</b> line at 780-408-8793.
 					Those children attending <b>Kindergarten</b> who are not enrolled at LCDS may contact their child’s school Speech-Language Pathologist or Principal to arrange an assessment.</p>
@@ -1102,8 +1102,8 @@ export default class Content extends Component {
 
 	FieldTrips(){
 		return(
-			<div class="info">
-				<p class ="fun">Field Trips</p>
+			<div className="info">
+				<p className="fun">Field Trips</p>
 				<p><b>Field trips are scheduled regularly to enhance the curriculum being taught in the classroom.</b></p>
 
 				<p><u><b>All registered students</b></u> are welcome to attend a scheduled field trip, <b>even if it is scheduled on a day they do not attend class.</b>
@@ -1115,7 +1115,7 @@ export default class Content extends Component {
 
 
 
-				<p class="subTitle">Examples of previous year’s field trips:</p>
+				<p className="subTitle">Examples of previous year’s field trips:</p>
 				<p>Prairie Gardens, John Janzen Nature Center, The Royal Alberta Museum, Muttart Conservatory, Kiwanis Safety City, Telus World of Science, The Clay Guys, Puppet Tree House, Bus Safety, Rutherford House and WEM Undersea Caverns (Subject to change from year to year).</p>
 				<img src={Muttart}/>
 			</div>
@@ -1124,26 +1124,26 @@ export default class Content extends Component {
 
 	DailySnacks(){
 		return(
-			<div class="info">
-			<p class="fun">Daily Snack</p>
+			<div className="info">
+			<p className="fun">Daily Snack</p>
 			<p><b>As part of the Child Care Licencing Act, a Daily Snack is to be provided to the students every day. The scheduled Parent Helper is responsible for providing the scheduled Healthy Snack and Beverage (ie. Fruit & Crackers, Veggies & Crackers, Sandwiches, Cheese & Crackers and Parents Choice Day) for 17 children. </b></p>
 
 			<p>LCDS chooses to serve the daily snack in a group setting.</p>
 
-			<p class="subTitle">Serving snack in a group setting:</p>
+			<p className="subTitle">Serving snack in a group setting:</p>
 			<ul>
 				<li><b>Ensures all</b> of the children have the <b>same choice of snack</b> on a daily basis.</li>
 				<li><b>Allows</b> the children to <b>experience new foods</b> they may not try at home and parents or staff members are able to monitor children’s allergies or food reactions on any given day.</li>
 				<li>Eliminates students arriving at school with too much food, food which does not adhere to the allergy restrictions, comparison and competition among peers and between parents to have “The Best Snack”.</li>
 			</ul>
-			<p class="subTitle">Snack shall have one serving each from 2 or more basic food groups consistent with Canada’s Food Guide.</p>
+			<p className="subTitle">Snack shall have one serving each from 2 or more basic food groups consistent with Canada’s Food Guide.</p>
 			<ul>
 				<li>For Example – Monday may be Fruit and Cracker day, the parent might bring fruit such as strawberries and oranges with cinnamon pita chips, the beverage might be white or chocolate milk. Tuesday may be cheese and cracker day, the parent might bring cheddar or marble cheese and Ritz crackers, the beverage might be apple juice.  "Healthy Water" is always offered as an alternate choice to whatever the beverage might be.</li>
 			</ul>
 
 			<p><b>Each month the snack schedule will rotate to the next day of the week</b> to ensure each family gets a chance to bring something different for snack; for example, Mondays in February might be Cheese & Crackers, the next month Cheese & Crackers will be rotated to Tuesdays.</p>
 
-			<a class="green" href={this.props.site_urls["FoodRestrictions"]}>Allergies, Personal and Religious Food Restrictions</a>
+			<a className="green" href={this.props.site_urls["FoodRestrictions"]}>Allergies, Personal and Religious Food Restrictions</a>
 
 			<img src = {SammyEating}/>
 
@@ -1154,11 +1154,11 @@ export default class Content extends Component {
 
 	PreschoolDevSkills(){
 		return(
-			<div class="info">
-				<p class ="fun">Preschool Development Skills</p>
+			<div className="info">
+				<p className="fun">Preschool Development Skills</p>
 				<p><b>The LCDS Preschool is a structured play oriented program which focuses on developing the child’s social, motor and personal development skills.</b></p>
 
-				<p class ="subTitle">Social Skills are developed by:</p>
+				<p className="subTitle">Social Skills are developed by:</p>
 				<ul>
 					<li>Learning responsibility for personal belongings.</li>
 					<li>Cooperating and sharing with others.</li>
@@ -1168,13 +1168,13 @@ export default class Content extends Component {
 					<li>Sitting and listening quietly.</li>
 					<li>Speaking in a clear, confident, quiet voice, using words to express their feelings.</li>
 				</ul>
-				<p class="subTitle">Motor Skills are developed by:</p>
+				<p className="subTitle">Motor Skills are developed by:</p>
 				<ul>
 					<li>Large muscle control is developed by engaging in activities which include body movement.</li>
 					<li>Small muscle control is developed by engaging in activities such as cutting with scissors, gluing & pasting, painting, coloring, etc.</li>
 					<li>Learning healthy habits such as hand washing, learning to cover your sneeze or cough, learning to use a tissue and dispose of it appropriately, etc.</li>
 				</ul>
-				<p class="subTitle">Personal Skills are developed by:</p>
+				<p className="subTitle">Personal Skills are developed by:</p>
 				<ul>
 					<li>Learning to adjust and be happy in a group setting when away from home.</li>
 					<li>Learning to make new friends and not be shy.</li>
@@ -1188,7 +1188,7 @@ export default class Content extends Component {
 					<li>Learning to use different mediums to create projects (paper, glue, fabric, crayons, paint, play dough or clay, etc.)</li>
 					<li>Learn to follow steps to re create an example for a craft or project.</li>
 				</ul>
-				<p class="subTitle">Language Skills are developed by:</p>
+				<p className="subTitle">Language Skills are developed by:</p>
 				<ul>
 					<li>Observing appropriate vocabulary and language use modeled by staff members.</li>
 					<li>Interaction with staff members through out class time.</li>
@@ -1200,7 +1200,7 @@ export default class Content extends Component {
 
 
 
-				<p class = "subTitle">The above goals are achieved through the following classroom activities:</p>
+				<p className= "subTitle">The above goals are achieved through the following classroom activities:</p>
 				<ul>
 					<li>Free play time for the students to interact and practice appropriate social skills.  </li>
 					<li>Staff model appropriate behavior which is acceptable in the classroom for the children to follow.</li>
@@ -1226,14 +1226,14 @@ export default class Content extends Component {
 
 	IsMyChildReady(){
 		return(
-			<div class="info">
-				<p class="fun">Is My Child Ready To Begin Preschool Or Kindergarden?</p>
-				<p class="subTitle">How do I know if my child is ready for school?</p>
+			<div className="info">
+				<p className="fun">Is My Child Ready To Begin Preschool Or Kindergarden?</p>
+				<p className="subTitle">How do I know if my child is ready for school?</p>
 
 				<p>Entering Preschool or Kindergarten is an exciting time for you and your child; it’s an important first step in their educational journey and for many the first time they are on their own.</p>
 				<p>We would like the transition to preschool or kindergarten to be as smooth as possible for you and your child.  The following are some suggestions to consider before registering your child for preschool. </p>
 
-				<p class="subTitle">All of the following questions should be considered before registering your child for preschool:</p>
+				<p className="subTitle">All of the following questions should be considered before registering your child for preschool:</p>
 				<ul>
 					<li>Is your child able to use the washroom and do simple tasks for themselves? (Such as, putting their clothes and shoes on.)</li>
 					<li>Is your child able to be away from you for short periods of time?</li>
@@ -1255,8 +1255,8 @@ export default class Content extends Component {
 
 	RequirementsForLearningSupport(){
 		return(
-			<div class="info">
-				<p class="fun">Registration Requirements For Learning Support</p>
+			<div className="info">
+				<p className="fun">Registration Requirements For Learning Support</p>
 				<p><b>New registrations should inquire whether there will be openings for the upcoming school year before submitting their application for registration.</b>
 					You will need to fill out <u><b>all</b></u> of the information on the registration form and submit any assessments or documents which will support the application to Alberta Education for funding support.</p>
 
@@ -1279,8 +1279,8 @@ export default class Content extends Component {
 
 	FoodRestrictions(){
 		return(
-			<div class = "info">
-			<p class="fun">Allergies, Personal, & Religious Food Restrictions</p>
+			<div className= "info">
+			<p className="fun">Allergies, Personal, & Religious Food Restrictions</p>
 			<ul>
 				<li><b>LCDS is required by Alberta Government licensing to ensure all children with food allergies, which can place them at serious health risk, are kept safe to the best of our abilities, while attending our program.</b></li>
 				<li><b>LCDS strives to be a NUT-FREE classroom</b>, this <b>includes products</b> which are labelled with the phrase <b>“may contain nuts”</b>.  A list of approved snacks, brands and nut free bakeries are listed in the LCDS Parent Handbook.</li>
@@ -1294,19 +1294,19 @@ export default class Content extends Component {
 
 	ProgramFees(){
 		return(
-			<div class="info">
-				<p class="fun">Program Fees</p>
+			<div className="info">
+				<p className="fun">Program Fees</p>
 				<p><i><b>LCDS is a not-for-profit, parent cooperative preschool and independent kindergarten program.</b>
 				We  pay rent for our classroom and office space to Gateway Alliance Church.
 				As we are an independent program, we have fixed operational costs in which we rely upon parent involvement and participation in the program to assist in keeping these costs attainable.
 				Parents provide the necessary support for the success of our quality education program.  Without the support of our members through working bingo, casino, classroom cleaning and other volunteer commitments, the society would not be able to support many of the opportunities provided to the children and their families.</i></p>
-				<p class="subTitle">The fees below apply to the {this.state.yr} - {this.state.yr +1} school year.</p>
+				<p className="subTitle">The fees below apply to the {this.state.yr} - {this.state.yr +1} school year.</p>
 
-				<p><a href={this.props.site_urls["PreschoolFees"]}  class="redLink">Preschool Fees</a></p>
-				<p><a href={this.props.site_urls["JrKindergardenFees"]}  class="blueLink">Junior Kindergarten Fees</a></p>
-				<p><a href={this.props.site_urls["KindergardenFees"]}  class="redLink">Kindergarten Fees</a></p>
-				<p><a href={this.props.site_urls["RegCommit"]} class="blueLink">Registration Commitments</a></p>
-				<p><a href="" class="greenLink">Alberta Parent Stay-At-Home Subsidy Program</a></p>
+				<p><a href={this.props.site_urls["PreschoolFees"]}  className="redLink">Preschool Fees</a></p>
+				<p><a href={this.props.site_urls["JrKindergardenFees"]}  className="blueLink">Junior Kindergarten Fees</a></p>
+				<p><a href={this.props.site_urls["KindergardenFees"]}  className="redLink">Kindergarten Fees</a></p>
+				<p><a href={this.props.site_urls["RegCommit"]} className="blueLink">Registration Commitments</a></p>
+				<p><a href="" className="greenLink">Alberta Parent Stay-At-Home Subsidy Program</a></p>
 
 				<blockquote>
 					"We just wanted to say thank you so much for everything this year!! R. has come so far and we are so proud and thankful for all you have done for R. and our family. The things he has learned are incredible but mostly the tools and feedback you have provided to us will go a long way. The attention and care that all of you have shown towards R. throughout this year is amazing and surpassed every expectation we had for R's first school experience. Please pass on our thank you to all of the staff members and have a great summer!!"
@@ -1320,19 +1320,19 @@ export default class Content extends Component {
 	ParentInvolvement(){
 
 		return(
-			<div class="info">
-				<p class="fun">Parent Involvement</p>
-				<p class="subTitle">HOW ARE FAMILIES INVOLVED AT LCDS?</p>
+			<div className="info">
+				<p className="fun">Parent Involvement</p>
+				<p className="subTitle">HOW ARE FAMILIES INVOLVED AT LCDS?</p>
 
 				<p>We know community, parents and family play an essential role in childhood development. And we know parents love watching their children learn, grow and have fun- almost as much as kids love showing their parents their new skills.
 				As a <b>parent run co-operative</b>, LCDS parents and families are a big part of the kids’ success. Parents and guardians have the opportunity to be hands-on in their little one’s first education experience, supporting their learning, experiencing their excitement on a field trip, and watching them make friends with their peers. 
 				We know parent support also helps to show children that the adults in their life are interested in what they are doing and that helping others is important. Plus, we can elevate the quality of education while keeping costs low because of additional help from volunteers. The kids win in a big way, thanks to you! </p>
 
-				<p class="subTitle">WHAT ARE THE ANNUAL REQUIREMENTS?</p>
+				<p className="subTitle">WHAT ARE THE ANNUAL REQUIREMENTS?</p>
 
 				<p>We are parents too and we know life can get busy. No problem! LCDS has many ways to help our families, from opting out of fundraising with a cash donation, swapping helper days, or hiring Bingo workers at low cost, we want to help you, so we can all help the kids. </p>
 
-				<p class="subtitle">Here is a snapshot of the annual requirements.</p>
+				<p className="subtitle">Here is a snapshot of the annual requirements.</p>
 
 
 				<ul>
@@ -1355,27 +1355,27 @@ export default class Content extends Component {
 						An easy way to raise much needed funds, all we do is provide volunteers. All you do is show up, get training, and have fun. No experience required! Each family needs to complete two bingo shifts and one casino (in a casino year). Bingos are scheduled for Saturday and Sunday afternoons. The number of Bingo events will be determined by the number of families enrolled in the program.
 					</li>
 				</ul>
-				<p>Click Here for <a href={this.props.site_urls["RegCommit"]} class="greenLink">Registration Commitments</a></p>
+				<p>Click Here for <a href={this.props.site_urls["RegCommit"]} className="greenLink">Registration Commitments</a></p>
 
-				<p class="fun">WHO RUNS LCDS?</p>
+				<p className="fun">WHO RUNS LCDS?</p>
 				<p>Who runs LCDS? Well, you do!  Parents are automatically members of the society when you register, and those who volunteer for the Board of Directors or sign-up for a committee position influence the experience for their kids. While we leave the structured education to the experts, volunteers provide important input into school policies, funding, social functions, and more. Please consider getting involved – you and your kids will love it.</p>
 
 
-				<p class ="subTitle">BOARD OF DIRECTORS</p>
+				<p className="subTitle">BOARD OF DIRECTORS</p>
 				<p>Meeting once per month, the Board is the legal authority for the Society and everything done by LCDS is done in the Board’s name. While considerable authority is appropriately delegated to the Executive Director, Business Manager and Teaching Staff, the source of that authority remains with the Board. This group of parents determines direction for changes in policy, fees, fundraising requirements, and social activities. If you want to make a big impact, consider volunteering for one of the six positions, or feel free to bring your suggestions to any board member or at the board meetings. Great to add to your personal resume.</p>
 
-				<p class = "subTitle">COMMITTEE POSITIONS</p>
+				<p className= "subTitle">COMMITTEE POSITIONS</p>
 				<p>If the board isn’t the right fit, consider volunteering for one or more committee positions. Assisting with everything from classroom parties to yearbooks to laundry and bottle collection, the volunteers on the committees are essential to giving our kids the fantastic experience they are hoping for. Volunteering is easy and many families enjoy the small little extra they get to do for the kids. </p>
 
-				<p class="subTitle">ALL FAMILIES</p>
+				<p className="subTitle">ALL FAMILIES</p>
 				<p>Every family that has a child enrolled in LCDS is automatically a member of our exclusive non-profit society. This gives you voting rights for the operation of the program. Families are asked to please send a representative to each of the three required Annual General Meetings which take place in September, January and May. These meetings are your chance to be heard, be informed, and meet fellow parents.</p>
 
 				<p>The following positions are important to the operations of LCDS.  Without volunteers for these positions, LCDS may be forced to offer reduced activities and events for the program.Elections are held at the Annual General Meeting, the Second Tuesday in May.</p>
 				<p>Please consider volunteering for any of the positions below.  Please indicate on your registration form the positions you might be interested in assisting with.</p>
 
-				<p><a href={this.props.site_urls["BoardDirectors"]} class="green">Board of Directors Positions</a></p>
-				<p><a href={this.props.site_urls["Committee"]} class="green">Committee Positions</a></p>
-				<p><a href={this.props.site_urls["MiscPositions"]} class ="green">Miscellaneous Positions</a></p>
+				<p><a href={this.props.site_urls["BoardDirectors"]} className="green">Board of Directors Positions</a></p>
+				<p><a href={this.props.site_urls["Committee"]} className="green">Committee Positions</a></p>
+				<p><a href={this.props.site_urls["MiscPositions"]} className="green">Miscellaneous Positions</a></p>
 
 				<img src={SammyParentInvolvement}/>
 			</div>
@@ -1385,32 +1385,32 @@ export default class Content extends Component {
 
 	BoardDirectors(){
 		return(
-			<div class="info">
-			<p class ="fun"> Board of Directors Positions</p>
+			<div className="info">
+			<p className="fun"> Board of Directors Positions</p>
 			<p><b>* All Board members attend the 3 General Meetings and all Monthly Board Meetings.</b></p>
 			<ul>
 				<li>
-				<b class="subTitle">President</b><br />
+				<b className="subTitle">President</b><br />
 
 				The President shall call and preside over all Emergency, General and Board meetings.  They must provide active and dynamic leadership, initiate policy, and keep him/her self fully informed of the operations of the LCDS Assists the Executive Director and Business Manager, staff members, other Board Members and Committee members as needed. Is a Signing officer.
 				</li>
 				<li>
-				<b class="subTitle">Vice-President</b> <br />
+				<b className="subTitle">Vice-President</b> <br />
 				Assists the Executive Director with the registration of children in the LCDS program. Advertises for open house/registration events and answers all queries about registration from mid June until mid August. Assists the President, Staff members, other Board members and Committee members as needed.  Is a Signing officer.
 				</li>
 				<li>
-				<b class="subTitle">Treasurer</b> <br />
+				<b className="subTitle">Treasurer</b> <br />
 				Assists the Business Manager when needed for filing financial and educational documents.  Assists Fundraising Chair with deposits when needed from events such as the Silent Auction, Garage Sale and Walk-a-thon. Assists other Board members, Staff members and other committee members as needed. Is a signing officer.
 				</li>
 				<li>
-					<b class="subTitle">Secretary</b> <br />
+					<b className="subTitle">Secretary</b> <br />
 				Records minutes of all meetings, distributes minutes to all board members, members and staff members. Completes any general correspondence with membership and other organizations when needed, maintains attendance record for General Meetings.  Assists the Executive Director, other Board members, staff members and other Committee members as needed.
 				</li>
-				<li><b class="subTitle">Fundraising Director</b> <br />
+				<li><b className="subTitle">Fundraising Director</b> <br />
 				Initiates and organizes all funding activities and coordinates with the silent auction committee members.  Organizes volunteers when needed for fundraising events.  Provides tax receipts when needed for donations to the society. Prepares deposits from fundraising events.  Assists other Board members, Staff members and other committee members when needed.
 
 				</li>
-				<li><b class="subTitle">Liaison</b> <br />
+				<li><b className="subTitle">Liaison</b> <br />
 				Coordinates the Board Newsletter Report each month. Books venues for special events.  Assists the Executive Director and Business Manager, other Board members, Staff members and other Committee members as needed Prepares special event and program feedback surveys for the membership.
 				</li>
 			</ul>
@@ -1421,38 +1421,38 @@ export default class Content extends Component {
 
 	Committee(){
 		return(
-			<div class="info">
-				<p class ="fun"> Committe Member Positions</p>
+			<div className="info">
+				<p className="fun"> Committe Member Positions</p>
 				<b>**Committees are not required to attend monthly Board Meetings</b>
 				<ul>
 					<li>
-					<p><b class="subTitle">Bingo Coordinator</b><br />
+					<p><b className="subTitle">Bingo Coordinator</b><br />
 
 					Communicates with the Executive Director to ensure each Bingo date has the adequate number of volunteers scheduled and submits a list of workers for the current newsletter each month.  Communicates with the scheduled bingo workers 1 week prior to the scheduled bingo date to remind them of their commitment.  Attends the first part of each Bingo, takes attendance, assigns positions and ensures everyone knows what they are doing.</p>
 					</li>
 					<li>
-					<p><b class="subTitle">Casino Coordinator</b> <br />
+					<p><b className="subTitle">Casino Coordinator</b> <br />
 
 					Coordinates the casino volunteers for volunteer shifts. Consults with the Executive Director, Business Manager and the President throughout the assignment process. Ensures all positions are filled and all volunteer background check forms are submitted. Casinos are held every 2 years.</p>
 					</li>
 					<li>
-					<p><b class="subTitle">Silent Auction Committee</b> <br />
+					<p><b className="subTitle">Silent Auction Committee</b> <br />
 
 					Coordinators are needed for various activities, such as Donation Receiver, Door Ticket sales and tracking, and assistance with other items related to the silent auction to be determined by the Fundraising Director.</p>
 					</li>
 					<li>
-					<p><b class="subTitle">Newsletter Coordinator</b><br />
+					<p><b className="subTitle">Newsletter Coordinator</b><br />
 
 					Responsible for collecting reports from Board and Committee Members. Compiles the monthly newsletter. Coordinates production of the monthly newsletter with the assistance of the Executive Director.</p>
 					</li>
 					<li>
-					<p><b class="subTitle">Cleaning Coordinator </b>
+					<p><b className="subTitle">Cleaning Coordinator </b>
 
 					Organizes and coordinates the monthly cleanings with the assistance of the Executive Director. Responsible for reminding members of their cleaning commitment.  Arranges to attend the first part of the cleaning to take attendance, and inform the members of the jobs which are required to be completed from the cleaning binder.  You may then leave and return to lockup after everyone is finished.</p>
 
 					</li>
 					<li>
-					<p><b class="subTitle">Social Committee</b> <br />
+					<p><b className="subTitle">Social Committee</b> <br />
 
 					Plans the seasonal classroom and membership parties in collaboration with the teacher or members of the Board. Coordinates with the Social Committee members and delegates responsibilities needed to prepare for the parties. Members from the AM and PM classes are needed to assist in preparations for the class parties and membership parties.</p>
 					</li>
@@ -1463,39 +1463,39 @@ export default class Content extends Component {
 	}
 	MiscPositions(){
 		return(
-			<div class ="info">
-			<p class ="fun"> Miscellanenous Positions</p>
+			<div className="info">
+			<p className="fun"> Miscellanenous Positions</p>
 			<ul>
 				<li>
-					<p> <b class="subTitle">Gym Equipment Transportation Committee</b> <br />
+					<p> <b className="subTitle">Gym Equipment Transportation Committee</b> <br />
 					About 4-5 volunteers are needed from each class to assist in transporting gym equipment to and from the location for Gym Day field trips.  AM will pick up the equipment from the school and take to the Hall.  PM will take the equipment back to the school.  All Gym Committee members will assist with cleaning the equipment before the first scheduled gym day.</p>
 				</li>
 				<li>
-					<p><b class="subTitle">Maintenance Committee</b> <br />
+					<p><b className="subTitle">Maintenance Committee</b> <br />
 					Volunteer will need to assist with minor repairs and enhancements in the classroom not requiring specialized equipment or training.  May coordinate extra volunteers if needed for a particular job.  Example: Fixing cabinet door handles, minor painting, checks the fluid levels on the dishwasher, maintains locks on the shed, etc.  May also be involved in coordinating activities with contracted trades or professionals. Will look after occasional requests by school staff members to assist with retrieving or putting heavy or large items from/on upper shelving in the storage room or shed.  This position will also retrieve and set up seasonal items for the classroom, such as the Christmas tree or mailbox. May be required to coordinate volunteers to assist with moving furniture for party set ups.</p>
 				</li>
 				<li>
-					<p> <b class="subTitle">AM Scheduling</b> <br/>
+					<p> <b className="subTitle">AM Scheduling</b> <br/>
 					Plans and publishes monthly Parent Helper roster.  Submits a copy to the Executive Director and the newsletter.</p>
 				</li>
 				<li>
-					<p><b class="subTitle">PM Scheduling  </b> <br/>
+					<p><b className="subTitle">PM Scheduling  </b> <br/>
 					Plans and publishes monthly Parent Helper roster. Submits a copy to the Executive Director and the newsletter.</p>
 				</li>
 				<li>
-					<p><b class="subTitle">Librarian </b><br/>
+					<p><b className="subTitle">Librarian </b><br/>
 					Circulates information from the Scholastic Book Club, collects and sends in orders and distributes books. Assists with filing books in the school library and cataloging books.</p>
 				</li>
 				<li>
-					<p><b class="subTitle">AM Yearbook Committee</b> <br />
+					<p><b className="subTitle">AM Yearbook Committee</b> <br />
 					Coordinates with the Executive Director, compiles, and creates a yearly scrapbook for the AM class. </p>
 				</li>
 				<li>
-					<p><b class="subTitle">PM Yearbook Committee </b> <br />
+					<p><b className="subTitle">PM Yearbook Committee </b> <br />
 					Coordinates with the Executive Director, compiles, and creates a yearly scrapbook for the PM class.</p>
 				</li>
 				<li>
-					<p><b class="subTitle">Laundry</b><br />
+					<p><b className="subTitle">Laundry</b><br />
 					Collects the dirty laundry on Friday, washes, dries and folds. Returns the clean folded laundry to the classroom on Monday morning and distributes it to the proper locations. </p>
 				</li>
 			</ul>
@@ -1506,9 +1506,9 @@ export default class Content extends Component {
 
 	Events() {
 		return(
-			<div class="info">
-				<p class="fun">Open House & Register for {this.state.yr}/{this.state.yr +1}</p>
-				<p class="green">Is Your Child 3, 4 or 5 Years Old? Are They Ready to Start School?
+			<div className="info">
+				<p className="fun">Open House & Register for {this.state.yr}/{this.state.yr +1}</p>
+				<p className="green">Is Your Child 3, 4 or 5 Years Old? Are They Ready to Start School?
 					Register Your Child Today!</p>
 					<p><b>LCDS Preschool & Kindergarten has an awesome program for your child.
 					We offer Kindergarten, Jr. Kindergarten and Preschool for children 3 to 5 years old.</b></p>
@@ -1533,17 +1533,17 @@ export default class Content extends Component {
 
 	Contact(){
 		return(
-			<div class="info">
-				<p class="fun">LCDS Preschool and Kindergarden Contact Information</p>
-				<table class = "Table">
+			<div className="info">
+				<p className="fun">LCDS Preschool and Kindergarden Contact Information</p>
+				<table className= "Table">
 				<tbody>
 					<tr>
 						<th></th>
-						<th class="right"></th>
+						<th className="right"></th>
 					</tr>
 					<tr>
 						<td>
-							<p class="left-fun">General Office:</p>
+							<p className="left-fun">General Office:</p>
 							13931-140 Street<br />
 							Edmonton, Ab<br />
 							T6V 1J7<br />
@@ -1551,7 +1551,7 @@ export default class Content extends Component {
 							<FaPhone /> (780) 473-7216<br />
 							<FaFax /> (780) 473-7021
 						</td>
-						<td class="right"><img src={LCDSMap}/></td>
+						<td className="right"><img src={LCDSMap}/></td>
 					</tr>
 				</tbody>
 				</table>
@@ -1561,8 +1561,8 @@ export default class Content extends Component {
 
 	OurHistory(){
 		return(
-			<div class="info">
-				<p class="fun">Our History</p>
+			<div className="info">
+				<p className="fun">Our History</p>
 				<p>LCDS Preschool and Kindergarten is a licensed, independent, non-profit, cooperative Preschool and Kindergarten program.
 
 					The Londonderry Child Development Society was established in 1972, by a group of parents looking for educational alternatives for their preschool aged children in the Londonderry Community. 
@@ -1571,7 +1571,7 @@ export default class Content extends Component {
 
 					The Society is now sharing space with Gateway Alliance Church, and is pleased to be able to offer the surrounding community a well-defined, quality, early childhood education program; with an interactive, dynamic and fun learning environment involving family and community.</p>
 
-				<a href={this.props.site_urls["Founder"]} class="green">Our Founder</a>
+				<a href={this.props.site_urls["Founder"]} className="green">Our Founder</a>
 				<br />
 				<br />
 				<img src={SammyHistory}/>
@@ -1609,20 +1609,20 @@ export default class Content extends Component {
 		const items = this.state.board
 
 		return(
-			<div class="info">
-				<p class="fun">Our Board Members</p>
+			<div className="info">
+				<p className="fun">Our Board Members</p>
 					<img src={SammyBoard} />
 					<br/>
-				<table class = "Table">
+				<table className= "Table">
 				<tbody>
 					<tr>
 						<th>PosiBoution</th>
-						<th class="right">Member</th>
+						<th className="right">Member</th>
 					</tr>
 					{items.map(item => (
 						<tr>
 							<td><b>{item.MemberPosition}</b></td>
-							<td class="right">{item.MemberFirstName} {item.MemberLastInitial}</td>
+							<td className="right">{item.MemberFirstName} {item.MemberLastInitial}</td>
 						</tr>
 					))}
 				</tbody>
@@ -1634,8 +1634,8 @@ export default class Content extends Component {
 
 	OurFounder(){
 		return(
-			<div class="info">
-				<p class="fun">Our Founder</p>
+			<div className="info">
+				<p className="fun">Our Founder</p>
 				<p>It was with sorrow and regret that LCDS members heard of the passing of its founder, June Henry, in late January 1978.  This wonderfully courageous person had fought a long and brave battle against cancer.</p>
 
 				<p>Any attempt to record the achievements of June Henry in her short lifetime is a difficult task.  Difficult in that she accomplished so much more than most of us can hope to ever achieve or aspire towards.  She was a remarkable person in so many ways.</p>
@@ -1648,7 +1648,7 @@ export default class Content extends Component {
 
 				<p>Read her resume and capture the essence of her spirit.  I’m sure its reading makes us all a little humbler.</p>
 
-				<a class="green" href={this.props.site_urls["JuneHenry"]}>June Henry</a>
+				<a className="green" href={this.props.site_urls["JuneHenry"]}>June Henry</a>
 				<img src={SammyJune}/>
 			</div>
 		);
@@ -1656,9 +1656,9 @@ export default class Content extends Component {
 
 	JuneHenry(){
 		return(
-			<div class = "info">
-				<p class="fun">June Henry</p>
-				<p class="subTitle">Born July 7th, 1942  (Deceased January 1978, age 36)</p>
+			<div className= "info">
+				<p className="fun">June Henry</p>
+				<p className="subTitle">Born July 7th, 1942  (Deceased January 1978, age 36)</p>
 				<p>From the age of eleven I attended Cleethorpes Grammar School for girls, where, at sixteen I obtained my General Certificate of Education, (ordinary level) in English Language, English Literature, Mathematics, German, French, History, Geography, Art and Latin. </p>
 
 				<p>I specialized for two years in English Literature, German and French and obtained my G.C.E. (advanced level) in French and German.  I also obtained a distinction in Scholarship German, and on the basis of these results was awarded a State Scholarship to University.  I remained in school in order to take the entrance examinations for Oxford, and was granted a place there for 1961.</p>
@@ -1684,27 +1684,27 @@ export default class Content extends Component {
 	Testimonials(){
 
 		return(
-			<div class="info">
-				<p class="fun">Parent Testimonials</p>
+			<div className="info">
+				<p className="fun">Parent Testimonials</p>
 					<blockquote>
 					"I have had two daughters go through the LCDS Preschool and Kindergarten program and I would not hesitate to recommend this program to any family. The teachers are patient & kind. Those may seem like simple qualities, but to a child they are priceless. The children are encouraged to try new experiences, to be creative & to experiment. Their certificated Teacher Ms. Michell, brings her early education passion and experience to the classroom. The children benefit from her musical talents and her thoughtful program planning and each child gets the attention and support that truly helps them grow. This program is like no other and the experience of being a part of this amazing parent co-operative community is remarkable"
 					</blockquote>
-					<p class = "left"><b>-Patrizia C. -Edmonton</b></p>
+					<p className= "left"><b>-Patrizia C. -Edmonton</b></p>
 
 				<blockquote>
 				"When we registered our first child with LCDS in 1994, we were impressed by the teacher who was so friendly and in control of the classroom environment.  There were fun activities set out for the children to play with, students were engaged in what they were learning and parents were always welcome to volunteer in the classroom and be a part of the program.  The classroom routine was well structured and allowed my child to feel safe and comfortable while having fun.  We returned with our second child in 1999, the program had a new teacher and we enjoyed the new ideas and style she brought to the program.  Our third child began in 2003 and as we had been with the program for so long, I took an active role on the LCDS Board of Directors.  I continued to volunteer for LCDS long after my children left the preschool and eventually accepted a position with the program.  LCDS continues to provide the same quality program it has since our first child began in 1994 and continues to change and adapt with the needs of it's students and members in order to provide a superior early childhood program." 
 				</blockquote>
-				<p class = "left"><b>-Shannon M. -Edmonton</b></p>
+				<p className= "left"><b>-Shannon M. -Edmonton</b></p>
 
 				<blockquote>
 					"We just wanted to say thank you so much for everything this year!! R. has come so far and we are so proud and thankful for all you have done for R. and our family. The things he has learned are incredible but mostly the tools and feedback you have provided to us will go a long way. The attention and care that all of you have shown towards R. throughout this year is amazing and surpassed every expectation we had for R's first school experience. Please pass on our thank you to all of the staff members and have a great summer!!" 
 				</blockquote>
-				<p class = "left"><b>-Melanie G. -Edmonton</b></p>
+				<p className= "left"><b>-Melanie G. -Edmonton</b></p>
 
 				<blockquote>
 					"We really want to thank everyone for their role in assisting and supporting K's growth. We know everyone is instrumental to his success, and that it would not be possible without a team. Although we often identify areas for further growth, we also know he would not have been as successful as he has already without each and everyone of you."
 				</blockquote>
-				<p class = "left"><b>-Andrea O. -Edmonton</b></p>
+				<p className= "left"><b>-Andrea O. -Edmonton</b></p>
 
 				<Image src={SammyTestimonials} />
 			</div>
@@ -1712,9 +1712,9 @@ export default class Content extends Component {
 	}
 	RegistrationCommitments(){
 		return(
-			<div class="info">
-				<p class="fun">Registration Requirements</p>
-				<p class="subTitle">Upon registering with LCDS Preschool & Kindergarten, each registered family agrees to participate in the following commitments:</p>
+			<div className="info">
+				<p className="fun">Registration Requirements</p>
+				<p className="subTitle">Upon registering with LCDS Preschool & Kindergarten, each registered family agrees to participate in the following commitments:</p>
 				<ul>
 				<li><b>1 Classroom Cleaning per registered child</b> (Dates are provided at registration for families to sign up)</li>
 				<li>
@@ -1730,12 +1730,12 @@ export default class Content extends Component {
 	}
 	Fundraising(){
 		return(
-		<div class="info">
-			<p class="fun">Fundraising</p>
+		<div className="info">
+			<p className="fun">Fundraising</p>
 			<p><b>LCDS Preschool & Kindergarten members have chosen to pay a one-time family fundraising fee instead of raising funds through numerous fundraising events or campaigns.</b></p>
 			<p>The family fundraising fee will be calculated each year by the Board of Directors; depending on enrollment numbers the fee will adjust accordingly.</p>
 			<p>The fee for the {this.state.yr}-{this.state.yr + 1} school year will be $300.  Members will receive a Tax Donation receipt for the amount of $300 if full payment is received in September.</p>
-			<p class="subTitle">Options for the family fundraising fee:</p>
+			<p className="subTitle">Options for the family fundraising fee:</p>
 			<ul>
 				<li>Families may pay the fee in a one time payment in September and will receive a tax donation receipt for the total amount in February.</li>
 				<li>Families may split the payment into 2 payments of $150 payable on September 1st and February 1st.  2 tax donation receipts will be issued for $150.00 each and will be applicable for the coordinating tax year.</li>
@@ -1753,38 +1753,38 @@ export default class Content extends Component {
 	}
 	PreSchoolFees(){
 		return(
-		<div class ="info">
-			<p class="fun">Preschool fees</p>
+		<div className="info">
+			<p className="fun">Preschool fees</p>
 			{this.AdminFees()}
-			<p class="subTitle"> Preschool Fees:</p>
+			<p className="subTitle"> Preschool Fees:</p>
 
 			<p>Monthly fees are $150 for 2 days per week per month and $225 for 3 days per week per month. (Extra Days add $75/month/extra day added.)</p>
 
-			<p><a href={this.props.site_urls["PaymentOptions"]} class = "blueLink">Payment Options</a></p>
-			<p><a href={this.props.site_urls["RegCommit"]} class = "greenLink">Registration Commitments</a></p>
+			<p><a href={this.props.site_urls["PaymentOptions"]} className= "blueLink">Payment Options</a></p>
+			<p><a href={this.props.site_urls["RegCommit"]} className= "greenLink">Registration Commitments</a></p>
 			{this.RegistrationCommitmentDepositCheques()}
 			<img src={SammyRegistration} />
 		</div>);
 	}
 	JuniorKindergardenFees(){
 		return(
-			<div class ="info">
-				<p class="fun">Junior Kindergarden Fees</p>
+			<div className="info">
+				<p className="fun">Junior Kindergarden Fees</p>
 				{this.AdminFees()}
 
 				<p>Monthly fees are $300.00 for 4 days per week per month or $375.00 for 5 days per week per month.</p>
 
-				<p><a href={this.props.site_urls["PaymentOptions"]} class = "blueLink">Payment Options</a></p>
-				<p><a href={this.props.site_urls["RegCommit"]} class = "greenLink">Registration Commitments</a></p>
+				<p><a href={this.props.site_urls["PaymentOptions"]} className= "blueLink">Payment Options</a></p>
+				<p><a href={this.props.site_urls["RegCommit"]} className= "greenLink">Registration Commitments</a></p>
 				{this.RegistrationCommitmentDepositCheques()}
 				<img src={SammyRegistration} />
 			</div>
 		);
 	}
 	KindergardenFees(){
-		return(<div class ="info"><p class="fun">Kindergarden Fees</p>
+		return(<div className="info"><p className="fun">Kindergarden Fees</p>
 		{this.AdminFees()}
-			<p class="subTitle">Kindergarten Fee:</p>
+			<p className="subTitle">Kindergarten Fee:</p>
 
 			<p>Kindergarten is funded by the Alberta Government. LCDS charges a one time, non-refundable materials fee of $300.00, submitted with your child's registration, to cover the cost of consumable materials used throughout the year such as, paper, glue, paint, crayons, markers, Kleenex, soap, photocopying, etc.  </p>
 			<p>Your child only needs to bring a pair of indoor shoes and a backpack on their first day of school.</p>
@@ -1794,9 +1794,9 @@ export default class Content extends Component {
 	}
 	PaymentOptions(){
 		return(
-			<div class = "info">
-			<p class ="fun">Payment Options</p>
-			<p class ="subTitle">You can pay your fees in the following formats:</p>
+			<div className= "info">
+			<p className="fun">Payment Options</p>
+			<p className="subTitle">You can pay your fees in the following formats:</p>
 			<ul>
 				<li>One cheque which covers the entire nine-month period dated September 1</li>
 				<li>Two post-dated cheques dated September 1 (covers - September, October, November, December and January) and February 1 (covers -  February, March, April, and May).</li>
@@ -1808,15 +1808,15 @@ export default class Content extends Component {
 	}
 	AdminFees(){
 		return(
-		<div class="info">
-		<p class="subTitle">Society Membership & Admin Fees</p>
+		<div className="info">
+		<p className="subTitle">Society Membership & Admin Fees</p>
 		<p>A <b><u>non-refundable</u> $75 Society Membership and Administration fee </b> is charged when you submit your child’s registration (The membership fee is <b>PER FAMILY</b> if you are registering more than one child). This cheque will be dated with the same date as the day your child’s registration is accepted.</p>
 		</div>);
 	}
 	RegistrationCommitmentDepositCheques(){
 		return(
-			<div class="info">
-				<p class="subTitle">Registration Commitment Deposit Cheques:</p>
+			<div className="info">
+				<p className="subTitle">Registration Commitment Deposit Cheques:</p>
 
 				<p><b>Each family will submit a deposit cheque with their child's registration form to ensure fulfillment of the following registration commitments: </b></p>
 				<ul>
@@ -1831,23 +1831,23 @@ export default class Content extends Component {
 	}
 	Programs(){
 		return(
-			<div class ="info">
-				<p class="fun">
+			<div className="info">
+				<p className="fun">
 					Programs
 				</p>
 				<p>
 					LCDS Preschool & Kindergarten offers a play based, language rich, structured classroom routine, focusing on Kindergarten readiness five days per week either in the morning or afternoon.
 					Preschool children benefit from the early exposure to the Kindergarten curriculum concepts and the classroom setting.
 				</p>
-				<table class = "Table">
+				<table className= "Table">
 				<tbody>
 					<tr>
 						<th></th>
-						<th class="right"></th>
+						<th className="right"></th>
 					</tr>
 					<tr>
 						<td><b>Morning Class</b></td>
-						<td class="right"><b>Times</b></td>
+						<td className="right"><b>Times</b></td>
 					</tr>
 					<tr>
 						<td>
@@ -1856,7 +1856,7 @@ export default class Content extends Component {
 								Preschool
 							</p>
 						</td>
-						<td class="right">
+						<td className="right">
 							<p>
 								9:00am - 12:00pm
 								<br />
@@ -1870,7 +1870,7 @@ export default class Content extends Component {
 								<b>Afternoon Class</b>
 							</p>
 						</td>
-						<td class="right">
+						<td className="right">
 							<b>Times</b>
 						</td>
 					</tr>
@@ -1881,7 +1881,7 @@ export default class Content extends Component {
 								Preschool
 							</p>
 						</td>
-						<td class="right">
+						<td className="right">
 						<p>
 							12:45pm - 3:45pm <br />
 							1:00pm - 3:45pm
@@ -1891,7 +1891,7 @@ export default class Content extends Component {
 				</tbody>
 				</table>
 				<br />
-				<a href={this.props.site_urls["GenGuide"]} class="green">Half-Day Program - General Guidelines</a>
+				<a href={this.props.site_urls["GenGuide"]} className="green">Half-Day Program - General Guidelines</a>
 				<br />
 				<p>
 					Our classroom is an integrated classroom where the 3, 4 and 5 year old children attend together in the same classroom.
@@ -1924,11 +1924,11 @@ export default class Content extends Component {
 	}
 	GenGuidelines(){
 		return(
-		<div class="info">
-			<p class="fun">
+		<div className="info">
+			<p className="fun">
 				Half-day Program - General Guidelines
 			</p>
-			<p class ="subTitle">Self Directed Activities</p>
+			<p className="subTitle">Self Directed Activities</p>
 			<ul>
 				<li>
 					<b>Art Centres</b>: painting, pasting, drawing and paper construction.
@@ -1956,7 +1956,7 @@ export default class Content extends Component {
 					<b>Sandbox/Water table</b>: the center may be filled with materials such as sand, water, beans, moon sand, sticky foam, etc.  This provides sensory experiences involving measurement and investigation.
 				</li>
 			</ul>
-			<p class ="subTitle">Snack/Conversation Time</p>
+			<p className="subTitle">Snack/Conversation Time</p>
 			<ul>
 				<li>
 					Children are seated together to stimulate conversation, foster friendship and good manners.
@@ -1969,7 +1969,7 @@ export default class Content extends Component {
 				</li>
 			</ul>
 
-			<p class ="subTitle">Teacher Directed Activities</p>
+			<p className="subTitle">Teacher Directed Activities</p>
 			<ul>
 				<li>
 					Visual, auditory and communication skills are developed through small group conversations and activities with the teacher.
@@ -1991,7 +1991,7 @@ export default class Content extends Component {
 				</li>
 			</ul>
 
-			<p class="subTitle">Clean Up</p>
+			<p className="subTitle">Clean Up</p>
 			<ul>
 				<li>
 					Responsibility for putting away toys and equipment will be largely the children's.
@@ -2004,7 +2004,7 @@ export default class Content extends Component {
 				</li>
 			</ul>
 
-			<p class="subTitle">Circle Time</p>
+			<p className="subTitle">Circle Time</p>
 			<ul>
 				<li>
 					To develop an interest in books and story-telling.
@@ -2015,7 +2015,7 @@ export default class Content extends Component {
 
 			</ul>
 
-			<p class="subTitle">Departure</p>
+			<p className="subTitle">Departure</p>
 			<ul>
 				<li>
 					We have a final circle time to review what was presented in class, to hand out projects and other work, and to say "So Long".

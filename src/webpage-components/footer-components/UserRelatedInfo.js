@@ -5,9 +5,9 @@ import ModuleTable from "./user-components/ModuleTable";
 export default class UserRelatedInfo extends Component {
     render() {
         return (
-            <div class="relatedInfo">
+            <div className="relatedInfo">
                 <div>
-                <p class= "little-fun">Latest News</p>
+                <p className= "little-fun">Latest News</p>
                     <p>
                         <a href= "#/events/open-house-registration">Open House & Registration 2020/2021</a><br />
                         <a href="#/events/open-house-registration">Registration for 2019/2020 School Year</a><br />
@@ -16,8 +16,8 @@ export default class UserRelatedInfo extends Component {
                     </p>
                 </div>
                 <div>
-                <p class= "little-fun">Contact Info</p>
-                    <p class="contact">
+                <p className= "little-fun">Contact Info</p>
+                    <p className="contact">
                         13931-140th Street<br />
                         Edmonton, Alberta<br />
                         T6V 1J7<br />
