@@ -14,6 +14,7 @@ import (
 	"lcdskids.ca/LCDSWebsite/back-end/lib/news"
 	"lcdskids.ca/LCDSWebsite/back-end/lib/posts"
 	"lcdskids.ca/LCDSWebsite/back-end/lib/quotes"
+	"lcdskids.ca/LCDSWebsite/back-end/lib/textediting"
 )
 
 func main() {
@@ -30,12 +31,15 @@ func server() {
 	authApi := auth.NewAPI(db)
 	postApi := posts.NewAPI()
 	newsApi := news.NewAPI(db)
+  editApi := textediting.NewAPI(db)
 	quotesApi := quotes.NewAPI(db)
 	feesApi := fees.NewAPI(db)
 	boardApi := board.NewAPI(db)
 	muxer := http.NewServeMux()
+  
 	muxer.Handle("/auth/", http.StripPrefix("/auth", authApi))
 	muxer.Handle("/posts/", http.StripPrefix("/posts", postApi))
+  muxer.Handle("/editor/", http.StripPrefix("/editor", editApi))
 	muxer.Handle("/news/", http.StripPrefix("/news", newsApi))
 	muxer.Handle("/quotes/", http.StripPrefix("/quotes", quotesApi))
 	muxer.Handle("/fees/", http.StripPrefix("/fees", feesApi))

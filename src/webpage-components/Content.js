@@ -3,7 +3,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import SideBar from "./content-components/SideBar";
 import MainContent from "./content-components/MainContent";
 import ReactTable from "react-table";
-
+import TextEditor from "./HTMLEditor.js";
 import {
 	QuotePanel,
 	LoginPanel,
@@ -98,24 +98,12 @@ export default class Content extends Component {
 		}
 		//document.getElementById("loginButton").addEventListener("click", myFunction);
 	}
+
     render() {
+        console.log(this.state.quote)
         return (
 			<div class="body">
-				<div class="sidebar">
-					<SideBar site_urls={this.props.site_urls}
-						quote={this.state.quote}
-						custom_buttons={<ButtonsPanel/>}
-						member_login={<LoginPanel/>}
-						kids_corner={<KidsCornerPanel/>}
-						squirrel={<SquirrelPanel/>}
-						about_us={<AboutUsPanel/>}
-						registration={<Registration/>}
-						programs={<Programs/>}
-						pic={<PictureFrame/>}
-						upcoming_events={<UpcomingEvents/>}
-						co_sponsors={<CoSponsors/>}
-					/>
-				</div>
+				{this.SideBar()}
 
 				<div class="mainBody">
 					<Switch>
@@ -239,6 +227,9 @@ export default class Content extends Component {
 						<Route path={this.props.site_urls["NotFound"]} exact>
 							{this.Error()}
 						</Route>
+						<Route path={this.props.site_urls["Admin"]} exact>
+						<TextEditor path={this.props.site_urls} titles={this.props.titles}/>
+					</Route>
 					</Switch>
 				</div>
 
@@ -288,6 +279,28 @@ export default class Content extends Component {
 			</div>
 		);
 	}
+
+	SideBar() {
+		return(
+
+			<div class="sidebar">
+					<SideBar site_urls={this.props.site_urls}
+						quote={<QuotePanel quote={this.state.quote}/>}
+						custom_buttons={<ButtonsPanel/>}
+						member_login={<LoginPanel/>}
+						kids_corner={<KidsCornerPanel/>}
+						squirrel={<SquirrelPanel/>}
+						about_us={<AboutUsPanel/>}
+						registration={<Registration/>}
+						programs={<Programs/>}
+						pic={<PictureFrame/>}
+						upcoming_events={<UpcomingEvents/>}
+						co_sponsors={<CoSponsors/>}
+					/>
+				</div>
+		);
+	}
+
 	Error(){
 		return(
 			<div>

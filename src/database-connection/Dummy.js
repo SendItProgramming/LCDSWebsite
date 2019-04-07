@@ -52,7 +52,8 @@ export function routes() {
     Facebook:           "/news/lcds-on-facebook",   //done
     Contact:            "/contact",                                                 //Done
 
-    NotFound:           "/*/"
+    NotFound:           "/*/",
+    Admin:              "/Admin"
   };
 }
 
@@ -105,10 +106,8 @@ export function titles() {
     OpenHouse:          "Open House Registration",
     TrialClasses:       "Trial Classes",
 
-    News:               "/news",
-    Facebook:           "/news/lcds-on-facebook",   //done
-    Contact:            "/contact",                                                 //Done
-
-    NotFound:           "/*/"
+    News:               "News",
+    Contact:            "Contact",
+    Admin:              "Admin"
   };
 }
