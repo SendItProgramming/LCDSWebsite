@@ -542,7 +542,7 @@ export default class Content extends Component {
 	TrialClasses(){
 		return(
 			<div class="info">
-				<p class="fun"><a class="funLink" href={this.props.site_urls["History"]}>Free Trial Classes</a></p>
+				<p class="fun"><a class="funLink" href={this.props.site_urls["TrialClasses"]}>Free Trial Classes</a></p>
 				<p class="green">Not Sure If Your Child Is Ready For School Or If They Will Like It?</p>
 				<p><b>LCDS Preschool & Kindergarden offers free Trial classes for you and your child to experience preschool.</b></p>
 				<p><b>Trial Classes are by appointment, they may be arranged for a class any day of the week (subject to availability)</b>; only two spots are available per class each day. Bring your child to class for 9:15 am or 1:05 pm and participate in the classroom experience until 10:30 am or 2:35 pm.</p>
@@ -1799,7 +1799,7 @@ export default class Content extends Component {
 					Responsibility for putting away toys and equipment will be largely the children's.
 				</li>
 				<li>
-					Develops cooperation and sharing skills. 
+					Develops cooperation and sharing skills.
 				</li>
 				<li>
 					Staff will provide direction and guidance when necessary.
@@ -1809,7 +1809,7 @@ export default class Content extends Component {
 			<p class="subTitle">Circle Time</p>
 			<ul>
 				<li>
-					To develop an interest in books and story-telling. 
+					To develop an interest in books and story-telling.
 				</li>
 				<li>
 					To develop listening, memory and communication skills.
