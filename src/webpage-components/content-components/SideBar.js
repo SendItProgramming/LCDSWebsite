@@ -8,28 +8,6 @@ import "./../../index-src/css/sidebar.css"
 */
 export default class SideBar extends Component {
 
-<<<<<<< HEAD
-
-    componentDidMount(){
-        function login() {
-            const url = "http://localhost:8888/auth/check";
-            fetch(url, {
-            method : "POST",
-            body: new FormData(document.getElementById("inputform")),
-            }).then(
-                response => response.text()
-            ).then(
-                    html => console.log(html)
-            );
-        }
-        document.getElementById("loginButton").addEventListener("click", login);
-    }
-=======
-    constructor(props) {
-        super(props)
-    }
-    
->>>>>>> text-editor-backend
     render() {
         return (
             <div id="sidebar">
