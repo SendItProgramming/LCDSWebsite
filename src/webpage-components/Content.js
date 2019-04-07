@@ -438,9 +438,6 @@ export default class Content extends Component {
 						<Route path={this.props.site_urls["GenGuide"]} exact>
 							{this.GenGuidelines()}
 						</Route>
-						<Route path={this.props.site_urls["NotFound"]} exact>
-							{this.Error()}
-						</Route>
 						<Route path={this.props.site_urls["Admin"]} exact>
 							<div>
 								<Helmet>
