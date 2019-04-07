@@ -56,32 +56,13 @@ export function QuotePanel(props){
 export function LoginPanel(props){
 
 
-	function submit(){
-		const url = "http://localhost:8888/auth/check";
-		fetch(url, {
-    	method : "POST",
-    	body: new FormData(document.getElementById("inputform")),
-    	// -- or --
-    	// body : JSON.stringify({
-        // user : document.getElementById('user').value,
-        // ...
-    	// })
-		}).then(
-    		response => response.text() // .json(), etc.
-    		// same as function(response) {return response.text();}
-		).then(
-   		 html => console.log(html)
-		);
-	}
-
-
 	let data = props.jwt
-	console.log(props.logout)
 	if (data){
 		let base64Url = data.split('.')[1];
         let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
         let jwt = JSON.parse(window.atob(base64));
         let userObj = JSON.parse(jwt.sub)
+        console.log(userObj)
 		return (
 			<SidebarPanel>
 			<div>Hi There {userObj.Email}</div>
@@ -102,9 +83,7 @@ export function LoginPanel(props){
 						<FormControl id="password-form-control" type="password" name="password"/>
 					</FormGroup>
 					<Checkbox>Remember Me</Checkbox>
-					<Button type="button" id="loginButton">Log In</Button><br />
-					<a href="#">Forgot your password?</a><br />
-					<a href="#">Forgot your username?</a><br />
+					<Button type="button" id="loginButton" onClick={props.login}>Log In</Button><br />
 				</form>
 			</TitledSidebarPanel>
 		);

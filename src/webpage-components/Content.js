@@ -68,7 +68,7 @@ export default class Content extends Component {
 		//this.GetQuote = this.GetQuote.bind(this)
 		this.news = this.GetNews.bind(this)
 		this.Logout = this.Logout.bind(this)
-		
+		this.Login = this.Login.bind(this);
 		WebFont.load({
 			google: {
 				families: ['Londrina Sketch']
@@ -273,7 +273,7 @@ export default class Content extends Component {
 					<SideBar site_urls={this.props.site_urls}
 						quote={<QuotePanel quote={this.state.quote}/>}
 						custom_buttons={<ButtonsPanel/>}
-						member_login={<LoginPanel jwt={this.state.jwt} logout={this.Logout}/>}
+						member_login={<LoginPanel jwt={this.state.jwt} logout={this.Logout} login={this.Login}/>}
 						kids_corner={<KidsCornerPanel/>}
 						squirrel={<SquirrelPanel/>}
 						about_us={<AboutUsPanel/>}
@@ -1257,7 +1257,6 @@ export default class Content extends Component {
 		})
 		sessionStorage.removeItem('Auth')
 	}
-
 	OurFounder(){
 		return(
 			<div class="info">
@@ -1518,4 +1517,34 @@ export default class Content extends Component {
 		var newDate = new Date()
 		return newDate.getFullYear();
 	}
+	Login() {
+		let comp = this;
+ 		 	const url = "http://localhost:8888/auth/check";
+			fetch(url, {
+    		method : "POST",
+    		body: new FormData(document.getElementById("inputform")),
+    		// -- or --
+    		// body : JSON.stringify({
+        	// user : document.getElementById('user').value,
+        	// ...
+    		// })
+			}).then(
+    			function(response){
+    				if (!response.ok){
+    					alert("Something went wrong logging in, please check your credentials and try again")
+    					return
+    				}
+    				return response.text()
+    			} // .json(), etc.
+    			// same as function(response) {return response.text();}
+			).then(
+   		 		function(jwt) {
+   		 			//soruce https://stackoverflow.com/questions/38552003/how-to-decode-jwt-token-in-javascript
+   		 			sessionStorage.setItem('Auth', jwt)
+   		 			comp.setState({
+   		 				jwt:jwt
+   		 			})
+   		 		}
+			);
+		}
 }

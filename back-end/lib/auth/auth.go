@@ -26,6 +26,7 @@ type User struct {
 	Id       int
 	Email    string
 	Password string
+	Role     string
 }
 
 func (a Authenticator) CheckPassword(w http.ResponseWriter, r *http.Request) {
@@ -36,7 +37,7 @@ func (a Authenticator) CheckPassword(w http.ResponseWriter, r *http.Request) {
 	}
 	returnedUser, err := a.CheckUser(u)
 	if err == NotMatch {
-		json.NewEncoder(w).Encode(false)
+		w.WriteHeader(http.StatusNotAcceptable)
 		return
 	}
 	if err != nil {
@@ -79,6 +80,14 @@ func (a Authenticator) CheckUser(u User) (User, error) {
 	}
 	if u.Password != queriedUser.Password {
 		return User{}, NotMatch
+	}
+	q = `SELECT role FROM roles where user_id = $1`
+	err = a.db.QueryRow(q, queriedUser.Id).Scan(&queriedUser.Role)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			return queriedUser, nil
+		}
+		return User{}, err
 	}
 	return queriedUser, nil
 }
