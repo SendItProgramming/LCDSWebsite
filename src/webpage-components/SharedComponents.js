@@ -45,57 +45,45 @@ export function QuotePanel(props){
 	return (
 		<SidebarPanel>
 			<blockquote>
-				"{props.quote}"
+				    "{props.quote.Text}"
 				<br />
-				-{props.author}
-			</blockquote>
+				    -{props.quote.Author}
+                </blockquote>
 		</SidebarPanel>
 	);
 }
 
 export function LoginPanel(props){
 
-	let email = "";
-	let password = "";
 
-	function submit(){
-		const url = "http://localhost:8888/auth/check";
-		fetch(url, {
-    	method : "POST",
-    	body: new FormData(document.getElementById("inputform")),
-    	// -- or --
-    	// body : JSON.stringify({
-        // user : document.getElementById('user').value,
-        // ...
-    	// })
-		}).then(
-    		response => response.text() // .json(), etc.
-    		// same as function(response) {return response.text();}
-		).then(
-   		 html => console.log(html)
+	let userObj = props.jwt
+	if (userObj){
+		console.log(userObj)
+		return (
+			<SidebarPanel>
+			<div>Hi There {userObj.Email}</div>
+			<Button type="button" onClick={props.logout}> Logout </Button>
+			</SidebarPanel>
+		)
+	} else {
+	return (
+			<TitledSidebarPanel title="Members Log In">
+				<p>*Only registered families of LCDS may create an account.</p>
+				<form id="inputform">
+					<FormGroup>
+						<ControlLabel>User Name</ControlLabel>
+						<FormControl id="user-form-control" type="text" name="email"/>
+					</FormGroup>
+					<FormGroup>
+						<ControlLabel>Password</ControlLabel>
+						<FormControl id="password-form-control" type="password" name="password"/>
+					</FormGroup>
+					<Checkbox>Remember Me</Checkbox>
+					<Button type="button" id="loginButton" onClick={props.login}>Log In</Button><br />
+				</form>
+			</TitledSidebarPanel>
 		);
 	}
-
-
-	return (
-		<TitledSidebarPanel title="Members Log In">
-			<p>*Only registered families of LCDS may create an account.</p>
-			<form id="inputform">
-				<FormGroup>
-					<ControlLabel>User Name</ControlLabel>
-					<FormControl id="user-form-control" type="text" name="email"/>
-				</FormGroup>
-				<FormGroup>
-					<ControlLabel>Password</ControlLabel>
-					<FormControl id="password-form-control" type="text" name="password"/>
-				</FormGroup>
-				<Checkbox>Remember Me</Checkbox>
-				<Button type="button" id="loginButton">Log In</Button><br />
-				<a href="#">Forgot your password?</a><br />
-				<a href="#">Forgot your username?</a><br />
-			</form>
-		</TitledSidebarPanel>
-	);
 }
 
 export function KidsCornerPanel(props){

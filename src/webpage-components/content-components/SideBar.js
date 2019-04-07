@@ -7,6 +7,10 @@ import "./../../index-src/css/sidebar.css"
     one component.
 */
 export default class SideBar extends Component {
+
+    constructor(props) {
+        super(props)
+    }
     render() {
         return (
             <div id="sidebar">
@@ -43,6 +47,10 @@ export default class SideBar extends Component {
                         {this.RenderContact()}
                     </Route>
 
+					<Route path={this.props.site_urls["Admin"]}>
+                        {this.RenderAdmin()}
+					</Route>
+
                     <Redirect to={this.props.site_urls["Home"]}/>
                 </Switch>
             </div>
@@ -65,10 +73,11 @@ export default class SideBar extends Component {
         return(
             <div>
                 <Switch>
-                    <Route path={this.props.site_urls["AboutUs"]} exact>
+                    <Route path={this.props.site_urls["AboutUs"]} >
                         <div>
-                            {this.props.programs}
+                            {this.GetQuote()}
                             {this.props.co_sponsors}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
@@ -77,12 +86,13 @@ export default class SideBar extends Component {
                             {this.props.about_us}
                             {this.props.upcoming_events}
                             {this.props.kids_corner}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
                     <Route path={this.props.site_urls["OurBoard"]} exact>
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
                             {this.props.member_login}
                         </div>
@@ -91,28 +101,32 @@ export default class SideBar extends Component {
                     <Route path={this.props.site_urls["Squirrel"]} exact>
                         <div>
                             {this.props.kids_corner}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
                     <Route path={this.props.site_urls["Testimonials"]} exact>
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
                     <Route path={this.props.site_urls["History"]} exact>
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
                     <Route path={this.props.site_urls["Founder"]} exact>
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
+                            {this.props.member_login}
                         </div>
                     </Route>
                 </Switch>
@@ -129,24 +143,27 @@ export default class SideBar extends Component {
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
                     <Route path={this.props.site_urls["Kindergarden"]} exact>
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
                     <Route path={this.props.site_urls["JrKindergarden"]} exact>
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
@@ -155,15 +172,17 @@ export default class SideBar extends Component {
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
                     <Route path={this.props.site_urls["LearningSupport"]} exact>
                         <div>
-                            {this.props.quote}
+
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
@@ -171,14 +190,16 @@ export default class SideBar extends Component {
                         <div>
                             {this.props.about_us}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
                     <Route path={this.props.site_urls["DailySnacks"]} exact>
                         <div>
-                            {this.props.quote}
+
                             {this.props.about_us}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
                 </Switch>
@@ -192,26 +213,34 @@ export default class SideBar extends Component {
                 <Switch>
                     <Route path={this.props.site_urls["Registration"]} exact>
                         <div>
-                            {this.props.quote}
+                            {this.props.about_us}
+                            {this.props.programs}
+                            {this.props.registration}
+                            {this.props.member_login}
+                        </div>
+                    </Route>
+                    <Route path={this.props.site_urls["OpenHouse"]} exact>
+                        <div>
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
                         </div>
                     </Route>
-
                     <Route path={this.props.site_urls["ProgramFees"]} exact>
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
                             {this.props.programs}
                             {this.props.registration}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
                     <Route path={this.props.site_urls["ParentInvolvement"]} exact>
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
+                            {this.props.member_login}
                         </div>
                     </Route>
                 </Switch>
@@ -233,26 +262,29 @@ export default class SideBar extends Component {
         return(
             <div>
                 <Switch>
-                    <Route path={this.props.site_urls["Events"]} exact>
+                    <Route path={this.props.site_urls["Events"]} >
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
                             {this.props.pic}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
-                    <Route path={this.props.site_urls["JobOpportunities"]} exact>
+                    <Route path={this.props.site_urls["JobOpportunities"]} >
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
+                            {this.props.member_login}
                         </div>
                     </Route>
 
-                    <Route path={this.props.site_urls["Fundraising"]} exact>
+                    <Route path={this.props.site_urls["Fundraising"]} >
                         <div>
-                            {this.props.quote}
+                            {this.GetQuote()}
                             {this.props.about_us}
                             {this.props.pic}
+                            {this.props.member_login}
                         </div>
                     </Route>
                 </Switch>
@@ -265,6 +297,7 @@ export default class SideBar extends Component {
             <div>
                 {this.props.upcoming_events}
                 {this.props.pic}
+                {this.props.member_login}
             </div>
         );
     }
@@ -277,4 +310,25 @@ export default class SideBar extends Component {
             </div>
         );
     }
+
+
+    GetQuote(){
+        return(
+            <blockquote>
+                "{this.props.quote.Text}"
+            <br />
+                -{this.props.quote.Author}
+            </blockquote>
+
+        );
+    }
+    
+    RenderAdmin() {
+        return(
+            <div class="a">
+				{this.props.member_login}
+            </div>
+        );
+    }
 }
+

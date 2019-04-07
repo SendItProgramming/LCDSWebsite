@@ -1,43 +1,47 @@
-.dropdown-menu {
-  background-color: #0c739d;
-}
-
-li:hover {
-  background-color: red;
-}
-
-#NavBarAndButtons {
-  height: auto;
-  display: inline-block;
-}
-
 #logo {
-  display: inline-block;
+  text-align: left;
+  width: 200px;
+  height: 200px;
+  padding-right: 10px;
+  display: grid;
 }
 
-#SocialButtons {
-  display: inline-block;
+#header {
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 5%;
+  width: 100%;
+  height: 200px;
 }
 
-.Bar {
-  float: left;
+#navBar {
+  position: relative;
+  width: 100%;
+  display: grid;
+  text-align: center;
+  vertical-align: middle;
+  grid-template-columns: 50px auto 200px;
+  grid-template-rows: 100px auto 100px;
 }
 
-.SocialMedia {
+#menuBar {
+  grid-column: 2/2;
+  grid-row: 3/2;
+}
+
+#searchBar {
+  display: grid;
   float: right;
+  grid-column: 3/span 1;
+  grid-row: 1/span 1;
 }
 
-.dropdown {
-  background-color: #0c739d;
+#socialButtons {
+  float: right;
+  display: grid;
+  grid-column: 3/3;
+  grid-row: 2/span 1;
 }
 
-a {
-  color: #ffffff;
-  background-color: #0c739d;
-}
-
-.header {
-  overflow: hidden;
-}
-
-/*# sourceMappingURL=header.css.map */
+/*# sourceMappingURL=Header.css.map */

@@ -11,10 +11,19 @@ import {
     Image
 } from "react-bootstrap"
 
+import "../index-src/css/header.css"
 import logo from "./../images/header-logo.png"
 import fb from "./../images/facebook.png"
 
 export default class Header extends Component {
+    constructor(props){
+        super(props)
+    }
+
+    componentDidUpdate(){
+        console.log(this.props.user)
+    }
+
     render() {
         return (
             <div id="header">
@@ -34,16 +43,49 @@ export default class Header extends Component {
 
     TopRight() {
         return (
-            <div name="topRight">
-                <SearchBar />
-                {this.NavBar()}
-                {this.SocialButtons()}
+            <div id="navBar">
+                <div id="searchBar"><SearchBar /></div>
+                <div id="menuBar">{this.NavBar()}</div>
+                <div id="socialButtons">{this.SocialButtons()}</div>
             </div>
         )
     }
 
-    NavBar() {
-		return (
+    AdminNav(){
+        return (
+            <Nav bsStyle="pills" onSelect={this.handleSelect}>
+                <NavItem href={ this.props.site_urls["Home"] }>
+                    Home
+                </NavItem>
+
+                {this.AboutUs()}
+
+                {this.Programs()}
+
+                {this.Registration()}
+
+                <NavItem href={ this.props.site_urls["Resources"] }>
+                    Resources
+                </NavItem>
+
+                {this.Events()}
+
+                <NavItem href={ this.props.site_urls["News"] }>
+                    News
+                </NavItem>
+
+                <NavItem href={ this.props.site_urls["Contact"] }>
+                    Contact
+                </NavItem>
+                <NavItem href={ this.props.site_urls["Admin"] }>
+                    Admin
+                </NavItem>
+            </Nav>
+        )
+    }
+
+    UserNav(){
+        return (
             <Nav bsStyle="pills" onSelect={this.handleSelect}>
                 <NavItem href={ this.props.site_urls["Home"] }>
                     Home
@@ -70,6 +112,18 @@ export default class Header extends Component {
                 </NavItem>
             </Nav>
         )
+    }
+
+    NavBar() {
+		if (this.props.user){
+            if(this.props.user.Role == "admin"){
+                return this.AdminNav()
+            } else {
+                return this.UserNav()
+            }
+        } else {
+            return this.UserNav()
+        }
     }
 
     AboutUs() {
@@ -193,6 +247,17 @@ export default class Header extends Component {
 
 
 
+    }
+
+    Admin() {
+        return(
+            <HoverToggleNavDropdown
+                title="Admin"
+                id="nav-dropdown"
+                href={this.props.site_urls["Admin"]}
+            >
+            </HoverToggleNavDropdown>
+        )
     }
 
     SocialButtons() {

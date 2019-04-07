@@ -6,9 +6,15 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"time"
+
+	jwt "github.com/dgrijalva/jwt-go"
 )
 
 var NotFound = errors.New("User not found in DB")
+var NotMatch = errors.New("User password did not match")
+
+var secret []byte = []byte("This is a bad secret")
 
 const cookie = "lcdsAuthentication"
 
@@ -20,6 +26,7 @@ type User struct {
 	Id       int
 	Email    string
 	Password string
+	Role     string
 }
 
 func (a Authenticator) CheckPassword(w http.ResponseWriter, r *http.Request) {
@@ -28,19 +35,37 @@ func (a Authenticator) CheckPassword(w http.ResponseWriter, r *http.Request) {
 		Email:    r.FormValue("email"),
 		Password: r.FormValue("password"),
 	}
-	check, err := a.CheckUser(u)
+	returnedUser, err := a.CheckUser(u)
+	if err == NotMatch {
+		w.WriteHeader(http.StatusNotAcceptable)
+		return
+	}
 	if err != nil {
 		fmt.Println("Problems in getting the user: ", err)
 		return
 	}
-	if !check {
-		json.NewEncoder(w).Encode(false)
+	t := time.Now().Add(1 * time.Hour)
+	returnedUser.Email = u.Email
+	returnedUser.Password = ""
+	b, err := json.Marshal(returnedUser)
+	if err != nil {
+		fmt.Println("Problems in marshalling the user: ", err)
 		return
 	}
-	json.NewEncoder(w).Encode(true)
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+		"sub": string(b),
+		"exp": t.String(),
+	})
+	tokenString, err := token.SignedString(secret)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	w.Header().Add("Content-Type", "application/jwt")
+	fmt.Fprintf(w, "%s", tokenString)
 }
 
-func (a Authenticator) CheckUser(u User) (bool, error) {
+func (a Authenticator) CheckUser(u User) (User, error) {
 	q := `SELECT user_id, password
 		  FROM users
 		  WHERE email = $1`
@@ -49,14 +74,22 @@ func (a Authenticator) CheckUser(u User) (bool, error) {
 	err := a.db.QueryRow(q, u.Email).Scan(&queriedUser.Id, &queriedUser.Password)
 	if err != nil {
 		if err == sql.ErrNoRows {
-			return false, NotFound
+			return User{}, NotFound
 		}
-		return false, err
+		return User{}, err
 	}
 	if u.Password != queriedUser.Password {
-		return false, nil
+		return User{}, NotMatch
 	}
-	return true, nil
+	q = `SELECT role FROM roles where user_id = $1`
+	err = a.db.QueryRow(q, queriedUser.Id).Scan(&queriedUser.Role)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			return queriedUser, nil
+		}
+		return User{}, err
+	}
+	return queriedUser, nil
 }
 
 //Do this after finishing the other stuff
