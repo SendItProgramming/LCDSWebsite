@@ -4,12 +4,7 @@ import SideBar from "./content-components/SideBar";
 import MainContent from "./content-components/MainContent";
 import ReactTable from "react-table";
 import TextEditor from "./HTMLEditor.js";
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> a31e68c2fc39b6614b63610d0e75bd99fa59a113
 import {
 	QuotePanel,
 	LoginPanel,
