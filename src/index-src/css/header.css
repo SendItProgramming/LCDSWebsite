@@ -43,5 +43,23 @@
   grid-column: 3/3;
   grid-row: 2/span 1;
 }
+.nav > li > a:focus, .nav-pills > li > a:hover, .nav > a:hover {
+  
+  background-color: #0c739d;
 
+}
+.dropdown-menu{
+  background-color: #0c739d;
+}
+.dropdown-menu > li > a {
+  background-color: #0c739d;
+  color: white;
+}
+.nav .open >a, .nav .open >a:focus, .nav .open > a:hover{
+  background-color: #0c739d;
+  color: white;
+}
+.nav-pills > li > a{
+  color:white;
+}
 /*# sourceMappingURL=Header.css.map */

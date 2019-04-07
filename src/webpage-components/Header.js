@@ -36,7 +36,6 @@ export default class Header extends Component {
     TopRight() {
         return (
             <div id="navBar">
-                <div id="searchBar"><SearchBar /></div>
                 <div id="menuBar">{this.NavBar()}</div>
                 <div id="socialButtons">{this.SocialButtons()}</div>
             </div>

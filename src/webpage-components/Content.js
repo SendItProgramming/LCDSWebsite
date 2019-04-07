@@ -48,6 +48,12 @@ import Slide6 from "./../images/Slide/slide6.png"
 import Slide7 from "./../images/Slide/slide7.png"
 import Slide8 from "./../images/Slide/slide8.png"
 import Slide9 from "./../images/Slide/slide9.png"
+import MichellFung from "./../images/Staff/Michell_Fung.jpg"
+import CarmenBriggs from "./../images/Staff/Carmen_Briggs.jpg"
+import CorinaMichetti from "./../images/Staff/Corina_Michetti.jpg"
+import SarahQuinton from "./../images/Staff/Sarah_Quinton.jpg"
+import ShannonMusic from "./../images/Staff/Shannon_Music.jpg"
+
 
 export default class Content extends Component {
 
@@ -65,7 +71,6 @@ export default class Content extends Component {
 		}
 		//this.GetQuote = this.GetQuote.bind(this)
 		this.news = this.GetNews.bind(this)
-		
 		WebFont.load({
 			google: {
 				families: ['Londrina Sketch']
@@ -109,6 +114,9 @@ export default class Content extends Component {
 					<Switch>
 						<Route path={this.props.site_urls["Home"]} exact>
 							{this.Home()}
+						</Route>
+						<Route path={this.props.site_urls["Programs"]} exact>
+							{this.Programs()}
 						</Route>
 						<Route path={this.props.site_urls["Resources"]} exact>
 							{this.Resources()}
@@ -224,6 +232,9 @@ export default class Content extends Component {
 						<Route path={this.props.site_urls["PaymentOptions"]} exact>
 							{this.PaymentOptions()}
 						</Route>
+						<Route path={this.props.site_urls["GenGuide"]} exact>
+							{this.GenGuidelines()}
+						</Route>
 						<Route path={this.props.site_urls["NotFound"]} exact>
 							{this.Error()}
 						</Route>
@@ -271,11 +282,11 @@ export default class Content extends Component {
 				<p>A <b><u>complete</u></b> registration form, fees, all deposit cheques and any supporting documentation <b><u>must</u></b> be submitted to the registrar at the time of registration in order to be considered <b><u>registered</u></b> in the program.</p>
 				<br/>
 
-				<p class="green">Registration Requirements For Learning Support</p>
+				<a href={this.props.site_urls["LearningSupport"]} class="green" >Registration Requirements For Learning Support</a>
 				<br/>
-				<p class="green">Registration Commitments</p>
+				<a href={this.props.site_urls["RegCommit"]}  class="green">Registration Commitments</a>
 				<br/>
-				<p class="green">Parent Involvement</p>
+				<a href={this.props.site_urls["ParentInvolvement"]}class="green">Parent Involvement</a>
 			</div>
 		);
 	}
@@ -541,7 +552,7 @@ export default class Content extends Component {
 		return(
 		<div class="info">
 			<p class="fun"><a class="funLink" href={ this.props.site_urls["Facebook"] }>LCDS on Facebook</a></p>
-			<p><a href="https://www.facebook.com/lcdskids">LCDS Preschool & Kindergarden.</a></p>
+			<p><a class="green" href="https://www.facebook.com/lcdskids">LCDS Preschool & Kindergarden.</a></p>
 			<p>See all of the fun activities, events and crafts the children have done this year!</p>
 		</div>
 		);
@@ -619,7 +630,90 @@ export default class Content extends Component {
 
 	OurStaff(){
 		return(
-			<p>here be staff</p>
+			<div>
+			<p class="fun">Staff</p>
+			<table class = "Table">
+			<tbody>
+			<tr>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr>
+				<td><img class="table-image" src={MichellFung}/></td>
+				<td class="left">
+				<p class ="subTitle">Our Teacher</p>
+				<p class="nameTitle">Michell Fung</p>
+				<p>I was born and raised here in Edmonton.
+				I grew up in the north side of Edmonton and now currently live on the south side with my husband Neil and my cat and dog. I have two degrees.
+				My first degree is in Psychology with a minor in Sociology. My second degree is in Elementary Education.
+				I have worked with children in a various number of places such as the women’s shelter, YMCA day cares and have taught in a couple of Head Start programs.
+				One of my hobbies is singing. I have sung in a mixed community choir for 6 years. 
+				Your children will learn many new songs and dances.
+				I really love working with children and families.
+				I love seeing the growth and development of all children.</p>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td class="left">
+				<p class ="subTitle">Our Educational Assistants:</p>
+
+				</td>
+			</tr>
+			<tr>
+				<td><img class="table-image" src={CorinaMichetti}/></td>
+				<td class="left">
+					<p class="nameTitle">Corina Michetti</p>
+
+					<p>Ms. Corina is a former parent of LCDS.
+						Her children have graduated from LCDS and are working their way through Elementary School.
+						Ms. Corina works with children in the classroom who receive educational support services.
+						Ms. Corina enjoys spending time with her husband and two children.
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td><img class="table-image" src={SarahQuinton}/></td>
+				<td class="left">
+					<p class="nameTitle">Sarah Quinton</p>
+
+					<p>
+						Ms. Sarah joined LCDS in the fall of 2017.
+						She has been a wonderful addition to our classroom.
+						Ms. Sarah helps to create all of the wonderful projects and activities for our preschoolers in the classroom.
+						In her spare time she participates in dance classes and fitness programs and enjoys travelling.
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td><img class="table-image" src={ShannonMusic}/></td>
+				<td class="left">
+					<p class="subTitle">Our Executive Director</p>
+					<p class="nameTitle">Shannon Music</p>
+					<p>
+						Miss Shannon is the LCDS Executive Director.
+						Shannon is also a former LCDS parent and former Board Member.
+						Miss Shannon has 3 children who graduated from LCDS and are now graduating from Post Secondary school and are starting their own lives.
+						She enjoys spending time with her husband, and family and with her little West Highland Terrier named Ben.
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td><img class="table-image" src={CarmenBriggs}/></td>
+				<td class="left">
+					<p class="subTitle">Our Business Manager</p>
+					<p class="nameTitle">Carmen Briggs</p>
+					<p>
+						Miss Carmen is our Business Manager.
+						Carmen is also a former LCDS parent and former Board member.
+						Carmen enjoys spending time with her husband, two children and her little Yorkshire Terrier Mazey.
+						Carmen's two boys also graduated from LCDS and are now graduating from High School and attending Post Secondary School.
+					</p>
+				</td>
+			</tr>
+			</tbody>
+			</table>
+			</div>
 		);
 	}
 
@@ -1058,7 +1152,7 @@ export default class Content extends Component {
 						An easy way to raise much needed funds, all we do is provide volunteers. All you do is show up, get training, and have fun. No experience required! Each family needs to complete two bingo shifts and one casino (in a casino year). Bingos are scheduled for Saturday and Sunday afternoons. The number of Bingo events will be determined by the number of families enrolled in the program.
 					</li>
 				</ul>
-				<p>Click Here for <a href="" class="greenLink">Registration Commitments</a></p>
+				<p>Click Here for <a href={this.props.site_urls["RegCommit"]} class="greenLink">Registration Commitments</a></p>
 
 				<p class="fun">WHO RUNS LCDS?</p>
 				<p>Who runs LCDS? Well, you do!  Parents are automatically members of the society when you register, and those who volunteer for the Board of Directors or sign-up for a committee position influence the experience for their kids. While we leave the structured education to the experts, volunteers provide important input into school policies, funding, social functions, and more. Please consider getting involved – you and your kids will love it.</p>
@@ -1198,7 +1292,7 @@ export default class Content extends Component {
 					Coordinates with the Executive Director, compiles, and creates a yearly scrapbook for the PM class.</p>
 				</li>
 				<li>
-					<p><b> class="subTitle">Laundry</b><br />
+					<p><b class="subTitle">Laundry</b><br />
 					Collects the dirty laundry on Friday, washes, dries and folds. Returns the clean folded laundry to the classroom on Monday morning and distributes it to the proper locations. </p>
 				</li>
 			</ul>
@@ -1305,18 +1399,18 @@ export default class Content extends Component {
 				<p class="fun">Our Board Members</p>
 					<img src={SammyBoard} />
 					<br/>
-					<table class = "Table">
-					<tbody>
+				<table class = "Table">
+				<tbody>
 					<tr>
 						<th>Position</th>
 						<th class="right">Member</th>
 					</tr>
-						{items.map(item => (
-									<tr>
-										<td><b>{item.MemberPosition}</b></td>
-										<td class="right">{item.MemberFirstName} {item.MemberLastInitial}</td>
-									</tr>
-						))}
+					{items.map(item => (
+						<tr>
+							<td><b>{item.MemberPosition}</b></td>
+							<td class="right">{item.MemberFirstName} {item.MemberLastInitial}</td>
+						</tr>
+					))}
 				</tbody>
 				</table>
 			</div>
@@ -1519,6 +1613,205 @@ export default class Content extends Component {
 				<p>**Deposit cheques are not cashed unless the member fails to meet their scheduled commitments. </p>
 
 			</div>
+		);
+	}
+	Programs(){
+		return(
+			<div class ="info">
+				<p class="fun">
+					Programs
+				</p>
+				<p>
+					LCDS Preschool & Kindergarten offers a play based, language rich, structured classroom routine, focusing on Kindergarten readiness five days per week either in the morning or afternoon.
+					Preschool children benefit from the early exposure to the Kindergarten curriculum concepts and the classroom setting.
+				</p>
+				<table class = "Table">
+				<tbody>
+					<tr>
+						<th></th>
+						<th class="right"></th>
+					</tr>
+					<tr>
+						<td><b>Morning Class</b></td>
+						<td class="right"><b>Times</b></td>
+					</tr>
+					<tr>
+						<td>
+							<p>Kindergarden
+								<br />
+								Preschool
+							</p>
+						</td>
+						<td class="right">
+							<p>
+								9:00am - 12:00pm
+								<br />
+								9:15am - 12:00pm
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p>
+								<b>Afternoon Class</b>
+							</p>
+						</td>
+						<td class="right">
+							<b>Times</b>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p>
+								Kindergarden <br />
+								Preschool
+							</p>
+						</td>
+						<td class="right">
+						<p>
+							12:45pm - 3:45pm <br />
+							1:00pm - 3:45pm
+						</p>
+						</td>
+					</tr>
+				</tbody>
+				</table>
+				<br />
+				<a href={this.props.site_urls["GenGuide"]} class="green">Half-Day Program - General Guidelines</a>
+				<br />
+				<p>
+					Our classroom is an integrated classroom where the 3, 4 and 5 year old children attend together in the same classroom.
+					Each daily class has a maximum number of 17 students per class per day.
+				</p>
+				<p>
+					Kindergarten and Jr. Kindergarten numbers are limited to 7 students per class (If there is a demand for more Kindergarten or Jr. Kindergarten spots the limit may change without notice); if there are open Kindergarten spots left in September, those spots will be opened for preschool registrations.
+				</p>
+				<ul>
+					<li>
+						For 3 year old children, 2 days per week are recommended.
+					</li>
+					<li>
+						For 4 year old children, 2-3 days per week are recommended.
+					</li>
+					<li>
+						Junior Kindergarten children will attend 4 or 5 days per week (See Junior Kindergarten for details).
+					</li>
+					<li>
+						Kindergarten children attend 5 days per week, unless an alternate path has been approved by the teacher and parents.
+					</li>
+				</ul>
+
+				<p>
+					**Parents of preschool children who would like their child to attend extra days may submit their request with their child's registration; extra days are subject to teacher and board approval.
+				</p>
+				<img src={SammyOurProgram} />
+			</div>
+		);
+	}
+	GenGuidelines(){
+		return(
+		<div class="info">
+			<p class="fun">
+				Half-day Program - General Guidelines
+			</p>
+			<p class ="subTitle">Self Directed Activities</p>
+			<ul>
+				<li>
+					<b>Art Centres</b>: painting, pasting, drawing and paper construction.
+				</li>
+				<li>
+				<b>Listening Centre</b>: activities to increase attention span and an appreciation for music and books.
+				</li>
+				<li>
+				<b>Block Centre</b>: provide opportunities for large and small activities with blocks.
+				</li>
+				<li>
+				<b>Cars & Building Cente</b>: provide opportunities for building social and fine motor skills and imaginative play.
+				</li>
+				<li>
+					<b>Manipulative Centre</b>: activities with puzzles, small blocks and board games, activities to develop classification skills, ordering and observation skills.
+				</li>
+				<li>
+					<b>Doll House/Train Centre</b>: provide opportunities for for building social and fine motor skills and imaginative play.
+				</li>
+				<li>
+					<b>Playhouse</b>: provides opportunities for building social and fine motor skills, imaginative and role play in a small scale house.
+					The house may change throughout the year to become a restaurant, grocery store, doctor's office, etc.
+				</li>
+				<li>
+					<b>Sandbox/Water table</b>: the center may be filled with materials such as sand, water, beans, moon sand, sticky foam, etc.  This provides sensory experiences involving measurement and investigation.
+				</li>
+			</ul>
+			<p class ="subTitle">Snack/Conversation Time</p>
+			<ul>
+				<li>
+					Children are seated together to stimulate conversation, foster friendship and good manners.
+				</li>
+				<li>
+					Snack Procedure follows the Canada Food Guide and other regulations set forth by government licensing.
+				</li>
+				<li>
+					Snacks may include but are not limited to vegetables, fruits, sandwiches, muffins, cheese and crackers.
+				</li>
+			</ul>
+
+			<p class ="subTitle">Teacher Directed Activities</p>
+			<ul>
+				<li>
+					Visual, auditory and communication skills are developed through small group conversations and activities with the teacher.
+				</li>
+				<li>
+					Project participation encourages the development of visual and auditory communication skills and fine motor skills are developed with the introduction of new materials and creative tools.
+				</li>
+				<li>
+					Through a series of planned activities, the children acquire information about the world around them.
+				</li>
+				<li>
+					Math and science concepts and information about other topics of interest are presented to the children.
+				</li>
+
+				<li>
+					Cooking days encourage fine motor skills and communication skills.
+					Children are introduced to new tastes and smells.
+					The children are encouraged to practice healthy food habits and are introduced to simple food handling and hand washing procedures.
+				</li>
+			</ul>
+
+			<p class="subTitle">Clean Up</p>
+			<ul>
+				<li>
+					Responsibility for putting away toys and equipment will be largely the children's.
+				</li>
+				<li>
+					Develops cooperation and sharing skills. 
+				</li>
+				<li>
+					Staff will provide direction and guidance when necessary.
+				</li>
+			</ul>
+
+			<p class="subTitle">Circle Time</p>
+			<ul>
+				<li>
+					To develop an interest in books and story-telling. 
+				</li>
+				<li>
+					To develop listening, memory and communication skills.
+				</li>
+
+			</ul>
+
+			<p class="subTitle">Departure</p>
+			<ul>
+				<li>
+					We have a final circle time to review what was presented in class, to hand out projects and other work, and to say "So Long".
+				</li>
+				<li>
+					Students are dismissed directly to their parents or guardians.
+				</li>
+			</ul>
+
+		</div>
 		);
 	}
 	GetYr(){
