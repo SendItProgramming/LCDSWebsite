@@ -53,7 +53,7 @@ export function routes() {
     Facebook:           "/news/lcds-on-facebook",   //done
     Contact:            "/contact",                                                 //Done
 
-
+    NotFound:           "/*/",
     Admin:              "/Admin"
   };
 }
@@ -68,7 +68,7 @@ export function titles() {
     AboutUs:            "About Us",
     OurStaff:           "Our Staff",
     OurBoard:           "Our Board",
-    Squirrel:           "Sammy The Squirrel",
+    Squirrel:           "Sammy Squirrel",
     Testimonials:       "Testimonials",
     History:            "Our History",
     Founder:            "Our Founder",
@@ -109,6 +109,7 @@ export function titles() {
 
     News:               "News",
     Contact:            "Contact",
+    Error:              "Error",
     Admin:              "Admin"
   };
 }
