@@ -52,7 +52,7 @@ export function routes() {
     Facebook:           "/news/lcds-on-facebook",   //done
     Contact:            "/contact",                                                 //Done
 
-    NotFound:           "/*/",
+
     Admin:              "/Admin"
   };
 }

@@ -225,12 +225,12 @@ export default class Content extends Component {
 						<Route path={this.props.site_urls["PaymentOptions"]} exact>
 							{this.PaymentOptions()}
 						</Route>
-						<Route path={this.props.site_urls["NotFound"]} exact>
-							{this.Error()}
-						</Route>
 						<Route path={this.props.site_urls["Admin"]} exact>
-						<TextEditor path={this.props.site_urls} titles={this.props.titles}/>
-					</Route>
+							<TextEditor path={this.props.site_urls} titles={this.props.titles}/>
+						</Route>
+						<Redirect to={this.props.site_urls["NotFound"]} />
+
+
 					</Switch>
 				</div>
 
