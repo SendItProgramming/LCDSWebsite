@@ -4,9 +4,12 @@ import SideBar from "./content-components/SideBar";
 import MainContent from "./content-components/MainContent";
 import ReactTable from "react-table";
 import TextEditor from "./HTMLEditor.js";
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> a31e68c2fc39b6614b63610d0e75bd99fa59a113
 import {
 	QuotePanel,
 	LoginPanel,
@@ -108,8 +111,6 @@ export default class Content extends Component {
         return (
 			<div class="body">
 				{this.SideBar()}
-
-
 				<div class="mainBody">
 					<Switch>
 						<Route path={this.props.site_urls["Home"]} exact>
@@ -232,6 +233,9 @@ export default class Content extends Component {
 						<Route path={this.props.site_urls["NotFound"]} exact>
 							{this.Error()}
 						</Route>
+						<Route path={this.props.site_urls["Admin"]} exact>
+						<TextEditor path={this.props.site_urls} titles={this.props.titles}/>
+					</Route>
 					</Switch>
 				</div>
 
@@ -280,6 +284,28 @@ export default class Content extends Component {
 				<br/>
 				<p class="green">Parent Involvement</p>
 			</div>
+		);
+	}
+
+
+	SideBar() {
+		return(
+
+			<div class="sidebar">
+					<SideBar site_urls={this.props.site_urls}
+						quote={<QuotePanel quote={this.state.quote}/>}
+						custom_buttons={<ButtonsPanel/>}
+						member_login={<LoginPanel/>}
+						kids_corner={<KidsCornerPanel/>}
+						squirrel={<SquirrelPanel/>}
+						about_us={<AboutUsPanel/>}
+						registration={<Registration/>}
+						programs={<Programs/>}
+						pic={<PictureFrame/>}
+						upcoming_events={<UpcomingEvents/>}
+						co_sponsors={<CoSponsors/>}
+					/>
+				</div>
 		);
 	}
 
