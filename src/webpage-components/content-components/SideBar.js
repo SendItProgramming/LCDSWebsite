@@ -8,6 +8,7 @@ import "./../../index-src/css/sidebar.css"
 */
 export default class SideBar extends Component {
 
+<<<<<<< HEAD
 
     componentDidMount(){
         function login() {
@@ -23,6 +24,12 @@ export default class SideBar extends Component {
         }
         document.getElementById("loginButton").addEventListener("click", login);
     }
+=======
+    constructor(props) {
+        super(props)
+    }
+    
+>>>>>>> text-editor-backend
     render() {
         return (
             <div id="sidebar">
@@ -57,6 +64,10 @@ export default class SideBar extends Component {
 
                     <Route path={this.props.site_urls["Contact"]}>
                         {this.RenderContact()}
+                    </Route>
+
+                    <Route path={this.props.site_urls["Blogs"]}>
+                        {this.RenderHome()}
                     </Route>
 
 					<Route path={this.props.site_urls["Admin"]}>

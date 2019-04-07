@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { Route, Redirect, Switch } from "react-router-dom";
 import SideBar from "./content-components/SideBar";
 import MainContent from "./content-components/MainContent";
+import BlogReader from "./BlogReader.js"
 import ReactTable from "react-table";
 import TextEditor from "./HTMLEditor.js";
 import { Helmet } from "react-helmet";
@@ -114,7 +115,6 @@ export default class Content extends Component {
 	}
 
     render() {
-        console.log(this.state.quote)
         return (
 			<div className="body">
 				{this.SideBar()}
@@ -435,6 +435,9 @@ export default class Content extends Component {
 								{this.PaymentOptions()}
 							</div>
 						</Route>
+						<Route path={this.props.site_urls["Blogs"]} exact>
+							<BlogReader />
+                    	</Route>
 						<Route path={this.props.site_urls["GenGuide"]} exact>
 							{this.GenGuidelines()}
 						</Route>
@@ -464,7 +467,6 @@ export default class Content extends Component {
 				They <b>must be fully functioning</b> in the bathroom stall.
 				Staff may assist with buttons or snaps.</p>
 				<br/>
-
 				<p><b>Sending a child to school in “Pull-Ups” is not accepted.</b></p>
 				<p className="subTitle">Registration Priority</p>
 				<p>All families who have <b>previously</b> registered with <b>LCDS</b> have <b>first priority</b> for registration in the program and are <b>eligible to register in February</b> on the designated registration date for the following year.</p>
