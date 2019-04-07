@@ -71,7 +71,7 @@ export default class WebPage extends Component {
       <div id="wrapper" class="container">
         <div className="WebPage">
           <Header  site_urls={this.state.site_urls} user={this.state.jwt}/>
-          <Content site_urls={this.state.site_urls} titles={this.state.titles} Logout={this.Logout} Login={this.Login} jwt={this.state.jwt}/>
+          <Content site_urls={this.state.site_urls} titles={this.state.titles} Logout={this.Logout} Login={this.Login} user={this.state.jwt}/>
           <Footer  site_urls={this.state.site_urls}/>
           <CustomBottom/>
         </div>

@@ -12,12 +12,9 @@ export default class FullCalendarWrapper extends Component {
 			show: false,
 			eventTitle: ""
 			};
-		
 		this.calendar = new FullCalendar.Calendar();
-		
 		this.handleOpen = this.handleOpen.bind(this);
 		this.handleClose = this.handleClose.bind(this);
-		
 		this.addEvent = this.addEvent.bind(this);
 	}
 	
@@ -102,8 +99,8 @@ export default class FullCalendarWrapper extends Component {
 		console.log(calendar_event);
 		this.calendar.renderEvent(calendar_event);
 	}
-	
-	componentDidMount() {
+
+	renderAdminCalendar(){
 		this.calendar = new FullCalendar.Calendar($('#calendar'),{
 			 events: '8888/events',
 			 customButtons: {
@@ -120,6 +117,48 @@ export default class FullCalendarWrapper extends Component {
 		});
 		
 		this.calendar.render();
+	}
+
+	renderReadOnlyCalendar(){
+		this.calendar = new FullCalendar.Calendar($('#calendar'),{
+			 events: '8888/events',
+			 header: {
+				 left: 'prev,next',
+				 center: 'title'
+			 }
+		});
+		
+		this.calendar.render();
+	}
+	checkAndDestroyCalendar(){
+		if (this.calendar){
+			this.calendar.destroy()
+		}
+	}
+	componentDidUpdate(){
+		if (this.props.user){
+            if(this.props.user.Role == "admin"){
+            	this.checkAndDestroyCalendar()
+                this.renderAdminCalendar()
+            } else {
+            	this.checkAndDestroyCalendar()
+                this.renderReadOnlyCalendar()
+            }
+        } else {
+        	this.checkAndDestroyCalendar()
+            this.renderReadOnlyCalendar()
+        }
+	}
+	componentDidMount() {
+		if (this.props.user){
+            if(this.props.user.Role == "admin"){
+                this.renderAdminCalendar()
+            } else {
+                this.renderReadOnlyCalendar()
+            }
+        } else {
+            this.renderReadOnlyCalendar()
+        }
 	}
 }
 

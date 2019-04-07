@@ -206,6 +206,9 @@ export default class Content extends Component {
 						<Route path={this.props.site_urls["PaymentOptions"]} exact>
 							{this.PaymentOptions()}
 						</Route>
+						<Route path={this.props.site_urls["Calendar"]} exact>
+							<FullCalendar user={this.props.user}/>
+						</Route>
 						<Route path={this.props.site_urls["Admin"]} exact>
 							<TextEditor path={this.props.site_urls} titles={this.props.titles}/>
 						</Route>
@@ -271,7 +274,7 @@ export default class Content extends Component {
 					<SideBar site_urls={this.props.site_urls}
 						quote={<QuotePanel quote={this.state.quote}/>}
 						custom_buttons={<ButtonsPanel/>}
-						member_login={<LoginPanel jwt={this.props.jwt} logout={this.props.Logout} login={this.props.Login}/>}
+						member_login={<LoginPanel jwt={this.props.user} logout={this.props.Logout} login={this.props.Login}/>}
 						kids_corner={<KidsCornerPanel/>}
 						squirrel={<SquirrelPanel/>}
 						about_us={<AboutUsPanel/>}
