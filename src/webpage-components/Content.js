@@ -67,11 +67,11 @@ export default class Content extends Component {
 					<Route path={this.props.site_urls["AboutUs"]} exact>
 						{this.About()}
                     </Route>
-					<Route path={this.props.site_urls["NotFound"]} exact>
-						{this.Error()}
-                    </Route>
 					<Route path={this.props.site_urls["Calendar"]} exact>
                         {this.Calendar()}
+                    </Route>
+					<Route path={this.props.site_urls["NotFound"]} exact>
+						{this.Error()}
                     </Route>
 				</Switch>
 
