@@ -842,7 +842,7 @@ export default class Content extends Component {
 				<th></th>
 			</tr>
 			<tr>
-				<td><img className="table-image" src={MichellFung}/></td>
+				<td><img className="table-image" src={MichellFung} alt="" /></td>
 				<td className="left">
 				<p className="subTitle">Our Teacher</p>
 				<p className="nameTitle">Michell Fung</p>
@@ -864,7 +864,7 @@ export default class Content extends Component {
 				</td>
 			</tr>
 			<tr>
-				<td><img className="table-image" src={CorinaMichetti}/></td>
+				<td><img className="table-image" src={CorinaMichetti} alt="" /></td>
 				<td className="left">
 					<p className="nameTitle">Corina Michetti</p>
 
@@ -876,7 +876,7 @@ export default class Content extends Component {
 				</td>
 			</tr>
 			<tr>
-				<td><img className="table-image" src={SarahQuinton}/></td>
+				<td><img className="table-image" src={SarahQuinton} alt="" /></td>
 				<td className="left">
 					<p className="nameTitle">Sarah Quinton</p>
 
@@ -889,7 +889,7 @@ export default class Content extends Component {
 				</td>
 			</tr>
 			<tr>
-				<td><img className="table-image" src={ShannonMusic}/></td>
+				<td><img className="table-image" src={ShannonMusic} alt="" /></td>
 				<td className="left">
 					<p className="subTitle">Our Executive Director</p>
 					<p className="nameTitle">Shannon Music</p>
@@ -902,7 +902,7 @@ export default class Content extends Component {
 				</td>
 			</tr>
 			<tr>
-				<td><img className="table-image" src={CarmenBriggs}/></td>
+				<td><img className="table-image" src={CarmenBriggs} alt="" /></td>
 				<td className="left">
 					<p className="subTitle">Our Business Manager</p>
 					<p className="nameTitle">Carmen Briggs</p>
@@ -931,7 +931,7 @@ export default class Content extends Component {
 				He is a very busy little squirrel.
 				We enjoy Sammy and all of his crazy adventures.
 				The children love to hear about what he has been up to and what he has to say.</p>
-				<p id="image"><Image src={Sammy}/></p>
+				<p id="image"><Image src={Sammy} alt="" /></p>
 			</div>
 		);
 	}
@@ -942,31 +942,31 @@ export default class Content extends Component {
 				<div className="Carousel" ></div>
 				<Carousel interval={5000}>
 					<Carousel.Item>
-						<img src={Slide1} />
+						<img src={Slide1}  alt="" />
 					</Carousel.Item>
 					<Carousel.Item>
-						<img src={Slide2} />
+						<img src={Slide2}  alt="" />
 					</Carousel.Item>
 					<Carousel.Item>
-						<img src={Slide3} />
+						<img src={Slide3}  alt="" />
 					</Carousel.Item>
 					<Carousel.Item>
-						<img src={Slide4} />
+						<img src={Slide4}  alt="" />
 					</Carousel.Item>
 					<Carousel.Item>
-						<img src={Slide5} />
+						<img src={Slide5}  alt="" />
 					</Carousel.Item>
 					<Carousel.Item>
-						<img src={Slide6} />
+						<img src={Slide6}  alt="" />
 					</Carousel.Item>
 					<Carousel.Item>
-					<img src={Slide7} />
+					<img src={Slide7}  alt="" />
 					</Carousel.Item>
 					<Carousel.Item>
-						<img src={Slide8} />
+						<img src={Slide8}  alt="" />
 					</Carousel.Item>
 					<Carousel.Item>
-						<img src={Slide9} />
+						<img src={Slide9}  alt="" />
 					</Carousel.Item>
 				</Carousel>
 
@@ -1004,7 +1004,7 @@ export default class Content extends Component {
 
 				<p className="green"><b>More information on curriculum and education guidelines can be found on the Alberta Education Website, <a href="https://www.learnalberta.ca/content/mychildslearning/gradeataglance/Kindergarden.pdf">Kindergarden Curriculum Guidelines</a></b></p>
 
-				<img src={SammySchool}/>
+				<img src={SammySchool} alt="" />
 
 			</div>
 		);
@@ -1035,7 +1035,7 @@ export default class Content extends Component {
 
 			<p className= "green"><b>More information on curriculum and education guidelines can be found on the Alberta Education Website, <a href="https://www.learnalberta.ca/content/mychildslearning/gradeataglance/Kindergarden.pdf">Kindergarden Curriculum</a></b></p>
 
-			<img src={SammySchool}/>
+			<img src={SammySchool} alt="" />
 			</div>
 		);
 	}
@@ -1064,7 +1064,7 @@ export default class Content extends Component {
 
 			<a className="green" href={this.props.site_urls["PreschoolDevSkills"]}> Preschool Development Skills</a>
 
-			<img src={SammySchool}/>
+			<img src={SammySchool} alt="" />
 			</div>
 		);
 	}
@@ -1095,7 +1095,7 @@ export default class Content extends Component {
 					<li><a href="http://www.caslpa.ca/">www.caslpa.ca</a></li>
 					<li><a href="http://www.hanen.org/">www.hanen.org</a></li>
 				</ul>
-				<img src={SammyReading}/>
+				<img src={SammyReading} alt="" />
 			</div>
 		);
 	}
@@ -1117,7 +1117,7 @@ export default class Content extends Component {
 
 				<p className="subTitle">Examples of previous year’s field trips:</p>
 				<p>Prairie Gardens, John Janzen Nature Center, The Royal Alberta Museum, Muttart Conservatory, Kiwanis Safety City, Telus World of Science, The Clay Guys, Puppet Tree House, Bus Safety, Rutherford House and WEM Undersea Caverns (Subject to change from year to year).</p>
-				<img src={Muttart}/>
+				<img src={Muttart} alt="" />
 			</div>
 		);
 	}
@@ -1145,7 +1145,7 @@ export default class Content extends Component {
 
 			<a className="green" href={this.props.site_urls["FoodRestrictions"]}>Allergies, Personal and Religious Food Restrictions</a>
 
-			<img src = {SammyEating}/>
+			<img src = {SammyEating} alt="" />
 
 			</div>
 
@@ -1272,7 +1272,7 @@ export default class Content extends Component {
 				</ul>
 
 				<p><b>If you have any further questions about Learning Support at LCDS, please email  <a href = "lcds@telus.net">lcds@telus.net</a> or contact us during office hours.</b></p>
-				<img src= {SammyReading}/>
+				<img src= {SammyReading} alt="" />
 			</div>
 		);
 	}
@@ -1287,7 +1287,7 @@ export default class Content extends Component {
 				<li><b>LCDS and the Board of Executives, respect the personal choices, ethnic and religious backgrounds of its members.  As a result, food preparation procedures may include steps to prevent cross contamination of snacks which contain specific ingredients.  This may change from year to year depending on student needs.</b></li>
 				<li>Examples of specific ingredients which may require additional food preparation steps may include eggs, dairy products, pork or beef.  If you have a question about the requirements for the preparation of food while on parent helper duty, please ask the staff before purchasing, bringing and preparing the snack.</li>
 			</ul>
-			<img src={SammyEating}/>
+			<img src={SammyEating} alt="" />
 			</div>
 		);
 	}
@@ -1312,7 +1312,7 @@ export default class Content extends Component {
 					"We just wanted to say thank you so much for everything this year!! R. has come so far and we are so proud and thankful for all you have done for R. and our family. The things he has learned are incredible but mostly the tools and feedback you have provided to us will go a long way. The attention and care that all of you have shown towards R. throughout this year is amazing and surpassed every expectation we had for R's first school experience. Please pass on our thank you to all of the staff members and have a great summer!!"
 				</blockquote>
 				<p><b>-Melanie G. Edmonton</b></p>
-				<img src={SammyRegistration}/>
+				<img src={SammyRegistration} alt="" />
 			</div>
 		);
 	}
@@ -1377,7 +1377,7 @@ export default class Content extends Component {
 				<p><a href={this.props.site_urls["Committee"]} className="green">Committee Positions</a></p>
 				<p><a href={this.props.site_urls["MiscPositions"]} className="green">Miscellaneous Positions</a></p>
 
-				<img src={SammyParentInvolvement}/>
+				<img src={SammyParentInvolvement} alt="" />
 			</div>
 
 		);
@@ -1414,7 +1414,7 @@ export default class Content extends Component {
 				Coordinates the Board Newsletter Report each month. Books venues for special events.  Assists the Executive Director and Business Manager, other Board members, Staff members and other Committee members as needed Prepares special event and program feedback surveys for the membership.
 				</li>
 			</ul>
-			<img src={SammyBoardRoom}/>
+			<img src={SammyBoardRoom} alt="" />
 			</div>
 		);
 	}
@@ -1457,7 +1457,7 @@ export default class Content extends Component {
 					Plans the seasonal classroom and membership parties in collaboration with the teacher or members of the Board. Coordinates with the Social Committee members and delegates responsibilities needed to prepare for the parties. Members from the AM and PM classes are needed to assist in preparations for the class parties and membership parties.</p>
 					</li>
 				</ul>
-				<img src={SammyOurProgram} />
+				<img src={SammyOurProgram}  alt="" />
 			</div>
 		);
 	}
@@ -1499,7 +1499,7 @@ export default class Content extends Component {
 					Collects the dirty laundry on Friday, washes, dries and folds. Returns the clean folded laundry to the classroom on Monday morning and distributes it to the proper locations. </p>
 				</li>
 			</ul>
-			<img src={SammyMiscImages} />
+			<img src={SammyMiscImages}  alt="" />
 			</div>
 		);
 	}
@@ -1551,7 +1551,7 @@ export default class Content extends Component {
 							<FaPhone /> (780) 473-7216<br />
 							<FaFax /> (780) 473-7021
 						</td>
-						<td className="right"><img src={LCDSMap}/></td>
+						<td className="right"><img src={LCDSMap} alt="" /></td>
 					</tr>
 				</tbody>
 				</table>
@@ -1574,7 +1574,7 @@ export default class Content extends Component {
 				<a href={this.props.site_urls["Founder"]} className="green">Our Founder</a>
 				<br />
 				<br />
-				<img src={SammyHistory}/>
+				<img src={SammyHistory} alt="" />
 
 			</div>
 		);
@@ -1611,7 +1611,7 @@ export default class Content extends Component {
 		return(
 			<div className="info">
 				<p className="fun">Our Board Members</p>
-					<img src={SammyBoard} />
+					<img src={SammyBoard}  alt="" />
 					<br/>
 				<table className= "Table">
 				<tbody>
@@ -1649,7 +1649,7 @@ export default class Content extends Component {
 				<p>Read her resume and capture the essence of her spirit.  I’m sure its reading makes us all a little humbler.</p>
 
 				<a className="green" href={this.props.site_urls["JuneHenry"]}>June Henry</a>
-				<img src={SammyJune}/>
+				<img src={SammyJune} alt="" />
 			</div>
 		);
 	}
@@ -1763,7 +1763,7 @@ export default class Content extends Component {
 			<p><a href={this.props.site_urls["PaymentOptions"]} className= "blueLink">Payment Options</a></p>
 			<p><a href={this.props.site_urls["RegCommit"]} className= "greenLink">Registration Commitments</a></p>
 			{this.RegistrationCommitmentDepositCheques()}
-			<img src={SammyRegistration} />
+			<img src={SammyRegistration}  alt="" />
 		</div>);
 	}
 	JuniorKindergardenFees(){
@@ -1777,7 +1777,7 @@ export default class Content extends Component {
 				<p><a href={this.props.site_urls["PaymentOptions"]} className= "blueLink">Payment Options</a></p>
 				<p><a href={this.props.site_urls["RegCommit"]} className= "greenLink">Registration Commitments</a></p>
 				{this.RegistrationCommitmentDepositCheques()}
-				<img src={SammyRegistration} />
+				<img src={SammyRegistration}  alt="" />
 			</div>
 		);
 	}
@@ -1789,7 +1789,7 @@ export default class Content extends Component {
 			<p>Kindergarten is funded by the Alberta Government. LCDS charges a one time, non-refundable materials fee of $300.00, submitted with your child's registration, to cover the cost of consumable materials used throughout the year such as, paper, glue, paint, crayons, markers, Kleenex, soap, photocopying, etc.  </p>
 			<p>Your child only needs to bring a pair of indoor shoes and a backpack on their first day of school.</p>
 			{this.RegistrationCommitmentDepositCheques()}
-			<img src={SammyRegistration} />
+			<img src={SammyRegistration}  alt="" />
 		</div>);
 	}
 	PaymentOptions(){
@@ -1918,7 +1918,7 @@ export default class Content extends Component {
 				<p>
 					**Parents of preschool children who would like their child to attend extra days may submit their request with their child's registration; extra days are subject to teacher and board approval.
 				</p>
-				<img src={SammyOurProgram} />
+				<img src={SammyOurProgram}  alt="" />
 			</div>
 		);
 	}
