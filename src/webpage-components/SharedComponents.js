@@ -56,13 +56,9 @@ export function QuotePanel(props){
 export function LoginPanel(props){
 
 
-	let data = props.jwt
-	if (data){
-		let base64Url = data.split('.')[1];
-        let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        let jwt = JSON.parse(window.atob(base64));
-        let userObj = JSON.parse(jwt.sub)
-        console.log(userObj)
+	let userObj = props.jwt
+	if (userObj){
+		console.log(userObj)
 		return (
 			<SidebarPanel>
 			<div>Hi There {userObj.Email}</div>
