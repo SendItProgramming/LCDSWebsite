@@ -19,14 +19,12 @@ export default class FullCalendarWrapper extends Component {
 			eventID: "",
 			modalMode: 'add'
 		};
-		
 		this.calendar = new FullCalendar.Calendar();
-		
 		this.handleOpen = this.handleOpen.bind(this);
 		this.handleEdit = this.handleEdit.bind(this);
 		this.handleClose = this.handleClose.bind(this);
-		
 		this.addEvent = this.addEvent.bind(this);
+		this.userObj = this.props.user
 	}
 	
 	render() {
@@ -147,24 +145,18 @@ export default class FullCalendarWrapper extends Component {
 	}
 	
 	addEvent(eventTitle, startDate, endDate, eventUrl, eventLocation, eventDescription, id) {
-		console.log($('#calendar'));
-		console.log("this is the id",id)
 		var calendar_event = {title: eventTitle, 
 			start: new Date(startDate), 
 			end: new Date(endDate), 
 			url: eventUrl, 
 			location: eventLocation, 
 			description: eventDescription}
-		console.log("Here is the event that is posting");
-		console.log(calendar_event);
 		$.post('http://localhost:8888/events/calendar', 
 		JSON.stringify(calendar_event));
-		console.log("adding this event to calendar");
-		console.log(JSON.stringify(calendar_event));
 		this.calendar.renderEvent(calendar_event);
 	}
-	
-	componentDidMount() {
+
+	renderAdminCalendar(){
 		this.calendar = new FullCalendar.Calendar($('#calendar'),{
 			events: function(start, end, timezone, callback) {
 				$.ajax({
@@ -196,6 +188,52 @@ export default class FullCalendarWrapper extends Component {
 			eventClick: (event) => {this.handleEdit(event)}
 		});
 		this.calendar.render();
+	}
+
+	renderReadOnlyCalendar(){
+		this.calendar = new FullCalendar.Calendar($('#calendar'),{
+			 events: '8888/events',
+			 header: {
+				 left: 'prev,next',
+				 center: 'title'
+			 }
+		});
+		
+		this.calendar.render();
+	}
+	checkAndDestroyCalendar(){
+		if(this.userObj == null){
+			this.calendar.destroy()
+		} else if (this.userObj != this.props.user){
+			if (this.calendar){
+				this.calendar.destroy()
+			}
+		}
+	}
+	/*componentDidUpdate(){
+		if (this.props.user){
+            if(this.props.user.Role == "admin"){
+            	this.checkAndDestroyCalendar()
+                this.renderAdminCalendar()
+            } else {
+            	this.checkAndDestroyCalendar()
+                this.renderReadOnlyCalendar()
+            }
+        } else {
+        	this.checkAndDestroyCalendar()
+            this.renderReadOnlyCalendar()
+        }
+	}*/
+	componentDidMount() {
+		if (this.props.user){
+            if(this.props.user.Role == "admin"){
+                this.renderAdminCalendar()
+            } else {
+                this.renderReadOnlyCalendar()
+            }
+        } else {
+            this.renderReadOnlyCalendar()
+        }
 	}
 }
 

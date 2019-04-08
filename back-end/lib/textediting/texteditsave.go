@@ -72,4 +72,3 @@ func (el EditorLink) Grab10Blogs() ([]EditorPost, error) {
 	return blogs, nil
 
 }
->>>>>>> text-editor-backend

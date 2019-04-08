@@ -8,6 +8,9 @@ import "./../../index-src/css/sidebar.css"
 */
 export default class SideBar extends Component {
 
+    constructor(props) {
+        super(props)
+    }
     render() {
         return (
             <div id="sidebar">

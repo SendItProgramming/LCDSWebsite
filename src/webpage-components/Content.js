@@ -95,6 +95,7 @@ export default class Content extends Component {
 		this.state.yr = this.GetYr()
 	}
 
+
     render() {
         return (
 			<div className="body">
@@ -422,6 +423,9 @@ export default class Content extends Component {
 						<Route path={this.props.site_urls["GenGuide"]} exact>
 							{this.GenGuidelines()}
 						</Route>
+						<Route path={this.props.site_urls["Calendar"]} exact>
+							<FullCalendar user={this.props.user}/>
+						</Route>
 						<Route path={this.props.site_urls["Admin"]} exact>
 							<div>
 								<Helmet>
@@ -489,7 +493,7 @@ export default class Content extends Component {
 					<SideBar site_urls={this.props.site_urls}
 						quote={<QuotePanel quote={this.state.quote}/>}
 						custom_buttons={<ButtonsPanel/>}
-						member_login={<LoginPanel/>}
+						member_login={<LoginPanel jwt={this.props.user} logout={this.props.Logout} login={this.props.Login}/>}
 						kids_corner={<KidsCornerPanel/>}
 						squirrel={<SquirrelPanel/>}
 						about_us={<AboutUsPanel/>}
@@ -529,10 +533,14 @@ export default class Content extends Component {
 			</div>
 		);
 	}
+	Calendar(){
+		return (
+			<FullCalendar />
+		);
+	}
 
 	News(){
 		const items = this.state.news
-
 		return(
 			<div className = "content">
 			<table className = "Table">
@@ -557,11 +565,6 @@ export default class Content extends Component {
 
 	}
 
-	Calendar(){
-		return (
-			<FullCalendar />
-		);
-	}
 	Resources(){
 		return(
 		<div className ="info">
@@ -1567,7 +1570,14 @@ export default class Content extends Component {
 			</div>
 		);
 	}
-
+	
+	OurFounder(){
+		return(
+			<div class="info">
+				<p class="fun">Our Founder</p>
+			</div>
+		);
+	}
 
 	Getboard(){
 		fetch("http://localhost:8888/board/")
