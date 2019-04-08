@@ -148,6 +148,10 @@ export default class Header extends Component {
                     Testimonials
                 </MenuItem>
 
+                <MenuItem href={this.props.site_urls["Blogs"]}>
+                    Blogs
+                </MenuItem>
+
                 <MenuItem href={this.props.site_urls["History"]}>
                     Our History
                 </MenuItem>
