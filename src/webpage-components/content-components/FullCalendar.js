@@ -222,6 +222,9 @@ export default class FullCalendarWrapper extends Component {
 		});
 		this.calendar.render();
 	}
+	renderNoCalendar(){
+		$("#calendar").html("You are not logged in, please login to see the calendar");
+	}
 	checkAndDestroyCalendar(){
 		if(this.userObj == null){
 			this.calendar.destroy()
@@ -253,7 +256,7 @@ export default class FullCalendarWrapper extends Component {
                 this.renderReadOnlyCalendar()
             }
         } else {
-            this.renderReadOnlyCalendar()
+            this.renderNoCalendar()
         }
 	}
 }
