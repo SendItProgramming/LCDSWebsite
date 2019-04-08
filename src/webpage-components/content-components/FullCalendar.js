@@ -28,6 +28,9 @@ export default class FullCalendarWrapper extends Component {
 	}
 	
 	render() {
+		if (this.state.start){
+		console.log(this.state.start)
+	}
 			return (
 				<div>
 					<div id="calendar"></div>
@@ -50,25 +53,24 @@ export default class FullCalendarWrapper extends Component {
 									<ControlLabel> Start Date: </ControlLabel>
 									<FormControl 
 										type='date'
-										defaultValue={((this.state.start != "") && (this.state.start.Date != undefined))?
-										this.state.start.Date.getDate() : new Date().toISOString()}
+										defaultValue={((this.state.start != "") && (this.state.start != undefined))? this.formatDate(this.state.start) : this.formatDate(new Date())}
 									/>	
 								</FormGroup>
 								<FormGroup controlId='end'>
 									<ControlLabel> End Date: </ControlLabel>
 									<FormControl 
 										type='date'
-										defaultValue={((this.state.end != "") && (this.state.start.Date != undefined))?
-										this.state.end.Date.getDate() : new Date().toISOString()}
+										defaultValue={((this.state.end != "") && (this.state.end != undefined))?
+										this.formatDate(this.state.end) : this.formatDate(new Date())}
 									/>	
 								</FormGroup>
-								<FormGroup controlId='pdf'>
+								{/*<FormGroup controlId='pdf'>
 									<ControlLabel> Upload PDF: </ControlLabel>
 									<FormControl 
 										type='file'
 										
 									/>	
-								</FormGroup>
+								</FormGroup>*/}
 								<FormGroup controlId='location'>
 									<ControlLabel> Location: </ControlLabel>
 									<FormControl 
@@ -112,10 +114,11 @@ export default class FullCalendarWrapper extends Component {
 	handleEdit(calEvent) {
 		console.log("Opening modal to edit an event");
 		console.log(calEvent);
+		console.log(calEvent.start.toString())
 		this.setState({
 			show: true,
 			eventTitle: calEvent.title, 
-			start: calEvent.start, 
+			start: calEvent.start.toDate(), 
 			end: calEvent.end, 
 			event_url: calEvent.url, 
 			eventLocation: calEvent.eventLocation, 
@@ -138,7 +141,13 @@ export default class FullCalendarWrapper extends Component {
 			eventID: ""
 		});
 	}
-	
+	formatDate(strDate){
+		let date = new Date(strDate)
+		var dd = ("0" + (date.getDate())).slice(-2);
+		var mm = ("0" + (date.getMonth() +　1)).slice(-2);
+		var yyyy = date.getFullYear();
+		return( yyyy + '-' + mm + '-' + dd) ;
+	}
 	handleClose() {
 		console.log("Closing modal");
 		this.setState({show: false});
@@ -223,7 +232,7 @@ export default class FullCalendarWrapper extends Component {
 		this.calendar.render();
 	}
 	renderNoCalendar(){
-		$("#calendar").html("You are not logged in, please login to see the calendar");
+		$("#calendar").html("You are not logged in, please login to see the calendar ");
 	}
 	checkAndDestroyCalendar(){
 		if(this.userObj == null){
