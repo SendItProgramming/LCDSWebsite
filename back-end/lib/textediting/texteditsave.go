@@ -53,6 +53,7 @@ func (el EditorLink) InsertText(ep EditorPost) error {
 
 func (el EditorLink) Grab10Blogs() ([]EditorPost, error) {
 	q := `SELECT entry_id, content, last_modified from EditorEntries
+			ORDER BY last_modified DESC
 			LIMIT 10`
 
 	var blogs []EditorPost
