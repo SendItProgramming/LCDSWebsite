@@ -192,13 +192,35 @@ export default class FullCalendarWrapper extends Component {
 
 	renderReadOnlyCalendar(){
 		this.calendar = new FullCalendar.Calendar($('#calendar'),{
-			 events: '8888/events',
-			 header: {
-				 left: 'prev,next',
-				 center: 'title'
-			 }
+			events: function(start, end, timezone, callback) {
+				$.ajax({
+					url: 'http://localhost:8888/events/calendar',
+					dataType: 'json',
+					success: function(doc) {
+						var events = [];
+						console.log(doc);
+						doc.event.forEach(function(obj) {
+							console.log(obj);
+							events.push(obj);
+						});
+						console.log(events);
+						callback(events);
+					}	
+				});	
+			},
+			customButtons: {
+				addEventButton: {
+					text: 'Add Event',
+					click: () => {this.handleOpen()}
+				}
+			},
+			header: {
+				left: 'prev,next',
+				center: 'title',
+				right: 'addEventButton'
+			},
+			eventClick: (event) => {this.handleEdit(event)}
 		});
-		
 		this.calendar.render();
 	}
 	checkAndDestroyCalendar(){
