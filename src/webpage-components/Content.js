@@ -25,6 +25,7 @@ import {
 	Carousel
 }from "react-bootstrap"
 import "./../index-src/css/Content.css"
+import FullCalendar from "./content-components/FullCalendar";
 
 import WebFont from 'webfontloader';
 
@@ -92,26 +93,6 @@ export default class Content extends Component {
 		this.GetNews()
 		this.Getboard()
 		this.state.yr = this.GetYr()
-
-		function myFunction() {
- 		 	const url = "http://localhost:8888/auth/check";
-			fetch(url, {
-    		method : "POST",
-    		body: new FormData(document.getElementById("inputform")),
-    		// -- or --
-    		// body : JSON.stringify({
-        	// user : document.getElementById('user').value,
-        	// ...
-    		// })
-			}).then(
-    			response => response.text() // .json(), etc.
-    			// same as function(response) {return response.text();}
-			).then(
-   		 	html => console.log(html)
-			);
-		}
-		//document.getElementById("loginButton").addEventListener("click", myFunction);
-
 	}
 
     render() {
@@ -576,6 +557,11 @@ export default class Content extends Component {
 
 	}
 
+	Calendar(){
+		return (
+			<FullCalendar />
+		);
+	}
 	Resources(){
 		return(
 		<div className ="info">
