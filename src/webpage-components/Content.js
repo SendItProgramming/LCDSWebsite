@@ -5,6 +5,7 @@ import MainContent from "./content-components/MainContent";
 import BlogReader from "./BlogReader.js"
 import ReactTable from "react-table";
 import TextEditor from "./HTMLEditor.js";
+import FullCalendarWrapper from "./content-components/FullCalendar.js"
 import { Helmet } from "react-helmet";
 
 import {
@@ -424,7 +425,7 @@ export default class Content extends Component {
 							{this.GenGuidelines()}
 						</Route>
 						<Route path={this.props.site_urls["Calendar"]} exact>
-							<FullCalendar user={this.props.user}/>
+							{this.Calendar()}
 						</Route>
 						<Route path={this.props.site_urls["Admin"]} exact>
 							<div>

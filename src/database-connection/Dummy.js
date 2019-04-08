@@ -48,6 +48,7 @@ export function routes() {
     Calendar:           "/events/calendar",
     OpenHouse:          "/events/open-house-registration",
     TrialClasses:       "/events/trial-classes",    //Done
+    Blogs:              "/blogs",
 
     News:               "/news",
     Facebook:           "/news/lcds-on-facebook",   //done
