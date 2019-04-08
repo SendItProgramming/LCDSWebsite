@@ -28,8 +28,8 @@ export default class FullCalendarWrapper extends Component {
 	}
 	
 	render() {
-		if (this.state.start){
-		console.log(this.state.start)
+		if (this.state.eventDescription){
+		console.log(this.state.eventDescription)
 	}
 			return (
 				<div>
@@ -85,9 +85,9 @@ export default class FullCalendarWrapper extends Component {
 									/>	
 									
 								</FormGroup>
-								<FormGroup controlId='eventID'>
+{/*								<FormGroup controlId='eventID'>
 									<FormControl type ='text' defaultValue={this.state.eventID} />
-								</FormGroup>
+								</FormGroup>*/}
 								
 								<Button onClick={() => {
 									this.addEvent(
@@ -114,15 +114,14 @@ export default class FullCalendarWrapper extends Component {
 	handleEdit(calEvent) {
 		console.log("Opening modal to edit an event");
 		console.log(calEvent);
-		console.log(calEvent.start.toString())
 		this.setState({
 			show: true,
 			eventTitle: calEvent.title, 
 			start: calEvent.start.toDate(), 
 			end: calEvent.end, 
 			event_url: calEvent.url, 
-			eventLocation: calEvent.eventLocation, 
-			eventDescription: calEvent.eventDescription,
+			eventLocation: calEvent.location, 
+			eventDescription: calEvent.description,
 			eventID: calEvent.eventID
 		});
 	}
