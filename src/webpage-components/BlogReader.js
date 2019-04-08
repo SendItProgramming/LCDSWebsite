@@ -30,6 +30,7 @@ export default class BlogReader extends Component {
   			})
   			.then(function(myJson) {
   				let html = []
+  				console.log(myJson)
     			myJson.forEach(function(element){
     				element.Content = JSON.parse(element.Content)
     				element.LastUpdated = new Date(element.LastUpdated)

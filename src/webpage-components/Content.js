@@ -536,7 +536,7 @@ export default class Content extends Component {
 	}
 	Calendar(){
 		return (
-			<FullCalendar />
+			<FullCalendarWrapper />
 		);
 	}
 
