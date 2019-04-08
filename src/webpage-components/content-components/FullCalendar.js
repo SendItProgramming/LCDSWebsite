@@ -217,7 +217,6 @@ export default class FullCalendarWrapper extends Component {
 			header: {
 				left: 'prev,next',
 				center: 'title',
-				right: 'addEventButton'
 			},
 			eventClick: (event) => {this.handleEdit(event)}
 		});
