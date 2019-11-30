@@ -1,4 +1,4 @@
-package board
+package staff
 
 import (
 	"database/sql"
@@ -10,7 +10,7 @@ import (
 )
 
 type API struct {
-	db  BoardDB
+	db  StaffDB
 	mux *mux.Router
 }
 
@@ -18,21 +18,22 @@ func (a API) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	a.mux.ServeHTTP(w, r)
 }
 
-func (db BoardDB) GetBoardMembers(w http.ResponseWriter, r *http.Request) {
+func (db StaffDB) GetStaffMembers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-	b, err := db.GetAllMembers()
+	s, err := db.GetAllStaff()
 
 	if err != nil {
-		fmt.Println("Problem in grabbing the Board Members: ", err)
+		fmt.Println("Problem in grabbing the STAFF Members: ", err)
 		return
 	}
-	json.NewEncoder(w).Encode(b)
+	fmt.Println(s)
+	json.NewEncoder(w).Encode(s)
 }
 
 func NewAPI(db *sql.DB) API {
 	m := mux.NewRouter()
-	b := BoardDB{db}
-	m.Handle("/", http.HandlerFunc(b.GetBoardMembers))
+	s := StaffDB{db}
+	m.Handle("/", http.HandlerFunc(s.GetStaffMembers))
 
-	return API{b, m}
+	return API{s, m}
 }
