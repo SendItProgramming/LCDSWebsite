@@ -26,7 +26,6 @@ func (db StaffDB) GetStaffMembers(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Problem in grabbing the STAFF Members: ", err)
 		return
 	}
-	fmt.Println(s)
 	json.NewEncoder(w).Encode(s)
 }
 

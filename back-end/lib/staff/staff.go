@@ -2,6 +2,7 @@ package staff
 
 import (
 	"database/sql"
+	"fmt"
 )
 
 type Staff struct {
@@ -26,7 +27,7 @@ func (s StaffDB) GetAllStaff() ([]Staff, error) {
 	defer rows.Close()
 	for rows.Next() {
 		var bp Staff
-		err = rows.Scan(&bp.FullName, &bp.Title, &bp.About, &bp.PictureURL)
+		err = rows.Scan(&bp.FullName, &bp.About, &bp.Title, &bp.PictureURL)
 		if err != nil {
 			return staff, err
 		}
@@ -36,5 +37,6 @@ func (s StaffDB) GetAllStaff() ([]Staff, error) {
 	if err != nil {
 		return staff, err
 	}
+	fmt.Println(q)
 	return staff, nil
 }
