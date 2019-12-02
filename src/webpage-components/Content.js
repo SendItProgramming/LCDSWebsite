@@ -5,7 +5,6 @@ import MainContent from "./content-components/MainContent";
 import ReactTable from "react-table";
 import TextEditor from "./HTMLEditor.js";
 import { Helmet } from "react-helmet";
-import { Staff } from "./Staff"
 import {
 	QuotePanel,
 	LoginPanel,
