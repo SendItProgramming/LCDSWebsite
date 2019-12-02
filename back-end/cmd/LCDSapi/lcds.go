@@ -7,14 +7,16 @@ import (
 	"net/http"
 	"time"
 
+	"LCDSWebsite/back-end/lib/auth"
+	"LCDSWebsite/back-end/lib/board"
+	"LCDSWebsite/back-end/lib/fees"
+	"LCDSWebsite/back-end/lib/news"
+	"LCDSWebsite/back-end/lib/posts"
+	"LCDSWebsite/back-end/lib/quotes"
+	"LCDSWebsite/back-end/lib/staff"
+	"LCDSWebsite/back-end/lib/textediting"
+
 	_ "github.com/lib/pq"
-	"lcdskids.ca/LCDSWebsite/back-end/lib/auth"
-	"lcdskids.ca/LCDSWebsite/back-end/lib/board"
-	"lcdskids.ca/LCDSWebsite/back-end/lib/fees"
-	"lcdskids.ca/LCDSWebsite/back-end/lib/news"
-	"lcdskids.ca/LCDSWebsite/back-end/lib/posts"
-	"lcdskids.ca/LCDSWebsite/back-end/lib/quotes"
-	"lcdskids.ca/LCDSWebsite/back-end/lib/textediting"
 )
 
 func main() {
@@ -31,19 +33,21 @@ func server() {
 	authApi := auth.NewAPI(db)
 	postApi := posts.NewAPI()
 	newsApi := news.NewAPI(db)
-  editApi := textediting.NewAPI(db)
+	editApi := textediting.NewAPI(db)
 	quotesApi := quotes.NewAPI(db)
 	feesApi := fees.NewAPI(db)
 	boardApi := board.NewAPI(db)
+	staffApi := staff.NewAPI(db)
 	muxer := http.NewServeMux()
-  
+
 	muxer.Handle("/auth/", http.StripPrefix("/auth", authApi))
 	muxer.Handle("/posts/", http.StripPrefix("/posts", postApi))
-  muxer.Handle("/editor/", http.StripPrefix("/editor", editApi))
+	muxer.Handle("/editor/", http.StripPrefix("/editor", editApi))
 	muxer.Handle("/news/", http.StripPrefix("/news", newsApi))
 	muxer.Handle("/quotes/", http.StripPrefix("/quotes", quotesApi))
 	muxer.Handle("/fees/", http.StripPrefix("/fees", feesApi))
 	muxer.Handle("/board/", http.StripPrefix("/board", boardApi))
+	muxer.Handle("/staff/", http.StripPrefix("/staff", staffApi))
 	muxer.Handle("/protected", authApi.Middleware(http.HandlerFunc(basicHandler)))
 	muxer.Handle("/api", http.HandlerFunc(samplePostAPI))
 	muxer.Handle("/", http.HandlerFunc(basicHandler))
