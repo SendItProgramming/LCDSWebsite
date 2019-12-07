@@ -21,7 +21,7 @@ export default class SideBar extends Component {
                     html => console.log(html)
             );
         }
-        document.getElementById("loginButton").addEventListener("click", login);
+        //document.getElementById("loginButton").addEventListener("click", login);
     }
     render() {
         return (
@@ -323,7 +323,6 @@ export default class SideBar extends Component {
         );
     }
 
-
     GetQuote(){
         return(
             <blockquote>
@@ -334,7 +333,7 @@ export default class SideBar extends Component {
 
         );
     }
-    
+
     RenderAdmin() {
         return(
             <div className="a">
