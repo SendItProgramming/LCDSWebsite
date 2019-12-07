@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"strconv"
 	"time"
 
 	jwt "github.com/dgrijalva/jwt-go"
@@ -43,44 +44,43 @@ func (a Authenticator) AuthenticateUser(w http.ResponseWriter, r *http.Request) 
 		fmt.Println("Problems in getting the user: ", err)
 		return
 	}
-	if result {
-		t := time.Now().Add(1 * time.Hour)
-		b, err := json.Marshal(u)
-		if err != nil {
-			fmt.Println("Problems in marshalling the user: ", err)
-			return
-		}
-		token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-			"sub": string(b),
-			"exp": t.String(),
-		})
-		tokenString, err := token.SignedString(secret)
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
-		w.Header().Add("Content-Type", "application/jwt")
-		fmt.Fprintf(w, "%s", tokenString)
-	} else {
+	u.Id = result
+	t := time.Now().Add(1 * time.Hour)
+	b, err := json.Marshal(u)
+	if err != nil {
+		fmt.Println("Problems in marshalling the user: ", err)
 		return
 	}
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+		"sub": string(b),
+		"exp": t.String(),
+	})
+	tokenString, err := token.SignedString(secret)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("id: " + strconv.Itoa(u.Id) + ", email: " + u.Email)
+	w.Header().Add("Content-Type", "application/jwt")
+	fmt.Fprintf(w, "%s", tokenString)
 }
 
-func (a Authenticator) CheckPassword(u User) (bool, error) {
-	q := `SELECT (password = crypt($1, password)) AS pwd_match FROM users WHERE email=$2`
+func (a Authenticator) CheckPassword(u User) (int, error) {
+	q := `SELECT user_id, (password = crypt($1, password)) AS pwd_match FROM users WHERE email=$2`
 
 	var result bool
-	err := a.db.QueryRow(q, u.Password, u.Email).Scan(&result)
+	var id int
+	err := a.db.QueryRow(q, u.Password, u.Email).Scan(&id, &result)
 	if err != nil {
 		if err == sql.ErrNoRows {
-			return false, ErrNotFound
+			return 0, ErrNotFound
 		}
-		return false, err
+		return 0, err
 	}
 	if !result {
-		return false, ErrNotMatch
+		return 0, ErrNotMatch
 	}
-	return true, nil
+	return id, nil
 }
 
 //Do this after finishing the other stuff
