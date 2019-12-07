@@ -11,8 +11,8 @@ import (
 	jwt "github.com/dgrijalva/jwt-go"
 )
 
-var NotFound = errors.New("User not found in DB")
-var NotMatch = errors.New("User password did not match")
+var ErrNotFound = errors.New("User not found in DB")
+var ErrNotMatch = errors.New("User password did not match")
 
 var secret []byte = []byte("This is a bad secret")
 
@@ -28,14 +28,14 @@ type User struct {
 	Password string
 }
 
-func (a Authenticator) CheckPassword(w http.ResponseWriter, r *http.Request) {
+func (a Authenticator) AuthenticateUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	u := User{
 		Email:    r.FormValue("email"),
 		Password: r.FormValue("password"),
 	}
-	returnedUser, err := a.CheckUser(u)
-	if err == NotMatch {
+	result, err := a.CheckPassword(u)
+	if err == ErrNotMatch {
 		json.NewEncoder(w).Encode(false)
 		return
 	}
@@ -43,43 +43,44 @@ func (a Authenticator) CheckPassword(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Problems in getting the user: ", err)
 		return
 	}
-	t := time.Now().Add(1 * time.Hour)
-	returnedUser.Email = u.Email
-	b, err := json.Marshal(returnedUser)
-	if err != nil {
-		fmt.Println("Problems in marshalling the user: ", err)
+	if result {
+		t := time.Now().Add(1 * time.Hour)
+		b, err := json.Marshal(u)
+		if err != nil {
+			fmt.Println("Problems in marshalling the user: ", err)
+			return
+		}
+		token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+			"sub": string(b),
+			"exp": t.String(),
+		})
+		tokenString, err := token.SignedString(secret)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		w.Header().Add("Content-Type", "application/jwt")
+		fmt.Fprintf(w, "%s", tokenString)
+	} else {
 		return
 	}
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"sub": string(b),
-		"exp": t.String(),
-	})
-	tokenString, err := token.SignedString(secret)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	w.Header().Add("Content-Type", "application/jwt")
-	fmt.Fprintf(w, "%s", tokenString)
 }
 
-func (a Authenticator) CheckUser(u User) (User, error) {
-	q := `SELECT user_id, password
-		  FROM users
-		  WHERE email = $1`
+func (a Authenticator) CheckPassword(u User) (bool, error) {
+	q := `SELECT (password = crypt($1, password)) AS pwd_match FROM users WHERE email=$2`
 
-	var queriedUser User
-	err := a.db.QueryRow(q, u.Email).Scan(&queriedUser.Id, &queriedUser.Password)
+	var result bool
+	err := a.db.QueryRow(q, u.Password, u.Email).Scan(&result)
 	if err != nil {
 		if err == sql.ErrNoRows {
-			return User{}, NotFound
+			return false, ErrNotFound
 		}
-		return User{}, err
+		return false, err
 	}
-	if u.Password != queriedUser.Password {
-		return User{}, NotMatch
+	if !result {
+		return false, ErrNotMatch
 	}
-	return queriedUser, nil
+	return true, nil
 }
 
 //Do this after finishing the other stuff

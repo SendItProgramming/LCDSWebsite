@@ -4,7 +4,10 @@ CREATE TABLE users(
     password VARCHAR NOT NULL,
     CONSTRAINT email_verification CHECK (email ~* '@')
 );
-INSERT INTO users(email, password) VALUES ('admin@gmail.com', 'password');
+INSERT INTO users(email, password) VALUES ('admin@gmail.com', crypt('mypassword', gen_salt('bf')) );
+INSERT INTO roles(user_id, role) VALUES (, 'admin' );  --Should the be user id of the above user
+INSERT INTO users(email, password) VALUES ('user@gmail.com', crypt('1234', gen_salt('bf')) );
+INSERT INTO roles(user_id, role) VALUES (4, 'parent' );  --Should the be user id of the above user
 
 CREATE TABLE quotes(
 	quote_id SERIAL PRIMARY KEY,

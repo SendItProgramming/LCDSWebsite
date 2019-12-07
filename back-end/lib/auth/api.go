@@ -19,7 +19,7 @@ type API struct {
 func NewAPI(db *sql.DB) API {
 	m := mux.NewRouter()
 	a := Authenticator{db}
-	m.Handle("/check", http.HandlerFunc(a.CheckPassword))
+	m.Handle("/check", http.HandlerFunc(a.AuthenticateUser))
 	return API{
 		m,
 		a,
