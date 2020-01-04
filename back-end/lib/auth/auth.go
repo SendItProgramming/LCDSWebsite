@@ -6,13 +6,14 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"strconv"
 	"time"
 
 	jwt "github.com/dgrijalva/jwt-go"
 )
 
-var NotFound = errors.New("User not found in DB")
-var NotMatch = errors.New("User password did not match")
+var ErrNotFound = errors.New("User not found in DB")
+var ErrNotMatch = errors.New("User password did not match")
 
 var secret []byte = []byte("This is a bad secret")
 
@@ -28,14 +29,14 @@ type User struct {
 	Password string
 }
 
-func (a Authenticator) CheckPassword(w http.ResponseWriter, r *http.Request) {
+func (a Authenticator) AuthenticateUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	u := User{
 		Email:    r.FormValue("email"),
 		Password: r.FormValue("password"),
 	}
-	returnedUser, err := a.CheckUser(u)
-	if err == NotMatch {
+	result, err := a.CheckPassword(u)
+	if err == ErrNotMatch {
 		json.NewEncoder(w).Encode(false)
 		return
 	}
@@ -43,9 +44,9 @@ func (a Authenticator) CheckPassword(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Problems in getting the user: ", err)
 		return
 	}
+	u.Id = result
 	t := time.Now().Add(1 * time.Hour)
-	returnedUser.Email = u.Email
-	b, err := json.Marshal(returnedUser)
+	b, err := json.Marshal(u)
 	if err != nil {
 		fmt.Println("Problems in marshalling the user: ", err)
 		return
@@ -59,27 +60,27 @@ func (a Authenticator) CheckPassword(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(err)
 		return
 	}
+	fmt.Println("id: " + strconv.Itoa(u.Id) + ", email: " + u.Email)
 	w.Header().Add("Content-Type", "application/jwt")
 	fmt.Fprintf(w, "%s", tokenString)
 }
 
-func (a Authenticator) CheckUser(u User) (User, error) {
-	q := `SELECT user_id, password
-		  FROM users
-		  WHERE email = $1`
+func (a Authenticator) CheckPassword(u User) (int, error) {
+	q := `SELECT user_id, (password = crypt($1, password)) AS pwd_match FROM users WHERE email=$2`
 
-	var queriedUser User
-	err := a.db.QueryRow(q, u.Email).Scan(&queriedUser.Id, &queriedUser.Password)
+	var result bool
+	var id int
+	err := a.db.QueryRow(q, u.Password, u.Email).Scan(&id, &result)
 	if err != nil {
 		if err == sql.ErrNoRows {
-			return User{}, NotFound
+			return 0, ErrNotFound
 		}
-		return User{}, err
+		return 0, err
 	}
-	if u.Password != queriedUser.Password {
-		return User{}, NotMatch
+	if !result {
+		return 0, ErrNotMatch
 	}
-	return queriedUser, nil
+	return id, nil
 }
 
 //Do this after finishing the other stuff
