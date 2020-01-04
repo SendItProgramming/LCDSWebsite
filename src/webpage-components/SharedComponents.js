@@ -55,7 +55,7 @@ export function QuotePanel(props){
 	);
 }
 
-export function LoginPanel(props){
+export function LoginPanel(user){
 
 	let email = "";
 	let password = "";
@@ -71,34 +71,43 @@ export function LoginPanel(props){
         // ...
     	// })
 		}).then(
-    		response => response.text() // .json(), etc.
+				response => response.text() // .json(), etc.
     		// same as function(response) {return response.text();}
 		).then(
    		 html => console.log(html)
 		);
 	}
+		if (user.id == 0) {
+			return (
+				<TitledSidebarPanel>
+					<p className="small-fun">Members Log In</p>
+					<p>*Only registered families of LCDS may create an account.</p>
+					<form id="inputform">
+						<FormGroup>
+							<ControlLabel>User Name</ControlLabel>
+							<FormControl id="user-form-control" type="text" name="email"/>
+						</FormGroup>
+						<FormGroup>
+							<ControlLabel>Password</ControlLabel>
+							<FormControl id="password-form-control" type="password" name="password"/>
+						</FormGroup>
+						<Checkbox>Remember Me</Checkbox>
+						<Button type="button" id="loginButton">Log In</Button><br />
+						<a href="#">Forgot your password?</a><br />
+						<a href="#">Forgot your username?</a><br />
+					</form>
+				</TitledSidebarPanel>
+			);
+		}
+		else {
+			return(
+				<TitledSidebarPanel>
+					<p>Welcome, {user.email}</p>
+				</TitledSidebarPanel>
 
+			);
+		}
 
-	return (
-		<TitledSidebarPanel>
-			<p className="small-fun">Members Log In</p>
-			<p>*Only registered families of LCDS may create an account.</p>
-			<form id="inputform">
-				<FormGroup>
-					<ControlLabel>User Name</ControlLabel>
-					<FormControl id="user-form-control" type="text" name="email"/>
-				</FormGroup>
-				<FormGroup>
-					<ControlLabel>Password</ControlLabel>
-					<FormControl id="password-form-control" type="text" name="password"/>
-				</FormGroup>
-				<Checkbox>Remember Me</Checkbox>
-				<Button type="button" id="loginButton">Log In</Button><br />
-				<a href="#">Forgot your password?</a><br />
-				<a href="#">Forgot your username?</a><br />
-			</form>
-		</TitledSidebarPanel>
-	);
 }
 
 export function KidsCornerPanel(props){

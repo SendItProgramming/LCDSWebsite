@@ -72,7 +72,11 @@ export default class Content extends Component {
 			},
 			news:[],
 			board:[],
-			yr: ""
+			yr: "",
+			user: {
+				id: 0,
+				email: "",
+			}
 
 		}
 		//this.GetQuote = this.GetQuote.bind(this)
@@ -506,7 +510,7 @@ export default class Content extends Component {
 					<SideBar site_urls={this.props.site_urls}
 						quote={<QuotePanel quote={this.state.quote}/>}
 						custom_buttons={<ButtonsPanel/>}
-						member_login={<LoginPanel/>}
+						member_login={<LoginPanel user={this.state.user} />}
 						kids_corner={<KidsCornerPanel/>}
 						squirrel={<SquirrelPanel/>}
 						about_us={<AboutUsPanel/>}
