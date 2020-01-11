@@ -16,7 +16,7 @@ export default class OurBoard extends Component {
   render() {
 
 		const items = this.state.board
-    console.log(items)
+
 		return(
 			<div className="info">
 				<p className="fun">Our Board Members</p>

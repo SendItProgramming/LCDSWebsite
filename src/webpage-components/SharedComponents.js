@@ -169,7 +169,7 @@ export function TitledSidebarPanel(props){
 	);
 }
 
-export function Registration() {
+export function RegistrationPanel() {
 	return (
 		<SidebarPanel>
 			<div>
