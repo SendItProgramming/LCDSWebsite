@@ -5,11 +5,7 @@ import SammyRegistration from "./../../images/Sammy_Registration_Fees.jpg"
 
 export default class ProgramFees extends Component {
 
-  constructor() {
-    super();
-  }
     render() {
-      console.log(this.props.state)
       return(
         <div className="info">
           <p className="fun">Program Fees</p>
