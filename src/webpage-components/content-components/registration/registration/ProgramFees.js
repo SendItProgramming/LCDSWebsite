@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SammyRegistration from "./../../images/Sammy_Registration_Fees.jpg"
+import SammyRegistration from "./../../../../images/Sammy_Registration_Fees.jpg"
 
 export default class ProgramFees extends Component {
 

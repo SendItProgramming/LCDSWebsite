@@ -57,8 +57,8 @@ import ShannonMusic from "./../images/Staff/Shannon_Music.jpg"
 import { FaFax } from 'react-icons/fa';
 import { FaPhone } from 'react-icons/fa';
 
-import ProgramFees from "./content-components/ProgramFees.js"
-import Programs from "./content-components/Programs.js"
+import ProgramFees from "./content-components/registration/registration/ProgramFees.js"
+import Programs from "./content-components/programs/Programs.js"
 import Committee from "./content-components/registration/parent_involvement/Committee.js"
 import ParentInvolvement from "./content-components/registration/parent_involvement/ParentInvolvement.js"
 export default class Content extends Component {
