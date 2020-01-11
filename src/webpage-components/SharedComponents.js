@@ -182,7 +182,7 @@ export function Registration() {
 	);
 }
 
-export function Programs() {
+export function ProgramsCard() {
 	return (
 		<SidebarPanel>
 			<div>
