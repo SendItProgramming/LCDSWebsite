@@ -61,6 +61,10 @@ import ProgramFees from "./content-components/registration/registration/ProgramF
 import Programs from "./content-components/programs/Programs.js"
 import Committee from "./content-components/registration/parent_involvement/Committee.js"
 import ParentInvolvement from "./content-components/registration/parent_involvement/ParentInvolvement.js"
+import GeneralGuidelines from "./content-components/registration/GeneralGuidelines.js"
+import Resources from "./content-components/Resources.js"
+
+
 export default class Content extends Component {
 
 	constructor(props){
@@ -128,7 +132,7 @@ export default class Content extends Component {
 									<Helmet>
 										<title>{this.props.titles["Resources"]}</title>
 									</Helmet>
-									{this.Resources()}
+									<Resources />
 								</div>
 							</Route>
 							<Route path={this.props.site_urls["AboutUs"]} exact>
@@ -431,7 +435,7 @@ export default class Content extends Component {
 								</div>
 							</Route>
 							<Route path={this.props.site_urls["GenGuide"]} exact>
-								{this.GenGuidelines()}
+								<GeneralGuidelines />
 							</Route>
 							<Route path={this.props.site_urls["Admin"]} exact>
 								<div>
@@ -567,121 +571,6 @@ export default class Content extends Component {
 
 	}
 
-	Resources(){
-		return(
-		<div className ="info">
-			<p className ="fun">Resources</p>
-			<p className="subTitle">The following are helpful websites for parents</p>
-			<table className = "Table">
-				<tbody>
-					<tr>
-						<td>
-							<p><a className ="greenLink" href="https://www.learnalberta.ca/content/mychildslearning/gradeataglance/Kindergarden.pdf">
-							Kindergarden Curriculum</a></p>
-							<p>Alberta Education - Kindergarden Curriculum Guide for Parents</p>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<p><a className ="greenLink" href="https://www.alberta.ca/ministry-education.aspx">
-							Alberta Education</a></p>
-							<p>Alberta Education Website</p>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<p><a className ="greenLink" href="http://www.humanservices.alberta.ca/financial-support/15104.html">
-							Alberta Government Childcare Subsidy</a></p>
-							<p>Information about AB Government Childcare Subsidy</p>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<p><a className ="greenLink" href="https://myhealth.alberta.ca/Pages/default.aspx">
-							My Health Alberta</a></p>
-							<p>Health Information for Parents.  check to make sure your child's immunizations are up to date.</p>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<p><a className ="greenLink" href="http://www.napta.ca/">
-							Northern Alberta Preschool Teacher's Association</a></p>
-							<p>Find a Preschool in your area.</p>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-						<p><a className ="greenLink" href = "http://www.humanservices.alberta.ca/services-near-you/edmonton-and-area-child-and-family-services.html">
-						Edmonton Region Child & Family Services</a></p>
-						<p>Edmonton Region Child & Family Services - Programs and Services</p>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-						<p><a className ="greenLink" href="https://www.abcheadstart.org/">
-							ABC Headstart</a></p>
-							<p>ABC Headstart Program - Preschool Programs and Learning Support for low income families and low income families having children with special learning needs.</p>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-							<p><a className ="greenLink" href="">Eye See...Eye Learn Program</a></p>
-							<p>Eye See...Eye Learn Program - The Alberta Association of Optometrists
-							Free Eye Examination and Free Glasses for Kindergarden Students in Alberta</p>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-							<p><a className ="greenLink" href="https://www.triplep-parenting.ca/alb-en/triple-p/">Triple P - Positive Parenting</a></p>
-							<p>Triple P - Positive Parenting Website</p>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-						<p><a className ="greenLink" href="http://www.earlychildhoodedm.ca/northcentral/">North Central Early Years Coalition</a></p>
-						<p>North Central Early Years Coalition Website. Parenting information and events.</p>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-						<p><a className ="greenLink" href="https://www.edmonton.ca/attractions-events.aspx">City of Edmonton - Attractions and Events</a></p>
-						<p>Check out what's happening in the City of Edmonton.</p>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-						<p><a className ="greenLink" href="https://www.drugwatch.com/health/children/"> Drugwatch</a></p>
-						<p>Children's Health Guide: Newborn to Preteen</p>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-						<p><a className ="greenLink" href= "https://www.caringforkids.cps.ca/">
-						Canadian Pediatric Society</a></p>
-						<p>Information for parents from the Canadian Pediatric Society</p>
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-						<p><a className ="greenLink" href="https://edmonton.cmha.ca/">Edmonton Canadian Mental Health Association</a></p>
-						<p>Call 211. Great resources for parenting help, newcomers to Edmonton, mental health support, where to go for help with basic needs, etc.</p>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		);
-	}
-
 	AboutInfo(){
 
 		return(
@@ -773,7 +662,6 @@ export default class Content extends Component {
 			});
 		  }
 		)
-		//this.RenderQuote()
 	}
 
 	GetNews() {
@@ -1287,11 +1175,6 @@ export default class Content extends Component {
 		);
 	}
 
-	ParentInvolvement(){
-
-		
-	}
-
 	BoardDirectors(){
 		return(
 			<div className="info">
@@ -1694,113 +1577,6 @@ export default class Content extends Component {
 				<p>**Deposit cheques are not cashed unless the member fails to meet their scheduled commitments. </p>
 
 			</div>
-		);
-	}
-
-	GenGuidelines(){
-		return(
-		<div className="info">
-			<p className="fun">
-				Half-day Program - General Guidelines
-			</p>
-			<p className="subTitle">Self Directed Activities</p>
-			<ul>
-				<li>
-					<b>Art Centres</b>: painting, pasting, drawing and paper construction.
-				</li>
-				<li>
-				<b>Listening Centre</b>: activities to increase attention span and an appreciation for music and books.
-				</li>
-				<li>
-				<b>Block Centre</b>: provide opportunities for large and small activities with blocks.
-				</li>
-				<li>
-				<b>Cars & Building Cente</b>: provide opportunities for building social and fine motor skills and imaginative play.
-				</li>
-				<li>
-					<b>Manipulative Centre</b>: activities with puzzles, small blocks and board games, activities to develop classification skills, ordering and observation skills.
-				</li>
-				<li>
-					<b>Doll House/Train Centre</b>: provide opportunities for for building social and fine motor skills and imaginative play.
-				</li>
-				<li>
-					<b>Playhouse</b>: provides opportunities for building social and fine motor skills, imaginative and role play in a small scale house.
-					The house may change throughout the year to become a restaurant, grocery store, doctor's office, etc.
-				</li>
-				<li>
-					<b>Sandbox/Water table</b>: the center may be filled with materials such as sand, water, beans, moon sand, sticky foam, etc.  This provides sensory experiences involving measurement and investigation.
-				</li>
-			</ul>
-			<p className="subTitle">Snack/Conversation Time</p>
-			<ul>
-				<li>
-					Children are seated together to stimulate conversation, foster friendship and good manners.
-				</li>
-				<li>
-					Snack Procedure follows the Canada Food Guide and other regulations set forth by government licensing.
-				</li>
-				<li>
-					Snacks may include but are not limited to vegetables, fruits, sandwiches, muffins, cheese and crackers.
-				</li>
-			</ul>
-
-			<p className="subTitle">Teacher Directed Activities</p>
-			<ul>
-				<li>
-					Visual, auditory and communication skills are developed through small group conversations and activities with the teacher.
-				</li>
-				<li>
-					Project participation encourages the development of visual and auditory communication skills and fine motor skills are developed with the introduction of new materials and creative tools.
-				</li>
-				<li>
-					Through a series of planned activities, the children acquire information about the world around them.
-				</li>
-				<li>
-					Math and science concepts and information about other topics of interest are presented to the children.
-				</li>
-
-				<li>
-					Cooking days encourage fine motor skills and communication skills.
-					Children are introduced to new tastes and smells.
-					The children are encouraged to practice healthy food habits and are introduced to simple food handling and hand washing procedures.
-				</li>
-			</ul>
-
-			<p className="subTitle">Clean Up</p>
-			<ul>
-				<li>
-					Responsibility for putting away toys and equipment will be largely the children's.
-				</li>
-				<li>
-					Develops cooperation and sharing skills.
-				</li>
-				<li>
-					Staff will provide direction and guidance when necessary.
-				</li>
-			</ul>
-
-			<p className="subTitle">Circle Time</p>
-			<ul>
-				<li>
-					To develop an interest in books and story-telling.
-				</li>
-				<li>
-					To develop listening, memory and communication skills.
-				</li>
-
-			</ul>
-
-			<p className="subTitle">Departure</p>
-			<ul>
-				<li>
-					We have a final circle time to review what was presented in class, to hand out projects and other work, and to say "So Long".
-				</li>
-				<li>
-					Students are dismissed directly to their parents or guardians.
-				</li>
-			</ul>
-
-		</div>
 		);
 	}
 }
