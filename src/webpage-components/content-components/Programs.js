@@ -4,7 +4,6 @@ import SammyOurProgram from "./../../images/Sammy_Our_Program_Image.jpg"
 export default class Programs extends Component {
 
   render() {
-    console.log(this.props)
     return(
 			<div className="info">
 				<p className="fun">
@@ -96,6 +95,5 @@ export default class Programs extends Component {
 				<img src={SammyOurProgram}  alt="" />
 			</div>
 		);
-
   }
 }

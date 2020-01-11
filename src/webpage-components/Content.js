@@ -33,9 +33,7 @@ import SammyReading from "./../images/Sammy_Reading_Image.jpg"
 import Muttart from "./../images/Muttart_Conservatory_Image.jpg"
 import SammyEating from "./../images/Sammy_Daily_Snack_Image.jpg"
 import SammyRegistration from "./../images/Sammy_Registration_Fees.jpg"
-import SammyParentInvolvement from "./../images/Sammy-ParentInvolvement.jpg"
 import SammyBoardRoom from "./../images/Sammy_Our_Board_Image.jpg"
-import SammyOurProgram from "./../images/Sammy_Our_Program_Image.jpg"
 import SammyMiscImages from "./../images/Sammy_Misc_Positions_Image.jpg"
 import SammyHistory from "./../images/Sammy_Our_History_Image.jpg"
 import SammyBoard from "./../images/Sammy_Our_Board.jpg"
@@ -61,7 +59,8 @@ import { FaPhone } from 'react-icons/fa';
 
 import ProgramFees from "./content-components/ProgramFees.js"
 import Programs from "./content-components/Programs.js"
-
+import Committee from "./content-components/registration/parent_involvement/Committee.js"
+import ParentInvolvement from "./content-components/registration/parent_involvement/ParentInvolvement.js"
 export default class Content extends Component {
 
 	constructor(props){
@@ -300,7 +299,7 @@ export default class Content extends Component {
 									<Helmet>
 										<title>{this.props.titles["ParentInvolvement"]}</title>
 									</Helmet>
-									{this.ParentInvolvement()}
+									<ParentInvolvement state={this.props} />
 								</div>
 							</Route>
 							<Route path={this.props.site_urls["BoardDirectors"]} exact>
@@ -316,7 +315,7 @@ export default class Content extends Component {
 									<Helmet>
 										<title>{this.props.titles["Commitee"]}</title>
 									</Helmet>
-									{this.Committee()}
+									<Committee />
 								</div>
 							</Route>
 							<Route path={this.props.site_urls["MiscPositions"]} exact>
@@ -1290,68 +1289,7 @@ export default class Content extends Component {
 
 	ParentInvolvement(){
 
-		return(
-			<div className="info">
-				<p className="fun">Parent Involvement</p>
-				<p className="subTitle">HOW ARE FAMILIES INVOLVED AT LCDS?</p>
-
-				<p>We know community, parents and family play an essential role in childhood development. And we know parents love watching their children learn, grow and have fun- almost as much as kids love showing their parents their new skills.
-				As a <b>parent run co-operative</b>, LCDS parents and families are a big part of the kids’ success. Parents and guardians have the opportunity to be hands-on in their little one’s first education experience, supporting their learning, experiencing their excitement on a field trip, and watching them make friends with their peers. 
-				We know parent support also helps to show children that the adults in their life are interested in what they are doing and that helping others is important. Plus, we can elevate the quality of education while keeping costs low because of additional help from volunteers. The kids win in a big way, thanks to you! </p>
-
-				<p className="subTitle">WHAT ARE THE ANNUAL REQUIREMENTS?</p>
-
-				<p>We are parents too and we know life can get busy. No problem! LCDS has many ways to help our families, from opting out of fundraising with a cash donation, swapping helper days, or hiring Bingo workers at low cost, we want to help you, so we can all help the kids. </p>
-
-				<p className="subtitle">Here is a snapshot of the annual requirements.</p>
-
-
-				<ul>
-					<li><b>FUNDRAISING –</b><br />
-					The LCDS board of Directors understands our members are busy and have replaced mandatory fundraising with a one time Family Fundraising fee per school year as opposed to running numerous fundraising events each year.  The Board of Directors will calculate the yearly fundraising fee each year depending on enrollment.  Members may still choose to fund-raise.
-					</li>
-
-					<li>
-						<b>PARENT HELPER –</b><br />
-						Many parents love this most about their LCDS experience. Each child gets to have their adult come to approximately one class per month to help as needed and bring the snack. Many volunteers are also recruited for each field trip, and our list of helpers tends to fill up fast!
-					</li>
-
-					<li>
-						<b>CLASSROOM CLEANING –</b><br />
-						Volunteering one adult for approximately two hours on a scheduled Monday evening, once through the school year helps us keep the classroom clean and safe for our kids. Recruit any adult in your life willing to roll up their sleeves! Classroom Cleanings are scheduled every second month on the first Monday evening of the month.
-					</li>
-
-					<li>
-						<b>BINGOS AND CASINOS –</b><br />
-						An easy way to raise much needed funds, all we do is provide volunteers. All you do is show up, get training, and have fun. No experience required! Each family needs to complete two bingo shifts and one casino (in a casino year). Bingos are scheduled for Saturday and Sunday afternoons. The number of Bingo events will be determined by the number of families enrolled in the program.
-					</li>
-				</ul>
-				<p>Click Here for <a href={this.props.site_urls["RegCommit"]} className="greenLink">Registration Commitments</a></p>
-
-				<p className="fun">WHO RUNS LCDS?</p>
-				<p>Who runs LCDS? Well, you do!  Parents are automatically members of the society when you register, and those who volunteer for the Board of Directors or sign-up for a committee position influence the experience for their kids. While we leave the structured education to the experts, volunteers provide important input into school policies, funding, social functions, and more. Please consider getting involved – you and your kids will love it.</p>
-
-
-				<p className="subTitle">BOARD OF DIRECTORS</p>
-				<p>Meeting once per month, the Board is the legal authority for the Society and everything done by LCDS is done in the Board’s name. While considerable authority is appropriately delegated to the Executive Director, Business Manager and Teaching Staff, the source of that authority remains with the Board. This group of parents determines direction for changes in policy, fees, fundraising requirements, and social activities. If you want to make a big impact, consider volunteering for one of the six positions, or feel free to bring your suggestions to any board member or at the board meetings. Great to add to your personal resume.</p>
-
-				<p className= "subTitle">COMMITTEE POSITIONS</p>
-				<p>If the board isn’t the right fit, consider volunteering for one or more committee positions. Assisting with everything from classroom parties to yearbooks to laundry and bottle collection, the volunteers on the committees are essential to giving our kids the fantastic experience they are hoping for. Volunteering is easy and many families enjoy the small little extra they get to do for the kids. </p>
-
-				<p className="subTitle">ALL FAMILIES</p>
-				<p>Every family that has a child enrolled in LCDS is automatically a member of our exclusive non-profit society. This gives you voting rights for the operation of the program. Families are asked to please send a representative to each of the three required Annual General Meetings which take place in September, January and May. These meetings are your chance to be heard, be informed, and meet fellow parents.</p>
-
-				<p>The following positions are important to the operations of LCDS.  Without volunteers for these positions, LCDS may be forced to offer reduced activities and events for the program.Elections are held at the Annual General Meeting, the Second Tuesday in May.</p>
-				<p>Please consider volunteering for any of the positions below.  Please indicate on your registration form the positions you might be interested in assisting with.</p>
-
-				<p><a href={this.props.site_urls["BoardDirectors"]} className="green">Board of Directors Positions</a></p>
-				<p><a href={this.props.site_urls["Committee"]} className="green">Committee Positions</a></p>
-				<p><a href={this.props.site_urls["MiscPositions"]} className="green">Miscellaneous Positions</a></p>
-
-				<img src={SammyParentInvolvement} alt="" />
-			</div>
-
-		);
+		
 	}
 
 	BoardDirectors(){
@@ -1390,48 +1328,6 @@ export default class Content extends Component {
 		);
 	}
 
-	Committee(){
-		return(
-			<div className="info">
-				<p className="fun"> Committe Member Positions</p>
-				<b>**Committees are not required to attend monthly Board Meetings</b>
-				<ul>
-					<li>
-					<p><b className="subTitle">Bingo Coordinator</b><br />
-
-					Communicates with the Executive Director to ensure each Bingo date has the adequate number of volunteers scheduled and submits a list of workers for the current newsletter each month.  Communicates with the scheduled bingo workers 1 week prior to the scheduled bingo date to remind them of their commitment.  Attends the first part of each Bingo, takes attendance, assigns positions and ensures everyone knows what they are doing.</p>
-					</li>
-					<li>
-					<p><b className="subTitle">Casino Coordinator</b> <br />
-
-					Coordinates the casino volunteers for volunteer shifts. Consults with the Executive Director, Business Manager and the President throughout the assignment process. Ensures all positions are filled and all volunteer background check forms are submitted. Casinos are held every 2 years.</p>
-					</li>
-					<li>
-					<p><b className="subTitle">Silent Auction Committee</b> <br />
-
-					Coordinators are needed for various activities, such as Donation Receiver, Door Ticket sales and tracking, and assistance with other items related to the silent auction to be determined by the Fundraising Director.</p>
-					</li>
-					<li>
-					<p><b className="subTitle">Newsletter Coordinator</b><br />
-
-					Responsible for collecting reports from Board and Committee Members. Compiles the monthly newsletter. Coordinates production of the monthly newsletter with the assistance of the Executive Director.</p>
-					</li>
-					<li>
-					<p><b className="subTitle">Cleaning Coordinator </b>
-
-					Organizes and coordinates the monthly cleanings with the assistance of the Executive Director. Responsible for reminding members of their cleaning commitment.  Arranges to attend the first part of the cleaning to take attendance, and inform the members of the jobs which are required to be completed from the cleaning binder.  You may then leave and return to lockup after everyone is finished.</p>
-
-					</li>
-					<li>
-					<p><b className="subTitle">Social Committee</b> <br />
-
-					Plans the seasonal classroom and membership parties in collaboration with the teacher or members of the Board. Coordinates with the Social Committee members and delegates responsibilities needed to prepare for the parties. Members from the AM and PM classes are needed to assist in preparations for the class parties and membership parties.</p>
-					</li>
-				</ul>
-				<img src={SammyOurProgram}  alt="" />
-			</div>
-		);
-	}
 	MiscPositions(){
 		return(
 			<div className="info">
