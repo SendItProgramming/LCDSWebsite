@@ -59,7 +59,7 @@ import ShannonMusic from "./../images/Staff/Shannon_Music.jpg"
 import { FaFax } from 'react-icons/fa';
 import { FaPhone } from 'react-icons/fa';
 
-
+import ProgramFees from "./content-components/ProgramFees.js"
 
 export default class Content extends Component {
 
@@ -79,9 +79,7 @@ export default class Content extends Component {
 		this.news = this.GetNews.bind(this)
 		WebFont.load({
 			google: {
-				families: ['Londrina Sketch'],
-				//families: ['Waiting for the Sunrise'],
-				//families: ['Finger Paint'],
+				families: ['Londrina Sketch']
 			}
 		});
 	}
@@ -110,391 +108,387 @@ export default class Content extends Component {
 			);
 		}
 		//document.getElementById("loginButton").addEventListener("click", myFunction);
-
 	}
 
     render() {
-        console.log(this.state.quote)
-        return (
-			<div className="body">
-				{this.SideBar()}
-				<div className="mainBody">
-					<Switch>
-						<Route path={this.props.site_urls["Home"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["Home"]}</title>
-								</Helmet>
-								{this.Home()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["Resources"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["Resources"]}</title>
-								</Helmet>
-								{this.Resources()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["AboutUs"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["AboutUs"]}</title>
-								</Helmet>
-								{this.About()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["OurStaff"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["OurStaff"]}</title>
-								</Helmet>
-								{this.OurStaff()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["Squirrel"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["Squirrel"]}</title>
-								</Helmet>
-								{this.Sammy()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["Programs"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["Programs"]}</title>
-								</Helmet>
-								{this.Programs()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["News"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["News"]}</title>
-								</Helmet>
-								{this.News()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["Facebook"]} exact>
-							{this.Facebook()}
-						</Route>
-						<Route path={this.props.site_urls["Registration"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["Registration"]}</title>
-								</Helmet>
-								{this.Reg()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["OpenHouse"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["OpenHouse"]}</title>
-								</Helmet>
-								{this.OpenHouseInfo()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["TrialClasses"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["TrialClasses"]}</title>
-								</Helmet>
-								{this.TrialClasses()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["Kindergarden"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["Kindergarden"]}</title>
-								</Helmet>
-								{this.Kindergarden()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["JrKindergarden"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["JrKindergarden"]}</title>
-								</Helmet>
-								{this.JrKindergarden()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["PreSchool"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["PreSchool"]}</title>
-								</Helmet>
-								{this.PreSchool()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["LearningSupport"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["LearningSupport"]}</title>
-								</Helmet>
-								{this.LearningSupport()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["FieldTrips"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["FieldTrips"]}</title>
-								</Helmet>
-								{this.FieldTrips()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["DailySnacks"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["DailySnacks"]}</title>
-								</Helmet>
-								{this.DailySnacks()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["JobOpportunities"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["JobOpportunities"]}</title>
-								</Helmet>
-								{this.SubtituteTeachers()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["PreschoolDevSkills"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["PreschoolDevSkills"]}</title>
-								</Helmet>
-								{this.PreschoolDevSkills()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["IsMyChildReady"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["IsMyChildReady"]}</title>
-								</Helmet>
-								{this.IsMyChildReady()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["Requirements"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["Requirements"]}</title>
-								</Helmet>
-								{this.RequirementsForLearningSupport()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["FoodRestrictions"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["FoodRestrictions"]}</title>
-								</Helmet>
-								{this.FoodRestrictions()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["ProgramFees"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["ProgramFees"]}</title>
-								</Helmet>
-								{this.ProgramFees()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["ParentInvolvement"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["ParentInvolvement"]}</title>
-								</Helmet>
-								{this.ParentInvolvement()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["BoardDirectors"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["BoardDirectors"]}</title>
-								</Helmet>
-								{this.BoardDirectors()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["Committee"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["Commitee"]}</title>
-								</Helmet>
-								{this.Committee()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["MiscPositions"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["MiscPositions"]}</title>
-								</Helmet>
-								{this.MiscPositions()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["Contact"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["Contact"]}</title>
-								</Helmet>
-								{this.Contact()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["Events"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["Events"]}</title>
-								</Helmet>
-								{this.Events()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["History"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["History"]}</title>
-								</Helmet>
-								{this.OurHistory()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["Founder"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["Founder"]}</title>
-								</Helmet>
-								{this.OurFounder()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["OurBoard"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["OurBoard"]}</title>
-								</Helmet>
-								{this.OurBoard()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["Testimonials"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["Testimonials"]}</title>
-								</Helmet>
-								{this.Testimonials()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["JuneHenry"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["JuneHenry"]}</title>
-								</Helmet>
-								{this.JuneHenry()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["Fundraising"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["Fundraising"]}</title>
-								</Helmet>
-								{this.Fundraising()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["RegCommit"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["RegCommit"]}</title>
-								</Helmet>
-								{this.RegistrationCommitments()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["PreschoolFees"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["PreschoolFees"]}</title>
-								</Helmet>
-								{this.PreSchoolFees()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["JrKindergardenFees"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["JrKindergardenFees"]}</title>
-								</Helmet>
-								{this.JuniorKindergardenFees()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["KindergardenFees"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["KindergardenFees"]}</title>
-								</Helmet>
-								{this.KindergardenFees()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["PaymentOptions"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["PaymentOptions"]}</title>
-								</Helmet>
-								{this.PaymentOptions()}
-							</div>
-						</Route>
-						<Route path={this.props.site_urls["GenGuide"]} exact>
-							{this.GenGuidelines()}
-						</Route>
-						<Route path={this.props.site_urls["Admin"]} exact>
-							<div>
-								<Helmet>
-									<title>{this.props.titles["Admin"]}</title>
-								</Helmet>
-								<TextEditor path={this.props.site_urls} titles={this.props.titles}/>
-							</div>
-						</Route>
-						<Redirect to={this.props.site_urls["NotFound"]} />
-					</Switch>
+			return (
+				<div className="body">
+					{this.SideBar()}
+					<div className="mainBody">
+						<Switch>
+							<Route path={this.props.site_urls["Home"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["Home"]}</title>
+									</Helmet>
+									{this.Home()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["Resources"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["Resources"]}</title>
+									</Helmet>
+									{this.Resources()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["AboutUs"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["AboutUs"]}</title>
+									</Helmet>
+									{this.About()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["OurStaff"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["OurStaff"]}</title>
+									</Helmet>
+									{this.OurStaff()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["Squirrel"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["Squirrel"]}</title>
+									</Helmet>
+									{this.Sammy()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["Programs"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["Programs"]}</title>
+									</Helmet>
+									{this.Programs()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["News"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["News"]}</title>
+									</Helmet>
+									{this.News()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["Facebook"]} exact>
+								{this.Facebook()}
+							</Route>
+							<Route path={this.props.site_urls["Registration"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["Registration"]}</title>
+									</Helmet>
+									{this.Reg()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["OpenHouse"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["OpenHouse"]}</title>
+									</Helmet>
+									{this.OpenHouseInfo()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["TrialClasses"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["TrialClasses"]}</title>
+									</Helmet>
+									{this.TrialClasses()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["Kindergarden"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["Kindergarden"]}</title>
+									</Helmet>
+									{this.Kindergarden()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["JrKindergarden"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["JrKindergarden"]}</title>
+									</Helmet>
+									{this.JrKindergarden()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["PreSchool"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["PreSchool"]}</title>
+									</Helmet>
+									{this.PreSchool()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["LearningSupport"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["LearningSupport"]}</title>
+									</Helmet>
+									{this.LearningSupport()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["FieldTrips"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["FieldTrips"]}</title>
+									</Helmet>
+									{this.FieldTrips()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["DailySnacks"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["DailySnacks"]}</title>
+									</Helmet>
+									{this.DailySnacks()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["JobOpportunities"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["JobOpportunities"]}</title>
+									</Helmet>
+									{this.SubtituteTeachers()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["PreschoolDevSkills"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["PreschoolDevSkills"]}</title>
+									</Helmet>
+									{this.PreschoolDevSkills()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["IsMyChildReady"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["IsMyChildReady"]}</title>
+									</Helmet>
+									{this.IsMyChildReady()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["Requirements"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["Requirements"]}</title>
+									</Helmet>
+									{this.RequirementsForLearningSupport()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["FoodRestrictions"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["FoodRestrictions"]}</title>
+									</Helmet>
+									{this.FoodRestrictions()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["ProgramFees"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["ProgramFees"]}</title>
+									</Helmet>
+									<ProgramFees state={this.props} />
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["ParentInvolvement"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["ParentInvolvement"]}</title>
+									</Helmet>
+									{this.ParentInvolvement()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["BoardDirectors"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["BoardDirectors"]}</title>
+									</Helmet>
+									{this.BoardDirectors()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["Committee"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["Commitee"]}</title>
+									</Helmet>
+									{this.Committee()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["MiscPositions"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["MiscPositions"]}</title>
+									</Helmet>
+									{this.MiscPositions()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["Contact"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["Contact"]}</title>
+									</Helmet>
+									{this.Contact()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["Events"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["Events"]}</title>
+									</Helmet>
+									{this.Events()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["History"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["History"]}</title>
+									</Helmet>
+									{this.OurHistory()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["Founder"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["Founder"]}</title>
+									</Helmet>
+									{this.OurFounder()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["OurBoard"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["OurBoard"]}</title>
+									</Helmet>
+									{this.OurBoard()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["Testimonials"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["Testimonials"]}</title>
+									</Helmet>
+									{this.Testimonials()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["JuneHenry"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["JuneHenry"]}</title>
+									</Helmet>
+									{this.JuneHenry()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["Fundraising"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["Fundraising"]}</title>
+									</Helmet>
+									{this.Fundraising()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["RegCommit"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["RegCommit"]}</title>
+									</Helmet>
+									{this.RegistrationCommitments()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["PreschoolFees"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["PreschoolFees"]}</title>
+									</Helmet>
+									{this.PreSchoolFees()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["JrKindergardenFees"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["JrKindergardenFees"]}</title>
+									</Helmet>
+									{this.JuniorKindergardenFees()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["KindergardenFees"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["KindergardenFees"]}</title>
+									</Helmet>
+									{this.KindergardenFees()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["PaymentOptions"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["PaymentOptions"]}</title>
+									</Helmet>
+									{this.PaymentOptions()}
+								</div>
+							</Route>
+							<Route path={this.props.site_urls["GenGuide"]} exact>
+								{this.GenGuidelines()}
+							</Route>
+							<Route path={this.props.site_urls["Admin"]} exact>
+								<div>
+									<Helmet>
+										<title>{this.props.titles["Admin"]}</title>
+									</Helmet>
+									<TextEditor path={this.props.site_urls} titles={this.props.titles}/>
+								</div>
+							</Route>
+							<Redirect to={this.props.site_urls["NotFound"]} />
+						</Switch>
+					</div>
 				</div>
+			)
+		}
+
+		Reg(){
+			return(
+				<div className ="info">
+					<p className = "fun">Registration Requirements</p>
+					<p><b>All children must be at least 3 years of age and fully toilet trained in order to register with LCDS.</b>
+					Fully toilet trained means your child <b>can recognize</b> when they have to go to the washroom and <b>are able to pull their clothes down and up</b>; they must <b>be able to wipe themselves</b> and flush the toilet.
+					They <b>must be fully functioning</b> in the bathroom stall.
+					Staff may assist with buttons or snaps.</p>
+					<br/>
+
+					<p><b>Sending a child to school in “Pull-Ups” is not accepted.</b></p>
+					<p className="subTitle">Registration Priority</p>
+					<p>All families who have <b>previously</b> registered with <b>LCDS</b> have <b>first priority</b> for registration in the program and are <b>eligible to register in February</b> on the designated registration date for the following year.</p>
+					<br/>
 
 
-			</div>
-        )
-	}
+					<p>Children who are <b>new</b> to the program are <b>eligible to register in March </b>on the designated registration date.
+					Ask about our Free Trial Classes if you are not sure if your child is ready for school.
+					<b>Currently registered families</b> will be entered into <b>a random draw for an appointment time</b> to determine the order in which registrants are able to register.
+					This gives an equal opportunity for members to pick their choice of days and program time.
+					A<b><u>complete</u></b> registration form, fees, all deposit cheques and any supporting documentation <b><u>must</u></b> be submitted to the registrar at the given appointment time. </p>
+					<br/>
 
-	Reg(){
-		return(
-			<div className ="info">
-				<p className = "fun">Registration Requirements</p>
-				<p><b>All children must be at least 3 years of age and fully toilet trained in order to register with LCDS.</b>
-				Fully toilet trained means your child <b>can recognize</b> when they have to go to the washroom and <b>are able to pull their clothes down and up</b>; they must <b>be able to wipe themselves</b> and flush the toilet.
-				They <b>must be fully functioning</b> in the bathroom stall.
-				Staff may assist with buttons or snaps.</p>
-				<br/>
+					<p><b>Previous members</b> who do not have a child currently registered will be able to register <b>after the current families have registered</b>.
+					<b>New Families</b> are invited to attend the designated Open House and Registration Night.  </p>
+					<br/>
 
-				<p><b>Sending a child to school in “Pull-Ups” is not accepted.</b></p>
-				<p className="subTitle">Registration Priority</p>
-				<p>All families who have <b>previously</b> registered with <b>LCDS</b> have <b>first priority</b> for registration in the program and are <b>eligible to register in February</b> on the designated registration date for the following year.</p>
-				<br/>
+					<p>Open House is a casual drop in format where parents can attend with their children, experience the classroom, meet the Teacher, other staff members and other LCDS Parents. Prospective new Families may direct any of their questions to the LCDS Staff Members or Parents in attendance.
+					<b>Those who wish to register in the program will be invited to pick up a registration package and may register at that time providing there are still spots available.</b>
+					<b>A wait list is formed when the program is full.  If there are any withdrawals prior to September, the wait list will be accessed by the date in which families were added to the list.</b></p>
 
+					<p>A <b><u>complete</u></b> registration form, fees, all deposit cheques and any supporting documentation <b><u>must</u></b> be submitted to the registrar at the time of registration in order to be considered <b><u>registered</u></b> in the program.</p>
+					<br/>
 
-				<p>Children who are <b>new</b> to the program are <b>eligible to register in March </b>on the designated registration date.
-				Ask about our Free Trial Classes if you are not sure if your child is ready for school.
-				<b>Currently registered families</b> will be entered into <b>a random draw for an appointment time</b> to determine the order in which registrants are able to register.
-				This gives an equal opportunity for members to pick their choice of days and program time.
-				A<b><u>complete</u></b> registration form, fees, all deposit cheques and any supporting documentation <b><u>must</u></b> be submitted to the registrar at the given appointment time. </p>
-				<br/>
-
-				<p><b>Previous members</b> who do not have a child currently registered will be able to register <b>after the current families have registered</b>.
-				<b>New Families</b> are invited to attend the designated Open House and Registration Night.  </p>
-				<br/>
-
-				<p>Open House is a casual drop in format where parents can attend with their children, experience the classroom, meet the Teacher, other staff members and other LCDS Parents. Prospective new Families may direct any of their questions to the LCDS Staff Members or Parents in attendance.
-				<b>Those who wish to register in the program will be invited to pick up a registration package and may register at that time providing there are still spots available.</b>
-				<b>A wait list is formed when the program is full.  If there are any withdrawals prior to September, the wait list will be accessed by the date in which families were added to the list.</b></p>
-
-				<p>A <b><u>complete</u></b> registration form, fees, all deposit cheques and any supporting documentation <b><u>must</u></b> be submitted to the registrar at the time of registration in order to be considered <b><u>registered</u></b> in the program.</p>
-				<br/>
-
-				<a href={this.props.site_urls["LearningSupport"]} className="green" >Registration Requirements For Learning Support</a>
-				<br/>
-				<a href={this.props.site_urls["RegCommit"]}  className="green">Registration Commitments</a>
-				<br/>
-				<a href={this.props.site_urls["ParentInvolvement"]}className="green">Parent Involvement</a>
-			</div>
+					<a href={this.props.site_urls["LearningSupport"]} className="green" >Registration Requirements For Learning Support</a>
+					<br/>
+					<a href={this.props.site_urls["RegCommit"]}  className="green">Registration Commitments</a>
+					<br/>
+					<a href={this.props.site_urls["ParentInvolvement"]}className="green">Parent Involvement</a>
+				</div>
 		);
 	}
 
@@ -978,6 +972,7 @@ export default class Content extends Component {
 		</div>
 		);
 	}
+
 	Kindergarden(){
 		return(
 			<div className="info">
@@ -1009,6 +1004,7 @@ export default class Content extends Component {
 			</div>
 		);
 	}
+
 	JrKindergarden(){
 		return(
 			<div className="info">
@@ -1288,31 +1284,6 @@ export default class Content extends Component {
 				<li>Examples of specific ingredients which may require additional food preparation steps may include eggs, dairy products, pork or beef.  If you have a question about the requirements for the preparation of food while on parent helper duty, please ask the staff before purchasing, bringing and preparing the snack.</li>
 			</ul>
 			<img src={SammyEating} alt="" />
-			</div>
-		);
-	}
-
-	ProgramFees(){
-		return(
-			<div className="info">
-				<p className="fun">Program Fees</p>
-				<p><i><b>LCDS is a not-for-profit, parent cooperative preschool and independent kindergarten program.</b>
-				We  pay rent for our classroom and office space to Gateway Alliance Church.
-				As we are an independent program, we have fixed operational costs in which we rely upon parent involvement and participation in the program to assist in keeping these costs attainable.
-				Parents provide the necessary support for the success of our quality education program.  Without the support of our members through working bingo, casino, classroom cleaning and other volunteer commitments, the society would not be able to support many of the opportunities provided to the children and their families.</i></p>
-				<p className="subTitle">The fees below apply to the {this.state.yr} - {this.state.yr +1} school year.</p>
-
-				<p><a href={this.props.site_urls["PreschoolFees"]}  className="redLink">Preschool Fees</a></p>
-				<p><a href={this.props.site_urls["JrKindergardenFees"]}  className="blueLink">Junior Kindergarten Fees</a></p>
-				<p><a href={this.props.site_urls["KindergardenFees"]}  className="redLink">Kindergarten Fees</a></p>
-				<p><a href={this.props.site_urls["RegCommit"]} className="blueLink">Registration Commitments</a></p>
-				<p><a href="" className="greenLink">Alberta Parent Stay-At-Home Subsidy Program</a></p>
-
-				<blockquote>
-					"We just wanted to say thank you so much for everything this year!! R. has come so far and we are so proud and thankful for all you have done for R. and our family. The things he has learned are incredible but mostly the tools and feedback you have provided to us will go a long way. The attention and care that all of you have shown towards R. throughout this year is amazing and surpassed every expectation we had for R's first school experience. Please pass on our thank you to all of the staff members and have a great summer!!"
-				</blockquote>
-				<p><b>-Melanie G. Edmonton</b></p>
-				<img src={SammyRegistration} alt="" />
 			</div>
 		);
 	}
