@@ -18,6 +18,11 @@ import {
 	UpcomingEvents,
 	CoSponsors,
 	ButtonsPanel,
+	AboutInfo,
+	Facebook,
+	OpenHouseInfo,
+	TrialClasses,
+	SubstituteTeachers,
 } from "./SharedComponents";
 import {
 	Image,
@@ -40,30 +45,19 @@ import SammyBoard from "./../images/Sammy_Our_Board.jpg"
 import SammyJune from "./../images/Sammy_June_Henry.jpg"
 import LCDSMap from "./../images/LCDSmapSQ.jpg"
 import SammyTestimonials from "./../images/Sammy_Testimonials_Image.jpg"
-import Slide1 from "./../images/Slide/slide1.png"
-import Slide2 from "./../images/Slide/slide2.png"
-import Slide3 from "./../images/Slide/slide3.png"
-import Slide4 from "./../images/Slide/slide4.png"
-import Slide5 from "./../images/Slide/slide5.png"
-import Slide6 from "./../images/Slide/slide6.png"
-import Slide7 from "./../images/Slide/slide7.png"
-import Slide8 from "./../images/Slide/slide8.png"
-import Slide9 from "./../images/Slide/slide9.png"
-import MichellFung from "./../images/Staff/Michell_Fung.jpg"
-import CarmenBriggs from "./../images/Staff/Carmen_Briggs.jpg"
-import CorinaMichetti from "./../images/Staff/Corina_Michetti.jpg"
-import SarahQuinton from "./../images/Staff/Sarah_Quinton.jpg"
-import ShannonMusic from "./../images/Staff/Shannon_Music.jpg"
 import { FaFax } from 'react-icons/fa';
 import { FaPhone } from 'react-icons/fa';
 
+
+import Home from "./content-components/home/Home.js"
 import ProgramFees from "./content-components/registration/registration/ProgramFees.js"
 import Programs from "./content-components/programs/Programs.js"
 import Committee from "./content-components/registration/parent_involvement/Committee.js"
 import ParentInvolvement from "./content-components/registration/parent_involvement/ParentInvolvement.js"
 import GeneralGuidelines from "./content-components/registration/GeneralGuidelines.js"
 import Resources from "./content-components/Resources.js"
-
+import OurStaff from "./content-components/about_us/OurStaff.js"
+import OurBoard from "./content-components/about_us/OurBoard.js"
 
 export default class Content extends Component {
 
@@ -75,11 +69,8 @@ export default class Content extends Component {
 			Text: "Loading..."
 			},
 			news:[],
-			board:[],
-			yr: ""
-
+			board:[]
 		}
-		//this.GetQuote = this.GetQuote.bind(this)
 		this.news = this.GetNews.bind(this)
 		WebFont.load({
 			google: {
@@ -91,7 +82,6 @@ export default class Content extends Component {
 	componentDidMount(){
 		this.GetQuote()
 		this.GetNews()
-		this.Getboard()
 
 		function myFunction() {
  		 	const url = "http://localhost:8888/auth/check";
@@ -124,7 +114,7 @@ export default class Content extends Component {
 									<Helmet>
 										<title>{this.props.titles["Home"]}</title>
 									</Helmet>
-									{this.Home()}
+									<Home state={this.props} />
 								</div>
 							</Route>
 							<Route path={this.props.site_urls["Resources"]} exact>
@@ -148,7 +138,7 @@ export default class Content extends Component {
 									<Helmet>
 										<title>{this.props.titles["OurStaff"]}</title>
 									</Helmet>
-									{this.OurStaff()}
+									<OurStaff />
 								</div>
 							</Route>
 							<Route path={this.props.site_urls["Squirrel"]} exact>
@@ -176,7 +166,7 @@ export default class Content extends Component {
 								</div>
 							</Route>
 							<Route path={this.props.site_urls["Facebook"]} exact>
-								{this.Facebook()}
+							<Facebook site_urls={this.props.urls}/>
 							</Route>
 							<Route path={this.props.site_urls["Registration"]} exact>
 								<div>
@@ -191,7 +181,7 @@ export default class Content extends Component {
 									<Helmet>
 										<title>{this.props.titles["OpenHouse"]}</title>
 									</Helmet>
-									{this.OpenHouseInfo()}
+									<OpenHouseInfo site_urls={this.props.urls}/>
 								</div>
 							</Route>
 							<Route path={this.props.site_urls["TrialClasses"]} exact>
@@ -199,7 +189,7 @@ export default class Content extends Component {
 									<Helmet>
 										<title>{this.props.titles["TrialClasses"]}</title>
 									</Helmet>
-									{this.TrialClasses()}
+									<TrialClasses site_urls={this.props.urls}/>
 								</div>
 							</Route>
 							<Route path={this.props.site_urls["Kindergarden"]} exact>
@@ -255,7 +245,7 @@ export default class Content extends Component {
 									<Helmet>
 										<title>{this.props.titles["JobOpportunities"]}</title>
 									</Helmet>
-									{this.SubtituteTeachers()}
+									<SubstituteTeachers site_urls={this.props.urls}/>
 								</div>
 							</Route>
 							<Route path={this.props.site_urls["PreschoolDevSkills"]} exact>
@@ -367,7 +357,7 @@ export default class Content extends Component {
 									<Helmet>
 										<title>{this.props.titles["OurBoard"]}</title>
 									</Helmet>
-									{this.OurBoard()}
+									<OurBoard />
 								</div>
 							</Route>
 							<Route path={this.props.site_urls["Testimonials"]} exact>
@@ -452,7 +442,7 @@ export default class Content extends Component {
 			)
 		}
 
-		Reg(){
+		Reg() {
 			return(
 				<div className ="info">
 					<p className = "fun">Registration Requirements</p>
@@ -529,7 +519,7 @@ export default class Content extends Component {
 	About(){
 		return (
 			<div className="info">
-			{this.AboutInfo()}
+			<AboutInfo state={this.props}/>
 			<br />
 			<br />
 			<p className="fun">Our Beliefs</p>
@@ -571,78 +561,8 @@ export default class Content extends Component {
 
 	}
 
-	AboutInfo(){
 
-		return(
-			<div className="info">
-				<p className="fun"><a className="funLink" href={ this.props.site_urls["AboutUs"] }>About us</a></p>
-				<p><b>LCDS Preschool & Kindergarden (formerly Londonderry Child Development Society)</b> was established in North Edmonton in 1972 by a group of parents who wanted an early learning program in their community for their young children.  They wanted to be actively involved in their children's education and they believed that learning should be fun.</p>
-
-				<p>LCDS is a <a href={ this.props.site_urls["ParentInvolvement"] }>Parent Cooperative</a>, program and is a registered not-for-profit organization established under the Societies Act of Alberta.  We are licensed and registered with Alberta Child and Family Services, Alberta Education and the City of Edmonton.  We are proud to be members of the Association of Independent Schools & Colleges in Alberta and the Northern Alberta Preschool Teachers Association.</p>
-				<p>Check out all of the fun things we do at school by visiting our Facebook page.  Like and follow us on Facebook!</p>
-			</div>
-			)
-
-	}
-
-	SubtituteTeachers(){
-		return(
-			<div className="info">
-				<p className="fun"><a className="funLink" href={this.props.site_urls["JobOpportunities"]}> Substitute teachers and Subtitute Educational Assistants</a></p>
-				<p><b>We have need for Substitute Teachers, and Substitute Educational Assistants throughout the school year</b>. If you are interested in having your name added to our Substitute Lists, please email your resume to our school office and we will contact you for an Interview.</p>
-				<p>Substitute Teachers should have a valid Teaching Certificate, permanent or temporary.</p>
-
-				<p>Substitute Teachers and Substitute Educational Assistants should have a Child Care Worker certificate from Edmonton & Region Child & Family Services (can be applied for if you do not have), a current criminal records check with vulnerable sector search and first aid.</p>
-			</div>
-
-		);
-	}
-
-	OpenHouseInfo(){
-		return(
-		<div className="info">
-
-		<p className="fun"><a className="funLink" href={this.props.site_urls["OpenHouse"]}>Open House & Registration for {this.state.yr}/{this.state.yr +1}</a></p>
-		<p className="green">Is Your Child 3, 4 or 5 Years Old? Are They Ready to Start School?</p>
-		<p>Register Your Child Today!</p>
-		<p><b>LCDS Preschool & Kindergarden has an awesome program for your child.
-					We offer Kindergarden, Jr. Kindergarden and Preschool for children 3 to 5 years old.
-					We are now accepting new Registrations for Kindergarden, Jr. Kindergarden and Preschool for September {this.state.yr}.  The AM Class is tentatively full at this time but you are welcome to put your name on our wait list; we still have lots of room in the PM Class.</b></p>
-		<p><b>Registration Forms are available from our school office.</b></p>
-
-		<p>To be eligible for Kindergarden for the {this.state.yr} - {this.state.yr +1} school year, your child must be 5 years old before March 1st {this.state.yr +1}.</p>
-
-		<p>**The entry age for Kindergarden will be changing for the {this.state.yr +1}-{this.state.yr +2} school year.
-			To be eligible for Kindergarden for September {this.state.yr +1}, your child must turn 5 before December 31st, {this.state.yr +1}.</p>
-		<p>Please speak with our office if you have any questions.</p>
-		</div>
-		)
-	}
-
-	TrialClasses(){
-		return(
-			<div className="info">
-				<p className="fun"><a className="funLink" href={this.props.site_urls["TrialClasses"]}>Free Trial Classes</a></p>
-				<p className="green">Not Sure If Your Child Is Ready For School Or If They Will Like It?</p>
-				<p><b>LCDS Preschool & Kindergarden offers free Trial classes for you and your child to experience preschool.</b></p>
-				<p><b>Trial Classes are by appointment, they may be arranged for a class any day of the week (subject to availability)</b>; only two spots are available per class each day. Bring your child to class for 9:15 am or 1:05 pm and participate in the classroom experience until 10:30 am or 2:35 pm.</p>
-				<p><b>Children must be at least 3 years old and fully toilet trained.</b></p>
-				<p><b>Come play with us and enjoy the fun of learning!</b></p>
-			</div>
-		);
-	}
-
-	Facebook() {
-
-		return(
-		<div className="info">
-			<p className="fun"><a className="funLink" href={ this.props.site_urls["Facebook"] }>LCDS on Facebook</a></p>
-			<p><a className="green" href="https://www.facebook.com/lcdskids">LCDS Preschool & Kindergarden.</a></p>
-			<p>See all of the fun activities, events and crafts the children have done this year!</p>
-		</div>
-		);
-	}
-
+	
 	GetQuote() {
 		fetch("http://localhost:8888/quotes/")
 		.then(res => res.json())
@@ -712,95 +632,6 @@ export default class Content extends Component {
 		}
 	}
 
-	OurStaff(){
-		return(
-			<div>
-			<p className="fun">Staff</p>
-			<table className = "Table">
-			<tbody>
-			<tr>
-				<th></th>
-				<th></th>
-			</tr>
-			<tr>
-				<td><img className="table-image" src={MichellFung} alt="" /></td>
-				<td className="left">
-				<p className="subTitle">Our Teacher</p>
-				<p className="nameTitle">Michell Fung</p>
-				<p>I was born and raised here in Edmonton.
-				I grew up in the north side of Edmonton and now currently live on the south side with my husband Neil and my cat and dog. I have two degrees.
-				My first degree is in Psychology with a minor in Sociology. My second degree is in Elementary Education.
-				I have worked with children in a various number of places such as the women’s shelter, YMCA day cares and have taught in a couple of Head Start programs.
-				One of my hobbies is singing. I have sung in a mixed community choir for 6 years. 
-				Your children will learn many new songs and dances.
-				I really love working with children and families.
-				I love seeing the growth and development of all children.</p>
-				</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td className="left">
-				<p className="subTitle">Our Educational Assistants:</p>
-
-				</td>
-			</tr>
-			<tr>
-				<td><img className="table-image" src={CorinaMichetti} alt="" /></td>
-				<td className="left">
-					<p className="nameTitle">Corina Michetti</p>
-
-					<p>Ms. Corina is a former parent of LCDS.
-						Her children have graduated from LCDS and are working their way through Elementary School.
-						Ms. Corina works with children in the classroom who receive educational support services.
-						Ms. Corina enjoys spending time with her husband and two children.
-					</p>
-				</td>
-			</tr>
-			<tr>
-				<td><img className="table-image" src={SarahQuinton} alt="" /></td>
-				<td className="left">
-					<p className="nameTitle">Sarah Quinton</p>
-
-					<p>
-						Ms. Sarah joined LCDS in the fall of 2017.
-						She has been a wonderful addition to our classroom.
-						Ms. Sarah helps to create all of the wonderful projects and activities for our preschoolers in the classroom.
-						In her spare time she participates in dance classes and fitness programs and enjoys travelling.
-					</p>
-				</td>
-			</tr>
-			<tr>
-				<td><img className="table-image" src={ShannonMusic} alt="" /></td>
-				<td className="left">
-					<p className="subTitle">Our Executive Director</p>
-					<p className="nameTitle">Shannon Music</p>
-					<p>
-						Miss Shannon is the LCDS Executive Director.
-						Shannon is also a former LCDS parent and former Board Member.
-						Miss Shannon has 3 children who graduated from LCDS and are now graduating from Post Secondary school and are starting their own lives.
-						She enjoys spending time with her husband, and family and with her little West Highland Terrier named Ben.
-					</p>
-				</td>
-			</tr>
-			<tr>
-				<td><img className="table-image" src={CarmenBriggs} alt="" /></td>
-				<td className="left">
-					<p className="subTitle">Our Business Manager</p>
-					<p className="nameTitle">Carmen Briggs</p>
-					<p>
-						Miss Carmen is our Business Manager.
-						Carmen is also a former LCDS parent and former Board member.
-						Carmen enjoys spending time with her husband, two children and her little Yorkshire Terrier Mazey.
-						Carmen's two boys also graduated from LCDS and are now graduating from High School and attending Post Secondary School.
-					</p>
-				</td>
-			</tr>
-			</tbody>
-			</table>
-			</div>
-		);
-	}
-
 	Sammy(){
 		return(
 			<div className="info">
@@ -814,49 +645,6 @@ export default class Content extends Component {
 				The children love to hear about what he has been up to and what he has to say.</p>
 				<p id="image"><Image src={Sammy} alt="" /></p>
 			</div>
-		);
-	}
-
-	Home(){
-		return(
-			<div>
-				<div className="Carousel" ></div>
-				<Carousel interval={5000}>
-					<Carousel.Item>
-						<img src={Slide1}  alt="" />
-					</Carousel.Item>
-					<Carousel.Item>
-						<img src={Slide2}  alt="" />
-					</Carousel.Item>
-					<Carousel.Item>
-						<img src={Slide3}  alt="" />
-					</Carousel.Item>
-					<Carousel.Item>
-						<img src={Slide4}  alt="" />
-					</Carousel.Item>
-					<Carousel.Item>
-						<img src={Slide5}  alt="" />
-					</Carousel.Item>
-					<Carousel.Item>
-						<img src={Slide6}  alt="" />
-					</Carousel.Item>
-					<Carousel.Item>
-					<img src={Slide7}  alt="" />
-					</Carousel.Item>
-					<Carousel.Item>
-						<img src={Slide8}  alt="" />
-					</Carousel.Item>
-					<Carousel.Item>
-						<img src={Slide9}  alt="" />
-					</Carousel.Item>
-				</Carousel>
-
-				{this.AboutInfo()}
-				{this.Facebook()}
-				{this.OpenHouseInfo()}
-				{this.TrialClasses()}
-				{this.SubtituteTeachers()}
-		</div>
 		);
 	}
 
@@ -1276,7 +1064,7 @@ export default class Content extends Component {
 					<p><b>Trial Classes are also available call the office to book an appointment.</b></p>
 
 					<p>Please speak with our office if you have any questions.</p>
-					{this.TrialClasses()}
+					<TrialClasses site_urls={this.props.urls}/>
 			</div>
 		);
 	}
@@ -1328,58 +1116,6 @@ export default class Content extends Component {
 
 			</div>
 		);
-	}
-
-
-	Getboard(){
-		fetch("http://localhost:8888/board/")
-		.then(res => res.json())
-		.then(
-		  (result) => {
-				console.log("info grabbed")
-			this.setState({
-				board: result
-			})
-		  },
-
-		  (error) => {
-		  	console.log("Err: " + error)
-            this.setState({
-				isLoaded: true,
-				error
-			});
-		  }
-		)
-
-	}
-
-
-	OurBoard() {
-
-		const items = this.state.board
-
-		return(
-			<div className="info">
-				<p className="fun">Our Board Members</p>
-					<img src={SammyBoard}  alt="" />
-					<br/>
-				<table className= "Table">
-				<tbody>
-					<tr>
-						<th>PosiBoution</th>
-						<th className="right">Member</th>
-					</tr>
-					{items.map(item => (
-						<tr>
-							<td><b>{item.MemberPosition}</b></td>
-							<td className="right">{item.MemberFirstName} {item.MemberLastInitial}</td>
-						</tr>
-					))}
-				</tbody>
-				</table>
-			</div>
-		);
-
 	}
 
 	OurFounder(){
