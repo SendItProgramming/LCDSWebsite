@@ -307,6 +307,32 @@ export function SubstituteTeachers(site_urls){
 	);
 }
 
+export function AdminFees(){
+	return(
+		<div className="info">
+			<p className="subTitle">Society Membership & Admin Fees</p>
+			<p>A <b><u>non-refundable</u> $75 Society Membership and Administration fee </b> is charged when you submit your child’s registration (The membership fee is <b>PER FAMILY</b> if you are registering more than one child). This cheque will be dated with the same date as the day your child’s registration is accepted.</p>
+		</div>
+	);
+}
+
+export function RegistrationCommitmentDepositCheques(){
+	return(
+		<div className="info">
+			<p className="subTitle">Registration Commitment Deposit Cheques:</p>
+
+			<p><b>Each family will submit a deposit cheque with their child's registration form to ensure fulfillment of the following registration commitments: </b></p>
+			<ul>
+				<li>1 Bingo and Classroom Cleaning Deposit Cheque, PER CHILD, $250.00 each (undated) (Each family is required to work 2 Bingo shifts and 1 classroom cleaning night)</li>
+				<li>1 Casino Deposit Cheque, PER FAMILY, $200.00 (Only required on a Casino year)(undated)</li>
+				<li>LCDS families have chosen to submit a one-time family fundraising fee of $300.00 per school year instead of doing fundraisers.  This payment may be paid in 2 payment, $150.00 in September and $150.00 in January.  A Donation Tax receipt in the amount of $300.00 will be issued for this fee.   Please see Fundraising for more options. </li>
+			</ul>
+			<p>**Deposit cheques are not cashed unless the member fails to meet their scheduled commitments. </p>
+
+		</div>
+	);
+}
+
 function getYear(){
 	return new Date().getFullYear();
 }

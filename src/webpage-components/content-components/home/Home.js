@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {
-	Image,
 	Carousel
 }from "react-bootstrap"
 import Slide1 from "./../../../images/Slide/slide1.png"
