@@ -8,8 +8,7 @@ import "./../../index-src/css/sidebar.css"
 */
 export default class SideBar extends Component {
 
-
-    componentDidMount(){
+    componentDidMount() {
         function login() {
             const url = "http://localhost:8888/auth/check";
             fetch(url, {
