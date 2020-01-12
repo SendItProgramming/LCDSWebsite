@@ -41,7 +41,6 @@ import SammyBoardRoom from "./../images/Sammy_Our_Board_Image.jpg"
 import SammyMiscImages from "./../images/Sammy_Misc_Positions_Image.jpg"
 import SammyHistory from "./../images/Sammy_Our_History_Image.jpg"
 import SammyBoard from "./../images/Sammy_Our_Board.jpg"
-import SammyJune from "./../images/Sammy_June_Henry.jpg"
 import LCDSMap from "./../images/LCDSmapSQ.jpg"
 import SammyTestimonials from "./../images/Sammy_Testimonials_Image.jpg"
 import { FaFax } from 'react-icons/fa';
@@ -58,6 +57,8 @@ import Registration from "./content-components/registration/Registration.js"
 import Resources from "./content-components/Resources.js"
 import OurStaff from "./content-components/about_us/OurStaff.js"
 import OurBoard from "./content-components/about_us/OurBoard.js"
+import OurFounder from "./content-components/about_us/OurFounder.js"
+import JuneHenry from "./content-components/about_us/JuneHenry.js"
 import News from "./content-components/news/News.js"
 
 
@@ -350,7 +351,7 @@ export default class Content extends Component {
 									<Helmet>
 										<title>{this.props.titles["Founder"]}</title>
 									</Helmet>
-									{this.OurFounder()}
+									<OurFounder state={this.props}/>
 								</div>
 							</Route>
 							<Route path={this.props.site_urls["OurBoard"]} exact>
@@ -374,7 +375,7 @@ export default class Content extends Component {
 									<Helmet>
 										<title>{this.props.titles["JuneHenry"]}</title>
 									</Helmet>
-									{this.JuneHenry()}
+									<JuneHenry />
 								</div>
 							</Route>
 							<Route path={this.props.site_urls["Fundraising"]} exact>
@@ -442,9 +443,6 @@ export default class Content extends Component {
 				</div>
 			)
 		}
-
-
-
 
 	SideBar() {
 		return(
@@ -956,55 +954,6 @@ export default class Content extends Component {
 		);
 	}
 
-	OurFounder(){
-		return(
-			<div className="info">
-				<p className="fun">Our Founder</p>
-				<p>It was with sorrow and regret that LCDS members heard of the passing of its founder, June Henry, in late January 1978.  This wonderfully courageous person had fought a long and brave battle against cancer.</p>
-
-				<p>Any attempt to record the achievements of June Henry in her short lifetime is a difficult task.  Difficult in that she accomplished so much more than most of us can hope to ever achieve or aspire towards.  She was a remarkable person in so many ways.</p>
-
-				<p>More than anything else, I have wanted to capture the true spirit and energy and drive that was June’s being.  I really believe that this can only be done by recording her own written autobiography prepared for the Edmonton Public School Board in 1973, which her husband, Mike, has so very kindly loaned to me.</p>
-
-				<p>When reading her life’s resume it is necessary to keep in mind that June was basically a very shy person who quietly agonized over public speaking yet who never shirked the leadership role which she so ably filled all her life.  Those of us who were privileged to know her and to work with her are left with a sense of loss, for she gave us direction, she provided us with good common sense and she inspired us to strive for better things in education for our children. </p>
-
-				<p>To the very end of her life she cared greatly about the success and future of the Londonderry Child Development Society.</p>
-
-				<p>Read her resume and capture the essence of her spirit.  I’m sure its reading makes us all a little humbler.</p>
-
-				<a className="green" href={this.props.site_urls["JuneHenry"]}>June Henry</a>
-				<img src={SammyJune} alt="" />
-			</div>
-		);
-	}
-
-	JuneHenry(){
-		return(
-			<div className= "info">
-				<p className="fun">June Henry</p>
-				<p className="subTitle">Born July 7th, 1942  (Deceased January 1978, age 36)</p>
-				<p>From the age of eleven I attended Cleethorpes Grammar School for girls, where, at sixteen I obtained my General Certificate of Education, (ordinary level) in English Language, English Literature, Mathematics, German, French, History, Geography, Art and Latin. </p>
-
-				<p>I specialized for two years in English Literature, German and French and obtained my G.C.E. (advanced level) in French and German.  I also obtained a distinction in Scholarship German, and on the basis of these results was awarded a State Scholarship to University.  I remained in school in order to take the entrance examinations for Oxford, and was granted a place there for 1961.</p>
-
-				<p>I left school in December 1960 and taught for 4 months in my old junior school (7-11 year olds).  I taught children to use the library, taught girls’ games, and acted as a substitute teacher where needed.
-				In April 1961, I took up a scholarship awarded by my county to study at Mains University, Germany.  I spent 5 months there, studying, travelling and working.</p>
-
-				<p>In the fall of 1961, I entered Oxford, where I studied German and French for the first two trimesters and took the Preliminary Exams.  After this I spent the following two and one third years of the 1.A. course studying German only and graduated with a second class Honors degree in June 1964.</p>
-
-				<p>I was married in August 1964 and obtained a position as an English teacher at Tynemouth Grammar School.  For the first term, I was substituting for the regular English teacher who was in hospital.  The second term I was taken on as a permanent staff member to teach English and Social Studies (History).  I left at the end of the second term as I was expecting my first child shortly.</p>
-
-				<p>After my child was born, I taught two full days a week, teaching English and Latin in another Grammar School (Whitbey Bay).  In 1966, I spent one term as a remedial reading teacher in an Infants School in Newcastle-upon-Tyne.  During this period I also substituted for teachers who were absent.  I stopped teaching (reluctantly) because of babysitting problems.</p>
-
-				<p>In 1967, my husband and I moved to Saskatchewan, Canada, where he taught in a village and I occasionally substituted.  We moved to Edmonton in 1969.</p>
-
-				<p>In 1970, I became involved in a local community school project in my area, out of which grew a pre-school program within M.E. Lazerte Composite High School, the Londonderry Child Development Centre.  I have been President of the community group which runs this centre, for two years now. </p>
-
-				<p>I wrote a book, “The Sunclimbers”, based on my experiences and the experiences of others who had started similar projects.  This was published this year by the Edmonton Social Planning Council.  I am a member of the Alberta Association for Young Children, and of the Edmonton Social Planning Council. I have completed the courses in Education Psychology, Education Foundation and Education Administration on a part-time basis at the University of Alberta.  I have three children aged 8, 4 ½ and 2 ½ years old.</p>
-
-			</div>
-		);
-	}
 	Testimonials(){
 
 		return(

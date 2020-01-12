@@ -53,7 +53,7 @@ export default class OurBoard extends Component {
 		  },
 
 		  (error) => {
-		  	console.log("Err: " + error),
+		  	console.log("Err: " + error)
 				error
 		  }
 		)
