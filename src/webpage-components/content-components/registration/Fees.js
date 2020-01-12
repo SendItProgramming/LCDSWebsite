@@ -1,3 +1,4 @@
+import React from "react";
 import { AdminFees, RegistrationCommitmentDepositCheques } from "./../../SharedComponents.js"
 import SammyRegistration from "./../../../images/Sammy_Registration_Fees.jpg"
 
@@ -10,7 +11,7 @@ export function PreSchoolFees(site_urls){
 
       <p>Monthly fees are $150 for 2 days per week per month and $225 for 3 days per week per month. (Extra Days add $75/month/extra day added.)</p>
 
-      <p><a href={site_urls["PaymentOptions"]} className= "blueLink">Payment Options</a></p>
+      {PaymentOptions()}
       <p><a href={site_urls["RegCommit"]} className= "greenLink">Registration Commitments</a></p>
       <RegistrationCommitmentDepositCheques />
       <img src={SammyRegistration}  alt="" />
@@ -19,13 +20,14 @@ export function PreSchoolFees(site_urls){
 }
 
 export function JrKindergardenFees(site_urls){
+  console.log(site_urls)
   return(
     <div className="info">
       <p className="fun">Junior Kindergarden Fees</p>
       <AdminFees />
       <p>Monthly fees are $300.00 for 4 days per week per month or $375.00 for 5 days per week per month.</p>
 
-      <p><a href={site_urls["PaymentOptions"]} className= "blueLink">Payment Options</a></p>
+      {PaymentOptions()}
       <p><a href={site_urls["RegCommit"]} className= "greenLink">Registration Commitments</a></p>
       <RegistrationCommitmentDepositCheques />
       <img src={SammyRegistration}  alt="" />

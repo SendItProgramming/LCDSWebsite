@@ -22,10 +22,9 @@ export function routes() {
     LearningSupport:    "/programs/learning-support",     //Done
     FieldTrips:         "/programs/field-trips",          //Done
     DailySnacks:        "/programs/daily-snacks",         //Done
-    FoodRestrictions:   "/programs/daily-snacks/food-restictions",                   //Done
     PreschoolDevSkills: "/programs/kindergarten/preschool-development-skills",       //Done
     IsMyChildReady:     "/programs/is-my-child-ready-for-preschool-or-kindergarden", //done
-    Requirements:       "/programs/registration-requirements-for-learning-support",  //Done
+    Requirements:       "/programs/registration/requirements-for-learning-support",  //Done
     GenGuide:           "/programs/registration/half-day-program-general-guidelines",
 
     Registration:       "/registration/",                                            //Dpme
@@ -38,7 +37,6 @@ export function routes() {
     JrKindergardenFees: "/registration/program-fees/junior-kindergarden-fees",
     KindergardenFees:   "/registration/program-fees/kindergarden-fees",
     PaymentOptions:     "/registration/program-fees/payment-options",
-
     RegCommit:          "/registration/program-fees/registration-commitments",
     Resources:          "/resources",                                                //Done
 
