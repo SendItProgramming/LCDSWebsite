@@ -158,7 +158,7 @@ export function TitledSidebarPanel(props){
 	);
 }
 
-export function Registration() {
+export function RegistrationPanel() {
 	return (
 		<SidebarPanel>
 			<div>
@@ -171,7 +171,7 @@ export function Registration() {
 	);
 }
 
-export function Programs() {
+export function ProgramsCard() {
 	return (
 		<SidebarPanel>
 			<div>
@@ -222,4 +222,106 @@ export function CoSponsors() {
 			</div>
 		</SidebarPanel>
 	);
+}
+
+export function AboutInfo(site_urls) {
+
+	return(
+		<div className="info">
+			<p className="fun"><a className="funLink" href={ site_urls["AboutUs"] }>About us</a></p>
+			<p><b>LCDS Preschool & Kindergarden (formerly Londonderry Child Development Society)</b> was established in North Edmonton in 1972 by a group of parents who wanted an early learning program in their community for their young children.  They wanted to be actively involved in their children's education and they believed that learning should be fun.</p>
+
+			<p>LCDS is a <a href={ site_urls["ParentInvolvement"] }>Parent Cooperative</a>, program and is a registered not-for-profit organization established under the Societies Act of Alberta.  We are licensed and registered with Alberta Child and Family Services, Alberta Education and the City of Edmonton.  We are proud to be members of the Association of Independent Schools & Colleges in Alberta and the Northern Alberta Preschool Teachers Association.</p>
+			<p>Check out all of the fun things we do at school by visiting our Facebook page.  Like and follow us on Facebook!</p>
+		</div>
+		)
+}
+
+export function Facebook(site_urls) {
+
+	return(
+	<div className="info">
+		<p className="fun"><a className="funLink" href={ site_urls["Facebook"] }>LCDS on Facebook</a></p>
+		<p><a className="green" href="https://www.facebook.com/lcdskids">LCDS Preschool & Kindergarden.</a></p>
+		<p>See all of the fun activities, events and crafts the children have done this year!</p>
+	</div>
+	);
+}
+
+export function OpenHouseInfo(site_urls){
+
+	return(
+	<div className="info">
+
+	<p className="fun"><a className="funLink" href={site_urls["OpenHouse"]}>Open House & Registration for {getYear()}&#47;{getYear() +1}</a></p>
+	<p className="green">Is Your Child 3, 4 or 5 Years Old? Are They Ready to Start School?</p>
+	<p>Register Your Child Today!</p>
+	<p><b>LCDS Preschool & Kindergarden has an awesome program for your child.
+				We offer Kindergarden, Jr. Kindergarden and Preschool for children 3 to 5 years old.
+				We are now accepting new Registrations for Kindergarden, Jr. Kindergarden and Preschool for September {getYear()}.  The AM Class is tentatively full at this time but you are welcome to put your name on our wait list; we still have lots of room in the PM Class.</b></p>
+	<p><b>Registration Forms are available from our school office.</b></p>
+
+	<p>To be eligible for Kindergarden for the {getYear()} - {getYear() +1} school year, your child must be 5 years old before March 1st {getYear() +1}.</p>
+
+	<p>**The entry age for Kindergarden will be changing for the {getYear() +1}-{getYear() +2} school year.
+		To be eligible for Kindergarden for September {getYear() +1}, your child must turn 5 before December 31st, {getYear() +1}.</p>
+	<p>Please speak with our office if you have any questions.</p>
+	</div>
+	)
+}
+
+export function TrialClasses(site_urls){
+	return(
+		<div className="info">
+			<p className="fun"><a className="funLink" href={site_urls["TrialClasses"]}>Free Trial Classes</a></p>
+			<p className="green">Not Sure If Your Child Is Ready For School Or If They Will Like It?</p>
+			<p><b>LCDS Preschool & Kindergarden offers free Trial classes for you and your child to experience preschool.</b></p>
+			<p><b>Trial Classes are by appointment, they may be arranged for a class any day of the week (subject to availability)</b>; only two spots are available per class each day. Bring your child to class for 9:15 am or 1:05 pm and participate in the classroom experience until 10:30 am or 2:35 pm.</p>
+			<p><b>Children must be at least 3 years old and fully toilet trained.</b></p>
+			<p><b>Come play with us and enjoy the fun of learning!</b></p>
+		</div>
+	);
+}
+
+export function SubstituteTeachers(site_urls){
+	return(
+		<div className="info">
+			<p className="fun"><a className="funLink" href={site_urls["JobOpportunities"]}> Substitute teachers and Subtitute Educational Assistants</a></p>
+			<p><b>We have need for Substitute Teachers, and Substitute Educational Assistants throughout the school year</b>. If you are interested in having your name added to our Substitute Lists, please email your resume to our school office and we will contact you for an Interview.</p>
+			<p>Substitute Teachers should have a valid Teaching Certificate, permanent or temporary.</p>
+
+			<p>Substitute Teachers and Substitute Educational Assistants should have a Child Care Worker certificate from Edmonton & Region Child & Family Services (can be applied for if you do not have), a current criminal records check with vulnerable sector search and first aid.</p>
+		</div>
+
+	);
+}
+
+export function AdminFees(){
+	return(
+		<div className="info">
+			<p className="subTitle">Society Membership & Admin Fees</p>
+			<p>A <b><u>non-refundable</u> $75 Society Membership and Administration fee </b> is charged when you submit your child’s registration (The membership fee is <b>PER FAMILY</b> if you are registering more than one child). This cheque will be dated with the same date as the day your child’s registration is accepted.</p>
+		</div>
+	);
+}
+
+export function RegistrationCommitmentDepositCheques(){
+	return(
+		<div className="info">
+			<p className="subTitle">Registration Commitment Deposit Cheques:</p>
+
+			<p><b>Each family will submit a deposit cheque with their child's registration form to ensure fulfillment of the following registration commitments: </b></p>
+			<ul>
+				<li>1 Bingo and Classroom Cleaning Deposit Cheque, PER CHILD, $250.00 each (undated) (Each family is required to work 2 Bingo shifts and 1 classroom cleaning night)</li>
+				<li>1 Casino Deposit Cheque, PER FAMILY, $200.00 (Only required on a Casino year)(undated)</li>
+				<li>LCDS families have chosen to submit a one-time family fundraising fee of $300.00 per school year instead of doing fundraisers.  This payment may be paid in 2 payment, $150.00 in September and $150.00 in January.  A Donation Tax receipt in the amount of $300.00 will be issued for this fee.   Please see Fundraising for more options. </li>
+			</ul>
+			<p>**Deposit cheques are not cashed unless the member fails to meet their scheduled commitments. </p>
+
+		</div>
+	);
+}
+
+function getYear(){
+	return new Date().getFullYear();
 }

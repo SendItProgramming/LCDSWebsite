@@ -11,6 +11,21 @@ export default class SideBar extends Component {
     constructor(props) {
         super(props)
     }
+
+    componentDidMount() {
+        function login() {
+            const url = "http://localhost:8888/auth/check";
+            fetch(url, {
+            method : "POST",
+            body: new FormData(document.getElementById("inputform")),
+            }).then(
+                response => response.text()
+            ).then(
+                    html => console.log(html)
+            );
+        }
+        document.getElementById("loginButton").addEventListener("click", login);
+    }
     render() {
         return (
             <div id="sidebar">
