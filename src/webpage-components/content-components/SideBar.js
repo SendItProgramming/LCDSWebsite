@@ -8,6 +8,10 @@ import "./../../index-src/css/sidebar.css"
 */
 export default class SideBar extends Component {
 
+    constructor(props) {
+        super(props)
+    }
+
     componentDidMount() {
         function login() {
             const url = "http://localhost:8888/auth/check";
@@ -56,6 +60,10 @@ export default class SideBar extends Component {
 
                     <Route path={this.props.site_urls["Contact"]}>
                         {this.RenderContact()}
+                    </Route>
+
+                    <Route path={this.props.site_urls["Blogs"]}>
+                        {this.RenderHome()}
                     </Route>
 
 					<Route path={this.props.site_urls["Admin"]}>

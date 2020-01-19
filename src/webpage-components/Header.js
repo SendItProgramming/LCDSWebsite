@@ -16,6 +16,14 @@ import logo from "./../images/header-logo.png"
 import fb from "./../images/facebook.png"
 
 export default class Header extends Component {
+    constructor(props){
+        super(props)
+    }
+
+    componentDidUpdate(){
+        console.log(this.props.user)
+    }
+
     render() {
         return (
             <div id="header">
@@ -42,8 +50,8 @@ export default class Header extends Component {
         )
     }
 
-    NavBar() {
-		return (
+    AdminNav(){
+        return (
             <Nav bsStyle="pills" onSelect={this.handleSelect}>
                 <NavItem href={ this.props.site_urls["Home"] }>
                     Home
@@ -68,12 +76,53 @@ export default class Header extends Component {
                 <NavItem href={ this.props.site_urls["Contact"] }>
                     Contact
                 </NavItem>
-
                 <NavItem href={ this.props.site_urls["Admin"] }>
                     Admin
                 </NavItem>
             </Nav>
         )
+    }
+
+    UserNav(){
+        return (
+            <Nav bsStyle="pills" onSelect={this.handleSelect}>
+                <NavItem href={ this.props.site_urls["Home"] }>
+                    Home
+                </NavItem>
+
+                {this.AboutUs()}
+
+                {this.Programs()}
+
+                {this.Registration()}
+
+                <NavItem href={ this.props.site_urls["Resources"] }>
+                    Resources
+                </NavItem>
+
+                {this.Events()}
+
+                <NavItem href={ this.props.site_urls["News"] }>
+                    News
+                </NavItem>
+
+                <NavItem href={ this.props.site_urls["Contact"] }>
+                    Contact
+                </NavItem>
+            </Nav>
+        )
+    }
+
+    NavBar() {
+		if (this.props.user){
+            if(this.props.user.Role == "admin"){
+                return this.AdminNav()
+            } else {
+                return this.UserNav()
+            }
+        } else {
+            return this.UserNav()
+        }
     }
 
     AboutUs() {
@@ -97,6 +146,10 @@ export default class Header extends Component {
 
                 <MenuItem href={this.props.site_urls["Testimonials"]}>
                     Testimonials
+                </MenuItem>
+
+                <MenuItem href={this.props.site_urls["Blogs"]}>
+                    Blogs
                 </MenuItem>
 
                 <MenuItem href={this.props.site_urls["History"]}>

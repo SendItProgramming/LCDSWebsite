@@ -16,6 +16,7 @@ func NewAPI(db *sql.DB) API {
 	muxer := mux.NewRouter()
 	EditLink := EditorLink{db}
 	muxer.Handle("/save", http.HandlerFunc(EditLink.PostToDB))
+	muxer.Handle("/grab", http.HandlerFunc(EditLink.GrabBlogs))
 	return API{
 		muxer,
 		EditLink,

@@ -2,8 +2,10 @@ import React, { Component } from "react"
 import { Route, Redirect, Switch } from "react-router-dom";
 import SideBar from "./content-components/SideBar";
 import MainContent from "./content-components/MainContent";
+import BlogReader from "./BlogReader.js"
 import ReactTable from "react-table";
 import TextEditor from "./HTMLEditor.js";
+import FullCalendarWrapper from "./content-components/FullCalendar.js"
 import { Helmet } from "react-helmet";
 
 import {
@@ -24,6 +26,7 @@ import {
 	SubstituteTeachers,
 } from "./SharedComponents";
 import "./../index-src/css/Content.css"
+import FullCalendar from "./content-components/FullCalendar";
 
 import WebFont from 'webfontloader';
 
@@ -96,6 +99,7 @@ export default class Content extends Component {
 		}
 		//document.getElementById("loginButton").addEventListener("click", myFunction);
 	}
+
 
     render() {
 			return (
@@ -435,7 +439,7 @@ export default class Content extends Component {
 					<SideBar site_urls={this.props.site_urls}
 						quote={<QuotePanel quote={this.state.quote}/>}
 						custom_buttons={<ButtonsPanel/>}
-						member_login={<LoginPanel/>}
+						member_login={<LoginPanel jwt={this.props.user} logout={this.props.Logout} login={this.props.Login}/>}
 						kids_corner={<KidsCornerPanel/>}
 						squirrel={<SquirrelPanel/>}
 						about_us={<AboutUsPanel/>}
@@ -455,6 +459,12 @@ export default class Content extends Component {
 				<p className="fun">WHOOPS YOU'VE MADE A MISTAKE</p>
 				<p className="subTitle">If you're here, you made a mistake, go back</p>
 			</div>
+		);
+	}
+
+	Calendar(){
+		return (
+			<FullCalendarWrapper user={this.props.user}/>
 		);
 	}
 
